@@ -24,8 +24,6 @@ Future<void> main() async {
   // setupLogging();
   runApp(const MyApp());
 }
-//   runApp(const MyApp());
-// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -35,7 +33,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const OverlaySupport.global( 
        child: GetMaterialApp(
-      title: 'Riifit',
+      title: 'Riilfit',
       debugShowCheckedModeBanner: false,
     ));
   }
