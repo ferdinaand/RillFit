@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:overlay_support/overlay_support.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path_provider/path_provider.dart';
 Future<void> main() async {
    WidgetsFlutterBinding.ensureInitialized();
