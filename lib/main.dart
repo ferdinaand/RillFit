@@ -6,6 +6,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:overlay_support/overlay_support.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path_provider/path_provider.dart';
+import 'package:riilfit/src/modules/onboarding/presentation/onboarding.ui.dart';
+import 'package:riilfit/src/routing/app_pages.dart';
 Future<void> main() async {
    WidgetsFlutterBinding.ensureInitialized();
 
@@ -36,7 +38,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const OverlaySupport.global( 
        child: GetMaterialApp(
-      title: 'Riifit',
+        home:OnBoardingUi(),
+        // initialRoute: Routes.onboarding,
+      title: 'Riilfit',
       debugShowCheckedModeBanner: false,
     ));
   }
