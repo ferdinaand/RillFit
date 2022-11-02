@@ -6,8 +6,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:overlay_support/overlay_support.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path_provider/path_provider.dart';
+
 Future<void> main() async {
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -19,26 +20,18 @@ Future<void> main() async {
   final dir = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(dir.path);
 
-  // configureAdapters();
-  // await configureHive();
-
-  // setupLogging();
-  runApp(const MyApp());
+  runApp(const RiilfitApp());
 }
-//   runApp(const MyApp());
-// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class RiilfitApp extends StatelessWidget {
+  const RiilfitApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const OverlaySupport.global( 
-       child: GetMaterialApp(
-      title: 'Riifit',
+    return const OverlaySupport.global(
+        child: GetMaterialApp(
+      title: 'Riilfit',
       debugShowCheckedModeBanner: false,
     ));
   }
 }
-

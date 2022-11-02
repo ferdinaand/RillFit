@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+part 'user.entity.g.dart';
+
 @JsonSerializable(
   explicitToJson: true,
   fieldRename: FieldRename.snake,
@@ -39,7 +41,6 @@ class UserRepo extends HiveObject {
     this.phoneCountry,
   });
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'avatar': avatar,
@@ -60,7 +61,8 @@ class UserRepo extends HiveObject {
       email: map['email'] != null ? map['email'] as String : null,
       username: map['username'] != null ? map['username'] as String : null,
       id: map['id'] != null ? map['id'] as String : null,
-      phoneCountry: map['phoneCountry'] != null ? map['phoneCountry'] as String : null,
+      phoneCountry:
+          map['phoneCountry'] != null ? map['phoneCountry'] as String : null,
       phone: map['phone'] != null ? map['phone'] as String : null,
       fullName: map['fullName'] != null ? map['fullName'] as String : null,
     );
@@ -68,5 +70,6 @@ class UserRepo extends HiveObject {
 
   String toJson() => json.encode(toMap());
 
-  factory UserRepo.fromJson(String source) => UserRepo.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory UserRepo.fromJson(String source) =>
+      UserRepo.fromMap(json.decode(source) as Map<String, dynamic>);
 }
