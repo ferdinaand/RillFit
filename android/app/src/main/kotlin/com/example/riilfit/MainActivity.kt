@@ -1,4 +1,4 @@
-package com.example.riilfit
+package com.riilfit.app
 
 import io.flutter.embedding.android.FlutterActivity
 
