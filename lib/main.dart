@@ -29,9 +29,20 @@ class RiilfitApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const OverlaySupport.global(
-        child: GetMaterialApp(
-      title: 'Riilfit',
-      debugShowCheckedModeBanner: false,
-    ));
+      child: GetMaterialApp(
+        title: 'Riilfit',
+        debugShowCheckedModeBanner: false,
+        home: HomeUi(),
+      ),
+    );
+  }
+}
+
+class HomeUi extends StatelessWidget {
+  const HomeUi({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

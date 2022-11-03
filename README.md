@@ -13,6 +13,8 @@ To use this particular flutter version, run the following commands
  fvm use 3.3.6 (If asked to install, enter y)
  and you're good to go.
 
+ ### FVM Docs https://fvm.app/docs/getting_started/installation
+
 Note: any flutter related script should be run with fvm before it
 e.g instead of "flutter run", do "fvm flutter run"
 ### Do not edit the .gitignore file
