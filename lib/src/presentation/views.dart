@@ -1,0 +1,1 @@
+///This file contains the exports of all main views of the app
