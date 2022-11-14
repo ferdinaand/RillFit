@@ -26,6 +26,7 @@ class OnboardingUi extends GetView {
       child: Scaffold(
         body: SafeArea(
           child: CustomScrollView(
+            physics: const ClampingScrollPhysics(),
             slivers: [
               SliverPadding(
                 padding: const EdgeInsets.symmetric(
@@ -38,7 +39,7 @@ class OnboardingUi extends GetView {
                       Expanded(
                         child: PageView.builder(
                           controller: controller.pageController,
-                          physics: const ClampingScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: onboardingCarouselContent.length,
                           restorationId: "onboarding",
                           onPageChanged: (i) => controller.currentIndex,
