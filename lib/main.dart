@@ -23,7 +23,7 @@ Future<void> main() async {
   runApp(
     const RiilfitApp(),
   );
-}
+} 
 
 class RiilfitApp extends StatelessWidget {
   const RiilfitApp({super.key});
