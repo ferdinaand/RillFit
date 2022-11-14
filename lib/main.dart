@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show DeviceOrientation, SystemChrome;
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:overlay_support/overlay_support.dart';
-// ignore: depend_on_referenced_packages
-import 'package:path_provider/path_provider.dart';
+import 'package:riilfit/src/routing/app_pages.dart';
+import 'package:riilfit/src/utils/config.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,48 +16,27 @@ Future<void> main() async {
 
   await GetStorage.init();
 
-  final dir = await getApplicationDocumentsDirectory();
-  await Hive.initFlutter(dir.path);
+  initializeHive();
 
-  runApp(const RiilfitApp());
-}
-<<<<<<< HEAD
+  setupLogging();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-=======
->>>>>>> 755cb25a475f18bd16f7f079d951a37a2a3291d3
+  runApp(
+    const RiilfitApp(),
+  );
+} 
 
 class RiilfitApp extends StatelessWidget {
   const RiilfitApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return const OverlaySupport.global( 
-       child: GetMaterialApp(
-      title: 'Riilfit',
-      debugShowCheckedModeBanner: false,
-    ));
-=======
-    return const OverlaySupport.global(
+    return OverlaySupport.global(
       child: GetMaterialApp(
+        initialRoute: Routes.onboarding,
+        getPages: AppPages.pages,
         title: 'Riilfit',
         debugShowCheckedModeBanner: false,
-        home: HomeUi(),
       ),
-    );
->>>>>>> 755cb25a475f18bd16f7f079d951a37a2a3291d3
-  }
-}
-
-class HomeUi extends StatelessWidget {
-  const HomeUi({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(),
     );
   }
 }
