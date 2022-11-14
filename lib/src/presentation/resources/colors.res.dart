@@ -6,6 +6,7 @@ const primary20 = Color(0xFF2FD06E);
 
 ///Grayscale
 const grayScale50 = Color(0xFFF1F4F8);
+const grayScale100 = Color(0xFFDAE0E8);
 const grayScale400 = Color(0xFFAAB2BA);
 const grayScale500 = Color(0xFF9299A3);
 const grayScale700 = Color(0xFF404B52);

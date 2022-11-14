@@ -167,7 +167,7 @@ class TextUi extends StatelessWidget {
       style: style.copyWith(
         color: color,
         fontSize: fontSize,
-        height: height,
+        height: height ?? 1.5,
         fontWeight: fontWeight,
       ),
     );

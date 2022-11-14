@@ -48,7 +48,6 @@ const TextStyle bodySmall = TextStyle(
   fontFamily: 'Nunito',
   fontWeight: regularText,
   fontSize: 12,
-  height: 1.5,
 );
 
 const TextStyle bodyXSmall = TextStyle(

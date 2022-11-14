@@ -17,7 +17,7 @@ class AppPages {
   static final pages = [
     GetPage(
       name: Routes.onboarding,
-      page: () => const OnBoardingUi(),
+      page: () => const OnboardingUi(),
       middlewares: [
         AppGuard(),
       ],
