@@ -71,7 +71,7 @@ class PrimaryButtonUi extends ButtonUi {
               : TextUi(
                   text,
                   color: textColor,
-                  style: buttonText,
+                  style: buttonTypography,
                 ),
         );
 }

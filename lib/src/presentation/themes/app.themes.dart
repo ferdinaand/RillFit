@@ -5,7 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'dark.theme.dart';
 import 'light.theme.dart';
 
-class AppThemes {
+class AppThemes extends GetxService {
   static final light = lightTheme;
   static ThemeData dark = darkTheme;
 

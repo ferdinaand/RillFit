@@ -61,7 +61,7 @@ final hintTextStyle = bodyMed.copyWith(
   height: 1.5,
 );
 
-final buttonText = bodyL.copyWith(
+final buttonTypography = bodyL.copyWith(
   height: 1.5,
   fontWeight: semiBoldText,
 );
