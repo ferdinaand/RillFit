@@ -3,6 +3,7 @@ import 'package:flutter/services.dart' show DeviceOrientation, SystemChrome;
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:riilfit/src/utils/config.dart';
 
@@ -23,7 +24,7 @@ Future<void> main() async {
   runApp(
     const RiilfitApp(),
   );
-} 
+}
 
 class RiilfitApp extends StatelessWidget {
   const RiilfitApp({super.key});
@@ -33,6 +34,8 @@ class RiilfitApp extends StatelessWidget {
     return OverlaySupport.global(
       child: GetMaterialApp(
         initialRoute: Routes.onboarding,
+        unknownRoute: AppPages.unknownRoute,
+        theme: AppThemes.light,
         getPages: AppPages.pages,
         title: 'Riilfit',
         debugShowCheckedModeBanner: false,

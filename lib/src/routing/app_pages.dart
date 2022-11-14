@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import '../modules/onboarding/presentation/onboarding.ui.dart';
+import 'package:riilfit/src/presentation/views.dart';
 import 'guards/app_guard.dart';
 
 part 'app_routes.dart';
@@ -9,6 +8,11 @@ class AppPages {
   AppPages._();
 
   static const initial = Routes.onboarding;
+
+  static final unknownRoute = GetPage(
+    name: Routes.page404,
+    page: () => const UnknownPageUi(),
+  );
 
   static final pages = [
     GetPage(
