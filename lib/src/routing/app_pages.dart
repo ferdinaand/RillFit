@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import '../modules/onboarding/presentation/onboarding.ui.dart';
+import 'guards/app_guard.dart';
 
 part 'app_routes.dart';
 
@@ -13,9 +14,9 @@ class AppPages {
     GetPage(
       name: Routes.onboarding,
       page: () => const OnBoardingUi(),
-      // middlewares: [
-      //   AppGuard(),
-      // ],
+      middlewares: [
+        AppGuard(),
+      ],
     ),
     // GetPage(
     //   name: Routes.login,
