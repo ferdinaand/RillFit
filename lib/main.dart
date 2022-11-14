@@ -17,16 +17,16 @@ Future<void> main() async {
   await GetStorage.init();
 
   initializeHive();
- 
+
   setupLogging();
 
   runApp(
-    const MyApp(),
+    const RiilfitApp(),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class RiilfitApp extends StatelessWidget {
+  const RiilfitApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +36,7 @@ class MyApp extends StatelessWidget {
         getPages: AppPages.pages,
         title: 'Riilfit',
         debugShowCheckedModeBanner: false,
- 
       ),
     );
   }
-} 
+}
