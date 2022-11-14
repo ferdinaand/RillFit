@@ -39,14 +39,14 @@ class DropDownUi extends GetView {
               style: hasValue.value
                   ? hintTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
-                      color: primary500,
+                      color: grayScale900,
                       height: 1.5,
                     )
                   : hintTextStyle,
             ),
             style: hintTextStyle.copyWith(
               fontWeight: FontWeight.w600,
-              color: primary500,
+              color: grayScale900,
               height: 1.5,
             ),
             borderRadius: const BorderRadius.all(
@@ -74,7 +74,7 @@ class DropDownUi extends GetView {
                       item,
                       style: hintTextStyle.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: primary500,
+                        color: grayScale900,
                         height: 1.5,
                       ),
                     ),

@@ -68,10 +68,10 @@ class TextFieldUi extends StatelessWidget {
       obscureText: obscureText,
       style: hintTextStyle.copyWith(
         fontWeight: FontWeight.w600,
-        color: primary500,
+        color: grayScale900,
         height: 1.5,
       ),
-      cursorColor: primary500,
+      cursorColor: grayScale900,
       cursorWidth: 1,
       textInputAction: textInputAction,
       textAlignVertical: TextAlignVertical.center,

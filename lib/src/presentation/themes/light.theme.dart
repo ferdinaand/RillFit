@@ -7,7 +7,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   scaffoldBackgroundColor: white,
   textTheme: Typography.englishLike2018.apply(
     fontFamily: "Nunito",
-    bodyColor: primary500,
+    bodyColor: grayScale900,
   ),
   inputDecorationTheme: InputDecorationTheme(
     hintStyle: hintTextStyle,
