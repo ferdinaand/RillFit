@@ -17,7 +17,7 @@ Future<void> main() async {
   await GetStorage.init();
 
   initializeHive();
-
+ 
   setupLogging();
 
   runApp(
@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
         getPages: AppPages.pages,
         title: 'Riilfit',
         debugShowCheckedModeBanner: false,
+ 
       ),
     );
   }
-}
+} 

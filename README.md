@@ -4,13 +4,17 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Riilfit application.
 
-A few resources to get you started if this is your first Flutter project:
+this project uses flutter version 3.3.6
+To use this particular flutter version, run the following commands
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+ flutter pub global activate fvm
+ fvm use 3.3.6 (If asked to install, enter y)
+ and you're good to go.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ ### FVM Docs https://fvm.app/docs/getting_started/installation
+
+Note: any flutter related script should be run with fvm before it
+e.g instead of "flutter run", do "fvm flutter run"
+### Do not edit the .gitignore file
