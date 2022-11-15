@@ -1,3 +1,5 @@
+import 'package:riilfit/src/presentation/resources/res.dart';
+
 class OnboardingCarouselSkeleton {
   final String image;
   final String title;
@@ -13,19 +15,19 @@ class OnboardingCarouselSkeleton {
 final onboardingCarouselContent = <OnboardingCarouselSkeleton>[
   const OnboardingCarouselSkeleton(
     title: "Welcome to Riilfit",
-    image: 'assets/png/splash_image.png',
+    image: riilfitLogoPng,
     description:
         "Riilfit has workouts on demand that you can find based on how much time you have",
   ),
   const OnboardingCarouselSkeleton(
     title: "Workout Categories",
-    image: 'assets/png/splash_image.png',
+    image: riilfitLogoPng,
     description:
         "Workout categories will help you gain strength, get in better shape and embrace a healthy lifestyle",
   ),
   const OnboardingCarouselSkeleton(
     title: "Save time & money",
-    image: 'assets/png/splash_image.png',
+    image: riilfitLogoPng,
     description:
         "Find exclusive deals on popular products and get the items you love delivered or ready for pickup.",
   ),

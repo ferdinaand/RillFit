@@ -22,10 +22,10 @@ class AppPages {
         AppGuard(),
       ],
     ),
-    // GetPage(
-    //   name: Routes.login,
-    //   page: () => const LoginUi(),
-    // ),
+    GetPage(
+      name: Routes.login,
+      page: () => const LoginUi(),
+    ),
     // GetPage(
     //   name: Routes.register,
     //   page: () => const RegisterUi(),
