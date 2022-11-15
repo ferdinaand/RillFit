@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
+import 'package:riilfit/src/presentation/themes/app.themes.dart';
 
 class TextFieldUi extends StatelessWidget {
   final String hintText;
@@ -50,46 +52,48 @@ class TextFieldUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      maxLines: maxLines,
-      maxLength: maxLength,
-      autofocus: autofocus,
-      validator: validator,
-      controller: controller,
-      onChanged: onChanged,
-      onTap: onTap,
-      keyboardType: keyboardType,
-      initialValue: initalValue,
-      autocorrect: false,
-      focusNode: focusNode,
-      inputFormatters: inputFormatter,
-      obscureText: obscureText,
-      style: hintTextStyle.copyWith(
-        fontWeight: FontWeight.w600,
-        color: grayScale900,
-        height: 1.5,
+    return Obx(
+      () => TextFormField(
+        maxLines: maxLines,
+        maxLength: maxLength,
+        autofocus: autofocus,
+        validator: validator,
+        controller: controller,
+        onChanged: onChanged,
+        onTap: onTap,
+        keyboardType: keyboardType,
+        initialValue: initalValue,
+        autocorrect: false,
+        focusNode: focusNode,
+        inputFormatters: inputFormatter,
+        obscureText: obscureText,
+        style: hintTextStyle.copyWith(
+          fontWeight: FontWeight.w600,
+          color: AppThemes.isDarkMode ? grayScale100 : grayScale900,
+          height: 1.5,
+        ),
+        cursorColor: AppThemes.isDarkMode ? grayScale100 : grayScale900,
+        cursorWidth: 1,
+        textInputAction: textInputAction,
+        textAlignVertical: TextAlignVertical.center,
+        obscuringCharacter: "●",
+        decoration: decoration ??
+            InputDecoration(
+              hintStyle: hintStyle,
+              errorStyle: errorStyle,
+              prefixIcon: prefixIcon,
+              suffixIcon: suffixIcon,
+              prefixIconConstraints: const BoxConstraints(
+                minHeight: 32,
+                minWidth: 32,
+              ),
+              suffixIconConstraints: const BoxConstraints(
+                minHeight: 32,
+                minWidth: 32,
+              ),
+              hintText: hintText,
+            ),
       ),
-      cursorColor: grayScale900,
-      cursorWidth: 1,
-      textInputAction: textInputAction,
-      textAlignVertical: TextAlignVertical.center,
-      obscuringCharacter: "●",
-      decoration: decoration ??
-          InputDecoration(
-            hintStyle: hintStyle,
-            errorStyle: errorStyle,
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-            prefixIconConstraints: const BoxConstraints(
-              minHeight: 32,
-              minWidth: 32,
-            ),
-            suffixIconConstraints: const BoxConstraints(
-              minHeight: 32,
-              minWidth: 32,
-            ),
-            hintText: hintText,
-          ),
     );
   }
 }

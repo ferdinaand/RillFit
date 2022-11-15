@@ -40,7 +40,6 @@ class PasswordFieldUi extends StatelessWidget {
             padding: const EdgeInsets.only(right: 16),
             child: SvgPicture.asset(
               obscureText.value ? eyeIcon : slashedEyeIcon,
-              // color: grayScale50,
             ),
           ),
         ),

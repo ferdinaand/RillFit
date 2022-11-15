@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
+import 'package:riilfit/src/presentation/themes/app.themes.dart';
 
 class AuthBackButtonUi extends StatelessWidget {
   const AuthBackButtonUi({
     super.key,
-    this.iconColor,
     this.size,
   });
 
-  final Color? iconColor;
   final double? size;
 
   @override
@@ -24,21 +23,23 @@ class AuthBackButtonUi extends StatelessWidget {
           borderRadius: const BorderRadius.all(
             regularRadius,
           ),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                regularRadius,
+          child: Obx(
+            () => DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
+                  regularRadius,
+                ),
+                border: Border.all(
+                  color: AppThemes.isDarkMode ? grayScale100 : grayScale700,
+                ),
               ),
-              border: Border.all(
-                color: iconColor ?? grayScale700,
+              child: SvgPicture.asset(
+                backIcon,
+                fit: BoxFit.none,
+                color: AppThemes.isDarkMode ? grayScale100 : grayScale700,
+                width: size,
+                height: size,
               ),
-            ),
-            child: SvgPicture.asset(
-              backIcon,
-              fit: BoxFit.none,
-              color: iconColor ?? grayScale700,
-              width: size,
-              height: size,
             ),
           ),
         ),

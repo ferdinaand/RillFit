@@ -6,25 +6,38 @@ import 'dark.theme.dart';
 import 'light.theme.dart';
 
 class AppThemes extends GetxService {
+  AppThemes._();
+
+  @override
+  void onInit() {
+    _isDarkMode(isDarkModeSaved());
+    super.onInit();
+  }
+
   static final light = lightTheme;
   static ThemeData dark = darkTheme;
 
-  final _storage = GetStorage();
-  final themeKey = "isDarkMode";
+  static final _storage = GetStorage();
+  static const themeKey = "isDarkMode";
 
-  ThemeMode getThemeMode() {
+  static final _isDarkMode = isDarkModeSaved().obs;
+
+  static bool get isDarkMode => _isDarkMode.value;
+
+  static ThemeMode getThemeMode() {
     return isDarkModeSaved() ? ThemeMode.dark : ThemeMode.light;
   }
 
-  bool isDarkModeSaved() {
+  static bool isDarkModeSaved() {
     return _storage.read(themeKey) ?? false;
   }
 
-  void saveThemeMode({required bool isDarkMode}) {
+  static void saveThemeMode({required bool isDarkMode}) {
+    _isDarkMode(isDarkMode);
     _storage.write(themeKey, isDarkMode);
   }
 
-  void changeThemeMode() {
+  static void changeThemeMode() {
     Get.changeThemeMode(isDarkModeSaved() ? ThemeMode.light : ThemeMode.dark);
     saveThemeMode(isDarkMode: !isDarkModeSaved());
   }
