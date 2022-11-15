@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
+import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 import 'widgets/login_form.ui.dart';
@@ -53,12 +54,17 @@ class LoginUi extends GetView<LoginController> {
                             const Gap(12),
                             InkWell(
                               onTap: controller.navigateToForgotPassword,
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 4.0),
-                                child: TextUi.bodyMed(
-                                  "Forgot password?",
-                                  color: grayScale700,
-                                  fontWeight: semiBoldText,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 4.0),
+                                child: Obx(
+                                  () => TextUi.bodyMed(
+                                    "Forgot password?",
+                                    color: AppThemes.isDarkMode
+                                        ? grayScale100
+                                        : grayScale700,
+                                    fontWeight: mediumText,
+                                  ),
                                 ),
                               ),
                             ),

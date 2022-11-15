@@ -9,8 +9,8 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   visualDensity: VisualDensity.adaptivePlatformDensity,
   textTheme: Typography.englishLike2018.apply(
     fontFamily: "Nunito",
-    bodyColor: white,
-    displayColor: white,
+    bodyColor: grayScale50,
+    displayColor: grayScale50,
   ),
   inputDecorationTheme: InputDecorationTheme(
     hintStyle: hintTextStyle.copyWith(color: grayScale700),
