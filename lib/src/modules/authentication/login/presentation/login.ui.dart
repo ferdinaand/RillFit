@@ -22,73 +22,68 @@ class LoginUi extends GetView<LoginController> {
         }
       },
       child: Scaffold(
+        appBar: const AuthAppbarUi(),
         body: SafeArea(
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    const Gap(32),
-                    const TextUi.heading2(
-                      "Sign In",
-                    ),
-                    const Gap(36),
-                    const LoginFormUi(),
-                    const Gap(12),
-                    InkWell(
-                      onTap: controller.navigateToForgotPassword,
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 4.0),
-                        child: TextUi.bodyMed(
-                          "Forgot password?",
-                          color: grayScale700,
-                          fontWeight: semiBoldText,
-                        ),
-                      ),
-                    ),
-                    const Gap(52),
-                  ],
-                ),
-              ),
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                  ),
+          child: Padding(
+            padding: baseViewPadding,
+            child: CustomScrollView(
+              slivers: [
+                SliverFillRemaining(
+                  hasScrollBody: false,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Obx(
-                        () => PrimaryButtonUi(
-                          text: "Sign In",
-                          onPressed: controller.isButtonDisabled.value
-                              ? null
-                              : controller.login,
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const TextUi.heading2(
+                              "Sign In",
+                            ),
+                            const Gap(24),
+                            const LoginFormUi(),
+                            const Gap(24),
+                            Obx(
+                              () => PrimaryButtonUi(
+                                text: "Sign In",
+                                onPressed: controller.isButtonDisabled.value
+                                    ? null
+                                    : controller.login,
+                              ),
+                            ),
+                            const Gap(12),
+                            InkWell(
+                              onTap: controller.navigateToForgotPassword,
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 4.0),
+                                child: TextUi.bodyMed(
+                                  "Forgot password?",
+                                  color: grayScale700,
+                                  fontWeight: semiBoldText,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const Gap(24),
-                      const TextUi.bodyXL(
-                        "Sign in with",
+                      const TextUi.bodyMed(
+                        "Alternatively, Sign in with",
                       ),
-                      const Gap(24),
+                      const Gap(16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const TextUi.bodyMed(
-                            "Don't have an account? ",
+                        children: const [
+                          AssetIcon(
+                            icon: fbIcon,
+                            size: 32,
                           ),
-                          GestureDetector(
-                            onTap: controller.navigateToRegisterPage,
-                            child: const TextUi.bodyMed(
-                              "Sign up",
-                              color: primary,
-                              fontWeight: semiBoldText,
-                            ),
+                          Gap(24),
+                          AssetIcon(
+                            icon: googleIcon,
+                            size: 32,
                           ),
                         ],
                       ),
-                      const Gap(24),
+                      const Gap(32),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -109,8 +104,8 @@ class LoginUi extends GetView<LoginController> {
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

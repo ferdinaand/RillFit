@@ -20,31 +20,26 @@ class LoginFormUi extends GetView<LoginController> {
       },
       child: Form(
         key: controller.loginFormKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextFieldUi(
-                hintText: "Email Address",
-                controller: controller.emailOrPhoneController,
-                keyboardType: TextInputType.emailAddress,
-                onChanged: (_) {
-                  controller.enableButton();
-                },
-              ),
-              const Gap(16),
-              PasswordFieldUi(
-                hintText: "Password",
-                controller: controller.passwordController,
-                onChanged: (_) {
-                  controller.enableButton();
-                },
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextFieldUi(
+              hintText: "Email Address",
+              controller: controller.emailOrPhoneController,
+              keyboardType: TextInputType.emailAddress,
+              onChanged: (_) {
+                controller.enableButton();
+              },
+            ),
+            const Gap(16),
+            PasswordFieldUi(
+              hintText: "Password",
+              controller: controller.passwordController,
+              onChanged: (_) {
+                controller.enableButton();
+              },
+            ),
+          ],
         ),
       ),
     );

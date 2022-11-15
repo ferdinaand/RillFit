@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'auth_back_button.ui.dart';
+
 class AuthAppbarUi extends GetView implements PreferredSizeWidget {
   const AuthAppbarUi({
     super.key,
@@ -12,6 +14,7 @@ class AuthAppbarUi extends GetView implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leadingWidth: 64,
+      leading: const AuthBackButtonUi(),
       actions: actions,
     );
   }
