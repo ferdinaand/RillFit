@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/dummy/onboarding_carousel.dummy.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
+import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-class OnBoardingCarouselUi extends GetView {
+class OnBoardingCarouselUi extends StatelessWidget {
   const OnBoardingCarouselUi({
     super.key,
     required this.content,
@@ -28,11 +29,13 @@ class OnBoardingCarouselUi extends GetView {
           content.title,
         ),
         const Gap(8),
-        TextUi.bodySmall(
-          content.description,
-          color: grayScale700,
-          textAlign: TextAlign.center,
-        ).paddingSymmetric(horizontal: 12),
+        Obx(
+          () => TextUi.bodySmall(
+            content.description,
+            color: AppThemes.isDarkMode ? grayScale100 : grayScale700,
+            textAlign: TextAlign.center,
+          ).paddingSymmetric(horizontal: 12),
+        ),
         const Gap(24),
       ],
     );

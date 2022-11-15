@@ -17,7 +17,7 @@ class AuthBackButtonUi extends StatelessWidget {
     return Tooltip(
       message: "Back",
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 8, 0, 8),
+        padding: const EdgeInsets.fromLTRB(20, 8, 0, 8),
         child: InkWell(
           onTap: Get.back,
           borderRadius: const BorderRadius.all(
@@ -36,7 +36,7 @@ class AuthBackButtonUi extends StatelessWidget {
               child: SvgPicture.asset(
                 backIcon,
                 fit: BoxFit.none,
-                color: AppThemes.isDarkMode ? grayScale100 : grayScale700,
+                color: AppThemes.isDarkMode ? grayScale100 : grayScale900,
                 width: size,
                 height: size,
               ),
