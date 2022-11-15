@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/dummy/onboarding_carousel.dummy.dart';
 import 'package:riilfit/src/modules/onboarding/controller/onboarding.controller.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:flutter/material.dart';
 
 class OnboardingPageIndicator extends GetView {
   const OnboardingPageIndicator({
@@ -21,10 +22,10 @@ class OnboardingPageIndicator extends GetView {
         return Obx(
           () => AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            width: 10.0,
-            height: 10.0,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 7.5,
+            width: 10.0.w,
+            height: 10.0.h,
+            margin: EdgeInsets.symmetric(
+              horizontal: 7.5.w,
             ),
             decoration: BoxDecoration(
               shape: BoxShape.circle,

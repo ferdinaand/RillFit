@@ -1,5 +1,5 @@
-import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:flutter/material.dart';
+import 'package:riilfit/src/presentation/resources/res.dart';
 
 //the light theme
 ThemeData lightTheme = ThemeData.light().copyWith(

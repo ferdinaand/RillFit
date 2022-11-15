@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 
 class TextUi extends StatelessWidget {
@@ -150,7 +151,7 @@ class TextUi extends StatelessWidget {
         textAlign: textAlign,
         style: style.copyWith(
           color: color,
-          fontSize: fontSize,
+          fontSize: fontSize?.sp,
           fontWeight: fontWeight,
           height: height,
         ),
@@ -166,7 +167,7 @@ class TextUi extends StatelessWidget {
       softWrap: true,
       style: style.copyWith(
         color: color,
-        fontSize: fontSize,
+        fontSize: fontSize?.sp,
         height: height ?? 1.5,
         fontWeight: fontWeight,
       ),

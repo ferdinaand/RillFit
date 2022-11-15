@@ -29,9 +29,7 @@ class OnboardingUi extends GetView {
             physics: const ClampingScrollPhysics(),
             slivers: [
               SliverPadding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
+                padding: baseViewPadding,
                 sliver: SliverFillRemaining(
                   child: Column(
                     children: [

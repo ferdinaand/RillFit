@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 
 ///This file contains other stylings used in the app
@@ -13,3 +14,7 @@ OutlineInputBorder border(Color color, {double width = 1}) {
     ),
   );
 }
+
+final baseViewPadding = EdgeInsets.symmetric(
+  horizontal: 20.w,
+);

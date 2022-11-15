@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
@@ -42,7 +43,9 @@ class PrimaryButtonUi extends ButtonUi {
           style: ButtonStyle(
             alignment: Alignment.center,
             elevation: MaterialStateProperty.all(0.0),
-            minimumSize: MaterialStateProperty.all(const Size.fromHeight(56)),
+            minimumSize: MaterialStateProperty.all(
+              Size.fromHeight(56.h),
+            ),
             shape: MaterialStateProperty.all(
               const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
