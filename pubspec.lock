@@ -105,12 +105,19 @@ packages:
     source: hosted
     version: "2.0.1"
   flutter_native_splash:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.13"
+  flutter_screenutil:
+    dependency: "direct main"
+    description:
+      name: flutter_screenutil
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.6.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -142,13 +149,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.3"
-  hexcolor:
-    dependency: "direct main"
-    description:
-      name: hexcolor
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.1"
   hive:
     dependency: transitive
     description:
@@ -191,6 +191,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.7.0"
+  lint:
+    dependency: "direct dev"
+    description:
+      name: lint
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.10.0"
   lints:
     dependency: transitive
     description:
@@ -310,6 +317,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.1.0"
+  pin_code_fields:
+    dependency: "direct main"
+    description:
+      name: pin_code_fields
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.4.0"
   platform:
     dependency: transitive
     description:
@@ -336,13 +350,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  smooth_page_indicator:
-    dependency: "direct main"
-    description:
-      name: smooth_page_indicator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0+2"
   source_span:
     dependency: transitive
     description:

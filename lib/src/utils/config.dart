@@ -1,7 +1,6 @@
- 
 import 'package:flutter/foundation.dart';
-import 'package:logging/logging.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:logging/logging.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> initializeHive() async {
@@ -23,4 +22,4 @@ void setupLogging() {
       print('${rec.level.name}: ${rec.time}: ${rec.message}');
     }
   });
-} 
+}
