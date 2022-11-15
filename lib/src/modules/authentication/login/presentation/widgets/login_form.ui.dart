@@ -31,7 +31,7 @@ class LoginFormUi extends GetView<LoginController> {
                 controller.enableButton();
               },
             ),
-            const Gap(16),
+            const Gap(12),
             PasswordFieldUi(
               hintText: "Password",
               controller: controller.passwordController,

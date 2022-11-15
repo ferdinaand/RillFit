@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/presentation/resources/images.res.dart';
 
 import 'auth_back_button.ui.dart';
 
@@ -16,6 +17,10 @@ class AuthAppbarUi extends GetView implements PreferredSizeWidget {
       leadingWidth: 64,
       leading: const AuthBackButtonUi(),
       actions: actions,
+      title: Image.asset(
+        riilfitLogoPng,
+        height: 28,
+      ),
     );
   }
 

@@ -71,15 +71,17 @@ class LoginUi extends GetView<LoginController> {
                       const Gap(16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          AssetIcon(
+                        children: [
+                          AssetIconButton(
                             icon: fbIcon,
                             size: 32,
+                            onTap: controller.loginViaFacebook,
                           ),
-                          Gap(24),
-                          AssetIcon(
+                          const Gap(24),
+                          AssetIconButton(
                             icon: googleIcon,
                             size: 32,
+                            onTap: controller.loginViaGoogle,
                           ),
                         ],
                       ),

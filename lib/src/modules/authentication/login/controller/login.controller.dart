@@ -45,6 +45,9 @@ class LoginController extends GetxController
     );
   }
 
+  Future<void> loginViaFacebook() async {}
+  Future<void> loginViaGoogle() async {}
+
   void navigateToForgotPassword() {
     Get.toNamed(
       Routes.forgotPassword,
