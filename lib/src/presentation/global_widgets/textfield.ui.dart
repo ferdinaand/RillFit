@@ -17,7 +17,6 @@ class TextFieldUi extends StatelessWidget {
   final Widget? suffixIcon;
   final String? initalValue;
   final InputDecoration? decoration;
-  final String fieldKey;
   final int? maxLength;
   final TextInputAction? textInputAction;
   final bool autofocus;
@@ -27,7 +26,6 @@ class TextFieldUi extends StatelessWidget {
 
   const TextFieldUi({
     super.key,
-    required this.fieldKey,
     required this.hintText,
     this.onChanged,
     this.decoration,

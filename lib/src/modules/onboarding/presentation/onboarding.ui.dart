@@ -56,7 +56,7 @@ class OnboardingUi extends GetView {
                       const Gap(32),
                       PrimaryButtonUi(
                         text: 'Get Started',
-                        onPressed: controller.navigateToLoginPage,
+                        onPressed: controller.navigateToRegisterPage,
                       ),
                       const Gap(24),
                       Row(
@@ -66,7 +66,7 @@ class OnboardingUi extends GetView {
                             "Already have an account? ",
                           ),
                           GestureDetector(
-                            onTap: controller.navigateToRegisterPage,
+                            onTap: controller.navigateToLoginPage,
                             child: const TextUi.bodyMed(
                               "Sign in",
                               color: primary,
