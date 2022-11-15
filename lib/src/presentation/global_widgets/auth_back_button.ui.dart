@@ -30,7 +30,7 @@ class AuthBackButtonUi extends StatelessWidget {
                   regularRadius,
                 ),
                 border: Border.all(
-                  color: AppThemes.isDarkMode ? grayScale100 : grayScale700,
+                  color: grayScale100,
                 ),
               ),
               child: SvgPicture.asset(
