@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:riilfit/src/modules/authentication/register/presentation/register.ui.dart';
 import 'package:riilfit/src/presentation/views.dart';
 import 'guards/app_guard.dart';
 
@@ -26,10 +27,10 @@ class AppPages {
       name: Routes.login,
       page: () => const LoginUi(),
     ),
-    // GetPage(
-    //   name: Routes.register,
-    //   page: () => const RegisterUi(),
-    // ),
+    GetPage(
+      name: Routes.register,
+      page: () => const RegisterUi(),
+    ),
     // GetPage(
     //   name: Routes.createPin,
     //   page: () => const CreatePinUi(),

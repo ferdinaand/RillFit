@@ -6,8 +6,8 @@ import 'package:riilfit/src/presentation/widgets.dart';
 
 import 'widgets/register_form.ui.dart';
 
-class LoginUi extends GetView<RegisterController> {
-  const LoginUi();
+class RegisterUi extends GetView<RegisterController> {
+  const RegisterUi();
 
   @override
   RegisterController get controller => Get.put(RegisterController());
