@@ -35,6 +35,10 @@ class AppPages {
       name: Routes.forgotPasswordInit,
       page: () => const ForgotPasswordEnterEmailUi(),
     ),
+    GetPage(
+      name: Routes.forgotPasswordEnterOtp,
+      page: () => const ForgotPasswordEnterResetOtpUi(),
+    ),
     // GetPage(
     //   name: Routes.otpAuth,
     //   page: () => const OTPAuthUi(),
