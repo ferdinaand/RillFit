@@ -70,7 +70,7 @@ class ForgotPasswordEnterEmailUi
                       const Gap(24),
                       Obx(
                         () => PrimaryButtonUi(
-                          text: 'Send recovery pin',
+                          text: 'Send recovery code',
                           onPressed: controller.isButtonDisabled.value
                               ? null
                               : controller.sendOtpToEmail,

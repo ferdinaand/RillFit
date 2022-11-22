@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/presentation/themes/app.themes.dart';
-import 'package:riilfit/src/routing/app_pages.dart';
 
 class ForgotPasswordEnterResetOtpController extends GetxController {
   late GlobalKey<FormState> forgotPasswordFormKey;
@@ -15,26 +14,22 @@ class ForgotPasswordEnterResetOtpController extends GetxController {
   }
 
   //text field controllers
-  final emailController = TextEditingController(
-    text: kDebugMode ? 'seundavid56@gmail.com' : null,
+  final pinController = TextEditingController(
+    text: kDebugMode ? '123456' : null,
   );
 
   //Enable and disable button logic
   final isButtonDisabled = true.obs;
 
   void enableButton() {
-    isButtonDisabled.value = emailController.text.isEmpty;
+    isButtonDisabled.value = pinController.text.isEmpty;
 
     return;
   }
 
-  void navigateToLoginPage() {
-    Get.offAndToNamed<void>(
-      Routes.login,
-    );
-  }
+  void resendCode() {}
 
-  Future<void> sendOtpToEmail() async {
+  Future<void> verifyRecoveryCode() async {
     // Get.offAllNamed(
     //   Routes.home,
     // );

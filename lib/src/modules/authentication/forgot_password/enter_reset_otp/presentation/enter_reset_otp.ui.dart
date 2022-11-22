@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/enter_reset_otp/controller/enter_reset_otp.controller.dart';
-import 'package:riilfit/src/modules/authentication/forgot_password/enter_reset_otp/presentation/widgets/enter_reset_otp_form.ui.dart';
+import 'package:riilfit/src/presentation/global_widgets/pin_fields.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
@@ -37,18 +37,29 @@ class ForgotPasswordEnterResetOtpUi
                       Expanded(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            TextUi.heading3(
+                          children: [
+                            const TextUi.heading3(
                               'Forgot Password',
                             ),
-                            Gap(16),
-                            TextUi.bodyMed(
-                              "Enter your email and we'll send you instructions on how to reset your password.",
+                            const Gap(16),
+                            const TextUi.bodyMed(
+                              'Enter the 6-digit recovery code sent to',
                               textAlign: TextAlign.center,
                             ),
-                            Gap(24),
-                            ForgotPasswordEnterResetOtpFormUi(),
-                            Gap(48),
+                            const Gap(4),
+                            const TextUi.bodyMed(
+                              'seundavid56@gmail.com',
+                              textAlign: TextAlign.center,
+                              color: primary,
+                            ),
+                            const Gap(24),
+                            PinFieldUi(
+                              controller: controller.pinController,
+                              onChanged: (_) {
+                                controller.enableButton();
+                              },
+                            ),
+                            const Gap(48),
                           ],
                         ),
                       ),
@@ -58,7 +69,7 @@ class ForgotPasswordEnterResetOtpUi
                           padding: const EdgeInsets.symmetric(vertical: 4),
                           child: Obx(
                             () => TextUi.bodyMed(
-                              'Sign in instead',
+                              'Resend recovery code',
                               color: AppThemes.isDarkMode
                                   ? grayScale100
                                   : grayScale700,
