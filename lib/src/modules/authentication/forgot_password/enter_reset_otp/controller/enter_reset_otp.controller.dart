@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
+import 'package:riilfit/src/routing/app_pages.dart';
 
 class ForgotPasswordEnterResetOtpController extends GetxController {
   late GlobalKey<FormState> forgotPasswordFormKey;
@@ -30,9 +32,10 @@ class ForgotPasswordEnterResetOtpController extends GetxController {
   void resendCode() {}
 
   Future<void> verifyRecoveryCode() async {
-    // Get.offAllNamed(
-    //   Routes.home,
-    // );
-    AppThemes.changeThemeMode();
+    unawaited(
+      Get.toNamed<void>(
+        Routes.forgotPasswordSetNewPassword,
+      ),
+    );
   }
 }
