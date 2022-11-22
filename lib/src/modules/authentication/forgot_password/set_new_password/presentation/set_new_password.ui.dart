@@ -42,7 +42,7 @@ class ForgotPasswordSetNewPasswordUi
                             ),
                             Gap(24),
                             TextUi.bodyMed(
-                              'Set your new password for your account so you can login and access all the features in Riilfit App',
+                              'Set a new password for your account so you can login and access all the features in Riilfit App',
                               textAlign: TextAlign.center,
                             ),
                             Gap(24),
