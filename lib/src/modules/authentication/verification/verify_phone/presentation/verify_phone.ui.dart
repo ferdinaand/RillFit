@@ -49,12 +49,14 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                               textAlign: TextAlign.center,
                             ),
                             const Gap(4),
-                            TextUi.bodyMed(
+                            TextUi(
                               registerDto.phoneNumber.addCountryCode
                                   .obscurePhoneNumber,
                               textAlign: TextAlign.center,
-                              color: primary,
-                              fontWeight: mediumText,
+                              style: bodyMed.copyWith(
+                                color: primary,
+                                fontWeight: mediumText,
+                              ),
                             ),
                             const Gap(8),
                             InkWell(
@@ -63,17 +65,20 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 4),
                                 child: Obx(
-                                  () => TextUi.bodyMed(
+                                  () => TextUi(
                                     'Change phone number',
-                                    color: AppThemes.isDarkMode
-                                        ? grayScale100
-                                        : grayScale700,
-                                    fontWeight: mediumText,
+                                    style: bodySmall.copyWith(
+                                      color: AppThemes.isDarkMode
+                                          ? grayScale100
+                                          : grayScale700,
+                                      fontWeight: mediumText,
+                                      decoration: TextDecoration.underline,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                            const Gap(8),
+                            const Gap(24),
                             PinFieldUi(
                               controller: controller.pinController,
                               onChanged: (_) {
