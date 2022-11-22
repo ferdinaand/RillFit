@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
+import 'package:riilfit/src/presentation/themes/app.themes.dart';
 
 class PinFieldUi extends StatelessWidget {
   const PinFieldUi({
@@ -31,43 +33,45 @@ class PinFieldUi extends StatelessWidget {
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding,
       ),
-      child: PinCodeTextField(
-        appContext: context,
-        length: length,
-        controller: controller,
-        autoFocus: autofocus,
-        obscureText: obscureText,
-        blinkWhenObscuring: true,
-        animationType: AnimationType.fade,
-        useHapticFeedback: true,
-        textStyle: heading4,
-        pastedTextStyle: heading4,
-        inputFormatters: [
-          FilteringTextInputFormatter.digitsOnly,
-        ],
-        pinTheme: PinTheme(
-          shape: PinCodeFieldShape.underline,
-          fieldHeight: 48,
-          fieldWidth: 48,
-          inactiveFillColor: Colors.transparent,
-          activeFillColor: Colors.transparent,
-          selectedFillColor: Colors.transparent,
-          borderWidth: 2,
-          borderRadius: const BorderRadius.all(
-            regularRadius,
+      child: Obx(
+        () => PinCodeTextField(
+          appContext: context,
+          length: length,
+          controller: controller,
+          autoFocus: autofocus,
+          obscureText: obscureText,
+          blinkWhenObscuring: true,
+          animationType: AnimationType.fade,
+          useHapticFeedback: true,
+          textStyle: heading4,
+          pastedTextStyle: heading4,
+          inputFormatters: [
+            FilteringTextInputFormatter.digitsOnly,
+          ],
+          pinTheme: PinTheme(
+            shape: PinCodeFieldShape.underline,
+            fieldHeight: 48,
+            fieldWidth: 48,
+            inactiveFillColor: Colors.transparent,
+            activeFillColor: Colors.transparent,
+            selectedFillColor: Colors.transparent,
+            borderWidth: 2,
+            borderRadius: const BorderRadius.all(
+              regularRadius,
+            ),
+            activeColor: AppThemes.isDarkMode ? grayScale500 : grayScale50,
+            selectedColor: primary,
+            inactiveColor: AppThemes.isDarkMode ? grayScale500 : grayScale50,
           ),
-          activeColor: grayScale50,
-          selectedColor: primary,
-          inactiveColor: grayScale50,
+          cursorColor: primary,
+          cursorHeight: 24,
+          enableActiveFill: true,
+          animationDuration: const Duration(milliseconds: 300),
+          keyboardType: TextInputType.number,
+          onChanged: onChanged,
+          onCompleted: onCompleted,
+          onSubmitted: onSubmitted,
         ),
-        cursorColor: primary,
-        cursorHeight: 24,
-        enableActiveFill: true,
-        animationDuration: const Duration(milliseconds: 300),
-        keyboardType: TextInputType.number,
-        onChanged: onChanged,
-        onCompleted: onCompleted,
-        onSubmitted: onSubmitted,
       ),
     );
   }

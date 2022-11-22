@@ -35,10 +35,11 @@ class RegisterUi extends GetView<RegisterController> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            const Gap(12),
                             const TextUi.heading3(
                               'Sign Up',
                             ),
-                            const Gap(16),
+                            const Gap(24),
                             const RegisterFormUi(),
                             const Gap(24),
                             Obx(
@@ -49,13 +50,14 @@ class RegisterUi extends GetView<RegisterController> {
                                     : controller.signUp,
                               ),
                             ),
+                            const Gap(24),
                           ],
                         ),
                       ),
                       const TextUi.bodyMed(
                         'Alternatively, Sign up with',
                       ),
-                      const Gap(16),
+                      const Gap(24),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

@@ -16,7 +16,7 @@ class ForgotPasswordEnterResetOtpUi
 
   @override
   Widget build(BuildContext context) {
-    final email = Get.arguments as String;
+    final email = Get.arguments as String? ?? '';
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -42,7 +42,7 @@ class ForgotPasswordEnterResetOtpUi
                             const TextUi.heading3(
                               'Forgot Password',
                             ),
-                            const Gap(16),
+                            const Gap(24),
                             const TextUi.bodyMed(
                               'Enter the 6-digit recovery code sent to',
                               textAlign: TextAlign.center,

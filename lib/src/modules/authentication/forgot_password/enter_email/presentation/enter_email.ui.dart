@@ -41,7 +41,7 @@ class ForgotPasswordEnterEmailUi
                             TextUi.heading3(
                               'Forgot Password',
                             ),
-                            Gap(16),
+                            Gap(24),
                             TextUi.bodyMed(
                               "Enter your email and we'll send you instructions on how to reset your password.",
                               textAlign: TextAlign.center,

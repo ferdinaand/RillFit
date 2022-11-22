@@ -36,10 +36,11 @@ class LoginUi extends GetView<LoginController> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            const Gap(12),
                             const TextUi.heading3(
                               'Sign In',
                             ),
-                            const Gap(16),
+                            const Gap(24),
                             const LoginFormUi(),
                             const Gap(24),
                             Obx(
@@ -67,13 +68,14 @@ class LoginUi extends GetView<LoginController> {
                                 ),
                               ),
                             ),
+                            const Gap(24),
                           ],
                         ),
                       ),
                       const TextUi.bodyMed(
                         'Alternatively, Sign in with',
                       ),
-                      const Gap(16),
+                      const Gap(24),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
