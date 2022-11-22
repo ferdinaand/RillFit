@@ -8,4 +8,6 @@ abstract class Routes {
   static const onboarding = '/onboarding';
   static const forgotPasswordInit = '/forgot-password/enter-email';
   static const forgotPasswordEnterOtp = '/forgot-password/enter-otp';
+  static const forgotPasswordSetNewPassword =
+      '/forgot-password/set-new-password';
 }
