@@ -33,9 +33,7 @@ class ForgotPasswordEnterEmailController extends GetxController {
   }
 
   void navigateToLoginPage() {
-    Get.offAndToNamed<void>(
-      Routes.login,
-    );
+    Get.back<void>();
   }
 
   Future<void> sendOtpToEmail() async {
