@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/modules/authentication/forgot_password/enter_email/controller/enter_email.controller.dart';
+import 'package:riilfit/src/modules/authentication/forgot_password/set_new_password/controller/set_new_password.controller.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-class ForgotPasswordEnterEmailFormUi
-    extends GetView<ForgotPasswordEnterEmailController> {
-  const ForgotPasswordEnterEmailFormUi({super.key});
+class ForgotPasswordSetNewPasswordFormUi
+    extends GetView<ForgotPasswordSetNewPasswordController> {
+  const ForgotPasswordSetNewPasswordFormUi({super.key});
 
   @override
-  ForgotPasswordEnterEmailController get controller =>
-      Get.put(ForgotPasswordEnterEmailController());
+  ForgotPasswordSetNewPasswordController get controller =>
+      Get.put(ForgotPasswordSetNewPasswordController());
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ForgotPasswordEnterEmailFormUi
         }
       },
       child: Form(
-        key: controller.forgotPasswordInitFormKey,
+        key: controller.setNewPasswordFormKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
-class ForgotPasswordEnterEmailController extends GetxController {
-  late GlobalKey<FormState> forgotPasswordInitFormKey;
+class ForgotPasswordSetNewPasswordController extends GetxController {
+  late GlobalKey<FormState> setNewPasswordFormKey;
 
   @override
   void onInit() {
     enableButton();
-    forgotPasswordInitFormKey = GlobalKey<FormState>(
-      debugLabel: 'Forgot password,enter email form',
+    setNewPasswordFormKey = GlobalKey<FormState>(
+      debugLabel: 'set new password forgot password flow',
     );
     super.onInit();
   }
