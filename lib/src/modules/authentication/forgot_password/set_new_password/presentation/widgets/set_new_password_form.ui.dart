@@ -25,11 +25,18 @@ class ForgotPasswordSetNewPasswordFormUi
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextFieldUi(
-              hintText: 'Email Address',
+            PasswordFieldUi(
+              hintText: 'Enter your new password',
               autofocus: true,
-              controller: controller.emailController,
-              keyboardType: TextInputType.emailAddress,
+              controller: controller.newPasswordController,
+              onChanged: (_) {
+                controller.enableButton();
+              },
+            ),
+            const Gap(12),
+            PasswordFieldUi(
+              hintText: 'Re-enter your new password',
+              controller: controller.confirmNewPasswordController,
               onChanged: (_) {
                 controller.enableButton();
               },

@@ -14,6 +14,7 @@ class PasswordFieldUi extends StatelessWidget {
     this.focusNode,
     this.controller,
     this.onTap,
+    this.autofocus = false,
   });
 
   final String hintText;
@@ -22,6 +23,7 @@ class PasswordFieldUi extends StatelessWidget {
   final FormFieldValidator<String?>? validator;
   final FocusNode? focusNode;
   final VoidCallback? onTap;
+  final bool autofocus;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class PasswordFieldUi extends StatelessWidget {
     return Obx(
       () => TextFieldUi(
         obscureText: obscureText.value,
+        autofocus: autofocus,
         onChanged: onChanged,
         validator: validator,
         controller: controller,

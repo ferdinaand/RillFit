@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/routing/app_pages.dart';
 
 class ForgotPasswordSetNewPasswordController extends GetxController {
   late GlobalKey<FormState> setNewPasswordFormKey;
@@ -18,32 +17,23 @@ class ForgotPasswordSetNewPasswordController extends GetxController {
   }
 
   //text field controllers
-  final emailController = TextEditingController(
-    text: kDebugMode ? 'seundavid56@gmail.com' : null,
+  final newPasswordController = TextEditingController(
+    text: kDebugMode ? 'WAGMI1234' : null,
+  );
+
+  final confirmNewPasswordController = TextEditingController(
+    text: kDebugMode ? 'WAGMI1234' : null,
   );
 
   //Enable and disable button logic
   final isButtonDisabled = true.obs;
 
   void enableButton() {
-    isButtonDisabled.value =
-        emailController.text.isEmpty || !emailController.text.isEmail;
+    isButtonDisabled.value = newPasswordController.text.isEmpty ||
+        confirmNewPasswordController.text.isEmpty;
 
     return;
   }
 
-  void navigateToLoginPage() {
-    Get.offAndToNamed<void>(
-      Routes.login,
-    );
-  }
-
-  Future<void> sendOtpToEmail() async {
-    unawaited(
-      Get.toNamed<void>(
-        Routes.forgotPasswordEnterOtp,
-        arguments: emailController.text,
-      ),
-    );
-  }
+  Future<void> setNewPassword() async {}
 }

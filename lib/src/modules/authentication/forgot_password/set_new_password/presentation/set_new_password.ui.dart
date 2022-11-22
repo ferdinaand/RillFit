@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/set_new_password/controller/set_new_password.controller.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/set_new_password/presentation/widgets/set_new_password_form.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class ForgotPasswordSetNewPasswordUi
@@ -57,7 +56,7 @@ class ForgotPasswordSetNewPasswordUi
                           text: 'Set new password',
                           onPressed: controller.isButtonDisabled.value
                               ? null
-                              : controller.sendOtpToEmail,
+                              : controller.setNewPassword,
                         ),
                       ),
                       const Gap(24),
