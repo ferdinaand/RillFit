@@ -8,7 +8,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: grayScale900,
   visualDensity: VisualDensity.adaptivePlatformDensity,
   textTheme: Typography.englishLike2018.apply(
-    fontFamily: "Nunito",
+    fontFamily: 'Nunito',
     bodyColor: grayScale50,
     displayColor: grayScale50,
   ),
@@ -18,8 +18,8 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       const Size.fromHeight(56),
     ),
     contentPadding: const EdgeInsets.symmetric(
-      horizontal: 16.0,
-      vertical: 14.0,
+      horizontal: 16,
+      vertical: 14,
     ),
     focusedBorder: border(grayScale100),
     border: border(grayScale700),
@@ -35,7 +35,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       backgroundColor: MaterialStateProperty.all(primary),
       alignment: Alignment.center,
       textStyle: MaterialStateProperty.all(buttonTypography),
-      elevation: MaterialStateProperty.all(0.0),
+      elevation: MaterialStateProperty.all(0),
       minimumSize: MaterialStateProperty.all(
         const Size.fromHeight(48),
       ),

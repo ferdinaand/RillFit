@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:riilfit/src/presentation/global_widgets/auth_back_button.ui.dart';
 import 'package:riilfit/src/presentation/resources/images.res.dart';
 
-import 'auth_back_button.ui.dart';
-
-class AuthAppbarUi extends GetView implements PreferredSizeWidget {
+class AuthAppbarUi extends StatelessWidget implements PreferredSizeWidget {
   const AuthAppbarUi({
     super.key,
     this.actions,

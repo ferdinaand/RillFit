@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/enter_email/controller/enter_email.controller.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-class EnterEmailForgotPasswordFormUi
-    extends GetView<EnterEmailForgotPasswordController> {
-  const EnterEmailForgotPasswordFormUi({super.key});
+class ForgotPasswordEnterEmailFormUi
+    extends GetView<ForgotPasswordEnterEmailController> {
+  const ForgotPasswordEnterEmailFormUi({super.key});
 
   @override
-  EnterEmailForgotPasswordController get controller =>
-      Get.put(EnterEmailForgotPasswordController());
+  ForgotPasswordEnterEmailController get controller =>
+      Get.put(ForgotPasswordEnterEmailController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +27,7 @@ class EnterEmailForgotPasswordFormUi
           children: [
             TextFieldUi(
               hintText: 'Email Address',
+              autofocus: true,
               controller: controller.emailController,
               keyboardType: TextInputType.emailAddress,
               onChanged: (_) {

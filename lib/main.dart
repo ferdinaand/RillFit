@@ -10,8 +10,7 @@ import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:riilfit/src/utils/config.dart';
 
 Future<void> main() async {
-  final WidgetsBinding widgetsBinding =
-      WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await SystemChrome.setPreferredOrientations([
@@ -21,7 +20,7 @@ Future<void> main() async {
 
   await GetStorage.init();
 
-  initializeHive();
+  await initializeHive();
 
   setupLogging();
 

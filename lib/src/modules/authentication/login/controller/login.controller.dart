@@ -10,17 +10,17 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     enableButton();
-    loginFormKey = GlobalKey<FormState>(debugLabel: "Login");
+    loginFormKey = GlobalKey<FormState>(debugLabel: 'Login');
     super.onInit();
   }
 
   //text field controllers
   final emailOrPhoneController = TextEditingController(
-    text: kDebugMode ? "seundavid56@gmail.com" : null,
+    text: kDebugMode ? 'seundavid56@gmail.com' : null,
   );
 
   final passwordController = TextEditingController(
-    text: kDebugMode ? "WAGMI12345" : null,
+    text: kDebugMode ? 'WAGMI12345' : null,
   );
 
   //Enable and disable button logic
@@ -34,7 +34,7 @@ class LoginController extends GetxController {
   }
 
   void navigateToRegisterPage() {
-    Get.offAndToNamed(
+    Get.offAndToNamed<void>(
       Routes.register,
     );
   }
@@ -50,8 +50,8 @@ class LoginController extends GetxController {
   Future<void> loginViaGoogle() async {}
 
   void navigateToForgotPassword() {
-    Get.toNamed(
-      Routes.forgotPassword,
+    Get.toNamed<void>(
+      Routes.forgotPasswordInit,
     );
   }
 }

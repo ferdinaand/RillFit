@@ -4,7 +4,7 @@ import 'package:riilfit/src/modules/authentication/login/controller/login.contro
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class LoginFormUi extends GetView<LoginController> {
-  const LoginFormUi();
+  const LoginFormUi({super.key});
 
   @override
   LoginController get controller => Get.put(LoginController());
@@ -13,7 +13,7 @@ class LoginFormUi extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final FocusScopeNode currentFocus = FocusScope.of(context);
+        final currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
         }
@@ -24,7 +24,7 @@ class LoginFormUi extends GetView<LoginController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFieldUi(
-              hintText: "Email Address",
+              hintText: 'Email Address',
               controller: controller.emailOrPhoneController,
               keyboardType: TextInputType.emailAddress,
               onChanged: (_) {
@@ -33,7 +33,7 @@ class LoginFormUi extends GetView<LoginController> {
             ),
             const Gap(12),
             PasswordFieldUi(
-              hintText: "Password",
+              hintText: 'Password',
               controller: controller.passwordController,
               onChanged: (_) {
                 controller.enableButton();

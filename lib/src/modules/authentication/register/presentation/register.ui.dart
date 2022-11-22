@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/register/controller/register.controller.dart';
+import 'package:riilfit/src/modules/authentication/register/presentation/widgets/register_form.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-import 'widgets/register_form.ui.dart';
-
 class RegisterUi extends GetView<RegisterController> {
-  const RegisterUi();
+  const RegisterUi({super.key});
 
   @override
   RegisterController get controller => Get.put(RegisterController());
@@ -16,7 +15,7 @@ class RegisterUi extends GetView<RegisterController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final FocusScopeNode currentFocus = FocusScope.of(context);
+        final currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
         }
@@ -37,14 +36,14 @@ class RegisterUi extends GetView<RegisterController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const TextUi.heading3(
-                              "Sign Up",
+                              'Sign Up',
                             ),
                             const Gap(16),
                             const RegisterFormUi(),
                             const Gap(24),
                             Obx(
                               () => PrimaryButtonUi(
-                                text: "Sign up",
+                                text: 'Sign up',
                                 onPressed: controller.isButtonDisabled.value
                                     ? null
                                     : controller.signUp,
@@ -54,7 +53,7 @@ class RegisterUi extends GetView<RegisterController> {
                         ),
                       ),
                       const TextUi.bodyMed(
-                        "Alternatively, Sign up with",
+                        'Alternatively, Sign up with',
                       ),
                       const Gap(16),
                       Row(
@@ -78,12 +77,12 @@ class RegisterUi extends GetView<RegisterController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const TextUi.bodyMed(
-                            "Already have an account? ",
+                            'Already have an account? ',
                           ),
                           GestureDetector(
                             onTap: controller.navigateToLoginPage,
                             child: const TextUi.bodyMed(
-                              "Sign in",
+                              'Sign in',
                               color: primary,
                               fontWeight: semiBoldText,
                             ),

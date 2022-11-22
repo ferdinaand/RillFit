@@ -7,6 +7,7 @@ import 'package:riilfit/src/presentation/widgets.dart';
 
 class PasswordFieldUi extends StatelessWidget {
   const PasswordFieldUi({
+    super.key,
     required this.hintText,
     this.onChanged,
     this.validator,

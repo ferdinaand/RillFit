@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
-class EnterEmailForgotPasswordController extends GetxController {
+class ForgotPasswordEnterEmailController extends GetxController {
   late GlobalKey<FormState> forgotPasswordFormKey;
 
   @override
