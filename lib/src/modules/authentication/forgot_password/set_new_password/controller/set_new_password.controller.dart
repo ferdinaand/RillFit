@@ -30,7 +30,8 @@ class ForgotPasswordSetNewPasswordController extends GetxController {
 
   void enableButton() {
     isButtonDisabled.value = newPasswordController.text.isEmpty ||
-        confirmNewPasswordController.text.isEmpty;
+        confirmNewPasswordController.text.isEmpty ||
+        newPasswordController.text != confirmNewPasswordController.text;
 
     return;
   }
