@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/dtos/register/register.dto.dart';
 import 'package:riilfit/src/modules/authentication/verification/verify_phone/controller/verify_phone.controller.dart';
 import 'package:riilfit/src/presentation/global_widgets/pin_fields.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
@@ -14,7 +15,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
 
   @override
   Widget build(BuildContext context) {
-    final phoneNumber = Get.arguments as String? ?? '';
+    final registerDto = Get.arguments as RegisterDto? ?? RegisterDto.empty();
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -48,7 +49,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                             ),
                             const Gap(4),
                             TextUi.bodyMed(
-                              phoneNumber,
+                              registerDto.phoneNumber,
                               textAlign: TextAlign.center,
                               color: primary,
                               fontWeight: mediumText,

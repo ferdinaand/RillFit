@@ -6,6 +6,13 @@ class RegisterDto {
     required this.password,
   });
 
+  RegisterDto.empty({
+    this.email = '',
+    this.fullName = '',
+    this.password = '',
+    this.phoneNumber = '',
+  });
+
   String email;
   String phoneNumber;
   String fullName;
