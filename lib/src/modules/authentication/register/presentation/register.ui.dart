@@ -36,10 +36,10 @@ class RegisterUi extends GetView<RegisterController> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const TextUi.heading2(
+                            const TextUi.heading3(
                               "Sign Up",
                             ),
-                            const Gap(24),
+                            const Gap(16),
                             const RegisterFormUi(),
                             const Gap(24),
                             Obx(

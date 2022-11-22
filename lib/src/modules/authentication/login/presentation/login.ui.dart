@@ -37,10 +37,10 @@ class LoginUi extends GetView<LoginController> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const TextUi.heading2(
+                            const TextUi.heading3(
                               "Sign In",
                             ),
-                            const Gap(24),
+                            const Gap(16),
                             const LoginFormUi(),
                             const Gap(24),
                             Obx(
