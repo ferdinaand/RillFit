@@ -5,6 +5,7 @@ abstract class Routes {
   static const home = '/home';
   static const login = '/login';
   static const register = '/register';
+  static const verifyPhone = '/verify-phone';
   static const onboarding = '/onboarding';
   static const forgotPasswordInit = '/forgot-password/enter-email';
   static const forgotPasswordEnterOtp = '/forgot-password/enter-otp';

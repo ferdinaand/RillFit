@@ -14,7 +14,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
 
   @override
   Widget build(BuildContext context) {
-    final email = Get.arguments as String? ?? '';
+    final phoneNumber = Get.arguments as String? ?? '';
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -38,19 +38,36 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const TextUi.heading3(
-                              'Forgot Password',
+                              'Phone Verification',
                             ),
                             const Gap(24),
                             const TextUi.bodyMed(
-                              'Enter the 6-digit recovery code sent to',
+                              'Enter the 6-digit security code sent to',
                               textAlign: TextAlign.center,
                             ),
                             const Gap(4),
                             TextUi.bodyMed(
-                              email,
+                              phoneNumber,
                               textAlign: TextAlign.center,
                               color: primary,
                               fontWeight: mediumText,
+                            ),
+                            const Gap(24),
+                            InkWell(
+                              onTap: controller.changePhoneNumber,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 4),
+                                child: Obx(
+                                  () => TextUi.bodyMed(
+                                    'Change phone number',
+                                    color: AppThemes.isDarkMode
+                                        ? grayScale100
+                                        : grayScale700,
+                                    fontWeight: mediumText,
+                                  ),
+                                ),
+                              ),
                             ),
                             const Gap(24),
                             PinFieldUi(
