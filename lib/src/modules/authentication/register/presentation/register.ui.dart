@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
+import 'package:riilfit/src/modules/authentication/register/controller/register.controller.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-import 'widgets/login_form.ui.dart';
+import 'widgets/register_form.ui.dart';
 
-class LoginUi extends GetView<LoginController> {
-  const LoginUi();
+class RegisterUi extends GetView<RegisterController> {
+  const RegisterUi();
 
   @override
-  LoginController get controller => Get.put(LoginController());
+  RegisterController get controller => Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,41 +37,24 @@ class LoginUi extends GetView<LoginController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const TextUi.heading3(
-                              "Sign In",
+                              "Sign Up",
                             ),
                             const Gap(16),
-                            const LoginFormUi(),
+                            const RegisterFormUi(),
                             const Gap(24),
                             Obx(
                               () => PrimaryButtonUi(
-                                text: "Sign In",
+                                text: "Sign up",
                                 onPressed: controller.isButtonDisabled.value
                                     ? null
-                                    : controller.login,
-                              ),
-                            ),
-                            const Gap(12),
-                            InkWell(
-                              onTap: controller.navigateToForgotPassword,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 4.0),
-                                child: Obx(
-                                  () => TextUi.bodyMed(
-                                    "Forgot password?",
-                                    color: AppThemes.isDarkMode
-                                        ? grayScale100
-                                        : grayScale700,
-                                    fontWeight: mediumText,
-                                  ),
-                                ),
+                                    : controller.signUp,
                               ),
                             ),
                           ],
                         ),
                       ),
                       const TextUi.bodyMed(
-                        "Alternatively, Sign in with",
+                        "Alternatively, Sign up with",
                       ),
                       const Gap(16),
                       Row(
@@ -96,12 +78,12 @@ class LoginUi extends GetView<LoginController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const TextUi.bodyMed(
-                            "Don't have an account? ",
+                            "Already have an account? ",
                           ),
                           GestureDetector(
-                            onTap: controller.navigateToRegisterPage,
+                            onTap: controller.navigateToLoginPage,
                             child: const TextUi.bodyMed(
-                              "Sign up",
+                              "Sign in",
                               color: primary,
                               fontWeight: semiBoldText,
                             ),
