@@ -1,12 +1,12 @@
+import 'package:riilfit/src/presentation/resources/strings.res.dart';
+
 extension StringsUtils on String {
   String get capitalizeFirstLetter {
     if (isEmpty) return '';
     return '${substring(0, 1).toUpperCase()}${substring(1)}';
   }
 
-  String removeCountryCode() {
-    const countryCodeWithPlus = '+234';
-    const countryCode = '234';
+  String get removeCountryCode {
     if (startsWith(countryCodeWithPlus)) {
       //Phone number starts with +234, remove the countryCode
       return '0${substring(4)}';
@@ -18,11 +18,14 @@ extension StringsUtils on String {
     }
   }
 
+  String get obscurePhoneNumber {
+    return '${substring(0, 8)} *** ** ${substring(12)}';
+  }
+
   String get addCountryCode {
-    const countryCodeWithPlus = '+234';
     if (startsWith('0')) {
       //Phone number starts with 0, remove the 0 and add countryCode
-      return '$countryCodeWithPlus${substring(1)}';
+      return '$countryCodeWithPlus ${substring(1)}';
     } else {
       return this;
     }
