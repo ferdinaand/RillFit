@@ -95,7 +95,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                           padding: const EdgeInsets.symmetric(vertical: 4),
                           child: Obx(
                             () => TextUi.bodyMed(
-                              'Resend recovery code',
+                              'Resend security code',
                               color: AppThemes.isDarkMode
                                   ? grayScale100
                                   : grayScale700,
