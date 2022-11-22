@@ -37,6 +37,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            const Gap(12),
                             const TextUi.heading3(
                               'Phone Verification',
                             ),

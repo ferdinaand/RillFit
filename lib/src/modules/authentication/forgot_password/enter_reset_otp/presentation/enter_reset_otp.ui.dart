@@ -39,6 +39,7 @@ class ForgotPasswordEnterResetOtpUi
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            const Gap(12),
                             const TextUi.heading3(
                               'Forgot Password',
                             ),

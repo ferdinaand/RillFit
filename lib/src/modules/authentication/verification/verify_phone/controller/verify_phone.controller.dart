@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/presentation/themes/app.themes.dart';
 
 class VerifyPhoneController extends GetxController {
   @override
@@ -31,5 +32,7 @@ class VerifyPhoneController extends GetxController {
     Get.back<void>();
   }
 
-  Future<void> verifyPhoneNumber() async {}
+  Future<void> verifyPhoneNumber() async {
+    AppThemes.changeThemeMode();
+  }
 }
