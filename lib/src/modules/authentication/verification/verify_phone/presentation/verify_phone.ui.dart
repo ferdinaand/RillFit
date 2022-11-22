@@ -54,7 +54,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                               color: primary,
                               fontWeight: mediumText,
                             ),
-                            const Gap(24),
+                            const Gap(8),
                             InkWell(
                               onTap: controller.changePhoneNumber,
                               child: Padding(
@@ -71,7 +71,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                                 ),
                               ),
                             ),
-                            const Gap(24),
+                            const Gap(8),
                             PinFieldUi(
                               controller: controller.pinController,
                               onChanged: (_) {
