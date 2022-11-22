@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
+import 'package:riilfit/src/modules/authentication/forgot_password/enter_email/controller/enter_email.controller.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-class LoginFormUi extends GetView<LoginController> {
-  const LoginFormUi({super.key});
+class ForgotPasswordEnterEmailFormUi
+    extends GetView<ForgotPasswordEnterEmailController> {
+  const ForgotPasswordEnterEmailFormUi({super.key});
 
   @override
-  LoginController get controller => Get.put(LoginController());
+  ForgotPasswordEnterEmailController get controller =>
+      Get.put(ForgotPasswordEnterEmailController());
 
   @override
   Widget build(BuildContext context) {
@@ -19,22 +21,15 @@ class LoginFormUi extends GetView<LoginController> {
         }
       },
       child: Form(
-        key: controller.loginFormKey,
+        key: controller.forgotPasswordInitFormKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFieldUi(
               hintText: 'Email Address',
-              controller: controller.emailOrPhoneController,
+              autofocus: true,
+              controller: controller.emailController,
               keyboardType: TextInputType.emailAddress,
-              onChanged: (_) {
-                controller.enableButton();
-              },
-            ),
-            const Gap(12),
-            PasswordFieldUi(
-              hintText: 'Password',
-              controller: controller.passwordController,
               onChanged: (_) {
                 controller.enableButton();
               },

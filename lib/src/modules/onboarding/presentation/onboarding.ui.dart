@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/dummy/onboarding_carousel.dummy.dart';
 import 'package:riilfit/src/modules/onboarding/controller/onboarding.controller.dart';
+import 'package:riilfit/src/modules/onboarding/presentation/widgets/onboarding_carousel.ui.dart';
+import 'package:riilfit/src/modules/onboarding/presentation/widgets/page_indicator.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-import 'widgets/onboarding_carousel.ui.dart';
-import 'widgets/page_indicator.dart';
-
-class OnboardingUi extends GetView {
+class OnboardingUi extends GetView<OnboardingController> {
   const OnboardingUi({super.key});
 
   @override
@@ -18,7 +17,7 @@ class OnboardingUi extends GetView {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final FocusScopeNode currentFocus = FocusScope.of(context);
+        final currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
         }
@@ -39,7 +38,7 @@ class OnboardingUi extends GetView {
                           controller: controller.pageController,
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: onboardingCarouselContent.length,
-                          restorationId: "onboarding",
+                          restorationId: 'onboarding',
                           onPageChanged: (i) => controller.currentIndex,
                           scrollBehavior: const ScrollBehavior().copyWith(
                             overscroll: false,
@@ -63,12 +62,12 @@ class OnboardingUi extends GetView {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const TextUi.bodyMed(
-                            "Already have an account? ",
+                            'Already have an account? ',
                           ),
                           GestureDetector(
                             onTap: controller.navigateToLoginPage,
                             child: const TextUi.bodyMed(
-                              "Sign in",
+                              'Sign in',
                               color: primary,
                               fontWeight: semiBoldText,
                             ),

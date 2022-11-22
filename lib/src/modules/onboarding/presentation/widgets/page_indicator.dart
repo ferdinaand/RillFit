@@ -5,7 +5,7 @@ import 'package:riilfit/src/data/dummy/onboarding_carousel.dummy.dart';
 import 'package:riilfit/src/modules/onboarding/controller/onboarding.controller.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 
-class OnboardingPageIndicator extends GetView {
+class OnboardingPageIndicator extends GetView<OnboardingController> {
   const OnboardingPageIndicator({
     super.key,
   });

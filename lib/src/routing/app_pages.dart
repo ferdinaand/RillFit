@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/register/presentation/register.ui.dart';
 import 'package:riilfit/src/presentation/views.dart';
-import 'guards/app_guard.dart';
+import 'package:riilfit/src/routing/guards/app_guard.dart';
 
 part 'app_routes.dart';
 
@@ -31,14 +31,18 @@ class AppPages {
       name: Routes.register,
       page: () => const RegisterUi(),
     ),
-    // GetPage(
-    //   name: Routes.createPin,
-    //   page: () => const CreatePinUi(),
-    // ),
-    // GetPage(
-    //   name: Routes.otpAuth,
-    //   page: () => const OTPAuthUi(),
-    // ),
+    GetPage(
+      name: Routes.forgotPasswordInit,
+      page: () => const ForgotPasswordEnterEmailUi(),
+    ),
+    GetPage(
+      name: Routes.forgotPasswordEnterOtp,
+      page: () => const ForgotPasswordEnterResetOtpUi(),
+    ),
+    GetPage(
+      name: Routes.forgotPasswordSetNewPassword,
+      page: () => const ForgotPasswordSetNewPasswordUi(),
+    ),
     // GetPage(
     //   name: Routes.forgotPassword,
     //   page: () => const ForgotPassordUi(),

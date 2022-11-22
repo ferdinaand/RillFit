@@ -7,10 +7,6 @@ import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class ButtonUi extends TextButton {
-  final ButtonStyle style;
-  final Widget child;
-  final VoidCallback? onPressed;
-
   const ButtonUi({
     super.key,
     required this.style,
@@ -21,16 +17,13 @@ class ButtonUi extends TextButton {
           onPressed: onPressed,
           child: child,
         );
+
+  final ButtonStyle style;
+  final Widget child;
+  final VoidCallback? onPressed;
 }
 
 class PrimaryButtonUi extends ButtonUi {
-  final String text;
-  final VoidCallback? onPressed;
-  final Color? backgroundColor;
-  final Color? textColor;
-  final EdgeInsetsGeometry? padding;
-  final bool loading;
-
   PrimaryButtonUi({
     super.key,
     required this.text,
@@ -42,7 +35,7 @@ class PrimaryButtonUi extends ButtonUi {
   }) : super(
           style: ButtonStyle(
             alignment: Alignment.center,
-            elevation: MaterialStateProperty.all(0.0),
+            elevation: MaterialStateProperty.all(0),
             minimumSize: MaterialStateProperty.all(
               Size.fromHeight(56.h),
             ),
@@ -77,4 +70,11 @@ class PrimaryButtonUi extends ButtonUi {
                   style: buttonTypography,
                 ),
         );
+
+  final String text;
+  final VoidCallback? onPressed;
+  final Color? backgroundColor;
+  final Color? textColor;
+  final EdgeInsetsGeometry? padding;
+  final bool loading;
 }

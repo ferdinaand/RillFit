@@ -15,11 +15,11 @@ class AuthBackButtonUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: "Back",
+      message: 'Back',
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20, 8, 0, 8),
         child: InkWell(
-          onTap: Get.back,
+          onTap: Get.back<void>,
           borderRadius: const BorderRadius.all(
             regularRadius,
           ),

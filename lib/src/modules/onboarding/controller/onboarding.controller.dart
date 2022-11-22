@@ -39,13 +39,13 @@ class OnboardingController extends GetxController {
   }
 
   void navigateToLoginPage() {
-    Get.toNamed(
+    Get.toNamed<void>(
       Routes.login,
     );
   }
 
   void navigateToRegisterPage() {
-    Get.toNamed(
+    Get.toNamed<void>(
       Routes.register,
     );
   }

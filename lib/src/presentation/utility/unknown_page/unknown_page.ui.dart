@@ -19,7 +19,7 @@ class UnknownPageUi extends StatelessWidget {
             ),
             const Gap(24),
             const TextUi.bodyLarge(
-              "Page not found!",
+              'Page not found!',
             ),
             const Gap(48),
           ],

@@ -5,27 +5,6 @@ import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/themes/app.themes.dart';
 
 class TextFieldUi extends StatelessWidget {
-  final String hintText;
-  final TextInputType keyboardType;
-  final bool obscureText;
-  final TextStyle? textStyle;
-  final TextStyle? hintStyle;
-  final TextStyle? errorStyle;
-  final ValueChanged<String?>? onChanged;
-  final FormFieldValidator<String?>? validator;
-  final int maxLines;
-  final List<TextInputFormatter>? inputFormatter;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
-  final String? initalValue;
-  final InputDecoration? decoration;
-  final int? maxLength;
-  final TextInputAction? textInputAction;
-  final bool autofocus;
-  final TextEditingController? controller;
-  final FocusNode? focusNode;
-  final VoidCallback? onTap;
-
   const TextFieldUi({
     super.key,
     required this.hintText,
@@ -49,6 +28,27 @@ class TextFieldUi extends StatelessWidget {
     this.onTap,
     this.autofocus = false,
   });
+
+  final String hintText;
+  final TextInputType keyboardType;
+  final bool obscureText;
+  final TextStyle? textStyle;
+  final TextStyle? hintStyle;
+  final TextStyle? errorStyle;
+  final ValueChanged<String?>? onChanged;
+  final FormFieldValidator<String?>? validator;
+  final int maxLines;
+  final List<TextInputFormatter>? inputFormatter;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final String? initalValue;
+  final InputDecoration? decoration;
+  final int? maxLength;
+  final TextInputAction? textInputAction;
+  final bool autofocus;
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class TextFieldUi extends StatelessWidget {
         cursorWidth: 1,
         textInputAction: textInputAction,
         textAlignVertical: TextAlignVertical.center,
-        obscuringCharacter: "●",
+        obscuringCharacter: '●',
         decoration: decoration ??
             InputDecoration(
               hintStyle: hintStyle,

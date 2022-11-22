@@ -6,7 +6,7 @@ import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class RegisterFormUi extends GetView<RegisterController> {
-  const RegisterFormUi();
+  const RegisterFormUi({super.key});
 
   @override
   RegisterController get controller => Get.put(RegisterController());
@@ -15,7 +15,7 @@ class RegisterFormUi extends GetView<RegisterController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final FocusScopeNode currentFocus = FocusScope.of(context);
+        final currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
         }
@@ -26,7 +26,7 @@ class RegisterFormUi extends GetView<RegisterController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFieldUi(
-              hintText: "Full name",
+              hintText: 'Full name',
               controller: controller.nameController,
               keyboardType: TextInputType.emailAddress,
               onChanged: (_) {
@@ -35,7 +35,7 @@ class RegisterFormUi extends GetView<RegisterController> {
             ),
             const Gap(12),
             TextFieldUi(
-              hintText: "Email address",
+              hintText: 'Email address',
               controller: controller.emailController,
               keyboardType: TextInputType.emailAddress,
               onChanged: (_) {
@@ -74,7 +74,7 @@ class RegisterFormUi extends GetView<RegisterController> {
                 const Gap(12),
                 Expanded(
                   child: TextFieldUi(
-                    hintText: "Phone number",
+                    hintText: 'Phone number',
                     controller: controller.phoneController,
                     keyboardType: TextInputType.emailAddress,
                     onChanged: (_) {
@@ -86,7 +86,7 @@ class RegisterFormUi extends GetView<RegisterController> {
             ),
             const Gap(12),
             PasswordFieldUi(
-              hintText: "Password",
+              hintText: 'Password',
               controller: controller.passwordController,
               onChanged: (_) {
                 controller.enableButton();

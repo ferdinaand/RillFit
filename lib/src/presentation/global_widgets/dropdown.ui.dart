@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-class DropDownUi extends GetView {
+class DropDownUi extends StatelessWidget {
   const DropDownUi({
     super.key,
     this.items = const <String>[],
@@ -18,7 +18,7 @@ class DropDownUi extends GetView {
   @override
   Widget build(BuildContext context) {
     final hasValue = false.obs;
-    final dropdownValue = "".obs;
+    final dropdownValue = ''.obs;
     return Container(
       height: 48,
       padding: const EdgeInsets.only(
@@ -63,7 +63,7 @@ class DropDownUi extends GetView {
                 hasValue.value = true;
               }
 
-              dropdownValue.value = value ?? "";
+              dropdownValue.value = value ?? '';
               onChanged(value);
             },
             items: items

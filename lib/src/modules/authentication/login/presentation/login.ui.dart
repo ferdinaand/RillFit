@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
+import 'package:riilfit/src/modules/authentication/login/presentation/widgets/login_form.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-import 'widgets/login_form.ui.dart';
-
 class LoginUi extends GetView<LoginController> {
-  const LoginUi();
+  const LoginUi({super.key});
 
   @override
   LoginController get controller => Get.put(LoginController());
@@ -17,7 +16,7 @@ class LoginUi extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final FocusScopeNode currentFocus = FocusScope.of(context);
+        final currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) {
           currentFocus.unfocus();
         }
@@ -37,15 +36,16 @@ class LoginUi extends GetView<LoginController> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            const Gap(12),
                             const TextUi.heading3(
-                              "Sign In",
+                              'Sign In',
                             ),
-                            const Gap(16),
+                            const Gap(24),
                             const LoginFormUi(),
                             const Gap(24),
                             Obx(
                               () => PrimaryButtonUi(
-                                text: "Sign In",
+                                text: 'Sign In',
                                 onPressed: controller.isButtonDisabled.value
                                     ? null
                                     : controller.login,
@@ -56,10 +56,10 @@ class LoginUi extends GetView<LoginController> {
                               onTap: controller.navigateToForgotPassword,
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(vertical: 4.0),
+                                    const EdgeInsets.symmetric(vertical: 4),
                                 child: Obx(
                                   () => TextUi.bodyMed(
-                                    "Forgot password?",
+                                    'Forgot password?',
                                     color: AppThemes.isDarkMode
                                         ? grayScale100
                                         : grayScale700,
@@ -68,13 +68,14 @@ class LoginUi extends GetView<LoginController> {
                                 ),
                               ),
                             ),
+                            const Gap(24),
                           ],
                         ),
                       ),
                       const TextUi.bodyMed(
-                        "Alternatively, Sign in with",
+                        'Alternatively, Sign in with',
                       ),
-                      const Gap(16),
+                      const Gap(24),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -101,7 +102,7 @@ class LoginUi extends GetView<LoginController> {
                           GestureDetector(
                             onTap: controller.navigateToRegisterPage,
                             child: const TextUi.bodyMed(
-                              "Sign up",
+                              'Sign up',
                               color: primary,
                               fontWeight: semiBoldText,
                             ),

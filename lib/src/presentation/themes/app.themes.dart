@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
-import 'dark.theme.dart';
-import 'light.theme.dart';
+import 'package:riilfit/src/presentation/themes/dark.theme.dart';
+import 'package:riilfit/src/presentation/themes/light.theme.dart';
 
 class AppThemes extends GetxService {
   AppThemes._();
@@ -18,7 +17,7 @@ class AppThemes extends GetxService {
   static ThemeData dark = darkTheme;
 
   static final _storage = GetStorage();
-  static const themeKey = "isDarkMode";
+  static const themeKey = 'isDarkMode';
 
   static final _isDarkMode = isDarkModeSaved().obs;
 

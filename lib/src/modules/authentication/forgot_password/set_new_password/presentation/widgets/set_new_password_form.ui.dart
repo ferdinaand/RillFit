@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
+import 'package:riilfit/src/modules/authentication/forgot_password/set_new_password/controller/set_new_password.controller.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-class LoginFormUi extends GetView<LoginController> {
-  const LoginFormUi({super.key});
+class ForgotPasswordSetNewPasswordFormUi
+    extends GetView<ForgotPasswordSetNewPasswordController> {
+  const ForgotPasswordSetNewPasswordFormUi({super.key});
 
   @override
-  LoginController get controller => Get.put(LoginController());
+  ForgotPasswordSetNewPasswordController get controller =>
+      Get.put(ForgotPasswordSetNewPasswordController());
 
   @override
   Widget build(BuildContext context) {
@@ -19,22 +21,22 @@ class LoginFormUi extends GetView<LoginController> {
         }
       },
       child: Form(
-        key: controller.loginFormKey,
+        key: controller.setNewPasswordFormKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextFieldUi(
-              hintText: 'Email Address',
-              controller: controller.emailOrPhoneController,
-              keyboardType: TextInputType.emailAddress,
+            PasswordFieldUi(
+              hintText: 'Enter your new password',
+              autofocus: true,
+              controller: controller.newPasswordController,
               onChanged: (_) {
                 controller.enableButton();
               },
             ),
             const Gap(12),
             PasswordFieldUi(
-              hintText: 'Password',
-              controller: controller.passwordController,
+              hintText: 'Re-enter your new password',
+              controller: controller.confirmNewPasswordController,
               onChanged: (_) {
                 controller.enableButton();
               },
