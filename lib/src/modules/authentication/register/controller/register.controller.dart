@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
+import 'package:riilfit/src/data/dtos/register/register.dto.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
 class RegisterController extends GetxController {
@@ -50,10 +52,19 @@ class RegisterController extends GetxController {
   }
 
   Future<void> signUp() async {
-    // Get.offAllNamed(
-    //   Routes.home,
-    // );
-    AppThemes.changeThemeMode();
+    final registerDto = RegisterDto(
+      email: emailController.text,
+      phoneNumber: phoneController.text,
+      fullName: nameController.text,
+      password: passwordController.text,
+    );
+
+    unawaited(
+      Get.toNamed<void>(
+        Routes.verifyPhone,
+        arguments: registerDto,
+      ),
+    );
   }
 
   Future<void> loginViaFacebook() async {}

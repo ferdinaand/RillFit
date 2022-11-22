@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/modules/authentication/forgot_password/enter_reset_otp/controller/enter_reset_otp.controller.dart';
+import 'package:riilfit/src/data/dtos/register/register.dto.dart';
+import 'package:riilfit/src/data/extensions/extensions.dart';
+import 'package:riilfit/src/modules/authentication/verification/verify_phone/controller/verify_phone.controller.dart';
 import 'package:riilfit/src/presentation/global_widgets/pin_fields.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-class ForgotPasswordEnterResetOtpUi
-    extends GetView<ForgotPasswordEnterResetOtpController> {
-  const ForgotPasswordEnterResetOtpUi({super.key});
+class VerifyPhoneUi extends GetView<VerifyPhoneController> {
+  const VerifyPhoneUi({super.key});
 
   @override
-  ForgotPasswordEnterResetOtpController get controller =>
-      Get.put(ForgotPasswordEnterResetOtpController());
+  VerifyPhoneController get controller => Get.put(VerifyPhoneController());
 
   @override
   Widget build(BuildContext context) {
-    final email = Get.arguments as String? ?? '';
+    final registerDto = Get.arguments as RegisterDto? ?? RegisterDto.empty();
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -41,19 +41,42 @@ class ForgotPasswordEnterResetOtpUi
                           children: [
                             const Gap(12),
                             const TextUi.heading3(
-                              'Forgot Password',
+                              'Phone Verification',
                             ),
                             const Gap(24),
                             const TextUi.bodyMed(
-                              'Enter the 6-digit recovery code sent to',
+                              'Enter the 6-digit security code sent to',
                               textAlign: TextAlign.center,
                             ),
                             const Gap(4),
-                            TextUi.bodyMed(
-                              email,
+                            TextUi(
+                              registerDto.phoneNumber.addCountryCode
+                                  .obscurePhoneNumber,
                               textAlign: TextAlign.center,
-                              color: primary,
-                              fontWeight: mediumText,
+                              style: bodyMed.copyWith(
+                                color: primary,
+                                fontWeight: mediumText,
+                              ),
+                            ),
+                            const Gap(8),
+                            InkWell(
+                              onTap: controller.changePhoneNumber,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 4),
+                                child: Obx(
+                                  () => TextUi(
+                                    'Change phone number',
+                                    style: bodySmall.copyWith(
+                                      color: AppThemes.isDarkMode
+                                          ? grayScale100
+                                          : grayScale700,
+                                      fontWeight: mediumText,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                             const Gap(24),
                             PinFieldUi(
@@ -72,7 +95,7 @@ class ForgotPasswordEnterResetOtpUi
                           padding: const EdgeInsets.symmetric(vertical: 4),
                           child: Obx(
                             () => TextUi.bodyMed(
-                              'Resend recovery code',
+                              'Resend security code',
                               color: AppThemes.isDarkMode
                                   ? grayScale100
                                   : grayScale700,
@@ -87,7 +110,7 @@ class ForgotPasswordEnterResetOtpUi
                           text: 'Verify code',
                           onPressed: controller.isButtonDisabled.value
                               ? null
-                              : controller.verifyRecoveryCode,
+                              : controller.verifyPhoneNumber,
                         ),
                       ),
                       const Gap(24),

@@ -37,6 +37,7 @@ class ForgotPasswordSetNewPasswordUi
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
+                            Gap(12),
                             TextUi.heading3(
                               'Reset Password',
                             ),

@@ -43,10 +43,10 @@ class AppPages {
       name: Routes.forgotPasswordSetNewPassword,
       page: () => const ForgotPasswordSetNewPasswordUi(),
     ),
-    // GetPage(
-    //   name: Routes.forgotPassword,
-    //   page: () => const ForgotPassordUi(),
-    // ),
+    GetPage(
+      name: Routes.verifyPhone,
+      page: () => const VerifyPhoneUi(),
+    ),
     // GetPage(
     //   name: Routes.selectCountry,
     //   page: () => const SelectCountryUi(),
