@@ -16,6 +16,7 @@ class ForgotPasswordEnterResetOtpUi
 
   @override
   Widget build(BuildContext context) {
+    final email = Get.arguments as String;
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -47,10 +48,11 @@ class ForgotPasswordEnterResetOtpUi
                               textAlign: TextAlign.center,
                             ),
                             const Gap(4),
-                            const TextUi.bodyMed(
-                              'seundavid56@gmail.com',
+                            TextUi.bodyMed(
+                              email,
                               textAlign: TextAlign.center,
                               color: primary,
+                              fontWeight: mediumText,
                             ),
                             const Gap(24),
                             PinFieldUi(
@@ -64,7 +66,7 @@ class ForgotPasswordEnterResetOtpUi
                         ),
                       ),
                       InkWell(
-                        onTap: controller.navigateToLoginPage,
+                        onTap: controller.resendCode,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 4),
                           child: Obx(
@@ -81,10 +83,10 @@ class ForgotPasswordEnterResetOtpUi
                       const Gap(24),
                       Obx(
                         () => PrimaryButtonUi(
-                          text: 'Send recovery pin',
+                          text: 'Verify code',
                           onPressed: controller.isButtonDisabled.value
                               ? null
-                              : controller.sendOtpToEmail,
+                              : controller.verifyRecoveryCode,
                         ),
                       ),
                       const Gap(24),

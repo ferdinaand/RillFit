@@ -35,6 +35,7 @@ class RegisterController extends GetxController {
 
   void enableButton() {
     isButtonDisabled.value = emailController.text.isEmpty ||
+        !emailController.text.isEmail ||
         nameController.text.isEmpty ||
         phoneController.text.isEmpty ||
         passwordController.text.isEmpty;

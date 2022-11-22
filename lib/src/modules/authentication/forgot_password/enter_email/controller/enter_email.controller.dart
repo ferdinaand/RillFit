@@ -1,7 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
 class ForgotPasswordEnterEmailController extends GetxController {
@@ -23,7 +24,8 @@ class ForgotPasswordEnterEmailController extends GetxController {
   final isButtonDisabled = true.obs;
 
   void enableButton() {
-    isButtonDisabled.value = emailController.text.isEmpty;
+    isButtonDisabled.value =
+        emailController.text.isEmpty || !emailController.text.isEmail;
 
     return;
   }
@@ -35,9 +37,11 @@ class ForgotPasswordEnterEmailController extends GetxController {
   }
 
   Future<void> sendOtpToEmail() async {
-    // Get.offAllNamed(
-    //   Routes.home,
-    // );
-    AppThemes.changeThemeMode();
+    unawaited(
+      Get.toNamed<void>(
+        Routes.forgotPasswordEnterOtp,
+        arguments: emailController.text,
+      ),
+    );
   }
 }
