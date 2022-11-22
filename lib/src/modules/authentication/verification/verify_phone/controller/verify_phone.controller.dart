@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/routing/app_pages.dart';
 
-class ForgotPasswordEnterResetOtpController extends GetxController {
+class VerifyPhoneController extends GetxController {
   @override
   void onInit() {
     enableButton();
@@ -28,11 +27,9 @@ class ForgotPasswordEnterResetOtpController extends GetxController {
 
   void resendCode() {}
 
-  Future<void> verifyRecoveryCode() async {
-    unawaited(
-      Get.toNamed<void>(
-        Routes.forgotPasswordSetNewPassword,
-      ),
-    );
+  void changePhoneNumber() {
+    Get.back<void>();
   }
+
+  Future<void> verifyPhoneNumber() async {}
 }
