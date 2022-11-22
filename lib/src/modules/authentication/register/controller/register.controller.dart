@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
-class RegisterController extends GetxController
-    with GetSingleTickerProviderStateMixin {
+class RegisterController extends GetxController {
   late GlobalKey<FormState> loginFormKey;
 
   @override
