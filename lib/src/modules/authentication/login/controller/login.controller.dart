@@ -1,7 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
 class LoginController extends GetxController {
@@ -40,10 +41,11 @@ class LoginController extends GetxController {
   }
 
   Future<void> login() async {
-    // Get.offAllNamed(
-    //   Routes.home,
-    // );
-    AppThemes.changeThemeMode();
+    unawaited(
+      Get.offAllNamed<void>(
+        Routes.app,
+      ),
+    );
   }
 
   Future<void> loginViaFacebook() async {}
