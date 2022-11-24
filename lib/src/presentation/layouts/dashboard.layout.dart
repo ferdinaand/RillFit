@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:riilfit/src/presentation/resources/res.dart';
 
 class DashboardManager extends GetView<DashboardLayoutController> {
