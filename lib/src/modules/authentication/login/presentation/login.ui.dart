@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
 import 'package:riilfit/src/modules/authentication/login/presentation/widgets/login_form.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
@@ -46,6 +47,7 @@ class LoginUi extends GetView<LoginController> {
                             Obx(
                               () => PrimaryButtonUi(
                                 text: 'Sign In',
+                                loading: controller.viewState.isBusy,
                                 onPressed: controller.isButtonDisabled.value
                                     ? null
                                     : controller.login,

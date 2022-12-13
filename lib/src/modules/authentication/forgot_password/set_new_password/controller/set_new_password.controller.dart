@@ -3,14 +3,12 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/data/dtos/new_password/newPassword.dto.dart';
-import 'package:riilfit/src/data/remote_data_source/other_services/auth_repositories.dart';
+// import 'package:riilfit/src/data/remote_data_source/other_services/auth_repositories.dart';
 
 class ForgotPasswordSetNewPasswordController extends GetxController {
   late GlobalKey<FormState> setNewPasswordFormKey;
-  final AuthRepositories _repositories = AuthRepositories();
+  // final AuthRepositories _repositories = AuthRepositories();
   @override
-
   @override
   void onInit() {
     enableButton();
@@ -41,17 +39,17 @@ class ForgotPasswordSetNewPasswordController extends GetxController {
   }
 
   Future<void> setNewPassword() async {
-    final otp = await AuthRepositories.getOTP();
-    // ignore: omit_local_variable_types
-    final String userOtp = otp.toString();
-    final email = await AuthRepositories.getEmail();
-    // ignore: omit_local_variable_types
-    final String userEmail = email.toString();
-    final newPasswordDto = NewPasswordDto(
-      newPassword: newPasswordController.text, 
-      otp:userOtp, //userOtp store in secure flutter package
-      email: userEmail, //userEmail Stored in secure flutter package
-      );
-      await _repositories.authPost(newPasswordDto, '/user/finishResetPassword');
+    // final otp = await AuthRepositories.getOTP();
+    // // ignore: omit_local_variable_types
+    // final String userOtp = otp.toString();
+    // final email = await AuthRepositories.getEmail();
+    // // ignore: omit_local_variable_types
+    // final String userEmail = email.toString();
+    // final newPasswordDto = NewPasswordDto(
+    //   newPassword: newPasswordController.text,
+    //   otp:userOtp, //userOtp store in secure flutter package
+    //   email: userEmail, //userEmail Stored in secure flutter package
+    //   );
+    //   await _repositories.authPost(newPasswordDto, '/user/finishResetPassword');
   }
 }

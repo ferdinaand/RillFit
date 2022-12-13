@@ -10,13 +10,13 @@ class EnterEmailDto {
     required this.email,
   });
 
+  factory EnterEmailDto.fromJson(Map<String, dynamic> json) =>
+      _$EnterEmailDtoFromJson(json);
+
   EnterEmailDto.empty({
     this.email = '',
   });
 
   final String email;
-  factory EnterEmailDto.fromJson(Map<String, dynamic> json)=> 
-  _$EnterEmailDtoFromJson(json);
-  Map<String, dynamic> toJson()=> _$EnterEmailDtoToJson(this);
-  
+  Map<String, dynamic> toJson() => _$EnterEmailDtoToJson(this);
 }

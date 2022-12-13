@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class RegisterDto {
   RegisterDto({
     required this.email,
@@ -17,4 +19,15 @@ class RegisterDto {
   String phoneNumber;
   String fullName;
   String password;
+
+  @override
+  String toString() {
+    final registrationData = {
+      'email': email,
+      'phoneNumber': phoneNumber,
+      'fullName': fullName,
+      'password': password,
+    };
+    return jsonEncode(registrationData);
+  }
 }

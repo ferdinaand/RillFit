@@ -1,10 +1,16 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
+import 'package:riilfit/src/data/dtos/login/login.dto.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
+import 'package:riilfit/src/domain/api/auth/auth.api.dart';
+import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
-class LoginController extends GetxController {
+class LoginController extends BaseController {
   late GlobalKey<FormState> loginFormKey;
 
   @override
@@ -40,10 +46,47 @@ class LoginController extends GetxController {
   }
 
   Future<void> login() async {
-    // Get.offAllNamed(
-    //   Routes.home,
-    // );
-    AppThemes.changeThemeMode();
+    try {
+      viewState = ViewState.busy;
+
+      final loginDto = LoginDto(
+        emailPhone: emailOrPhoneController.text,
+        password: passwordController.text,
+      );
+
+      final res = await AuthApi().login(
+        loginDto: loginDto,
+      );
+
+      if (res.success) {
+        //store token
+        await storageService.cacheAuthToken(
+          res.payload['token'] as String,
+        );
+
+        //store user
+        await storageService.cacheCustomer(
+          res.payload['user'] as String,
+        );
+
+        unawaited(
+          Get.offAllNamed<void>(
+            Routes.home,
+          ),
+        );
+        viewState = ViewState.idle;
+      } else {
+        viewState = ViewState.idle;
+      }
+    } catch (e, s) {
+      log(
+        e.toString(),
+        stackTrace: s,
+      );
+      viewState = ViewState.idle;
+    } finally {
+      viewState = ViewState.idle;
+    }
   }
 
   Future<void> loginViaFacebook() async {}

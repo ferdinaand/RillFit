@@ -22,6 +22,8 @@ Future<void> main() async {
 
   await initializeHive();
 
+  await initializeServices();
+
   setupLogging();
 
   runApp(

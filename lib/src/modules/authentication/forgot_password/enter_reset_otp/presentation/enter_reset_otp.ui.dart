@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/enter_reset_otp/controller/enter_reset_otp.controller.dart';
 import 'package:riilfit/src/presentation/global_widgets/pin_fields.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
@@ -85,6 +86,7 @@ class ForgotPasswordEnterResetOtpUi
                       Obx(
                         () => PrimaryButtonUi(
                           text: 'Verify code',
+                          loading: controller.viewState.isBusy,
                           onPressed: controller.isButtonDisabled.value
                               ? null
                               : controller.verifyRecoveryCode,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/modules/authentication/register/controller/register.controller.dart';
 import 'package:riilfit/src/modules/authentication/register/presentation/widgets/register_form.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
@@ -45,6 +46,7 @@ class RegisterUi extends GetView<RegisterController> {
                             Obx(
                               () => PrimaryButtonUi(
                                 text: 'Sign up',
+                                loading: controller.viewState.isBusy,
                                 onPressed: controller.isButtonDisabled.value
                                     ? null
                                     : controller.signUp,

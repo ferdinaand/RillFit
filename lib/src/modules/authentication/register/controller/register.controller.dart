@@ -1,18 +1,26 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/data/dtos/register/register.dto.dart';
+import 'package:riilfit/src/data/dtos/dto.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
+import 'package:riilfit/src/data/extensions/string.extensions.dart';
+import 'package:riilfit/src/domain/api/auth/auth.api.dart';
+import 'package:riilfit/src/domain/base/controller/base.controller.dart';
+import 'package:riilfit/src/presentation/resources/strings.res.dart';
+import 'package:riilfit/src/presentation/utility/flushbar/show-flushbar.helper.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
-class RegisterController extends GetxController {
-  late GlobalKey<FormState> loginFormKey;
+class RegisterController extends BaseController {
+  late GlobalKey<FormState> registerFormKey;
 
   @override
   void onInit() {
     enableButton();
-    loginFormKey = GlobalKey<FormState>(debugLabel: 'Login');
+    registerFormKey = GlobalKey<FormState>(debugLabel: 'Register');
     super.onInit();
   }
 
@@ -52,19 +60,70 @@ class RegisterController extends GetxController {
   }
 
   Future<void> signUp() async {
-    final registerDto = RegisterDto(
-      email: emailController.text,
-      phoneNumber: phoneController.text,
-      fullName: nameController.text,
-      password: passwordController.text,
-    );
+    try {
+      //Verify that phone number is 11 char
+      registerFormKey.currentState!.save();
+      if (!registerFormKey.currentState!.validate()) {
+        showFlushBar(
+          message: 'Kindly fix validation issues',
+        );
+        return;
+      }
+      viewState = ViewState.busy;
 
-    unawaited(
-      Get.toNamed<void>(
-        Routes.verifyPhone,
-        arguments: registerDto,
-      ),
-    );
+      final registerDto = RegisterDto(
+        email: emailController.text,
+        phoneNumber: phoneController.text.addCountryCode,
+        fullName: nameController.text,
+        password: passwordController.text,
+      );
+
+      final res = await AuthApi().createAccount(
+        registerDto: registerDto,
+      );
+
+      if (res.success) {
+        //store token
+        await storageService.cacheAuthToken(
+          res.payload['token'] as String,
+        );
+
+        //store user
+        await storageService.cacheCustomer(
+          jsonEncode(res.payload['user']),
+        );
+
+        unawaited(
+          Get.toNamed<void>(
+            Routes.verifyPhone,
+            arguments: registerDto,
+          ),
+        );
+        viewState = ViewState.idle;
+      } else {
+        if (res.message == passwordTooWeak) {
+          showFlushBar(
+            message: passwordTooWeak,
+          );
+        }
+        showFlushBar(
+          message: res.message ?? '',
+        );
+        viewState = ViewState.idle;
+      }
+      return;
+    } catch (e, s) {
+      log(
+        e.toString(),
+        stackTrace: s,
+      );
+      showFlushBar(
+        message: errorMessage,
+      );
+      viewState = ViewState.idle;
+    } finally {
+      viewState = ViewState.idle;
+    }
   }
 
   Future<void> loginViaFacebook() async {}

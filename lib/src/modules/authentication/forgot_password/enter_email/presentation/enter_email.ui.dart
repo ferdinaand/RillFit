@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/enter_email/controller/enter_email.controller.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/enter_email/presentation/widgets/enter_email_form.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
@@ -72,6 +73,7 @@ class ForgotPasswordEnterEmailUi
                       Obx(
                         () => PrimaryButtonUi(
                           text: 'Send recovery code',
+                          loading: controller.viewState.isBusy,
                           onPressed: controller.isButtonDisabled.value
                               ? null
                               : controller.sendOtpToEmail,
