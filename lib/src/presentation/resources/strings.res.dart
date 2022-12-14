@@ -17,3 +17,5 @@ const maxJsonStringLength = 8192;
 
 const passwordRegEx =
     r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$';
+
+const pinLength = 6;

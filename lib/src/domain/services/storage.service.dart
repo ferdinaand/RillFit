@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/dtos/dto.dart';
 
 abstract class IStorageService {
   Future<void> storeItem({required String key, required String value});
@@ -10,7 +12,7 @@ abstract class IStorageService {
   Future<void> deleteAllItems();
   Future<void> cacheCustomer(String customerJsonData);
   Future<void> deleteCustomer();
-  Future<String?> fetchCustomer();
+  Future<UserDto?> fetchCustomer();
   Future<void> cacheAuthToken(String token);
   Future<void> deleteAuthToken();
   Future<String?> fetchAuthToken();
@@ -72,19 +74,22 @@ class StorageService extends GetxService implements IStorageService {
   }
 
   @override
-  Future<String?> fetchCustomer() async {
+  Future<UserDto?> fetchCustomer() async {
     final customer = await storage.read(
       key: _customerKey,
     );
+
+    final userDto =
+        UserDto.fromJson(jsonDecode(customer ?? '') as Map<String, dynamic>);
     log('customer data fetched successfully');
-    return customer;
+    return userDto;
   }
 
   @override
   Future<void> cacheAuthToken(String token) async {
     await storage.write(
       key: _authTokenKey,
-      value: token,
+      value: 'Bearer $token',
     );
     log('cached auth token successfully');
     return;

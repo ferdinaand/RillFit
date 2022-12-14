@@ -48,10 +48,6 @@ class AppPages {
       page: () => const VerifyPhoneUi(),
     ),
     // GetPage(
-    //   name: Routes.selectCountry,
-    //   page: () => const SelectCountryUi(),
-    // ),
-    // GetPage(
     //   name: Routes.onboardingCompleted,
     //   page: () => const OnboardingCompletedUi(),
     // ),

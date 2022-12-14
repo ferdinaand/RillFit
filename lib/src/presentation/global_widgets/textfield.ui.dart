@@ -61,7 +61,7 @@ class TextFieldUi extends StatefulWidget {
 
 class _TextFieldUiState extends State<TextFieldUi> {
   late FocusNode focusNode;
-  // late GlobalKey<FormFieldState<String>> _formFieldKey;
+  late GlobalKey<FormFieldState<String>> _formFieldKey;
   final _showClearButton = false.obs;
   final _hasFocus = false.obs;
 
@@ -76,7 +76,7 @@ class _TextFieldUiState extends State<TextFieldUi> {
   @override
   void initState() {
     super.initState();
-    // _formFieldKey = GlobalKey<FormFieldState<String>>();
+    _formFieldKey = GlobalKey<FormFieldState<String>>();
     focusNode = widget.focusNode ?? FocusNode();
     focusNode.addListener(showBorderMethod);
     widget.controller.addListener(() {
@@ -92,11 +92,12 @@ class _TextFieldUiState extends State<TextFieldUi> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Obx(
-          () => TextFormField(
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TextFormField(
+            key: _formFieldKey,
             maxLines: widget.maxLines,
             maxLength: widget.maxLength,
             autofocus: widget.autofocus,
@@ -140,16 +141,16 @@ class _TextFieldUiState extends State<TextFieldUi> {
                   hintText: widget.hintText,
                 ),
           ),
-        ),
-        if (widget.helperText != null && _hasFocus.value) ...[
-          const Gap(4),
-          TextUi.bodySmall(
-            widget.helperText!,
-            fontSize: 12,
-            color: grayScale400,
-          ),
-        ]
-      ],
+          if (widget.helperText != null && _hasFocus.value) ...[
+            const Gap(4),
+            TextUi.bodySmall(
+              widget.helperText!,
+              fontSize: 12,
+              color: grayScale400,
+            ),
+          ]
+        ],
+      ),
     );
   }
 }

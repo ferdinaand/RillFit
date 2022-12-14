@@ -1,12 +1,9 @@
-///instantiate dio here and add interceptors or any necessary dio related config
-///
-
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/domain/services/storage.service.dart';
 import 'package:riilfit/src/presentation/resources/strings.res.dart';

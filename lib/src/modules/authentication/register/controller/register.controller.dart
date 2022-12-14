@@ -96,9 +96,9 @@ class RegisterController extends BaseController {
         unawaited(
           Get.toNamed<void>(
             Routes.verifyPhone,
-            arguments: registerDto,
           ),
         );
+
         viewState = ViewState.idle;
       } else {
         if (res.message == passwordTooWeak) {
