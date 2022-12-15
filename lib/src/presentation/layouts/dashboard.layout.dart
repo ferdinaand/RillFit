@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'package:riilfit/src/presentation/resources/res.dart';
@@ -46,16 +47,22 @@ class DashboardManager extends GetView<DashboardLayoutController> {
               ),
               selectedLabelStyle: bodyXSmall.copyWith(
                 color: primary,
+                fontWeight: mediumText,
               ),
               type: BottomNavigationBarType.fixed,
               elevation: 0,
               currentIndex: controller.currentIndex,
               onTap: (i) => controller.currentIndex = i,
-              items: ['ll', 'dd', 'dd', 'd'].map((String destination) {
-                //TODO add all dashboard pages icons and title
-                return const BottomNavigationBarItem(
-                  icon: Icon(Icons.add),
-                  label: 'Home',
+              items: allDestinations.asMap().entries.map((entry) {
+                final destination = entry.value;
+                final index = entry.key;
+                final isActive = controller.currentIndex == index;
+                return BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    isActive ? destination.activeIcon : destination.icon,
+                    color: isActive ? primary : grayScale500,
+                  ),
+                  label: destination.title,
                 );
               }).toList(),
             ),
@@ -73,41 +80,35 @@ class DashboardLayoutController extends GetxController {
 }
 
 class DashboardNavBarContent {
-  const DashboardNavBarContent(
-    this.title,
-    this.icon,
-    this.activeIcon,
-    this.color,
-  );
+  const DashboardNavBarContent({
+    required this.title,
+    required this.icon,
+    this.activeIcon = '',
+  });
   final String title;
   final String icon;
   final String activeIcon;
-  final MaterialColor color;
 }
 
 const List<DashboardNavBarContent> allDestinations = <DashboardNavBarContent>[
   DashboardNavBarContent(
-    'Home',
-    'assets/images/bottom_nav_icons/home_inactive.png',
-    'assets/images/bottom_nav_icons/home_active.png',
-    Colors.teal,
+    title: 'Home',
+    icon: houseIcon,
+    activeIcon: houseActiveIcon,
   ),
   DashboardNavBarContent(
-    'Transactions',
-    'assets/images/bottom_nav_icons/transactions_inactive.png',
-    'assets/images/bottom_nav_icons/transactions_active.png',
-    Colors.teal,
+    title: 'Payments',
+    icon: walletIcon,
+    activeIcon: walletIcon,
   ),
   DashboardNavBarContent(
-    'Help',
-    'assets/images/bottom_nav_icons/help_inactive.png',
-    'assets/images/bottom_nav_icons/help_active.png',
-    Colors.teal,
+    title: 'Activity',
+    icon: targetIcon,
+    activeIcon: targetIcon,
   ),
   DashboardNavBarContent(
-    'Profile',
-    'assets/images/bottom_nav_icons/profile_inactive.png',
-    'assets/images/bottom_nav_icons/profile_active.png',
-    Colors.teal,
+    title: 'Profile',
+    icon: userIcon,
+    activeIcon: userIcon,
   ),
 ];
