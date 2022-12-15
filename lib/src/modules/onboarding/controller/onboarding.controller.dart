@@ -58,6 +58,7 @@ class OnboardingController extends BaseController {
   @override
   void onClose() {
     pageController?.dispose();
+    pageController = null;
     _timer?.cancel();
     _timer = null;
     super.onClose();

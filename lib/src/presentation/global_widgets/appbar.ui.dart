@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:riilfit/src/presentation/global_widgets/auth_back_button.ui.dart';
 import 'package:riilfit/src/presentation/resources/images.res.dart';
+import 'package:riilfit/src/presentation/resources/weights.res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class AuthAppbarUi extends StatelessWidget implements PreferredSizeWidget {
@@ -50,6 +51,7 @@ class MainAppbarUi extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: TextUi.bodyLarge(
         title,
+        fontWeight: semiBoldText,
       ),
     );
   }
