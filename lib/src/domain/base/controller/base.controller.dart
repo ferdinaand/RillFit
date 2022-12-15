@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/dtos/user/user.dto.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
+import 'package:riilfit/src/domain/services/navigation.service.dart';
 import 'package:riilfit/src/domain/services/storage.service.dart';
 import 'package:riilfit/src/domain/services/themes.services.dart';
 
@@ -10,11 +11,13 @@ class BaseController extends GetxController {
   void onInit() async {
     storageService = Get.find<StorageService>();
     themeService = Get.find<ThemeService>();
+    navigationService = Get.find<NavigationService>();
     currentUser = await storageService.fetchCustomer();
     super.onInit();
   }
 
   late StorageService storageService;
+  late NavigationService navigationService;
   late ThemeService themeService;
 
   final _currentUser = UserDto.empty().obs;

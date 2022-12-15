@@ -13,6 +13,7 @@ class TextUi extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.isSelectable = false,
     this.height,
+    this.decoration,
     this.style = bodyMed,
   });
 
@@ -23,6 +24,7 @@ class TextUi extends StatelessWidget {
     this.fontSize,
     this.maxLines,
     this.fontWeight,
+    this.decoration,
     this.textAlign = TextAlign.center,
     this.style = heading1,
     this.isSelectable = false,
@@ -39,6 +41,7 @@ class TextUi extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.isSelectable = false,
     this.height,
+    this.decoration,
     this.style = heading2,
   });
 
@@ -52,6 +55,7 @@ class TextUi extends StatelessWidget {
     this.textAlign = TextAlign.center,
     this.isSelectable = false,
     this.height,
+    this.decoration,
     this.style = heading3,
   });
 
@@ -65,6 +69,7 @@ class TextUi extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.isSelectable = false,
     this.height,
+    this.decoration,
     this.style = heading4,
   });
 
@@ -78,6 +83,7 @@ class TextUi extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.isSelectable = false,
     this.height,
+    this.decoration,
     this.style = bodyXL,
   });
 
@@ -91,6 +97,7 @@ class TextUi extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.isSelectable = false,
     this.height,
+    this.decoration,
     this.style = bodyL,
   });
 
@@ -104,6 +111,7 @@ class TextUi extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.isSelectable = false,
     this.height,
+    this.decoration,
     this.style = bodyMed,
   });
 
@@ -117,6 +125,7 @@ class TextUi extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.isSelectable = false,
     this.height,
+    this.decoration,
     this.style = bodySmall,
   });
 
@@ -130,6 +139,7 @@ class TextUi extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.isSelectable = false,
     this.height,
+    this.decoration,
     this.style = bodyXSmall,
   });
 
@@ -142,6 +152,7 @@ class TextUi extends StatelessWidget {
   final TextAlign? textAlign;
   final bool isSelectable;
   final double? height;
+  final TextDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -167,6 +178,7 @@ class TextUi extends StatelessWidget {
       softWrap: true,
       style: style.copyWith(
         color: color,
+        decoration: decoration,
         fontSize: fontSize?.sp,
         height: height ?? 1.5,
         fontWeight: fontWeight,

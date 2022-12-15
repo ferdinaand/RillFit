@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -86,11 +87,48 @@ class ProfileUi extends GetView<ProfileController> {
                     TextUi.bodySmall(
                       controller.currentUser.phoneNumber ?? '',
                     ),
-                    const Gap(48),
-                    Padding(
-                      padding: baseViewPadding,
-                      child: PrimaryButtonUi(
-                        text: 'Create to a vendor profile',
+                    const Gap(36),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 16,
+                      ),
+                      decoration: const BoxDecoration(
+                        color: primary,
+                        borderRadius: BorderRadius.all(
+                          regularRadius,
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text.rich(
+                            TextSpan(
+                              text:
+                                  'Do you own a gym or sell gym equipments, or are you a gym trainer? ',
+                              style: bodySmall.copyWith(
+                                height: 1.5,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: 'Create a vendor account',
+                                  style: bodySmall.copyWith(
+                                    fontWeight: semiBoldText,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = controller.createVendorAccount,
+                                ),
+                                const TextSpan(
+                                  text:
+                                      ' now to put yourself on Riilfit and earn!',
+                                  style: bodySmall,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const Spacer(),
@@ -104,7 +142,7 @@ class ProfileUi extends GetView<ProfileController> {
                       title: 'Settings',
                     ),
                     const ProfileTileUi(
-                      icon: exitIcon,
+                      icon: helpIcon,
                       title: 'Support',
                     ),
                     const ProfileTileUi(

@@ -116,4 +116,16 @@ class AuthApi {
       return baseDtoFromJson(e.response?.data as String? ?? '');
     }
   }
+
+  Future<BaseDto> logout() async {
+    try {
+      final response = await connect().post<String>(
+        '/user/logout',
+      );
+
+      return baseDtoFromJson(response.data!);
+    } on DioError catch (e) {
+      return baseDtoFromJson(e.response?.data as String? ?? '');
+    }
+  }
 }
