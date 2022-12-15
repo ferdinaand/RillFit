@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/register/presentation/register.ui.dart';
+import 'package:riilfit/src/presentation/layouts/dashboard.layout.dart';
 import 'package:riilfit/src/presentation/views.dart';
 import 'package:riilfit/src/routing/guards/app_guard.dart';
 
@@ -47,14 +48,15 @@ class AppPages {
       name: Routes.verifyPhone,
       page: () => const VerifyPhoneUi(),
     ),
+    GetPage(
+      name: Routes.app,
+      page: () => const DashboardManager(),
+    ),
     // GetPage(
     //   name: Routes.onboardingCompleted,
     //   page: () => const OnboardingCompletedUi(),
     // ),
-    // GetPage(
-    //   name: Routes.home,
-    //   page: () => const HomeUi(),
-    // ),
+
     // GetPage(
     //   name: Routes.loginWithPin,
     //   page: () => const LoginInWithPINUi(),

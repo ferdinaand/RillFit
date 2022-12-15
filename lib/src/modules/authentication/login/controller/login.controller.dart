@@ -82,7 +82,7 @@ class LoginController extends BaseController {
 
         unawaited(
           Get.offAllNamed<void>(
-            Routes.home,
+             Routes.app,
           ),
         );
         viewState = ViewState.idle;
