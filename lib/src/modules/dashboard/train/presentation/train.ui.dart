@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/modules/dashboard/train/controller/home.controller.dart';
+import 'package:riilfit/src/modules/dashboard/train/controller/train.controller.dart';
 import 'package:riilfit/src/modules/dashboard/train/presentation/widgets/search_field.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';

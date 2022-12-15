@@ -38,7 +38,9 @@ class HomeUi extends GetView<HomeController> {
                       const Gap(48),
                       ...memberServices.asMap().entries.map((entry) {
                         final service = entry.value;
-                        return ServicesUi(service);
+                        return ServicesTileUi(
+                          service,
+                        );
                       }),
                     ],
                   ),

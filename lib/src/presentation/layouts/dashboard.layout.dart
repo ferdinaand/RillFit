@@ -96,8 +96,8 @@ class DashboardNavBarContent {
 const List<DashboardNavBarContent> allDestinations = <DashboardNavBarContent>[
   DashboardNavBarContent(
     title: 'Home',
-    icon: houseIcon,
-    activeIcon: houseActiveIcon,
+    icon: homeIcon,
+    activeIcon: homeActiveIcon,
   ),
   DashboardNavBarContent(
     title: 'Payments',
@@ -107,11 +107,11 @@ const List<DashboardNavBarContent> allDestinations = <DashboardNavBarContent>[
   DashboardNavBarContent(
     title: 'Activity',
     icon: targetIcon,
-    activeIcon: targetIcon,
+    activeIcon: targetActiveIcon,
   ),
   DashboardNavBarContent(
     title: 'Profile',
     icon: userIcon,
-    activeIcon: userIcon,
+    activeIcon: userActiveIcon,
   ),
 ];

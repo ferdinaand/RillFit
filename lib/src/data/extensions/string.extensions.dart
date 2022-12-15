@@ -6,7 +6,7 @@ extension StringsUtils on String {
       return this;
     }
 
-    return '${substring(0, 1).toUpperCase()}${substring(1)}';
+    return '${substring(0, 1).toUpperCase()}${substring(1).toLowerCase()}';
   }
 
   String get removeCountryCode {

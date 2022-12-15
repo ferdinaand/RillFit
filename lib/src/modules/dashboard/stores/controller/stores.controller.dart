@@ -9,4 +9,6 @@ class StoresController extends GetxController {
   }
 
   late TextEditingController searchController;
+
+  void searchStores(String? query) {}
 }

@@ -9,4 +9,6 @@ class TrainController extends GetxController {
   }
 
   late TextEditingController searchController;
+
+  void searchTrainings(String? query) {}
 }

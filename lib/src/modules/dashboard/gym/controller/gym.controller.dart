@@ -9,4 +9,6 @@ class GymController extends GetxController {
   }
 
   late TextEditingController searchController;
+
+  void searchGyms(String? query) {}
 }

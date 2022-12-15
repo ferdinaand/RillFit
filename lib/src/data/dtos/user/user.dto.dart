@@ -7,7 +7,6 @@ part 'user.dto.g.dart';
 
 @JsonSerializable(
   explicitToJson: true,
-  fieldRename: FieldRename.snake,
   createToJson: true,
 )
 @HiveType(typeId: 0)
@@ -27,11 +26,24 @@ class UserDto extends HiveObject {
   @HiveField(6)
   bool? isPhoneNumberVerified;
 
+  String get firstName => fullName?.split(' ').first ?? '';
+  String get lastName => fullName?.split(' ').last ?? '';
+
   UserDto({
     this.fullName,
     this.email,
     this.phoneNumber,
     this.role,
+    this.isPhoneNumberVerified,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  UserDto.empty({
+    this.fullName = '',
+    this.email = '',
+    this.phoneNumber = '',
+    this.role = '',
     this.isPhoneNumberVerified,
     this.createdAt,
     this.updatedAt,

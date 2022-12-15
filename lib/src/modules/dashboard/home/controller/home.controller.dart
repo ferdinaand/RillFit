@@ -1,3 +1,5 @@
-import 'package:get/get.dart';
+import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 
-class HomeController extends GetxController {}
+class HomeController extends BaseController {
+  String get firstName => currentUser.fullName ?? 'empty';
+}

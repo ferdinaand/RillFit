@@ -75,14 +75,31 @@ class StorageService extends GetxService implements IStorageService {
 
   @override
   Future<UserDto?> fetchCustomer() async {
-    final customer = await storage.read(
-      key: _customerKey,
-    );
+    try {
+      final customer = await storage.read(
+        key: _customerKey,
+      );
 
-    final userDto =
-        UserDto.fromJson(jsonDecode(customer ?? '') as Map<String, dynamic>);
-    log('customer data fetched successfully');
-    return userDto;
+      print(
+        json.decode(customer ?? ''),
+      );
+
+      final userDto = UserDto.fromJson(
+        json.decode(customer ?? '') as Map<String, dynamic>,
+      );
+
+      print(
+        userDto.toJson(),
+      );
+      log('customer data fetched successfully');
+      return userDto;
+    } catch (e, s) {
+      log(
+        e.toString(),
+        stackTrace: s,
+      );
+    }
+    return null;
   }
 
   @override

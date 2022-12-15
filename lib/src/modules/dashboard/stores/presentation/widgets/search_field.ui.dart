@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/dashboard/stores/controller/stores.controller.dart';
-import 'package:riilfit/src/presentation/resources/icons.res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class StoresSearchFieldUi extends GetView<StoresController> {
@@ -11,16 +9,14 @@ class StoresSearchFieldUi extends GetView<StoresController> {
   });
 
   @override
+  StoresController get controller => Get.put(StoresController());
+
+  @override
   Widget build(BuildContext context) {
-    return TextFieldUi(
+    return SearchFieldUi(
       controller: controller.searchController,
-      hintText: 'Search for gyms near you',
-      prefixIcon: Padding(
-        padding: const EdgeInsets.all(8),
-        child: SvgPicture.asset(
-          searchIcon,
-        ),
-      ),
+      hintText: 'Search for gym stores near you',
+      onChanged: controller.searchStores,
     );
   }
 }

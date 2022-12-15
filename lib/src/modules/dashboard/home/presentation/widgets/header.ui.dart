@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:riilfit/src/data/extensions/extensions.dart';
+import 'package:riilfit/src/modules/dashboard/home/controller/home.controller.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-class HomeHeaderUi extends StatelessWidget {
+class HomeHeaderUi extends GetView<HomeController> {
   const HomeHeaderUi({
     super.key,
   });
+
+  @override
+  HomeController get controller => Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +20,12 @@ class HomeHeaderUi extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: const [
-                TextUi.bodyLarge(
+              children: [
+                const TextUi.bodyLarge(
                   'Hi ',
                 ),
                 TextUi.bodyLarge(
-                  'Ayoleyi 👋🏾',
+                  '${controller.firstName.capitalizeFirstLetter} 👋🏾',
                 ),
               ],
             ),

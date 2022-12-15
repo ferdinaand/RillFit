@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logging/logging.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/domain/services/navigation.service.dart';
 import 'package:riilfit/src/domain/services/storage.service.dart';
 
@@ -31,5 +32,6 @@ Future<void> initializeServices() async {
   ///Init all services here
   Get
     ..lazyPut(StorageService.new)
-    ..lazyPut(NavigationService.new);
+    ..lazyPut(NavigationService.new)
+    ..lazyPut(BaseController.new, fenix: true);
 }
