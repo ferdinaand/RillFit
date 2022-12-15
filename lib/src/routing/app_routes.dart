@@ -6,6 +6,9 @@ abstract class Routes {
   static const page404 = '/404';
   static const home = '/app/home';
   static const app = '/app';
+  static const gym = '/app/gym';
+  static const train = '/app/train';
+  static const stores = '/app/stores';
   static const login = '/login';
   static const register = '/register';
   static const verifyPhone = '/verify-phone';

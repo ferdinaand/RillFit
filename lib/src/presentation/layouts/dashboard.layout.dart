@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/modules/dashboard/home/presentation/home.ui.dart';
 
 import 'package:riilfit/src/presentation/resources/res.dart';
 
@@ -26,7 +27,7 @@ class DashboardManager extends GetView<DashboardLayoutController> {
               index: controller.currentIndex,
               children: <Widget>[
                 //TODO add all dashboard pages
-                Container(),
+                const HomeUi(),
                 Container(),
                 Container(),
                 Container(),

@@ -10,6 +10,7 @@ const grayScale100 = Color(0xFFDAE0E8);
 const grayScale400 = Color(0xFFAAB2BA);
 const grayScale500 = Color(0xFF9299A3);
 const grayScale700 = Color(0xFF404B52);
+const grayScale800 = Color(0xFF1A1B1E);
 const grayScale900 = Color(0xFF0A0615);
 
 ///Alerts
@@ -20,3 +21,4 @@ const errorLight = Color(0xFFFCA5A5);
 
 ///Others
 const white = Color(0xFFFFFFFF);
+const white10 = Color(0x1AFFFFFF);
