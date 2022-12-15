@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/data/dtos/register/register.dto.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/data/extensions/extensions.dart';
 import 'package:riilfit/src/modules/authentication/verification/verify_phone/controller/verify_phone.controller.dart';
@@ -18,7 +17,6 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
 
   @override
   Widget build(BuildContext context) {
-    final registerDto = Get.arguments as RegisterDto? ?? RegisterDto.empty();
     return Obx(
       () {
         if (controller.viewState.isBusy) {
@@ -59,7 +57,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                                 ),
                                 const Gap(4),
                                 TextUi(
-                                  registerDto.phoneNumber.addCountryCode
+                                  controller.phoneNumber.addCountryCode
                                       .obscurePhoneNumber,
                                   textAlign: TextAlign.center,
                                   style: bodyMed.copyWith(

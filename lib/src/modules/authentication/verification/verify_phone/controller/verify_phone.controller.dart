@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/dtos/register/register.dto.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/domain/api/auth/auth.api.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
@@ -15,8 +16,12 @@ class VerifyPhoneController extends BaseController {
   @override
   void onInit() {
     enableButton();
+    final registerDto = Get.arguments as RegisterDto? ?? RegisterDto.empty();
+    phoneNumber = registerDto.phoneNumber;
     super.onInit();
   }
+
+  late String phoneNumber;
 
   //text field controllers
   final pinController = TextEditingController(
@@ -42,7 +47,15 @@ class VerifyPhoneController extends BaseController {
       final res = await AuthApi().initPhoneVerification(
         email: user?.email ?? '',
       );
-
+      if (res.success) {
+        showFlushBar(
+          message: 'Recovery code has been resent to $phoneNumber',
+        );
+      } else {
+        showFlushBar(
+          message: res.message ?? errorMessage,
+        );
+      }
       viewState = ViewState.idle;
 
       return;
