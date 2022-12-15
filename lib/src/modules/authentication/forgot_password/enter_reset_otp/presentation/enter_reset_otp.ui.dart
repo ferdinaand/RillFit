@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/enter_reset_otp/controller/enter_reset_otp.controller.dart';
 import 'package:riilfit/src/presentation/global_widgets/pin_fields.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
@@ -16,7 +17,6 @@ class ForgotPasswordEnterResetOtpUi
 
   @override
   Widget build(BuildContext context) {
-    final email = Get.arguments as String? ?? '';
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -50,7 +50,7 @@ class ForgotPasswordEnterResetOtpUi
                             ),
                             const Gap(4),
                             TextUi.bodyMed(
-                              email,
+                              controller.userEmail,
                               textAlign: TextAlign.center,
                               color: primary,
                               fontWeight: mediumText,
@@ -85,6 +85,7 @@ class ForgotPasswordEnterResetOtpUi
                       Obx(
                         () => PrimaryButtonUi(
                           text: 'Verify code',
+                          loading: controller.viewState.isBusy,
                           onPressed: controller.isButtonDisabled.value
                               ? null
                               : controller.verifyRecoveryCode,

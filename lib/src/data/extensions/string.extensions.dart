@@ -38,7 +38,7 @@ extension StringsUtils on String {
       return this;
     } else if (startsWith('0')) {
       //Phone number starts with 0, remove the 0 and add countryCode
-      return '$countryCodeWithPlus ${substring(1)}';
+      return '$countryCodeWithPlus${substring(1)}';
     } else {
       return this;
     }

@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:riilfit/src/domain/services/navigation.service.dart';
 import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:riilfit/src/utils/config.dart';
@@ -21,6 +22,8 @@ Future<void> main() async {
   await GetStorage.init();
 
   await initializeHive();
+
+  await initializeServices();
 
   setupLogging();
 
@@ -42,6 +45,7 @@ class RiilfitApp extends StatelessWidget {
       builder: (context, child) {
         return OverlaySupport.global(
           child: GetMaterialApp(
+            navigatorKey: Get.find<NavigationService>().navigatorKey,
             initialRoute: Routes.onboarding,
             unknownRoute: AppPages.unknownRoute,
             theme: AppThemes.light,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/set_new_password/controller/set_new_password.controller.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
@@ -37,6 +38,11 @@ class ForgotPasswordSetNewPasswordFormUi
             PasswordFieldUi(
               hintText: 'Re-enter your new password',
               controller: controller.confirmNewPasswordController,
+              validator: [
+                FormBuilderValidators.equal(
+                  controller.newPasswordController.text,
+                ),
+              ],
               onChanged: (_) {
                 controller.enableButton();
               },

@@ -38,6 +38,7 @@ class PinFieldUi extends StatelessWidget {
           appContext: context,
           length: length,
           controller: controller,
+          autoDisposeControllers: false,
           autoFocus: autofocus,
           obscureText: obscureText,
           blinkWhenObscuring: true,

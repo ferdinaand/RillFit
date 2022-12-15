@@ -53,10 +53,6 @@ class AppPages {
       page: () => const DashboardManager(),
     ),
     // GetPage(
-    //   name: Routes.selectCountry,
-    //   page: () => const SelectCountryUi(),
-    // ),
-    // GetPage(
     //   name: Routes.onboardingCompleted,
     //   page: () => const OnboardingCompletedUi(),
     // ),
