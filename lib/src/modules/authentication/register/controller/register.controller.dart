@@ -92,6 +92,10 @@ class RegisterController extends BaseController {
         await storageService.cacheCustomer(
           jsonEncode(res.payload['user']),
         );
+        showFlushBar(
+          message: res.message ??
+              'Signed up successfully, We have sent a verification code to ${phoneController.text}',
+        );
 
         unawaited(
           Get.toNamed<void>(
