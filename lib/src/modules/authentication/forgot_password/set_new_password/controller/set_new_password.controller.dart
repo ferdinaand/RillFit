@@ -1,11 +1,19 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/enum/error_type.enum.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
+import 'package:riilfit/src/domain/api/auth/auth.api.dart';
+import 'package:riilfit/src/domain/base/controller/base.controller.dart';
+import 'package:riilfit/src/presentation/resources/strings.res.dart';
+import 'package:riilfit/src/presentation/utility/flushbar/show-flushbar.helper.dart';
+import 'package:riilfit/src/routing/app_pages.dart';
 // import 'package:riilfit/src/data/remote_data_source/other_services/auth_repositories.dart';
 
-class ForgotPasswordSetNewPasswordController extends GetxController {
+class ForgotPasswordSetNewPasswordController extends BaseController {
   late GlobalKey<FormState> setNewPasswordFormKey;
   // final AuthRepositories _repositories = AuthRepositories();
   @override
@@ -20,11 +28,11 @@ class ForgotPasswordSetNewPasswordController extends GetxController {
 
   //text field controllers
   final newPasswordController = TextEditingController(
-    text: kDebugMode ? 'WAGMI1234' : null,
+    text: kDebugMode ? 'Riilfit123!@#' : null,
   );
 
   final confirmNewPasswordController = TextEditingController(
-    text: kDebugMode ? 'WAGMI1234' : null,
+    text: kDebugMode ? 'Riilfit123!@#' : null,
   );
 
   //Enable and disable button logic
@@ -32,24 +40,63 @@ class ForgotPasswordSetNewPasswordController extends GetxController {
 
   void enableButton() {
     isButtonDisabled.value = newPasswordController.text.isEmpty ||
-        confirmNewPasswordController.text.isEmpty ||
-        newPasswordController.text != confirmNewPasswordController.text;
+        confirmNewPasswordController.text.isEmpty;
 
     return;
   }
 
   Future<void> setNewPassword() async {
-    // final otp = await AuthRepositories.getOTP();
-    // // ignore: omit_local_variable_types
-    // final String userOtp = otp.toString();
-    // final email = await AuthRepositories.getEmail();
-    // // ignore: omit_local_variable_types
-    // final String userEmail = email.toString();
-    // final newPasswordDto = NewPasswordDto(
-    //   newPassword: newPasswordController.text,
-    //   otp:userOtp, //userOtp store in secure flutter package
-    //   email: userEmail, //userEmail Stored in secure flutter package
-    //   );
-    //   await _repositories.authPost(newPasswordDto, '/user/finishResetPassword');
+    try {
+      //Validate form
+      setNewPasswordFormKey.currentState!.save();
+      if (!setNewPasswordFormKey.currentState!.validate()) {
+        if (newPasswordController.text != confirmNewPasswordController.text) {
+          showFlushBar(message: "Passwords don't match");
+          return;
+        }
+
+        showFlushBar(
+          message: 'Kindly fix all validation issues',
+        );
+        return;
+      }
+
+      viewState = ViewState.busy;
+
+      final res = await AuthApi().finishResetPassword(
+        newPassword: newPasswordController.text,
+      );
+
+      if (res.success) {
+        showFlushBar(
+          message: passwordResetSuccessfulMessage,
+          errorType: ErrorType.success,
+        );
+
+        await Future<void>.delayed(const Duration(seconds: 1));
+
+        Get.until(
+          (route) => Get.currentRoute == Routes.login,
+        );
+        viewState = ViewState.idle;
+      } else {
+        showFlushBar(
+          message: res.message ?? errorMessage,
+        );
+        viewState = ViewState.idle;
+      }
+      return;
+    } catch (e, s) {
+      log(
+        e.toString(),
+        stackTrace: s,
+      );
+      showFlushBar(
+        message: errorMessage,
+      );
+      viewState = ViewState.idle;
+    } finally {
+      viewState = ViewState.idle;
+    }
   }
 }

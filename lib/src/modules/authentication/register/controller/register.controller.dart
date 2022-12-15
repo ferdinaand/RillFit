@@ -37,7 +37,7 @@ class RegisterController extends BaseController {
   );
 
   final passwordController = TextEditingController(
-    text: kDebugMode ? 'WAGMI12345' : null,
+    text: kDebugMode ? 'Password123!@#' : null,
   );
 
   //Enable and disable button logic
@@ -61,7 +61,7 @@ class RegisterController extends BaseController {
 
   Future<void> signUp() async {
     try {
-      //Verify that phone number is 11 char
+      //Validate form
       registerFormKey.currentState!.save();
       if (!registerFormKey.currentState!.validate()) {
         showFlushBar(

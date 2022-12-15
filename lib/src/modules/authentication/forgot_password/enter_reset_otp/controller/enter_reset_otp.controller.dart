@@ -4,17 +4,23 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/dtos/dto.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
+import 'package:riilfit/src/domain/api/auth/auth.api.dart';
+import 'package:riilfit/src/presentation/resources/res.dart';
+import 'package:riilfit/src/presentation/utility/flushbar/show-flushbar.helper.dart';
+import 'package:riilfit/src/routing/app_pages.dart';
 // import 'package:riilfit/src/data/remote_data_source/other_services/auth_repositories.dart';
 
 class ForgotPasswordEnterResetOtpController extends GetxController {
-  // final AuthRepositories _repositories = AuthRepositories();
   @override
   void onInit() {
+    userEmail = Get.arguments as String? ?? '';
     enableButton();
     super.onInit();
   }
 
+  late String userEmail;
   final _viewState = ViewState.idle.obs;
   ViewState get viewState => _viewState.value;
   set viewState(ViewState state) {
@@ -39,22 +45,43 @@ class ForgotPasswordEnterResetOtpController extends GetxController {
 
   Future<void> verifyRecoveryCode() async {
     try {
-      // viewState = ViewState.busy;
+      try {
+        final resetPasswordDto = ResetPasswordDto(
+          otp: pinController.text,
+          email: userEmail,
+        );
+        viewState = ViewState.busy;
 
-      // await _repositories.authPost(
-      //   {
-      //     'code': pinController.text,
-      //   },
-      //   '/sms/check-verification-code',
-      // );
-      // viewState = ViewState.idle;
+        final res = await AuthApi().verifyResetCode(
+          resetPasswordDto: resetPasswordDto,
+        );
 
-      // unawaited(
-      //   Get.toNamed<void>(
-      //     Routes.forgotPasswordSetNewPassword,
-      //     arguments: pinController.text,
-      //   ),
-      // );
+        if (res.success) {
+          unawaited(
+            Get.offNamed<void>(
+              Routes.forgotPasswordSetNewPassword,
+            ),
+          );
+          viewState = ViewState.idle;
+        } else {
+          showFlushBar(
+            message: res.message ?? errorMessage,
+          );
+          viewState = ViewState.idle;
+        }
+        return;
+      } catch (e, s) {
+        log(
+          e.toString(),
+          stackTrace: s,
+        );
+        showFlushBar(
+          message: errorMessage,
+        );
+        viewState = ViewState.idle;
+      } finally {
+        viewState = ViewState.idle;
+      }
     } catch (e, s) {
       log(
         e.toString(),

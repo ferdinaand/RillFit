@@ -67,4 +67,53 @@ class AuthApi {
       return baseDtoFromJson(e.response?.data as String? ?? '');
     }
   }
+
+  Future<BaseDto> initResetPassword({
+    required String email,
+  }) async {
+    try {
+      final response = await connect().post<String>(
+        '/user/initResetPassword',
+        data: {
+          'email': email,
+        },
+      );
+
+      return baseDtoFromJson(response.data!);
+    } on DioError catch (e) {
+      return baseDtoFromJson(e.response?.data as String? ?? '');
+    }
+  }
+
+  Future<BaseDto> verifyResetCode({
+    required ResetPasswordDto resetPasswordDto,
+  }) async {
+    try {
+      final response = await connect().post<String>(
+        '/user/finishResetPassword',
+        data: resetPasswordDto.toString(),
+      );
+
+      return baseDtoFromJson(response.data!);
+    } on DioError catch (e) {
+      return baseDtoFromJson(e.response?.data as String? ?? '');
+    }
+  }
+
+  Future<BaseDto> finishResetPassword({
+    required String newPassword,
+  }) async {
+    try {
+      final response = await connect().post<String>(
+        '/user/resetPassword',
+        data: {
+          'newPassword': newPassword,
+        },
+      );
+
+      return baseDtoFromJson(response.data!);
+    } on DioError catch (e) {
+      return baseDtoFromJson(e.response?.data as String? ?? '');
+    }
+  }
 }

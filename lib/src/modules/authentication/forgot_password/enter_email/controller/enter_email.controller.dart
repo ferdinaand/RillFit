@@ -4,7 +4,12 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
+import 'package:riilfit/src/domain/api/auth/auth.api.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
+import 'package:riilfit/src/presentation/resources/strings.res.dart';
+import 'package:riilfit/src/presentation/utility/flushbar/show-flushbar.helper.dart';
+import 'package:riilfit/src/routing/app_pages.dart';
 // import 'package:riilfit/src/data/remote_data_source/other_services/auth_repositories.dart';
 
 class ForgotPasswordEnterEmailController extends BaseController {
@@ -40,22 +45,38 @@ class ForgotPasswordEnterEmailController extends BaseController {
 
   Future<void> sendOtpToEmail() async {
     try {
-      // await AuthRepositories.storeEmail(emailController.text);
-      // viewState = ViewState.busy;
-      // await _repositories.authPost(enterEmailDto, '/user/initResetPassword');
+      viewState = ViewState.busy;
 
-      // viewState = ViewState.idle;
-      // unawaited(
-      //   Get.toNamed<void>(
-      //     Routes.forgotPasswordEnterOtp,
-      //     arguments: emailController.text,
-      //   ),
-      // );
+      final res = await AuthApi().initResetPassword(
+        email: emailController.text,
+      );
+
+      if (res.success) {
+        unawaited(
+          Get.toNamed<void>(
+            Routes.forgotPasswordEnterOtp,
+            arguments: emailController.text,
+          ),
+        );
+        viewState = ViewState.idle;
+      } else {
+        showFlushBar(
+          message: res.message ?? errorMessage,
+        );
+        viewState = ViewState.idle;
+      }
+      return;
     } catch (e, s) {
       log(
         e.toString(),
         stackTrace: s,
       );
+      showFlushBar(
+        message: errorMessage,
+      );
+      viewState = ViewState.idle;
+    } finally {
+      viewState = ViewState.idle;
     }
   }
 }

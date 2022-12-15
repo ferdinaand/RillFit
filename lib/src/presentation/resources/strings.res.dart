@@ -7,6 +7,8 @@ const countryCode = '234';
 
 ///Error Messages
 const passwordTooWeak = 'password too weak';
+const passwordResetSuccessfulMessage =
+    'Password reset successfully, Kindly sign in to continue';
 const errorMessage =
     "Sorry about this, Something's wrong but we are fixing it.";
 const networkError =
@@ -16,6 +18,6 @@ const networkError =
 const maxJsonStringLength = 8192;
 
 const passwordRegEx =
-    r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$';
+    r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&])[A-Za-z\d@$#!%*?&]{8,}$';
 
 const pinLength = 6;

@@ -17,7 +17,6 @@ class ForgotPasswordEnterResetOtpUi
 
   @override
   Widget build(BuildContext context) {
-    final email = Get.arguments as String? ?? '';
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -51,7 +50,7 @@ class ForgotPasswordEnterResetOtpUi
                             ),
                             const Gap(4),
                             TextUi.bodyMed(
-                              email,
+                              controller.userEmail,
                               textAlign: TextAlign.center,
                               color: primary,
                               fontWeight: mediumText,

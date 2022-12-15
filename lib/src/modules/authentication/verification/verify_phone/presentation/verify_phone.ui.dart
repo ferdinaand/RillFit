@@ -23,7 +23,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
       () {
         if (controller.viewState.isBusy) {
           return const NetworkLoaderUi(
-            message: 'Hold on, creating your account...',
+            message: 'Hold on, verifying otp...',
           );
         }
         return GestureDetector(

@@ -15,7 +15,6 @@ Dio connect() {
     baseUrl: apiBaseUrl,
     connectTimeout: 60000,
     receiveTimeout: 60000,
-    responseType: ResponseType.plain,
   );
   final dio = Dio(options);
   (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -45,6 +44,10 @@ Dio connect() {
         if (e.type == DioErrorType.response) {
           //response error or backend error
           //log error response and stacktrace
+          log(
+            e.response?.statusCode?.toString() ?? '',
+            stackTrace: e.stackTrace,
+          );
           log(
             e.response?.data?.toString() ?? '',
             stackTrace: e.stackTrace,

@@ -12,7 +12,7 @@ class PasswordFieldUi extends StatelessWidget {
     required this.hintText,
     required this.controller,
     this.onChanged,
-    this.validator,
+    this.validator = const [],
     this.focusNode,
     this.onTap,
     this.autofocus = false,
@@ -21,7 +21,7 @@ class PasswordFieldUi extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final ValueChanged<String?>? onChanged;
-  final FormFieldValidator<String?>? validator;
+  final List<FormFieldValidator<String?>> validator;
   final FocusNode? focusNode;
   final VoidCallback? onTap;
   final bool autofocus;
@@ -40,14 +40,17 @@ class PasswordFieldUi extends StatelessWidget {
         onTap: onTap,
         helperText:
             r'Password should be made up of alphabets and numbers of 8 characters (Acceptable characters are A-Z, a-z, 1-9, ! @ # $ *).',
-        validator: FormBuilderValidators.compose([
-          FormBuilderValidators.match(
-            passwordRegEx,
-          ),
-          FormBuilderValidators.required(
-            errorText: 'A valid email address is required to proceed',
-          ),
-        ]),
+        validator: FormBuilderValidators.compose(
+          [
+            FormBuilderValidators.match(
+              passwordRegEx,
+            ),
+            FormBuilderValidators.required<String>(
+              errorText: 'A valid email address is required to proceed',
+            ),
+            ...validator,
+          ],
+        ),
         suffixIcon: GestureDetector(
           onTap: obscureText.toggle,
           child: Padding(

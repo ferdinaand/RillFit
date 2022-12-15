@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
@@ -8,6 +9,8 @@ import 'package:riilfit/src/data/dtos/login/login.dto.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/domain/api/auth/auth.api.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
+import 'package:riilfit/src/presentation/resources/res.dart';
+import 'package:riilfit/src/presentation/utility/flushbar/show-flushbar.helper.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
 class LoginController extends BaseController {
@@ -26,7 +29,7 @@ class LoginController extends BaseController {
   );
 
   final passwordController = TextEditingController(
-    text: kDebugMode ? 'WAGMI12345' : null,
+    text: kDebugMode ? 'Riilfit123!@#' : null,
   );
 
   //Enable and disable button logic
@@ -47,6 +50,14 @@ class LoginController extends BaseController {
 
   Future<void> login() async {
     try {
+      //Validate form
+      loginFormKey.currentState!.save();
+      if (!loginFormKey.currentState!.validate()) {
+        showFlushBar(
+          message: 'Kindly fix validation issues',
+        );
+        return;
+      }
       viewState = ViewState.busy;
 
       final loginDto = LoginDto(
@@ -66,7 +77,7 @@ class LoginController extends BaseController {
 
         //store user
         await storageService.cacheCustomer(
-          res.payload['user'] as String,
+          jsonEncode(res.payload['user']),
         );
 
         unawaited(
@@ -76,12 +87,18 @@ class LoginController extends BaseController {
         );
         viewState = ViewState.idle;
       } else {
+        showFlushBar(
+          message: res.message ?? errorMessage,
+        );
         viewState = ViewState.idle;
       }
     } catch (e, s) {
       log(
         e.toString(),
         stackTrace: s,
+      );
+      showFlushBar(
+        message: errorMessage,
       );
       viewState = ViewState.idle;
     } finally {
