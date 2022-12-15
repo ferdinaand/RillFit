@@ -93,37 +93,52 @@ class ProfileUi extends GetView<ProfileController> {
                         horizontal: 20,
                         vertical: 16,
                       ),
+                      margin: baseViewPadding,
                       decoration: const BoxDecoration(
                         color: primary,
                         borderRadius: BorderRadius.all(
                           regularRadius,
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.min,
+                      child: Row(
                         children: [
-                          Text.rich(
-                            TextSpan(
-                              text:
-                                  'Do you own a gym or sell gym equipments, or are you a gym trainer? ',
-                              style: bodySmall.copyWith(
-                                height: 1.5,
-                              ),
+                          SvgPicture.asset(
+                            favoriteIcon,
+                            color: grayScale50,
+                          ),
+                          const Gap(16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              mainAxisSize: MainAxisSize.min,
                               children: [
-                                TextSpan(
-                                  text: 'Create a vendor account',
-                                  style: bodySmall.copyWith(
-                                    fontWeight: semiBoldText,
-                                    decoration: TextDecoration.underline,
+                                Text.rich(
+                                  TextSpan(
+                                    text:
+                                        'Do you own a gym or sell gym equipments, or are you a gym trainer? ',
+                                    style: bodySmall.copyWith(
+                                      height: 1.5,
+                                      color: grayScale50,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: 'Create a vendor account',
+                                        style: bodySmall.copyWith(
+                                          fontWeight: semiBoldText,
+                                          color: white,
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap =
+                                              controller.createVendorAccount,
+                                      ),
+                                      const TextSpan(
+                                        text:
+                                            ' now to put yourself on Riilfit and earn!',
+                                        style: bodySmall,
+                                      ),
+                                    ],
                                   ),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = controller.createVendorAccount,
-                                ),
-                                const TextSpan(
-                                  text:
-                                      ' now to put yourself on Riilfit and earn!',
-                                  style: bodySmall,
                                 ),
                               ],
                             ),
@@ -146,13 +161,14 @@ class ProfileUi extends GetView<ProfileController> {
                       title: 'Support',
                     ),
                     const ProfileTileUi(
-                      icon: exitIcon,
+                      icon: aboutIcon,
                       title: 'About Riilfit',
                       tag: VersionNumberCardUi(),
                     ),
-                    const ProfileTileUi(
+                    ProfileTileUi(
                       icon: exitIcon,
                       title: 'Logout',
+                      onTap: controller.logout,
                     ),
                     const Gap(48),
                   ],

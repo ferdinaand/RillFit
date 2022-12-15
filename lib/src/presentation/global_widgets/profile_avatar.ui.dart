@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 
 class ProfileAvatar extends StatelessWidget {
@@ -21,18 +23,22 @@ class ProfileAvatar extends StatelessWidget {
       message: 'Profile Image',
       child: GestureDetector(
         onTap: onTap,
-        child: Container(
-          width: size - padding - borderSize,
-          height: size - padding - borderSize,
-          padding: EdgeInsets.all(padding * 0.5),
-          alignment: Alignment.center,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: grayScale50,
-          ),
-          child: SvgPicture.asset(
-            userIcon,
-            color: primary20,
+        child: Obx(
+          () => Container(
+            width: size - padding - borderSize,
+            height: size - padding - borderSize,
+            padding: EdgeInsets.all(padding * 0.5),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Get.find<ThemeService>().isDarkMode
+                  ? grayScale700
+                  : grayScale50,
+            ),
+            child: SvgPicture.asset(
+              userIcon,
+              color: primary20,
+            ),
           ),
         ),
       ),
