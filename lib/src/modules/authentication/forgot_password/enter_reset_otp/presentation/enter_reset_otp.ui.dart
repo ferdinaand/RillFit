@@ -4,7 +4,6 @@ import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/modules/authentication/forgot_password/enter_reset_otp/controller/enter_reset_otp.controller.dart';
 import 'package:riilfit/src/presentation/global_widgets/pin_fields.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class ForgotPasswordEnterResetOtpUi
@@ -73,7 +72,7 @@ class ForgotPasswordEnterResetOtpUi
                           child: Obx(
                             () => TextUi.bodyMed(
                               'Resend recovery code',
-                              color: AppThemes.isDarkMode
+                              color: controller.themeService.isDarkMode
                                   ? grayScale100
                                   : grayScale700,
                               fontWeight: mediumText,

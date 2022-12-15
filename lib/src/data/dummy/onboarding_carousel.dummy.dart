@@ -15,19 +15,19 @@ class OnboardingCarouselSkeleton {
 final onboardingCarouselContent = <OnboardingCarouselSkeleton>[
   const OnboardingCarouselSkeleton(
     title: 'Welcome to Riilfit',
-    image: riilfitLogoPng,
+    image: imagePlaceholder,
     description:
         'Riilfit has workouts on demand that you can find based on how much time you have',
   ),
   const OnboardingCarouselSkeleton(
     title: 'Workout Categories',
-    image: riilfitLogoPng,
+    image: imagePlaceholder,
     description:
         'Workout categories will help you gain strength, get in better shape and embrace a healthy lifestyle',
   ),
   const OnboardingCarouselSkeleton(
     title: 'Save time & money',
-    image: riilfitLogoPng,
+    image: imagePlaceholder,
     description:
         'Find exclusive deals on popular products and get the items you love delivered or ready for pickup.',
   ),

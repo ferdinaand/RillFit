@@ -33,15 +33,19 @@ class MainAppbarUi extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.actions,
     required this.title,
+    this.showBackButton = true,
   });
 
   final List<Widget>? actions;
   final String title;
+  final bool showBackButton;
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
       leadingWidth: 64.w,
-      leading: const AuthBackButtonUi(),
+      leading:
+          showBackButton ? const AuthBackButtonUi() : const SizedBox.shrink(),
       actions: actions,
       centerTitle: true,
       title: TextUi.bodyLarge(

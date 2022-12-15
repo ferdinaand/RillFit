@@ -5,7 +5,6 @@ import 'package:riilfit/src/modules/authentication/forgot_password/enter_email/c
 import 'package:riilfit/src/modules/authentication/forgot_password/enter_email/presentation/widgets/enter_email_form.ui.dart';
 import 'package:riilfit/src/presentation/global_widgets/network_loader.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class ForgotPasswordEnterEmailUi
@@ -69,7 +68,7 @@ class ForgotPasswordEnterEmailUi
                               child: Obx(
                                 () => TextUi.bodyMed(
                                   'Sign in instead',
-                                  color: AppThemes.isDarkMode
+                                  color: controller.themeService.isDarkMode
                                       ? grayScale100
                                       : grayScale700,
                                   fontWeight: mediumText,

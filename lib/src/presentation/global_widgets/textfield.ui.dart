@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class TextFieldUi extends StatefulWidget {
@@ -116,10 +116,14 @@ class _TextFieldUiState extends State<TextFieldUi> {
             obscureText: widget.obscureText,
             style: hintTextStyle.copyWith(
               fontWeight: FontWeight.w600,
-              color: AppThemes.isDarkMode ? grayScale100 : grayScale900,
+              color: Get.find<ThemeService>().isDarkMode
+                  ? grayScale100
+                  : grayScale900,
               height: 1.5,
             ),
-            cursorColor: AppThemes.isDarkMode ? grayScale100 : grayScale900,
+            cursorColor: Get.find<ThemeService>().isDarkMode
+                ? grayScale100
+                : grayScale900,
             cursorWidth: 1,
             textInputAction: widget.textInputAction,
             textAlignVertical: TextAlignVertical.center,

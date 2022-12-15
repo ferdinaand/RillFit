@@ -5,7 +5,6 @@ import 'package:riilfit/src/modules/authentication/login/controller/login.contro
 import 'package:riilfit/src/modules/authentication/login/presentation/widgets/login_form.ui.dart';
 import 'package:riilfit/src/presentation/global_widgets/network_loader.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class LoginUi extends GetView<LoginController> {
@@ -71,9 +70,10 @@ class LoginUi extends GetView<LoginController> {
                                     child: Obx(
                                       () => TextUi.bodyMed(
                                         'Forgot password?',
-                                        color: AppThemes.isDarkMode
-                                            ? grayScale100
-                                            : grayScale700,
+                                        color:
+                                            controller.themeService.isDarkMode
+                                                ? grayScale100
+                                                : grayScale700,
                                         fontWeight: mediumText,
                                       ),
                                     ),

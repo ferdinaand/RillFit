@@ -11,3 +11,5 @@ const walletIcon = 'assets/svg/wallet.svg';
 const homeActiveIcon = 'assets/svg/home-active.svg';
 const homeIcon = 'assets/svg/home.svg';
 const searchIcon = 'assets/svg/search.svg';
+const sunIcon = 'assets/svg/sun.svg';
+const moonIcon = 'assets/svg/moon.svg';

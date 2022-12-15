@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:riilfit/src/domain/services/navigation.service.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:riilfit/src/utils/config.dart';
 
@@ -48,9 +48,9 @@ class RiilfitApp extends StatelessWidget {
             navigatorKey: Get.find<NavigationService>().navigatorKey,
             initialRoute: Routes.onboarding,
             unknownRoute: AppPages.unknownRoute,
-            theme: AppThemes.light,
-            themeMode: AppThemes.getThemeMode(),
-            darkTheme: AppThemes.dark,
+            theme: Get.find<ThemeService>().light,
+            themeMode: Get.find<ThemeService>().getThemeMode(),
+            darkTheme: Get.find<ThemeService>().dark,
             getPages: AppPages.pages,
             title: 'Riilfit',
             debugShowCheckedModeBanner: false,

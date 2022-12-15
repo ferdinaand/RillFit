@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/modules/dashboard/home/presentation/home.ui.dart';
-
+import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
+import 'package:riilfit/src/presentation/views.dart';
 
 class DashboardManager extends GetView<DashboardLayoutController> {
   const DashboardManager({super.key});
@@ -30,7 +30,7 @@ class DashboardManager extends GetView<DashboardLayoutController> {
                 const HomeUi(),
                 Container(),
                 Container(),
-                Container(),
+                const ProfileUi(),
               ],
             ),
           ),
@@ -89,7 +89,7 @@ class DashboardManager extends GetView<DashboardLayoutController> {
   }
 }
 
-class DashboardLayoutController extends GetxController {
+class DashboardLayoutController extends BaseController {
   final _currentIndex = 0.obs;
   int get currentIndex => _currentIndex.value;
   set currentIndex(int i) => _currentIndex.value = i;

@@ -6,7 +6,6 @@ import 'package:riilfit/src/modules/authentication/verification/verify_phone/con
 import 'package:riilfit/src/presentation/global_widgets/network_loader.ui.dart';
 import 'package:riilfit/src/presentation/global_widgets/pin_fields.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class VerifyPhoneUi extends GetView<VerifyPhoneController> {
@@ -75,9 +74,10 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                                       () => TextUi(
                                         'Change phone number',
                                         style: bodySmall.copyWith(
-                                          color: AppThemes.isDarkMode
-                                              ? grayScale100
-                                              : grayScale700,
+                                          color:
+                                              controller.themeService.isDarkMode
+                                                  ? grayScale100
+                                                  : grayScale700,
                                           fontWeight: mediumText,
                                           decoration: TextDecoration.underline,
                                         ),
@@ -103,7 +103,7 @@ class VerifyPhoneUi extends GetView<VerifyPhoneController> {
                               child: Obx(
                                 () => TextUi.bodyMed(
                                   'Resend security code',
-                                  color: AppThemes.isDarkMode
+                                  color: controller.themeService.isDarkMode
                                       ? grayScale100
                                       : grayScale700,
                                   fontWeight: mediumText,

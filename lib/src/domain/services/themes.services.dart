@@ -4,39 +4,48 @@ import 'package:get_storage/get_storage.dart';
 import 'package:riilfit/src/presentation/themes/dark.theme.dart';
 import 'package:riilfit/src/presentation/themes/light.theme.dart';
 
-class AppThemes extends GetxService {
-  AppThemes._();
+abstract class IThemeService {
+  ThemeMode getThemeMode();
+  bool isDarkModeSaved();
+  void saveThemeMode({required bool isDarkMode});
+  void changeThemeMode();
+}
 
+class ThemeService extends GetxService implements IThemeService {
   @override
   void onInit() {
+    _storage = GetStorage();
     _isDarkMode(isDarkModeSaved());
     super.onInit();
   }
 
-  static final light = lightTheme;
-  static ThemeData dark = darkTheme;
+  final light = lightTheme;
+  final dark = darkTheme;
 
-  static final _storage = GetStorage();
+  late GetStorage _storage;
   static const themeKey = 'isDarkMode';
 
-  static final _isDarkMode = isDarkModeSaved().obs;
+  final _isDarkMode = false.obs;
+  bool get isDarkMode => _isDarkMode.value;
 
-  static bool get isDarkMode => _isDarkMode.value;
-
-  static ThemeMode getThemeMode() {
+  @override
+  ThemeMode getThemeMode() {
     return isDarkModeSaved() ? ThemeMode.dark : ThemeMode.light;
   }
 
-  static bool isDarkModeSaved() {
+  @override
+  bool isDarkModeSaved() {
     return _storage.read(themeKey) ?? false;
   }
 
-  static void saveThemeMode({required bool isDarkMode}) {
+  @override
+  void saveThemeMode({required bool isDarkMode}) {
     _isDarkMode(isDarkMode);
     _storage.write(themeKey, isDarkMode);
   }
 
-  static void changeThemeMode() {
+  @override
+  void changeThemeMode() {
     Get.changeThemeMode(isDarkModeSaved() ? ThemeMode.light : ThemeMode.dark);
     saveThemeMode(isDarkMode: !isDarkModeSaved());
   }

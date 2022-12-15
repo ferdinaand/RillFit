@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/domain/services/navigation.service.dart';
 import 'package:riilfit/src/domain/services/storage.service.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
 
 Future<void> initializeHive() async {
   //Get application directory (storage directory on device)
@@ -32,6 +33,7 @@ Future<void> initializeServices() async {
   ///Init all services here
   Get
     ..lazyPut(StorageService.new)
+    ..lazyPut(ThemeService.new)
     ..lazyPut(NavigationService.new)
     ..lazyPut(BaseController.new, fenix: true);
 }

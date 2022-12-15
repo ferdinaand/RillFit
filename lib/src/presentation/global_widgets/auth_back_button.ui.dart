@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 
 class AuthBackButtonUi extends StatelessWidget {
   const AuthBackButtonUi({
@@ -36,7 +36,9 @@ class AuthBackButtonUi extends StatelessWidget {
               child: SvgPicture.asset(
                 backIcon,
                 fit: BoxFit.none,
-                color: AppThemes.isDarkMode ? grayScale100 : grayScale900,
+                color: Get.find<ThemeService>().isDarkMode
+                    ? grayScale100
+                    : grayScale900,
                 width: size,
                 height: size,
               ),

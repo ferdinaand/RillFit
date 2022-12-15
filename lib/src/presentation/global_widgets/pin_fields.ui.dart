@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 
 class PinFieldUi extends StatelessWidget {
   const PinFieldUi({
@@ -60,9 +60,13 @@ class PinFieldUi extends StatelessWidget {
             borderRadius: const BorderRadius.all(
               regularRadius,
             ),
-            activeColor: AppThemes.isDarkMode ? grayScale500 : grayScale50,
+            activeColor: Get.find<ThemeService>().isDarkMode
+                ? grayScale500
+                : grayScale50,
             selectedColor: primary,
-            inactiveColor: AppThemes.isDarkMode ? grayScale500 : grayScale50,
+            inactiveColor: Get.find<ThemeService>().isDarkMode
+                ? grayScale500
+                : grayScale50,
           ),
           cursorColor: primary,
           cursorHeight: 24,

@@ -7,12 +7,13 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/data/dtos/dto.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/domain/api/auth/auth.api.dart';
+import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/utility/flushbar/show-flushbar.helper.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 // import 'package:riilfit/src/data/remote_data_source/other_services/auth_repositories.dart';
 
-class ForgotPasswordEnterResetOtpController extends GetxController {
+class ForgotPasswordEnterResetOtpController extends BaseController {
   @override
   void onInit() {
     userEmail = Get.arguments as String? ?? '';
@@ -22,7 +23,9 @@ class ForgotPasswordEnterResetOtpController extends GetxController {
 
   late String userEmail;
   final _viewState = ViewState.idle.obs;
+  @override
   ViewState get viewState => _viewState.value;
+  @override
   set viewState(ViewState state) {
     _viewState.value = state;
   }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/dummy/onboarding_carousel.dummy.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class OnBoardingCarouselUi extends StatelessWidget {
@@ -17,11 +18,11 @@ class OnBoardingCarouselUi extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          child: Image.asset(
+          child: SvgPicture.asset(
             content.image,
             width: context.width,
             height: context.width,
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.none,
           ),
         ),
         const Gap(24),
@@ -32,7 +33,9 @@ class OnBoardingCarouselUi extends StatelessWidget {
         Obx(
           () => TextUi.bodySmall(
             content.description,
-            color: AppThemes.isDarkMode ? grayScale100 : grayScale700,
+            color: Get.find<ThemeService>().isDarkMode
+                ? grayScale100
+                : grayScale700,
             textAlign: TextAlign.center,
           ).paddingSymmetric(horizontal: 12),
         ),

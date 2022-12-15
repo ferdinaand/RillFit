@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:get/get.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-import 'package:riilfit/src/presentation/themes/app.themes.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class PhoneInputField extends StatelessWidget {
@@ -24,7 +25,9 @@ class PhoneInputField extends StatelessWidget {
           height: 48,
           decoration: BoxDecoration(
             border: Border.all(
-              color: AppThemes.isDarkMode ? grayScale700 : grayScale100,
+              color: Get.find<ThemeService>().isDarkMode
+                  ? grayScale700
+                  : grayScale100,
             ),
             borderRadius: const BorderRadius.all(
               smallRadius,

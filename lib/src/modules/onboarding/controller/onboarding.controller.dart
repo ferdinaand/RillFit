@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
-class OnboardingController extends GetxController {
+class OnboardingController extends BaseController {
   @override
   void onInit() {
     pageController = PageController();

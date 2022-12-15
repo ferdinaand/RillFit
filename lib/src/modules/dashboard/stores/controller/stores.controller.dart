@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 
-class StoresController extends GetxController {
+class StoresController extends BaseController {
   @override
   void onInit() {
     searchController = TextEditingController();
