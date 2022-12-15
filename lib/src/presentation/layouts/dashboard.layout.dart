@@ -59,12 +59,16 @@ class DashboardManager extends GetView<DashboardLayoutController> {
                 final index = entry.key;
                 final isActive = controller.currentIndex == index;
                 return BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    isActive ? destination.activeIcon : destination.icon,
-                    color: isActive ? primary : grayScale500,
-                    height: 24,
-                    width: 24,
-                  ).marginOnly(bottom: 6),
+                  icon: AnimatedCrossFade(
+                    duration: const Duration(milliseconds: 250),
+                    firstCurve: Curves.easeOut,
+                    secondCurve: Curves.easeOut,
+                    crossFadeState: isActive
+                        ? CrossFadeState.showFirst
+                        : CrossFadeState.showSecond,
+                    firstChild: renderIcon(destination.activeIcon, primary),
+                    secondChild: renderIcon(destination.icon, grayScale500),
+                  ),
                   label: destination.title,
                 );
               }).toList(),
@@ -73,6 +77,15 @@ class DashboardManager extends GetView<DashboardLayoutController> {
         ),
       ),
     );
+  }
+
+  Widget renderIcon(String icon, Color color) {
+    return SvgPicture.asset(
+      icon,
+      color: color,
+      height: 24,
+      width: 24,
+    ).marginOnly(bottom: 6);
   }
 }
 

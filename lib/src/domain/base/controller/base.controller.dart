@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/dtos/user/user.dto.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
@@ -12,12 +10,6 @@ class BaseController extends GetxController {
     storageService = Get.find<StorageService>();
     currentUser = await storageService.fetchCustomer();
     super.onInit();
-  }
-
-  @override
-  Future<void> onReady() async {
-    log(currentUser.firstName);
-    super.onReady();
   }
 
   late StorageService storageService;

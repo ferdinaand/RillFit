@@ -15,8 +15,8 @@ class OnboardingController extends GetxController {
     super.onInit();
   }
 
-  late PageController pageController;
-  late Timer _timer;
+  late PageController? pageController;
+  late Timer? _timer;
 
   void autoAnimatePages(Timer timer) {
     if (currentIndex < 2) {
@@ -25,7 +25,11 @@ class OnboardingController extends GetxController {
       currentIndex = 0;
     }
 
-    pageController.animateToPage(
+    if (pageController == null) {
+      return;
+    }
+
+    pageController!.animateToPage(
       currentIndex,
       duration: const Duration(milliseconds: 1000),
       curve: Curves.fastOutSlowIn,
@@ -52,8 +56,9 @@ class OnboardingController extends GetxController {
 
   @override
   void onClose() {
+    pageController?.dispose();
+    _timer?.cancel();
+    _timer = null;
     super.onClose();
-    pageController.dispose();
-    _timer.cancel();
   }
 }

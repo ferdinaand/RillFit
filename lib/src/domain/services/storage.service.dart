@@ -20,9 +20,10 @@ abstract class IStorageService {
 
 class StorageService extends GetxService implements IStorageService {
   @override
-  void onInit() {
+  Future<void> onInit() async {
     //init logic can go here
     storage = const FlutterSecureStorage();
+    isLoggedIn = await fetchAuthToken() != null;
     super.onInit();
   }
 
@@ -30,7 +31,14 @@ class StorageService extends GetxService implements IStorageService {
   static const _authTokenKey = 'token';
 
   late FlutterSecureStorage storage;
-  bool isLoggedIn = false;
+
+  final _isLoggedIn = false.obs;
+  bool get isLoggedIn => _isLoggedIn.value;
+  set isLoggedIn(bool value) {
+    _isLoggedIn
+      ..value = value
+      ..refresh();
+  }
 
   @override
   Future<void> storeItem({required String key, required String value}) async {
@@ -51,6 +59,7 @@ class StorageService extends GetxService implements IStorageService {
   @override
   Future<void> deleteAllItems() async {
     await storage.deleteAll();
+    isLoggedIn = false;
     log('deleted all items successfully');
   }
 
@@ -80,17 +89,10 @@ class StorageService extends GetxService implements IStorageService {
         key: _customerKey,
       );
 
-      print(
-        json.decode(customer ?? ''),
-      );
-
       final userDto = UserDto.fromJson(
         json.decode(customer ?? '') as Map<String, dynamic>,
       );
 
-      print(
-        userDto.toJson(),
-      );
       log('customer data fetched successfully');
       return userDto;
     } catch (e, s) {
@@ -108,6 +110,7 @@ class StorageService extends GetxService implements IStorageService {
       key: _authTokenKey,
       value: 'Bearer $token',
     );
+    isLoggedIn = true;
     log('cached auth token successfully');
     return;
   }
@@ -117,6 +120,7 @@ class StorageService extends GetxService implements IStorageService {
     await deleteItem(
       key: _authTokenKey,
     );
+    isLoggedIn = false;
     log('auth token deleted successfully');
     return;
   }
@@ -126,6 +130,8 @@ class StorageService extends GetxService implements IStorageService {
     final token = await storage.read(
       key: _authTokenKey,
     );
+    print(token);
+    isLoggedIn = token != null;
     log('auth token fetched successfully');
     return token;
   }

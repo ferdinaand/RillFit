@@ -24,8 +24,10 @@ class HomeHeaderUi extends GetView<HomeController> {
                 const TextUi.bodyLarge(
                   'Hi ',
                 ),
-                TextUi.bodyLarge(
-                  '${controller.firstName.capitalizeFirstLetter} 👋🏾',
+                Obx(
+                  () => TextUi.bodyLarge(
+                    '${controller.firstName.capitalizeFirstLetter} 👋🏾',
+                  ),
                 ),
               ],
             ),

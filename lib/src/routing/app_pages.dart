@@ -57,17 +57,14 @@ class AppPages {
     ),
     GetPage(
       name: Routes.gym,
-      transition: Transition.downToUp,
       page: () => const GymUi(),
     ),
     GetPage(
       name: Routes.stores,
-      transition: Transition.downToUp,
       page: () => const StoresUi(),
     ),
     GetPage(
       name: Routes.train,
-      transition: Transition.downToUp,
       page: () => const TrainUi(),
     ),
   ];
