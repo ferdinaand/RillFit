@@ -61,7 +61,9 @@ class DashboardManager extends GetView<DashboardLayoutController> {
                   icon: SvgPicture.asset(
                     isActive ? destination.activeIcon : destination.icon,
                     color: isActive ? primary : grayScale500,
-                  ),
+                    height: 24,
+                    width: 24,
+                  ).marginOnly(bottom: 6),
                   label: destination.title,
                 );
               }).toList(),
