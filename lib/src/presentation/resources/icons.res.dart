@@ -8,3 +8,4 @@ const userIcon = 'assets/svg/user.svg';
 const walletIcon = 'assets/svg/wallet.svg';
 const houseActiveIcon = 'assets/svg/house_active.svg';
 const houseIcon = 'assets/svg/house.svg';
+const searchIcon = 'assets/svg/search.svg';
