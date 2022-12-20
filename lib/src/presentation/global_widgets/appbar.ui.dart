@@ -18,6 +18,7 @@ class AuthAppbarUi extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 64.w,
       leading: const AuthBackButtonUi(),
       actions: actions,
+      centerTitle: true,
       title: Image.asset(
         riilfitLogoPng,
         height: 28.h,
