@@ -17,6 +17,7 @@ Dio connect() {
     receiveTimeout: 60000,
   );
   final dio = Dio(options);
+
   (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
       (HttpClient client) {
     client.badCertificateCallback =

@@ -87,11 +87,11 @@ class ProfileUi extends GetView<ProfileController> {
                     TextUi.bodySmall(
                       controller.currentUser.phoneNumber ?? '',
                     ),
-                    const Gap(36),
+                    const Gap(24),
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
-                        vertical: 16,
+                        vertical: 12,
                       ),
                       margin: baseViewPadding,
                       decoration: const BoxDecoration(

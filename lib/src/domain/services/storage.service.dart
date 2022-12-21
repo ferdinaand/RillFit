@@ -89,8 +89,12 @@ class StorageService extends GetxService implements IStorageService {
         key: _customerKey,
       );
 
+      if (customer == null) {
+        return null;
+      }
+
       final userDto = UserDto.fromJson(
-        json.decode(customer ?? '') as Map<String, dynamic>,
+        json.decode(customer) as Map<String, dynamic>,
       );
 
       log('customer data fetched successfully');

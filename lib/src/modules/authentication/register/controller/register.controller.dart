@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/dtos/dto.dart';
+import 'package:riilfit/src/data/enum/error_type.enum.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/data/extensions/string.extensions.dart';
 import 'package:riilfit/src/domain/api/auth/auth.api.dart';
@@ -95,6 +96,7 @@ class RegisterController extends BaseController {
         showFlushBar(
           message: res.message ??
               'Signed up successfully, We have sent a verification code to ${phoneController.text}',
+          errorType: ErrorType.success,
         );
 
         unawaited(

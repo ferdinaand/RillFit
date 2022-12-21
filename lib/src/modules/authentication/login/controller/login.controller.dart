@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -82,7 +83,7 @@ class LoginController extends BaseController {
 
         unawaited(
           Get.offAllNamed<void>(
-             Routes.app,
+            Routes.app,
           ),
         );
         viewState = ViewState.idle;
@@ -92,6 +93,16 @@ class LoginController extends BaseController {
         );
         viewState = ViewState.idle;
       }
+    } on SocketException catch (e, s) {
+      print('SOCKETEXECPTION');
+      log(
+        e.toString(),
+        stackTrace: s,
+      );
+      showFlushBar(
+        message: errorMessage,
+      );
+      viewState = ViewState.idle;
     } catch (e, s) {
       log(
         e.toString(),
