@@ -13,7 +13,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     displayColor: grayScale50,
   ),
   inputDecorationTheme: InputDecorationTheme(
-    hintStyle: hintTextStyle.copyWith(color: grayScale700),
+    hintStyle: hintTextStyle.copyWith(color: grayScale400),
     constraints: BoxConstraints.tight(
       const Size.fromHeight(56),
     ),
@@ -27,6 +27,8 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     errorBorder: border(errorDark),
     focusedErrorBorder: border(errorDark),
     isDense: true,
+    suffixIconColor: grayScale400,
+    prefixIconColor: grayScale400,
     errorStyle: const TextStyle(fontSize: 0, height: 0),
   ),
   textButtonTheme: TextButtonThemeData(

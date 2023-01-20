@@ -4,6 +4,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:riilfit/src/presentation/themes/dark.theme.dart';
 import 'package:riilfit/src/presentation/themes/light.theme.dart';
 
+final themeService = Get.find<ThemeService>();
+
 abstract class IThemeService {
   ThemeMode getThemeMode();
   bool isDarkModeSaved();

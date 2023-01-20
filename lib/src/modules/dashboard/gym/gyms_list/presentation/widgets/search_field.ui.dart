@@ -15,7 +15,7 @@ class GymSearchFieldUi extends GetView<GymController> {
   Widget build(BuildContext context) {
     return SearchFieldUi(
       controller: controller.searchController,
-      hintText: 'Search for gym stores near you',
+      hintText: 'Search for gym near you',
       onChanged: controller.searchGyms,
     );
   }

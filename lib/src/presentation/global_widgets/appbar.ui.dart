@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:riilfit/src/presentation/global_widgets/auth_back_button.ui.dart';
 import 'package:riilfit/src/presentation/resources/images.res.dart';
 import 'package:riilfit/src/presentation/resources/weights.res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
@@ -15,7 +14,7 @@ class AuthAppbarUi extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leadingWidth: 64.w,
+      leadingWidth: 64,
       leading: const AuthBackButtonUi(),
       actions: actions,
       centerTitle: true,
@@ -36,18 +35,28 @@ class MainAppbarUi extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     required this.title,
     this.showBackButton = true,
+    this.backgroundColor,
+    this.iconColor,
+    this.iconBackgroundColor,
   });
 
   final List<Widget>? actions;
   final String title;
   final bool showBackButton;
-
+  final Color? backgroundColor;
+  final Color? iconColor;
+  final Color? iconBackgroundColor;
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leadingWidth: 64.w,
-      leading:
-          showBackButton ? const AuthBackButtonUi() : const SizedBox.shrink(),
+      backgroundColor: backgroundColor,
+      leadingWidth: 64,
+      leading: showBackButton
+          ? AuthBackButtonUi(
+              iconColor: iconColor,
+              backgroundColor: iconBackgroundColor,
+            )
+          : const SizedBox.shrink(),
       actions: actions,
       centerTitle: true,
       title: TextUi.bodyLarge(

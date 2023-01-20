@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:riilfit/src/presentation/resources/icons.res.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
+import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class SearchFieldUi extends StatelessWidget {
@@ -25,6 +26,7 @@ class SearchFieldUi extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: SvgPicture.asset(
           searchIcon,
+          color: themeService.isDarkMode ? grayScale400 : grayScale700,
         ),
       ),
     );

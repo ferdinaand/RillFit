@@ -14,6 +14,8 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   ),
   inputDecorationTheme: InputDecorationTheme(
     hintStyle: hintTextStyle.copyWith(color: grayScale700),
+    suffixIconColor: grayScale700,
+    prefixIconColor: grayScale700,
     constraints: BoxConstraints.tight(
       const Size.fromHeight(56),
     ),
