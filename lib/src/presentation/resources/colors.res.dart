@@ -22,3 +22,4 @@ const errorLight = Color(0xFFFCA5A5);
 ///Others
 const white = Color(0xFFFFFFFF);
 const white10 = Color(0x1AFFFFFF);
+const starColor = Color(0xFFFFCD3C);

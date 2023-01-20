@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/register/presentation/register.ui.dart';
-import 'package:riilfit/src/modules/dashboard/gym/presentation/gym.ui.dart';
+import 'package:riilfit/src/modules/dashboard/gym/gym_details/presentation/gym_details.ui.dart';
+import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/gym.ui.dart';
 import 'package:riilfit/src/modules/dashboard/stores/presentation/stores.ui.dart';
 import 'package:riilfit/src/modules/dashboard/train/presentation/train.ui.dart';
 import 'package:riilfit/src/presentation/layouts/dashboard.layout.dart';
@@ -66,6 +67,10 @@ class AppPages {
     GetPage(
       name: Routes.train,
       page: () => const TrainUi(),
+    ),
+    GetPage(
+      name: Routes.gymDetails,
+      page: () => const GymDetailsUi(),
     ),
   ];
 }

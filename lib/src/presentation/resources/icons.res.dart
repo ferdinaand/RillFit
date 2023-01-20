@@ -18,3 +18,6 @@ const gearIcon = 'assets/svg/gear.svg';
 const favoriteIcon = 'assets/svg/favorite.svg';
 const helpIcon = 'assets/svg/help.svg';
 const aboutIcon = 'assets/svg/about.svg';
+const distanceIcon = 'assets/svg/distance.svg';
+const locationIcon = 'assets/svg/location.svg';
+const locatioAltIcon = 'assets/svg/location_alt.svg';

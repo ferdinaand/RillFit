@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/modules/dashboard/gym/controller/gym.controller.dart';
+import 'package:riilfit/src/modules/dashboard/gym/gyms_list/controller/gym.controller.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class GymSearchFieldUi extends GetView<GymController> {

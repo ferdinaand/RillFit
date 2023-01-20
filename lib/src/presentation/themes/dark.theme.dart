@@ -52,6 +52,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   ),
   iconTheme: const IconThemeData(
     size: 24,
+    color: grayScale50,
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     elevation: 4,

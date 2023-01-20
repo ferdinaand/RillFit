@@ -52,6 +52,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   ),
   iconTheme: const IconThemeData(
     size: 24,
+    color: grayScale900,
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     elevation: 4,
