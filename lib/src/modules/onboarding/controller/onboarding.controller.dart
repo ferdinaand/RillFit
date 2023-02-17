@@ -20,21 +20,25 @@ class OnboardingController extends BaseController {
   late Timer? _timer;
 
   void autoAnimatePages(Timer timer) {
-    if (currentIndex < 2) {
-      currentIndex++;
-    } else {
-      currentIndex = 0;
-    }
-
     if (pageController == null) {
       return;
     }
 
-    pageController!.animateToPage(
-      currentIndex,
-      duration: const Duration(milliseconds: 1000),
-      curve: Curves.fastOutSlowIn,
-    );
+    if (pageController?.positions.isEmpty ?? false) {
+      return;
+    }
+
+    if (currentIndex < 2) {
+      pageController?.nextPage(
+        duration: const Duration(milliseconds: 1000),
+        curve: Curves.fastOutSlowIn,
+      );
+    } else {
+      currentIndex = 0;
+      pageController?.jumpToPage(
+        currentIndex,
+      );
+    }
   }
 
   final _currentIndex = 0.obs;

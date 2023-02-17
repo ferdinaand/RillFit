@@ -41,7 +41,12 @@ class GymUi extends GetView<GymController> {
                   separatorBuilder: (_, __) => const Gap(16),
                   itemCount: 6,
                   itemBuilder: (_, i) {
-                    return const GymCardUi();
+                    final isFavorite = i.isEven;
+                    final isClosed = i.isOdd;
+                    return GymCardUi(
+                      isFavorite: isFavorite,
+                      isClosed: isClosed,
+                    );
                   },
                 ),
               ),

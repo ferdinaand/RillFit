@@ -9,7 +9,12 @@ import 'package:riilfit/src/presentation/widgets.dart';
 class GymCardUi extends GetView<GymController> {
   const GymCardUi({
     super.key,
+    this.isFavorite = false,
+    this.isClosed = false,
   });
+
+  final bool isFavorite;
+  final bool isClosed;
 
   @override
   GymController get controller => Get.put(GymController());
@@ -65,14 +70,16 @@ class GymCardUi extends GetView<GymController> {
                         vertical: 4,
                       ).w,
                       decoration: BoxDecoration(
-                        color: grayScale50.withOpacity(.5),
+                        color: grayScale50.withOpacity(.7),
                         borderRadius: const BorderRadius.all(
                           xsmallRadius,
                         ),
                       ),
                       child: TextUi.bodyMed(
-                        'OPEN',
-                        color: successDark, //use grayScale900 when closed
+                        isClosed ? 'CLOSED' : 'OPEN',
+                        color: isClosed
+                            ? grayScale900
+                            : successDark, //use grayScale900 when closed
                         fontWeight: semiBoldText,
                         height: (16 / 14).w,
                       ),
@@ -126,31 +133,33 @@ class GymCardUi extends GetView<GymController> {
                   ),
                   const Gap(4),
                   Row(
-                    children: const [
-                      Icon(
+                    children: [
+                      const Icon(
                         Icons.star,
                         color: starColor,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.star,
                         color: starColor,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.star,
                         color: starColor,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.star_half,
                         color: starColor,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.star,
                         color: grayScale500,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Icon(
-                        Icons.favorite_border_rounded,
-                        color: grayScale100,
+                        isFavorite
+                            ? Icons.favorite
+                            : Icons.favorite_border_rounded,
+                        color: isFavorite ? successDark : grayScale100,
                         size: 28,
                       ),
                     ],

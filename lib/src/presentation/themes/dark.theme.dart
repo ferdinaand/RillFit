@@ -12,6 +12,11 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     bodyColor: grayScale50,
     displayColor: grayScale50,
   ),
+  primaryTextTheme: Typography.englishLike2018.apply(
+    fontFamily: 'Nunito',
+    bodyColor: grayScale50,
+    displayColor: grayScale50,
+  ),
   inputDecorationTheme: InputDecorationTheme(
     hintStyle: hintTextStyle.copyWith(color: grayScale400),
     constraints: BoxConstraints.tight(

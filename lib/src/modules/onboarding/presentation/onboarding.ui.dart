@@ -39,7 +39,7 @@ class OnboardingUi extends GetView<OnboardingController> {
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: onboardingCarouselContent.length,
                           restorationId: 'onboarding',
-                          onPageChanged: (i) => controller.currentIndex,
+                          onPageChanged: (i) => controller.currentIndex = i,
                           scrollBehavior: const ScrollBehavior().copyWith(
                             overscroll: false,
                           ),

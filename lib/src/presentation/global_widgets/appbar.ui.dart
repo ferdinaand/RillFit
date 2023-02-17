@@ -38,6 +38,7 @@ class MainAppbarUi extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.iconColor,
     this.iconBackgroundColor,
+    this.bottom,
   });
 
   final List<Widget>? actions;
@@ -46,11 +47,13 @@ class MainAppbarUi extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final Color? iconColor;
   final Color? iconBackgroundColor;
+  final PreferredSizeWidget? bottom;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: backgroundColor,
       leadingWidth: 64,
+      bottom: bottom,
       leading: showBackButton
           ? AuthBackButtonUi(
               iconColor: iconColor,
@@ -66,6 +69,13 @@ class MainAppbarUi extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
+  //get height of bottom widget
+  double get heightOfBottomWidget {
+    if (bottom == null) return 0;
+    return bottom!.preferredSize.height;
+  }
+
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight + heightOfBottomWidget);
 }

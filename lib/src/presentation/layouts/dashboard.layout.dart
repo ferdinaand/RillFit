@@ -113,9 +113,9 @@ const List<DashboardNavBarContent> allDestinations = <DashboardNavBarContent>[
     activeIcon: homeActiveIcon,
   ),
   DashboardNavBarContent(
-    title: 'Payments',
-    icon: walletIcon,
-    activeIcon: walletIcon,
+    title: 'Favorites',
+    icon: heartIcon,
+    activeIcon: heartIcon,
   ),
   DashboardNavBarContent(
     title: 'Activity',

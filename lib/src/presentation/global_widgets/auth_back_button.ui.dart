@@ -27,27 +27,25 @@ class AuthBackButtonUi extends StatelessWidget {
           borderRadius: const BorderRadius.all(
             smallRadius,
           ),
-          child: Obx(
-            () => DecoratedBox(
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: const BorderRadius.all(
-                  smallRadius,
-                ),
-                border: Border.all(
-                  color: iconColor ?? grayScale100,
-                ),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: const BorderRadius.all(
+                smallRadius,
               ),
-              child: SvgPicture.asset(
-                backIcon,
-                fit: BoxFit.none,
-                color: iconColor ??
-                    (Get.find<ThemeService>().isDarkMode
-                        ? grayScale100
-                        : grayScale900),
-                width: size,
-                height: size,
+              border: Border.all(
+                color: iconColor ?? grayScale100,
               ),
+            ),
+            child: SvgPicture.asset(
+              backIcon,
+              fit: BoxFit.none,
+              color: iconColor ??
+                  (Get.find<ThemeService>().isDarkMode
+                      ? grayScale100
+                      : grayScale900),
+              width: size,
+              height: size,
             ),
           ),
         ),
