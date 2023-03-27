@@ -21,18 +21,17 @@ class HomeHeaderUi extends GetView<HomeController> {
           children: [
             Row(
               children: [
-                const TextUi.bodyLarge(
-                  'Hi ',
-                ),
-                Obx(
-                  () => TextUi.bodyLarge(
-                    '${controller.firstName.capitalizeFirstLetter} 👋🏾',
-                  ),
+                const TextUi.bodySmall(
+                  fontSize: 14,
+                  'WELCOME BACK ',
+                  fontWeight: FontWeight.w800,
                 ),
               ],
             ),
-            const TextUi.bodySmall(
-              'Good morning, How are you...',
+            const TextUi.bodyMed(
+              'FERDINAND EKPO',
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
             ),
           ],
         ),

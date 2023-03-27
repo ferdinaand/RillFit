@@ -15,6 +15,7 @@ class GymDetailsUi extends GetView<GymDetailsController> {
 
   @override
   Widget build(BuildContext context) {
+    const double size = 13;
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -27,8 +28,9 @@ class GymDetailsUi extends GetView<GymDetailsController> {
         appBar: MainAppbarUi(
           backgroundColor: Colors.transparent,
           title: '',
-          iconColor: themeService.isDarkMode ? grayScale50 : grayScale800,
-          iconBackgroundColor: themeService.isDarkMode ? grayScale800 : white,
+          iconColor: themeService.isDarkMode ? white : white,
+          iconBackgroundColor:
+              themeService.isDarkMode ? grayScale800 : white.withOpacity(0),
         ),
         body: DefaultTextStyle.merge(
           style: TextStyle(
@@ -46,50 +48,13 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        servicesImage,
+                        getFit1,
                       ),
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child: Align(
+                  child: const Align(
                     alignment: Alignment.bottomCenter,
-                    child: Container(
-                      height: 24,
-                      margin: EdgeInsets.only(bottom: context.height * 0.03),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 4,
-                        vertical: 6,
-                      ),
-                      decoration: ShapeDecoration(
-                        color: themeService.isDarkMode
-                            ? grayScale900.withOpacity(.5)
-                            : white,
-                        shape: const StadiumBorder(),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [1, 2, 3].asMap().entries.map((entry) {
-                          final index = entry.key;
-                          return Obx(
-                            () => AnimatedContainer(
-                              duration: const Duration(milliseconds: 200),
-                              width: 8.w,
-                              height: 8.w,
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 4,
-                              ).w,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: controller.currentIndex == index
-                                    ? primary
-                                    : grayScale100,
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ),
                   ),
                 ),
               ),
@@ -122,326 +87,225 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              const TextUi.heading4(
-                                'GetFit Gym',
-                              ),
-                              const Gap(8),
                               Row(
                                 children: [
+                                  const TextUi.heading4(
+                                    'GetFit Gym',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
                                   Container(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 4,
-                                      vertical: 2,
                                     ).w,
                                     decoration: BoxDecoration(
-                                      color: successDark.withOpacity(.3),
+                                      color: grayScale800.withOpacity(.9),
                                       borderRadius: const BorderRadius.all(
                                         xsmallRadius,
                                       ),
                                     ),
                                     child: TextUi.bodyMed(
                                       'OPEN',
+                                      fontSize: 13,
                                       color: successDark,
                                       fontWeight: boldText,
                                       height: (16 / 14).w,
                                     ),
                                   ),
-                                  const Gap(8),
+                                ],
+                              ),
+                              const Gap(8),
+                              Row(
+                                children: [
                                   TextUi.bodyMed(
-                                    'Closes at 9:00pm WAT',
+                                    'Lekki phase 1, Lagos state',
                                     fontWeight: mediumText,
                                     height: (16 / 14).w,
                                   ),
                                 ],
                               ),
-                              const Gap(16),
+                              const Gap(4.92),
                               Row(
                                 children: const [
                                   Icon(
                                     Icons.star,
+                                    size: size,
                                     color: starColor,
                                   ),
                                   Icon(
                                     Icons.star,
+                                    size: size,
                                     color: starColor,
                                   ),
                                   Icon(
                                     Icons.star,
+                                    size: size,
                                     color: starColor,
                                   ),
                                   Icon(
                                     Icons.star_half,
+                                    size: size,
                                     color: starColor,
                                   ),
                                   Icon(
                                     Icons.star,
+                                    size: size,
                                     color: grayScale400,
                                   ),
                                   Gap(4),
                                   TextUi.bodyMed(
-                                    '(123 ratings)',
+                                    '(129 ratings)',
+                                    fontSize: 14,
                                     fontWeight: mediumText,
                                     height: 16 / 14,
                                   ),
-                                  Spacer(),
-                                  Icon(
-                                    Icons.favorite_border_rounded,
-                                    color: grayScale100,
-                                    size: 28,
-                                  ),
                                 ],
                               ),
-                              const Gap(24),
+                              const Gap(20),
+                              const Expanded(
+                                  child: Divider(
+                                height: 1,
+                              )),
+                              const Gap(23),
                               const TextUi.bodyMed(
-                                'Description',
-                                fontWeight: boldText,
+                                'Information',
+                                fontWeight: FontWeight.w800,
+                                fontSize: 14,
                               ),
                               const Gap(8),
                               const TextUi.bodyMed(
-                                'We are a full service salon and spa, delicating to providing our clients with the absolute best ..',
+                                'Give feedback, ask questions, or start a discussion in the comments.',
                                 height: 14 / 12,
+                                fontWeight: FontWeight.w400,
                               ),
-                              const Gap(24),
-                              const TextUi.bodyMed(
-                                'Schedule',
-                                fontWeight: boldText,
-                              ),
-                              const Gap(8),
-                              const TextUi.bodyMed(
-                                'GetFit gym opens on weekdays only, from 6am - 10pm.',
-                                height: 14 / 12,
-                              ),
-                              const Gap(24),
-                              Wrap(
-                                spacing: 20,
-                                runSpacing: 16,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 4,
-                                    ).w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.orange[50],
-                                      borderRadius: const BorderRadius.all(
-                                        xsmallRadius,
-                                      ),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.access_time,
-                                          size: 20.w,
-                                          color: Colors.orange,
-                                        ),
-                                        const Gap(4),
-                                        const TextUi.bodySmall(
-                                          'Weekdays only',
-                                          height: 14 / 12,
-                                          color: Colors.orange,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 4,
-                                    ).w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.teal[100],
-                                      borderRadius: const BorderRadius.all(
-                                        xsmallRadius,
-                                      ),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.card_membership,
-                                          size: 20.w,
-                                          color: Colors.teal[900],
-                                        ),
-                                        const Gap(4),
-                                        TextUi.bodySmall(
-                                          'Has Membership Plans',
-                                          height: 14 / 12,
-                                          color: Colors.teal[800],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const Gap(24),
-                              const TextUi.bodyMed(
-                                'Contact GetFit via;',
-                                fontWeight: boldText,
-                              ),
-                              const Gap(8),
-                              Row(
-                                children: const [
-                                  TextUi.bodyMed(
-                                    'Website: ',
-                                    height: 14 / 12,
-                                  ),
-                                  TextUi.bodyMed(
-                                    'getfit.gym@gmail.com',
-                                    height: 14 / 12,
-                                    fontWeight: semiBoldText,
-                                  ),
-                                ],
-                              ),
-                              const Gap(16),
-                              const TextUi.bodyMed(
-                                'Social Accounts: ',
-                                height: 14 / 12,
-                              ),
-                              const Gap(8),
+                              const Gap(42),
                               Row(
                                 children: [
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 42,
-                                      width: 42,
-                                      alignment: Alignment.center,
-                                      decoration: const BoxDecoration(
-                                        color: primary,
-                                        borderRadius: BorderRadius.all(
-                                          xsmallRadius,
-                                        ),
-                                      ),
-                                      child: SvgPicture.asset(
-                                        outgoingCallIcon,
-                                        color: grayScale800,
-                                      ),
-                                    ),
+                                  Image.asset(
+                                    'assets/png/link-2.png',
+                                    color: Get.find<ThemeService>().isDarkMode
+                                        ? grayScale100
+                                        : grayScale900,
                                   ),
-                                  const Gap(10),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 42,
-                                      width: 42,
-                                      alignment: Alignment.center,
-                                      decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                          xsmallRadius,
-                                        ),
-                                        color: Colors.orange,
-                                      ),
-                                      child: SvgPicture.asset(
-                                        mailIcon,
-                                        color: grayScale800,
-                                      ),
-                                    ),
-                                  ),
-                                  const Gap(10),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 42,
-                                      width: 42,
-                                      alignment: Alignment.center,
-                                      decoration: const BoxDecoration(
-                                        color: whatsappColor,
-                                        borderRadius: BorderRadius.all(
-                                          xsmallRadius,
-                                        ),
-                                      ),
-                                      child: SvgPicture.asset(
-                                        whatsappIcon,
-                                        color: grayScale800,
-                                      ),
-                                    ),
-                                  ),
-                                  const Gap(10),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 42,
-                                      width: 42,
-                                      alignment: Alignment.center,
-                                      decoration: const BoxDecoration(
-                                        color: twitterColor,
-                                        borderRadius: BorderRadius.all(
-                                          xsmallRadius,
-                                        ),
-                                      ),
-                                      child: SvgPicture.asset(
-                                        twitterIcon,
-                                        color: grayScale800,
-                                      ),
-                                    ),
-                                  ),
-                                  const Gap(10),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 42,
-                                      width: 42,
-                                      alignment: Alignment.center,
-                                      decoration: const BoxDecoration(
-                                        color: instagramColor,
-                                        borderRadius: BorderRadius.all(
-                                          xsmallRadius,
-                                        ),
-                                      ),
-                                      child: SvgPicture.asset(
-                                        instagramIcon,
-                                        color: grayScale800,
-                                      ),
-                                    ),
-                                  ),
-                                  const Gap(10),
+                                  const Gap(15),
+                                  const TextUi.bodyMed(
+                                    'www.thegym.com',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                  )
                                 ],
                               ),
-                              const Gap(24),
-                              const TextUi.bodyMed(
-                                'Location',
-                                fontWeight: boldText,
-                              ),
-                              const Gap(8),
-                              const TextUi.bodyMed(
-                                '231 Rumudomayan Road Port Harcourt',
-                              ),
-                              const Gap(12),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 4,
-                                    ).w,
-                                    decoration: const BoxDecoration(
-                                      color: grayScale400,
-                                      borderRadius: BorderRadius.all(
-                                        xsmallRadius,
-                                      ),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        SvgPicture.asset(
-                                          directionsIcon,
-                                          color: grayScale900,
-                                        ),
-                                        const Gap(4),
-                                        const TextUi.bodySmall(
-                                          'Get Directions',
-                                          height: 14 / 12,
-                                          color: grayScale900,
-                                        ),
-                                      ],
-                                    ),
+                              Gap(30),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/png/send-2.png',
+                                    color: Get.find<ThemeService>().isDarkMode
+                                        ? grayScale100
+                                        : grayScale900,
                                   ),
+                                  const Gap(15),
+                                  const TextUi.bodyMed(
+                                    'Lekki phase 1, Lagos state',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                  )
+                                ],
+                              ),
+                              Gap(30),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/png/call.png',
+                                    color: Get.find<ThemeService>().isDarkMode
+                                        ? grayScale100
+                                        : grayScale900,
+                                  ),
+                                  const Gap(15),
+                                  const TextUi.bodyMed(
+                                    '09052027107',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                  )
+                                ],
+                              ),
+                              Gap(30),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/png/clock.png',
+                                    color: Get.find<ThemeService>().isDarkMode
+                                        ? grayScale100
+                                        : grayScale900,
+                                  ),
+                                  const Gap(15),
+                                  const TextUi.bodyMed(
+                                    'open',
+                                    fontWeight: FontWeight.w400,
+                                    color: successDark,
+                                    fontSize: 15,
+                                  ),
+                                  const TextUi.bodyMed(
+                                    ' :8:00 AM - 10:00PM',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 15,
+                                  )
+                                ],
+                              ),
+                              Gap(41),
+                              Row(
+                                children: [
+                                  TextUi.heading4(
+                                    'Socials',
+                                    fontSize: 17,
+                                  )
+                                ],
+                              ),
+                              const Gap(27),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/png/snapchat.png',
+                                    color: Get.find<ThemeService>().isDarkMode
+                                        ? grayScale100
+                                        : grayScale900,
+                                  ),
+                                  Gap(14),
+                                  Image.asset(
+                                    'assets/png/facebook.png',
+                                    color: Get.find<ThemeService>().isDarkMode
+                                        ? grayScale100
+                                        : grayScale900,
+                                  ),
+                                  Gap(14),
+                                  Image.asset(
+                                    'assets/png/whatsapp.png',
+                                    color: Get.find<ThemeService>().isDarkMode
+                                        ? grayScale100
+                                        : grayScale900,
+                                  ),
+                                  Gap(14),
+                                  Image.asset(
+                                    'assets/png/instagram.png',
+                                    color: Get.find<ThemeService>().isDarkMode
+                                        ? grayScale100
+                                        : grayScale900,
+                                  ),
+                                ],
+                              ),
+                              Gap(37),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 57, right: 57),
+                                child: PrimaryButtonUi(
+                                  text: 'View Location',
+                                  onPressed: () {},
                                 ),
                               ),
-                              const Gap(32),
+                              Gap(15)
                             ],
                           ),
                         ),

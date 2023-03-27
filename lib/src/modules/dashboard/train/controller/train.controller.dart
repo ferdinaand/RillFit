@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/data/enum/training_levels.enum.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 
+import '../../../../routing/app_pages.dart';
+
 class TrainController extends BaseController {
   @override
   void onInit() {
@@ -42,4 +44,11 @@ class TrainController extends BaseController {
   late List<String> filteredWorkoutCategories;
 
   late List<String> workoutCategories;
+
+  //Navigate to trainers details page
+  void openTrainersDetailsPage() {
+    navigationService.navigateTo(
+      Routes.trainersDetails,
+    );
+  }
 }

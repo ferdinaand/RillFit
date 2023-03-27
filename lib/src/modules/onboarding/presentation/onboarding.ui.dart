@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/dummy/onboarding_carousel.dummy.dart';
 import 'package:riilfit/src/modules/onboarding/controller/onboarding.controller.dart';
@@ -32,7 +33,6 @@ class OnboardingUi extends GetView<OnboardingController> {
                 sliver: SliverFillRemaining(
                   child: Column(
                     children: [
-                      const Gap(48),
                       Expanded(
                         child: PageView.builder(
                           controller: controller.pageController,
@@ -53,28 +53,15 @@ class OnboardingUi extends GetView<OnboardingController> {
                       ),
                       const OnboardingPageIndicator(),
                       const Gap(32),
-                      PrimaryButtonUi(
-                        text: 'Get Started',
-                        onPressed: controller.navigateToRegisterPage,
+                      SizedBox(
+                        height: 48.h,
+                        width: 241.w,
+                        child: PrimaryButtonUi(
+                          text: 'Get Started',
+                          onPressed: controller.navigateToRegisterPage,
+                        ),
                       ),
-                      const Gap(24),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const TextUi.bodyMed(
-                            'Already have an account? ',
-                          ),
-                          GestureDetector(
-                            onTap: controller.navigateToLoginPage,
-                            child: const TextUi.bodyMed(
-                              'Sign in',
-                              color: primary,
-                              fontWeight: semiBoldText,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Gap(32),
+                      const Gap(82),
                     ],
                   ),
                 ),

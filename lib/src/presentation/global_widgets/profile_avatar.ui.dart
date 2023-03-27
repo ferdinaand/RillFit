@@ -7,7 +7,7 @@ import 'package:riilfit/src/presentation/resources/res.dart';
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({
     super.key,
-    this.size = 56.0,
+    this.size = 68.0,
     this.padding = 6.0,
     required this.onTap,
   });
@@ -35,9 +35,8 @@ class ProfileAvatar extends StatelessWidget {
                   ? grayScale700
                   : grayScale50,
             ),
-            child: SvgPicture.asset(
-              userIcon,
-              color: primary20,
+            child: Image.asset(
+              'assets/png/dash_profile.png',
             ),
           ),
         ),

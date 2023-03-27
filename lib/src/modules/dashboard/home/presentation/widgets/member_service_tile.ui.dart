@@ -18,60 +18,50 @@ class ServicesTileUi extends StatelessWidget {
             service.route,
           );
         },
-        child: Container(
-          margin: const EdgeInsets.only(bottom: 28).r,
-          decoration: const BoxDecoration(
-            color: grayScale800,
-            borderRadius: BorderRadius.all(
-              Radius.circular(12),
-            ),
-            image: DecorationImage(
-              image: AssetImage(
-                servicesImage,
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Column(
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 55),
+          child: Stack(
+            clipBehavior: Clip.none,
             children: [
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  margin: EdgeInsets.only(
-                    right: 10.w,
-                    top: 20.h,
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 5,
-                    vertical: 4,
-                  ),
-                  decoration: const BoxDecoration(
-                    color: grayScale500,
-                    borderRadius: BorderRadius.all(
-                      smallRadius,
-                    ),
-                  ),
-                  child: const TextUi.bodySmall(
-                    'See more',
-                    height: 1,
-                    color: white,
+              Container(
+                height: 153,
+                width: 360,
+                margin: const EdgeInsets.only(
+                  bottom: 0,
+                ).r,
+                decoration: BoxDecoration(
+                  color: service.color,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
                   ),
                 ),
-              ),
-              const Spacer(),
-              Align(
-                alignment: Alignment.bottomLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(
-                    left: 20.w,
-                    bottom: 20.h,
-                  ),
-                  child: TextUi.bodyXL(
-                    service.name,
-                    color: white,
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextUi.bodyXL(
+                        service.name,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w700,
+                        color: white,
+                      )
+                    ],
                   ),
                 ),
               ),
+              Positioned(
+                  left: 200,
+                  top: -25,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 41),
+                    child: Image.asset(
+                      service.image,
+                      height: 180,
+                      width: 180,
+                    ),
+                  ))
             ],
           ),
         ),

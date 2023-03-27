@@ -9,6 +9,10 @@ abstract class Routes {
   static const gym = '/app/gym';
   static const gymDetails = '/app/gym-details';
   static const train = '/app/train';
+  static const trainersDetails = '/app/trainer-details';
+  static const muscleGroupCat = '/app/muscleGroupCat';
+  static const workoutForceCat = '/app/workoutForceCat';
+  static const equipmentCat = '/app/equipmentCat';
   static const stores = '/app/stores';
   static const login = '/login';
   static const register = '/register';

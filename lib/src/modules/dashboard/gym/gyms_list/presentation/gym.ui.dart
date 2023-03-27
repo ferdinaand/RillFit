@@ -23,7 +23,7 @@ class GymUi extends GetView<GymController> {
       },
       child: Scaffold(
         appBar: const MainAppbarUi(
-          title: 'Gyms',
+          title: 'Nearby Gyms',
         ),
         body: SafeArea(
           child: Column(
@@ -39,7 +39,7 @@ class GymUi extends GetView<GymController> {
                   shrinkWrap: true,
                   padding: baseViewPadding,
                   separatorBuilder: (_, __) => const Gap(16),
-                  itemCount: 6,
+                  itemCount: 3,
                   itemBuilder: (_, i) {
                     final isFavorite = i.isEven;
                     final isClosed = i.isOdd;

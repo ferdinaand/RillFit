@@ -56,6 +56,7 @@ class MainAppbarUi extends StatelessWidget implements PreferredSizeWidget {
       bottom: bottom,
       leading: showBackButton
           ? AuthBackButtonUi(
+              size: 24,
               iconColor: iconColor,
               backgroundColor: iconBackgroundColor,
             )

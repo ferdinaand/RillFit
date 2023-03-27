@@ -5,6 +5,8 @@ import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/views.dart';
 
+import '../../modules/dashboard/favortites/presentation/favorites.ui.dart';
+
 class DashboardManager extends GetView<DashboardLayoutController> {
   const DashboardManager({super.key});
 
@@ -28,7 +30,7 @@ class DashboardManager extends GetView<DashboardLayoutController> {
               children: <Widget>[
                 //TODO add all dashboard pages
                 const HomeUi(),
-                Container(),
+                const FavoritesUi(),
                 Container(),
                 const ProfileUi(),
               ],
@@ -115,7 +117,7 @@ const List<DashboardNavBarContent> allDestinations = <DashboardNavBarContent>[
   DashboardNavBarContent(
     title: 'Favorites',
     icon: heartIcon,
-    activeIcon: heartIcon,
+    activeIcon: heartActiveIcon,
   ),
   DashboardNavBarContent(
     title: 'Activity',

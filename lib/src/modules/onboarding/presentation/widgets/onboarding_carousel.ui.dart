@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/dummy/onboarding_carousel.dummy.dart';
@@ -17,14 +18,7 @@ class OnBoardingCarouselUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          child: SvgPicture.asset(
-            content.image,
-            width: context.width,
-            height: context.width,
-            fit: BoxFit.none,
-          ),
-        ),
+        content.image,
         const Gap(24),
         TextUi.heading3(
           content.title,

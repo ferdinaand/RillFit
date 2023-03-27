@@ -22,8 +22,8 @@ class OnboardingPageIndicator extends GetView<OnboardingController> {
         return Obx(
           () => AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            width: 10.0.w,
-            height: 10.0.h,
+            width: 13.4.w,
+            height: 13.4.h,
             margin: EdgeInsets.symmetric(
               horizontal: 7.5.w,
             ),
