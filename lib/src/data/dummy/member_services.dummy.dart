@@ -116,3 +116,151 @@ final trainers = <Trainers>[
     route: Routes.trainersDetails,
   ),
 ];
+
+//trainers grid List
+final List<Map<String, dynamic>> trainersMap = [
+  {
+    'name': 'Adebayo Samuel',
+    'role': 'Strength trainer',
+    'image': trainer1,
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Matthew jackson',
+    'role': 'core trainer',
+    'image': trainer2,
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Ene Henry',
+    'role': 'endurance trainer',
+    'image': trainer3,
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Ferdinand Ekpo',
+    'role': 'weight trainer',
+    'image': trainer4,
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Azeez Abdul-Qahhar',
+    'role': 'weight trainer',
+    'image': trainer3,
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Damilare Adewusi',
+    'role': 'weight trainer',
+    'image': trainer2,
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Damilola Obembe',
+    'role': 'weight trainer',
+    'image': trainer1,
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Mark duke',
+    'role': 'weight trainer',
+    'image': trainer3,
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'sunday okon',
+    'role': 'weight trainer',
+    'image': trainer1,
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'oluwaleye Tomi',
+    'role': 'weight trainer',
+    'image': trainer4,
+    'route': Routes.trainersDetails,
+  },
+];
+final List<Map<String, dynamic>> storeEquipmentMap = [
+  // ignore: inference_failure_on_collection_literal
+
+  {
+    'name': 'Adjustable kettlebell',
+    'role': '10 - 50 kg',
+    'image': 'assets/png/store1.png',
+    'price': '15000',
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Dumb-bell',
+    'role': '10 - 50kg',
+    'image': 'assets/png/store2.png',
+    'price': '25000',
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Adjustable bench',
+    'role': '45 to 180 degrees',
+    'image': 'assets/png/store3.png',
+    'price': '10000',
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Bar-bell',
+    'role': '10-50kg',
+    'price': '15000',
+    'image': 'assets/png/store4.png',
+    'route': Routes.trainersDetails,
+  },
+];
+
+final List<Map<String, dynamic>> storeSupplementsMap = [
+  // ignore: inference_failure_on_collection_literal
+
+  {
+    'name': 'Whey protein',
+    'role': '500g',
+    'image': 'assets/png/store10.png',
+    'price': '40000',
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'HBBA Amino acids',
+    'role': '500g',
+    'image': 'assets/png/store11.png',
+    'price': '15000',
+    'route': Routes.trainersDetails,
+  },
+];
+
+final List<Map<String, dynamic>> storeAccessoriesMap = [
+  // ignore: inference_failure_on_collection_literal
+
+  {
+    'name': 'muscle scrub',
+    'role': '12hr battery life',
+    'image': 'assets/png/store5.png',
+    'price': '20000',
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'clamp',
+    'role': '20 degrees',
+    'image': 'assets/png/store6.png',
+    'price': '30000',
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'string set',
+    'role': '20m each',
+    'image': 'assets/png/store7.png',
+    'price': '20000',
+    'route': Routes.trainersDetails,
+  },
+  {
+    'name': 'Skipping rope',
+    'role': '50m',
+    'image': 'assets/png/store8.png',
+    'price': '15000',
+    'route': Routes.trainersDetails,
+  },
+];
