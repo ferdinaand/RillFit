@@ -26,20 +26,17 @@ class FavoritesUi extends GetView<GymController> {
         appBar: const MainAppbarUi(
           title: 'Favourites',
         ),
-        body: SingleChildScrollView(
-          child: SafeArea(
-            child: Column(
-              children: [
-                const Gap(16),
-                Padding(
-                  padding: baseViewPadding,
-                  child: const GymSearchFieldUi(),
-                ),
-                const Gap(16),
-                const FavoriteTabBar(),
-                const Gap(44),
-              ],
-            ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              const Gap(16),
+              Padding(
+                padding: baseViewPadding,
+                child: const GymSearchFieldUi(),
+              ),
+              const Gap(16),
+              const FavoriteTabBar(),
+            ],
           ),
         ),
       ),

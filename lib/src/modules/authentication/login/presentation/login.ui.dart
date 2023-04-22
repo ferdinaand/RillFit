@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_statements
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
