@@ -6,8 +6,8 @@ import 'package:riilfit/src/modules/dashboard/gym/gyms_list/controller/gym.contr
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
-class GymCardUi extends GetView<GymController> {
-  const GymCardUi({
+class FavoriteCardUi extends GetView<GymController> {
+  const FavoriteCardUi({
     super.key,
     this.isFavorite = false,
     this.isClosed = false,

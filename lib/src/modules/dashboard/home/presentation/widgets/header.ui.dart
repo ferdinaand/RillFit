@@ -37,7 +37,7 @@ class HomeHeaderUi extends GetView<HomeController> {
         ),
         const Spacer(),
         ProfileAvatar(
-          onTap: () {},
+          onTap: controller.openProfilePage,
         ),
       ],
     );
