@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "130376463781",
+    "project_id": "rillfit-7e12c",
+    "storage_bucket": "rillfit-7e12c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130376463781:android:190516039f90908c55e44c",
+        "android_client_info": {
+          "package_name": "com.riilfit.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130376463781-n9vjl4j9gge47mj9lh7g0keahbrgm1fm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNDtDy7T7DRwbNBFI150ApRArciMjxu7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130376463781-n9vjl4j9gge47mj9lh7g0keahbrgm1fm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
