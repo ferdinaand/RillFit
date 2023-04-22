@@ -51,4 +51,10 @@ class TrainController extends BaseController {
       Routes.trainersDetails,
     );
   }
+
+  void openTrainingContentPage() {
+    navigationService.navigateTo(
+      Routes.trainingContent,
+    );
+  }
 }

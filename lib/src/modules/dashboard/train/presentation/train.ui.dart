@@ -29,8 +29,9 @@ class TrainUi extends GetView<TrainController> {
           title: 'Workout',
         ),
         body: SafeArea(
+          bottom: true,
           child: CustomScrollView(
-            physics: const ClampingScrollPhysics(),
+            physics: const ScrollPhysics(),
             slivers: [
               SliverFillRemaining(
                 hasScrollBody: false,
