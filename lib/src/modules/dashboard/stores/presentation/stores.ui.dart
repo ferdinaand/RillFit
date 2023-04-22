@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/dashboard/stores/controller/stores.controller.dart';
+import 'package:riilfit/src/modules/dashboard/stores/presentation/widgets/Store.tab.view.dart';
 import 'package:riilfit/src/modules/dashboard/stores/presentation/widgets/search_field.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
@@ -29,14 +30,16 @@ class StoresUi extends GetView<StoresController> {
             physics: const ClampingScrollPhysics(),
             slivers: [
               SliverPadding(
-                padding: baseViewPadding,
+                padding:
+                    EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
                 sliver: SliverFillRemaining(
                   hasScrollBody: false,
                   child: Column(
                     children: const [
                       Gap(16),
                       StoresSearchFieldUi(),
-                      Gap(48),
+                      Gap(29),
+                      StoreTabBar(),
                     ],
                   ),
                 ),
