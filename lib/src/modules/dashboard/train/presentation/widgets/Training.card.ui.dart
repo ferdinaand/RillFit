@@ -16,7 +16,7 @@ class TrainingCardUi extends GetView<TrainController> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: controller.openTrainingContentPage,
       child: Container(
         height: 155,
         width: 252,

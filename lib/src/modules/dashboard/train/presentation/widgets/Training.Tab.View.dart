@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/modules/dashboard/train/presentation/widgets/Trainers.card.ui.dart';
 import 'package:riilfit/src/modules/dashboard/train/presentation/widgets/workout.category.ui.dart';
 import 'package:riilfit/src/presentation/global_widgets/text.ui.dart';
@@ -71,7 +72,7 @@ class _TrainingTabBarState extends State<TrainingTabBar>
         ),
         const Gap(40),
         Container(
-          height: 520,
+          height: 500,
           child: TabBarView(
             controller: _TrainTabController,
             children: [
@@ -86,7 +87,9 @@ class _TrainingTabBarState extends State<TrainingTabBar>
                             children: [
                               TextUi.heading4(
                                 'Top Workouts',
-                                color: grayScale900.withOpacity(.5),
+                                color: themeService.isDarkMode
+                                    ? Colors.white
+                                    : grayScale900.withOpacity(.5),
                               ),
                             ],
                           ),
@@ -121,7 +124,9 @@ class _TrainingTabBarState extends State<TrainingTabBar>
                                   children: [
                                     TextUi.heading4(
                                       'Category',
-                                      color: grayScale900.withOpacity(.5),
+                                      color: themeService.isDarkMode
+                                          ? Colors.white
+                                          : grayScale900.withOpacity(.5),
                                     ),
                                   ],
                                 ),
@@ -153,19 +158,10 @@ class _TrainingTabBarState extends State<TrainingTabBar>
                 child: SingleChildScrollView(
                   child: Column(
                     children: const [
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
-                      TrainersCardUi(),
+                      Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child: TrainersCardUi(),
+                      ),
                     ],
                   ),
                 ),
