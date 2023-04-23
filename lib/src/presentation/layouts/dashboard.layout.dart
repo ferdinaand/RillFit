@@ -8,7 +8,9 @@ import 'package:riilfit/src/presentation/views.dart';
 import '../../modules/dashboard/favortites/presentation/favorites.ui.dart';
 
 class DashboardManager extends GetView<DashboardLayoutController> {
-  const DashboardManager({super.key});
+  DashboardManager({
+    super.key,
+  });
 
   @override
   DashboardLayoutController get controller =>
