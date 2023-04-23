@@ -22,4 +22,7 @@ abstract class Routes {
   static const forgotPasswordEnterOtp = '/forgot-password/enter-otp';
   static const forgotPasswordSetNewPassword =
       '/forgot-password/set-new-password';
+  static const profile = '/ProfileUi';
+  static const trainingContent = '/trainingContent';
+  static const chooseRole = '/chooseRole';
 }
