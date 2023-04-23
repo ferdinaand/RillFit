@@ -5,7 +5,7 @@ import 'package:riilfit/src/presentation/resources/res.dart';
 ThemeData darkTheme = ThemeData.dark().copyWith(
   brightness: Brightness.dark,
   primaryColor: primary,
-  scaffoldBackgroundColor: grayScale900,
+  scaffoldBackgroundColor: const Color(0xff1A1B1F),
   visualDensity: VisualDensity.adaptivePlatformDensity,
   textTheme: Typography.englishLike2018.apply(
     fontFamily: 'Nunito',
@@ -52,7 +52,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     ),
   ),
   appBarTheme: const AppBarTheme(
-    color: grayScale900,
+    color: Color(0xff1A1B1F),
     foregroundColor: white,
     elevation: 0,
     shadowColor: Colors.transparent,

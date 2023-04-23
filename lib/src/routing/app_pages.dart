@@ -9,6 +9,9 @@ import 'package:riilfit/src/presentation/layouts/dashboard.layout.dart';
 import 'package:riilfit/src/presentation/views.dart';
 import 'package:riilfit/src/routing/guards/app_guard.dart';
 
+import '../modules/dashboard/role/choose_service/presentation/choose_role.dart';
+import '../modules/dashboard/train/presentation/widgets/training_content_card.ui.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -55,7 +58,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.app,
-      page: () => const DashboardManager(),
+      page: () => DashboardManager(),
     ),
     GetPage(
       name: Routes.gym,
@@ -76,6 +79,20 @@ class AppPages {
     GetPage(
       name: Routes.trainersDetails,
       page: () => const TrainerDetailsUi(),
+    ),
+    GetPage(
+      name: Routes.profile,
+      page: () => const ProfileUi(),
+    ),
+    GetPage(
+      name: Routes.chooseRole,
+      page: () => const ChooseRole(),
+    ),
+    GetPage(
+      name: Routes.trainingContent,
+      page: () => TrainingContentCardUi(
+        workoutName: 'core Strength',
+      ),
     ),
   ];
 }
