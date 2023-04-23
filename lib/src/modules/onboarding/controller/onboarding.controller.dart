@@ -53,10 +53,8 @@ class OnboardingController extends BaseController {
     );
   }
 
-  void navigateToRegisterPage() {
-    Get.toNamed<void>(
-      Routes.register,
-    );
+  void navigateToChooseRolePage() {
+    Get.toNamed<void>(Routes.chooseRole);
   }
 
   @override

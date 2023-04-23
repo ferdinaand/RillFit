@@ -29,7 +29,7 @@ class OnboardingUi extends GetView<OnboardingController> {
             physics: const ClampingScrollPhysics(),
             slivers: [
               SliverPadding(
-                padding: baseViewPadding,
+                padding: EdgeInsets.only(top: 0),
                 sliver: SliverFillRemaining(
                   child: Column(
                     children: [
@@ -58,7 +58,7 @@ class OnboardingUi extends GetView<OnboardingController> {
                         width: 241.w,
                         child: PrimaryButtonUi(
                           text: 'Get Started',
-                          onPressed: controller.navigateToRegisterPage,
+                          onPressed: controller.navigateToChooseRolePage,
                         ),
                       ),
                       const Gap(82),
