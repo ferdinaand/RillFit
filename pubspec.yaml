@@ -38,6 +38,7 @@ dependencies:
   jwt_decoder:
   firebase_storage: ^11.1.0
   image_picker: ^0.8.7+2
+  qr_flutter: ^4.0.0
 dev_dependencies:
   build_runner: null
   flutter_launcher_icons: ^0.11.0
