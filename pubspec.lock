@@ -241,14 +241,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.4"
-  dependencies:
-    dependency: "direct main"
-    description:
-      name: dependencies
-      sha256: "81009f347d7e4596251339775398017ba04e509c1064364745a4b77fc72f6c7e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.5"
   dio:
     dependency: "direct main"
     description:
@@ -257,14 +249,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.6"
-  disposables:
-    dependency: transitive
-    description:
-      name: disposables
-      sha256: "5a244b16914123b823f40983b24b1415c9df8f607cd294af7699273e162f63e5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.2"
   fake_async:
     dependency: transitive
     description:
@@ -941,14 +925,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.1"
-  quiver:
+  qr:
     dependency: transitive
     description:
-      name: quiver
-      sha256: e83f7ad1e6375da1400b54eea8793bba804d1731d68c5694490bf9296cd3ca24
+      name: qr
+      sha256: "5c4208b4dc0d55c3184d10d83ee0ded6212dc2b5e2ba17c5a0c0aab279128d21"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.5"
+    version: "2.1.0"
+  qr_flutter:
+    dependency: "direct main"
+    description:
+      name: qr_flutter
+      sha256: c5c121c54cb6dd837b9b9d57eb7bc7ec6df4aee741032060c8833a678c80b87e
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   shared_preferences:
     dependency: "direct main"
     description:
