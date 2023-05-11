@@ -54,7 +54,7 @@ class OnboardingController extends BaseController {
   }
 
   void navigateToChooseRolePage() {
-    Get.toNamed<void>(Routes.chooseRole);
+    Get.toNamed<void>(Routes.app);
   }
 
   @override
