@@ -71,6 +71,7 @@ class RiilfitApp extends StatelessWidget {
             theme: Get.find<ThemeService>().light,
             themeMode: Get.find<ThemeService>().getThemeMode(),
             darkTheme: Get.find<ThemeService>().dark,
+
             getPages: AppPages.pages,
             title: 'Riilfit',
             debugShowCheckedModeBanner: false,
