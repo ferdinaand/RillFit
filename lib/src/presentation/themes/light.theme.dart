@@ -6,7 +6,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   brightness: Brightness.light,
   primaryColor: primary,
   scaffoldBackgroundColor: white,
-  primaryTextTheme: Typography.englishLike2018.apply(
+  primaryTextTheme: Typography.englishLike2021.apply(
     fontFamily: 'Nunito',
     bodyColor: grayScale900,
     displayColor: grayScale900,
