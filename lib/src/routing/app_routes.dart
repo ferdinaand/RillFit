@@ -25,4 +25,5 @@ abstract class Routes {
   static const profile = '/ProfileUi';
   static const trainingContent = '/trainingContent';
   static const chooseRole = '/chooseRole';
+  static const selectRole = '/selectRole';
 }
