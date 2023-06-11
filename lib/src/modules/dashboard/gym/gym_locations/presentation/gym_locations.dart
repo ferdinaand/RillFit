@@ -7,14 +7,14 @@ import 'package:riilfit/src/presentation/resources/colors.res.dart';
 import '../../../../../presentation/resources/images.res.dart';
 import '../../../../../presentation/widgets.dart';
 
-class ChooseRole extends StatefulWidget {
-  const ChooseRole({super.key});
+class SelectLocation extends StatefulWidget {
+  const SelectLocation({super.key});
 
   @override
-  State<ChooseRole> createState() => _ChooseRoleState();
+  State<SelectLocation> createState() => _SelectLocationState();
 }
 
-class _ChooseRoleState extends State<ChooseRole> {
+class _SelectLocationState extends State<SelectLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
