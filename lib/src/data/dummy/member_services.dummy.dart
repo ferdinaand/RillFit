@@ -27,7 +27,7 @@ final memberServices = <MemberServices>[
     color: Color(0xff016989),
   ),
   const MemberServices(
-    name: 'WORKOUT',
+    name: 'DREAMBODY',
     image: workout,
     image2: getFit2,
     route: Routes.train,
