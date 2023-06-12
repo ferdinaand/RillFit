@@ -22,7 +22,12 @@ class _SelectLocationState extends State<SelectLocation> {
           child: Padding(
         padding: const EdgeInsets.only(left: 37, right: 37, top: 39),
         child: Column(
-          children: [],
+          children: [
+            Image.asset(
+              riilfitLogoPng,
+              height: 28.h,
+            ),
+          ],
         ),
       )),
     );
