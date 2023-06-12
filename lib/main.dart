@@ -62,7 +62,7 @@ class RiilfitApp extends StatelessWidget {
         return OverlaySupport.global(
           child: GetMaterialApp(
             navigatorKey: Get.find<NavigationService>().navigatorKey,
-            initialRoute: Routes.app,
+            initialRoute: Routes.selectRole,
 
             //  (JwtDecoder.isExpired(token.toString()) == false)
             //     ? Routes.app
