@@ -9,6 +9,7 @@ import 'package:riilfit/src/presentation/layouts/dashboard.layout.dart';
 import 'package:riilfit/src/presentation/views.dart';
 import 'package:riilfit/src/routing/guards/app_guard.dart';
 
+import '../modules/authentication/login/presentation/Gym_owner_login_ui.dart';
 import '../modules/dashboard/gym/gym_locations/presentation/gym_locations.dart';
 import '../modules/dashboard/role/choose_service/presentation/choose_role.dart';
 import '../modules/dashboard/train/presentation/widgets/training_content_card.ui.dart';
@@ -96,8 +97,12 @@ class AppPages {
       ),
     ),
     GetPage(
-      name: Routes.selectRole,
+      name: Routes.selectLocation,
       page: () => const SelectLocation(),
+    ),
+    GetPage(
+      name: Routes.gymOwnerLogin,
+      page: () => const GymOwnerLoginUi(),
     ),
   ];
 }
