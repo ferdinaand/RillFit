@@ -37,3 +37,7 @@ Future<void> initializeServices() async {
     ..lazyPut(NavigationService.new)
     ..lazyPut(BaseController.new, fenix: true);
 }
+
+var ChooseRoleRoute = '';
+bool GymOwnerSelect = false;
+bool userSelect = false;
