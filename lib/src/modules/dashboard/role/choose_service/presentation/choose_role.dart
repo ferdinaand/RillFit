@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/presentation/global_widgets/text.ui.dart';
 import 'package:riilfit/src/presentation/resources/colors.res.dart';
+import 'package:riilfit/src/utils/config.dart';
 
 import '../../../../../presentation/resources/images.res.dart';
 import '../../../../../presentation/widgets.dart';
+import '../../../../../routing/app_pages.dart';
 import '../widget/select.role.dart';
 
 class ChooseRole extends StatefulWidget {
@@ -44,7 +46,22 @@ class _ChooseRoleState extends State<ChooseRole> {
               ],
             ),
             Gap(58),
-            const SelectRoleUi()
+            const SelectRoleUi(),
+            const Gap(300),
+            PrimaryButtonUi(
+              text: 'Continue',
+              onPressed: () {
+                if (userSelect == true) {
+                  Get.offAndToNamed<void>(
+                    Routes.login,
+                  );
+                } else {
+                  Get.offAndToNamed<void>(
+                    Routes.gymOwnerLogin,
+                  );
+                }
+              },
+            ),
           ],
         ),
       )),
