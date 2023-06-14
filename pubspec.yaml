@@ -56,3 +56,6 @@ flutter:
     - assets/png/
     - assets/svg/
     - assets/certificates/
+    - assets/icons/
+    - assets/animations/
+    - assets/rive_assets/
