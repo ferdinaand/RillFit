@@ -23,12 +23,12 @@ class _ChooseRoleState extends State<ChooseRole> {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.only(left: 37, right: 37, top: 39),
+        padding: const EdgeInsets.only(left: 32, right: 32, top: 39),
         child: Column(
           children: [
             Image.asset(
               riilfitLogoPng,
-              height: 28.h,
+              height: 32.h,
             ),
             const Gap(50),
             Row(
@@ -41,13 +41,13 @@ class _ChooseRoleState extends State<ChooseRole> {
               children: const [
                 TextUi.bodyMed(
                   'select who you want to be registered as',
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.w400,
                 ),
               ],
             ),
             Gap(58),
             const SelectRoleUi(),
-            const Gap(300),
+            const Gap(260),
             PrimaryButtonUi(
               text: 'Continue',
               onPressed: () {
