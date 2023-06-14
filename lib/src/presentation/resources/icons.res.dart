@@ -29,3 +29,4 @@ const twitterIcon = 'assets/svg/twitter.svg';
 const whatsappIcon = 'assets/svg/whatsapp.svg';
 const outgoingCallIcon = 'assets/svg/outgoing_call.svg';
 const directionsIcon = 'assets/svg/directions.svg';
+const roleTickIcon = 'assets/icons/roleTick.png';
