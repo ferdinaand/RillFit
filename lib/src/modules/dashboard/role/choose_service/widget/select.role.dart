@@ -26,6 +26,7 @@ class _SelectRoleUiState extends State<SelectRoleUi> {
     return Column(
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
               onTap: () {
