@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, camel_case_types
+// ignore_for_file: unused_import, camel_case_types, directives_ordering
 
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -14,9 +14,9 @@ class Users {
   Users.fromSnapshot(DataSnapshot dataSnapshot) {
     Map<dynamic, dynamic> map = dataSnapshot.value! as Map<dynamic, dynamic>;
     id = dataSnapshot.key;
-    email = map["email"];
-    name = map["firstname"];
-    phone = map["Phone No"];
+    email = map["email"] as String;
+    name = map["firstname"] as String;
+    phone = map["Phone No"] as String;
   }
 }
 
