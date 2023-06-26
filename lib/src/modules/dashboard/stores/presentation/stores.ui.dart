@@ -27,11 +27,11 @@ class StoresUi extends GetView<StoresController> {
         ),
         body: SafeArea(
           child: CustomScrollView(
-            physics: const ClampingScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             slivers: [
               SliverPadding(
-                padding:
-                    EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
+                padding: const EdgeInsets.only(
+                    left: 10, right: 10, top: 20, bottom: 20),
                 sliver: SliverFillRemaining(
                   hasScrollBody: false,
                   child: Column(
