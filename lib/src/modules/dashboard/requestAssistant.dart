@@ -2,12 +2,10 @@
 
 import 'dart:convert';
 
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:BUswift/screens/driver_screens/signup_screen.dart';
 
 class RequestAssistant {
-  static Future<dynamic> getRequest(dynamic urL,
+  static Future<dynamic> getRequest(String urL,
       {List<Map<String, String>>? headers}) async {
     http.Response response = await http.get(
       Uri.parse(urL),
