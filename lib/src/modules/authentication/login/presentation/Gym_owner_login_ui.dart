@@ -36,6 +36,7 @@ class GymOwnerLoginUi extends GetView<LoginController> {
             body: SafeArea(
               child: Padding(
                 padding: baseViewPadding,
+                child: Column(children: []),
               ),
             ),
           ),
