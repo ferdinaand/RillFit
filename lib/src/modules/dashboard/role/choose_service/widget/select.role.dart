@@ -33,6 +33,7 @@ class _SelectRoleUiState extends State<SelectRoleUi> {
                 setState(() {
                   if (userSelect == false) {
                     userSelect = true;
+                    ChooseRoleRoute = true;
                     GymOwnerSelect = false;
                     trainerSelect = false;
                     storeSelect = false;
@@ -54,6 +55,7 @@ class _SelectRoleUiState extends State<SelectRoleUi> {
                   if (GymOwnerSelect == false) {
                     GymOwnerSelect = true;
                     trainerSelect = false;
+                    ChooseRoleRoute = true;
                     userSelect = false;
                     storeSelect = false;
                   } else {
