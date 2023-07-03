@@ -8,18 +8,18 @@ import 'package:riilfit/src/utils/config.dart';
 import '../../../../../presentation/resources/images.res.dart';
 import '../../../../../presentation/widgets.dart';
 import '../../../../../routing/app_pages.dart';
+import '../../controller/role.controller.dart';
 import '../widget/select.role.dart';
 
-class ChooseRole extends StatefulWidget {
+class ChooseRole extends GetView<RoleController> {
   const ChooseRole({super.key});
 
   @override
-  State<ChooseRole> createState() => _ChooseRoleState();
-}
+  RoleController get controller => Get.put(RoleController());
 
-class _ChooseRoleState extends State<ChooseRole> {
   @override
   Widget build(BuildContext context) {
+    controller.onInit();
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -51,13 +51,13 @@ class _ChooseRoleState extends State<ChooseRole> {
             PrimaryButtonUi(
               text: 'Continue',
               onPressed: () {
-                if (userSelect == true) {
+                if (userSelect == true && ChooseRoleRoute == true) {
                   Get.offAndToNamed<void>(
                     Routes.login,
                   );
-                } else {
+                } else if (userSelect == false && ChooseRoleRoute == true) {
                   Get.offAndToNamed<void>(
-                    Routes.gymOwnerLogin,
+                    Routes.gymOwnerRegister,
                   );
                 }
               },
