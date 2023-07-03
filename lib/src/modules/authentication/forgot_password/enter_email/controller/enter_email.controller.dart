@@ -26,7 +26,7 @@ class ForgotPasswordEnterEmailController extends BaseController {
 
   //text field controllers
   final emailController = TextEditingController(
-    text: kDebugMode ? 'seundavid56@gmail.com' : null,
+    text: kDebugMode ? '' : null,
   );
 
   //Enable and disable button logic
