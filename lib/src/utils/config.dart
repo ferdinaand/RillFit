@@ -38,6 +38,6 @@ Future<void> initializeServices() async {
     ..lazyPut(BaseController.new, fenix: true);
 }
 
-var ChooseRoleRoute = '';
+bool ChooseRoleRoute = false;
 bool GymOwnerSelect = false;
 bool userSelect = false;
