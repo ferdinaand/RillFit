@@ -23,7 +23,7 @@ class OnBoardingCarouselUi extends StatelessWidget {
         TextUi.heading3(
           content.title,
         ),
-        const Gap(8),
+        const Gap(30),
         Obx(
           () => TextUi.bodySmall(
             content.description,
