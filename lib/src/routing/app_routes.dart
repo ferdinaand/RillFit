@@ -26,5 +26,5 @@ abstract class Routes {
   static const trainingContent = '/trainingContent';
   static const chooseRole = '/chooseRole';
   static const selectLocation = '/selectLocation';
-  static const gymOwnerLogin = '/gymOwnerLogin';
+  static const gymOwnerRegister = '/gymOwnerRegister';
 }
