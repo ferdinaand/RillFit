@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:http/http.dart' as http;
+import 'package:riilfit/src/utils/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RoleController extends BaseController {
@@ -12,5 +13,11 @@ class RoleController extends BaseController {
     Get.offAndToNamed<void>(
       Routes.register,
     );
+  }
+
+  @override
+  void onInit() {
+    ChooseRoleRoute = false;
+    super.onInit();
   }
 }
