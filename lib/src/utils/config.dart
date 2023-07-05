@@ -41,3 +41,4 @@ Future<void> initializeServices() async {
 bool ChooseRoleRoute = false;
 bool GymOwnerSelect = false;
 bool userSelect = false;
+late bool isLoading;
