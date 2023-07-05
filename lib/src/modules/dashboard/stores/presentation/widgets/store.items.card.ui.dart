@@ -7,12 +7,14 @@ import 'package:riilfit/src/presentation/resources/colors.res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 import '../../../../../data/dummy/member_services.dummy.dart';
+import '../../../../../utils/config.dart';
 
 class StoresCardEquipmentsUi extends GetView<StoresController> {
   const StoresCardEquipmentsUi({super.key});
 
   @override
   StoresController get controller => Get.put(StoresController());
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -140,7 +142,7 @@ class StoresCardSupplementsUi extends GetView<StoresController> {
                           ),
                           onPressed: () {},
                           backgroundColor: primary,
-                          child: Center(
+                          child: const Center(
                             child: Icon(
                               Icons.add,
                               size: 30,
