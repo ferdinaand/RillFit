@@ -54,53 +54,53 @@ class LoginController extends BaseController {
   Future<void> login() async {
     // login with node js backend
 
-    // isLoading.value = true;
-    // var signupBody = {
-    //   'email': emailOrPhoneController.text,
-    //   'password': passwordController.text,
-    // };
+    isLoading.value = true;
+    var signupBody = {
+      'email': emailOrPhoneController.text,
+      'password': passwordController.text,
+    };
 
-    // var response = await http.post(
-    //     Uri.parse('https://riilfit-backend.vercel.app/auth/login'),
-    //     headers: {"Content-Type": "application/json"},
-    //     body: jsonEncode(signupBody));
+    var response = await http.post(
+        Uri.parse('https://riilfit-backend.vercel.app/auth/login'),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(signupBody));
 
-    // var jsonResponse = jsonDecode(response.body);
+    var jsonResponse = jsonDecode(response.body);
 
-    // print(jsonResponse['access_token']);
+    print(jsonResponse['access_token']);
 
-    // if (jsonResponse == ['null']) {
-    //   Get.snackbar('Error', "sommething went wrong");
-    // } else {
-    //   var token = jsonResponse;
-    //   if (token != null) {
-    //     await pref?.setString('token', token.toString());
-    //   }
-    //   await Get.offAllNamed<void>(
-    //     Routes.app,
-    //   );
-    // }
-    // isLoading.value = false;
-
-//login with firebase
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailOrPhoneController.text,
-          password: passwordController.text);
-
+    if (jsonResponse == ['null']) {
+      Get.snackbar('Error', "sommething went wrong");
+    } else {
+      var token = jsonResponse;
+      if (token != null) {
+        await pref?.setString('token', token.toString());
+      }
       await Get.offAllNamed<void>(
         Routes.app,
       );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        Get.snackbar('no user', 'No user found for that email');
-      } else if (e.code == 'wrong-password') {
-        Get.snackbar('wrong password', 'wrong password provided for that user');
-      } else if (e.code == 'network-request-failed') {
-        Get.snackbar(
-            'Network error', 'please check your connection and try again');
-      }
     }
+    isLoading.value = false;
+
+//login with firebase
+    // try {
+    //   await FirebaseAuth.instance.signInWithEmailAndPassword(
+    //       email: emailOrPhoneController.text,
+    //       password: passwordController.text);
+
+    //   await Get.offAllNamed<void>(
+    //     Routes.app,
+    //   );
+    // } on FirebaseAuthException catch (e) {
+    //   if (e.code == 'user-not-found') {
+    //     Get.snackbar('no user', 'No user found for that email');
+    //   } else if (e.code == 'wrong-password') {
+    //     Get.snackbar('wrong password', 'wrong password provided for that user');
+    //   } else if (e.code == 'network-request-failed') {
+    //     Get.snackbar(
+    //         'Network error', 'please check your connection and try again');
+    //   }
+    // }
   }
 
   // try {
