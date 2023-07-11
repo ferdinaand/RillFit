@@ -35,9 +35,8 @@ class ProfileAvatar extends StatelessWidget {
                   ? grayScale700
                   : grayScale50,
             ),
-            child: SvgPicture.asset(
-              userIcon,
-              color: primary20,
+            child: Image.asset(
+              'assets/png/dash_profile.png',
             ),
           ),
         ),
