@@ -30,3 +30,5 @@ const whatsappIcon = 'assets/svg/whatsapp.svg';
 const outgoingCallIcon = 'assets/svg/outgoing_call.svg';
 const directionsIcon = 'assets/svg/directions.svg';
 const roleTickIcon = 'assets/icons/roleTick.png';
+const locationIcon2 = 'assets/icons/location.png';
+const arrowRight = 'assets/icons/arrow-right.png';
