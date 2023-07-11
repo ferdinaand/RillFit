@@ -21,6 +21,7 @@ const errorLight = Color(0xFFFCA5A5);
 
 ///Others
 const white = Color(0xFFFFFFFF);
+const offwhite = Color(0xFF0C0000);
 const white10 = Color(0x1AFFFFFF);
 const starColor = Color(0xFFFFCD3C);
 const blueColor = Color.fromARGB(255, 29, 24, 189);
