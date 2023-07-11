@@ -23,7 +23,7 @@ final memberServices = <MemberServices>[
     name: 'GYM',
     image: gym,
     image2: getFit1,
-    route: Routes.gym,
+    route: Routes.selectLocation,
     color: Color(0xff016989),
   ),
   const MemberServices(
