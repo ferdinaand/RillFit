@@ -46,22 +46,23 @@ class ServicesTileUi extends StatelessWidget {
                         fontSize: 40,
                         fontWeight: FontWeight.w700,
                         color: white,
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
               Positioned(
-                  left: 200,
-                  top: -25,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 41),
-                    child: Image.asset(
-                      service.image,
-                      height: 180,
-                      width: 180,
-                    ),
-                  ))
+                left: 200,
+                top: -25,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 41),
+                  child: Image.asset(
+                    service.image,
+                    height: 180,
+                    width: 180,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
