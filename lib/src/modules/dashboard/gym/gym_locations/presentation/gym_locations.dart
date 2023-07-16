@@ -21,7 +21,7 @@ class _SelectLocationState extends State<SelectLocation> {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.only(left: 37, right: 37, top: 39),
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 39),
         child: Column(
           children: [
             Center(
@@ -31,22 +31,26 @@ class _SelectLocationState extends State<SelectLocation> {
               ),
             ),
             const Gap(50),
-            Row(
-              children: const [
-                TextUi.heading3(
-                  'Available Location',
-                  fontSize: 24,
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.only(left: 37),
+              child: Row(
+                children: const [
+                  TextUi.heading3(
+                    'Available Location',
+                    fontSize: 24,
+                  )
+                ],
+              ),
             ),
-            Gap(45),
+            Gap(20),
             SingleChildScrollView(
               child: Column(
                 children: [
-                  LocationCard(location: 'ogun'),
-                  LocationCard(location: 'ogun'),
-                  LocationCard(location: 'ogun'),
-                  LocationCard(location: 'ogun'),
+                  LocationCard(location: 'Victoria Island'),
+                  LocationCard(location: 'Lekki'),
+                  LocationCard(location: 'Ikeja'),
+                  LocationCard(location: 'Calabar'),
+                  LocationCard(location: 'Port Harcourt'),
                 ],
               ),
             )
