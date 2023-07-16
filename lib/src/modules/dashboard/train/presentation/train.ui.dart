@@ -29,12 +29,12 @@ class TrainUi extends GetView<TrainController> {
           title: 'Workout',
         ),
         body: SafeArea(
-          bottom: true,
           child: CustomScrollView(
             physics: const ScrollPhysics(),
             slivers: [
               SliverFillRemaining(
                 hasScrollBody: false,
+                fillOverscroll: true,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
