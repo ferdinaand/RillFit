@@ -31,7 +31,10 @@ class StoresUi extends GetView<StoresController> {
             slivers: [
               SliverPadding(
                 padding: const EdgeInsets.only(
-                    left: 10, right: 10, top: 20, bottom: 20),
+                  left: 10,
+                  right: 10,
+                  top: 20,
+                ),
                 sliver: SliverFillRemaining(
                   hasScrollBody: false,
                   child: Column(
