@@ -40,11 +40,10 @@ class TrainUi extends GetView<TrainController> {
                   children: [
                     const Gap(16),
                     Padding(
-                      padding: baseViewPadding,
+                      padding: EdgeInsets.only(top: 20),
                       child: const TrainSearchFieldUi(),
                     ),
                     const TrainingTabBar(),
-                    const Gap(0),
                   ],
                 ),
               ),
