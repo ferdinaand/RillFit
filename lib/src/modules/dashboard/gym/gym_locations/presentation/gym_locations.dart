@@ -36,7 +36,7 @@ class _SelectLocationState extends State<SelectLocation> {
               child: Row(
                 children: const [
                   TextUi.heading3(
-                    'Available Location',
+                    'Gym Locations',
                     fontSize: 24,
                   )
                 ],
