@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:riilfit/src/presentation/global_widgets/text.ui.dart';
 
 import '../../../../../presentation/global_widgets/gap.ui.dart';
@@ -62,7 +63,7 @@ class _FavoriteTabBarState extends State<FavoriteTabBar>
           ),
           Gap(23),
           Container(
-            height: 450,
+            height: 550.h,
             child: TabBarView(
               controller: _controller,
               children: [
