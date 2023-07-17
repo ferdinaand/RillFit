@@ -16,10 +16,11 @@ class WorkoutCategoryCardUi extends StatelessWidget {
       width: 350,
       decoration: BoxDecoration(
           image: DecorationImage(
+              scale: 0.5,
               image: AssetImage(
-            Image,
-          )),
-          borderRadius: BorderRadius.circular(10)),
+                Image,
+              )),
+          borderRadius: BorderRadius.circular(20)),
       child: Center(
         child: TextUi.heading2(
           Text,
