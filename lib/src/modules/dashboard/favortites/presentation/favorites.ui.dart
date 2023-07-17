@@ -24,6 +24,7 @@ class FavoritesUi extends GetView<GymController> {
       },
       child: Scaffold(
         appBar: const MainAppbarUi(
+          showBackButton: false,
           title: 'Favourites',
         ),
         body: SafeArea(
