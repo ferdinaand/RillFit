@@ -34,16 +34,16 @@ class TrainUi extends GetView<TrainController> {
             slivers: [
               SliverFillRemaining(
                 hasScrollBody: false,
-                fillOverscroll: true,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const Gap(16),
                     Padding(
-                      padding: EdgeInsets.only(top: 20),
+                      padding: baseViewPadding,
                       child: const TrainSearchFieldUi(),
                     ),
                     const TrainingTabBar(),
+                    const Gap(10),
                   ],
                 ),
               ),
