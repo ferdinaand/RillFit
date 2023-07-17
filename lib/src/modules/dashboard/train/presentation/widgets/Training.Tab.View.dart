@@ -72,7 +72,7 @@ class _TrainingTabBarState extends State<TrainingTabBar>
         ),
         const Gap(40),
         Container(
-          height: 500,
+          height: 550,
           child: TabBarView(
             controller: _TrainTabController,
             children: [
