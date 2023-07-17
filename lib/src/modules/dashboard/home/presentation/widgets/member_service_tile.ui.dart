@@ -19,7 +19,7 @@ class ServicesTileUi extends StatelessWidget {
           );
         },
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 55),
+          padding: const EdgeInsets.only(bottom: 0),
           child: Stack(
             clipBehavior: Clip.none,
             children: [
