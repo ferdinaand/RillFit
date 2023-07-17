@@ -74,7 +74,7 @@ class _FavoriteTabBarState extends State<FavoriteTabBar>
                       shrinkWrap: true,
                       padding: baseViewPadding,
                       separatorBuilder: (_, __) => const Gap(16),
-                      itemCount: 3,
+                      itemCount: 5,
                       itemBuilder: (_, i) {
                         const isFavorite = true;
                         final isClosed = i.isOdd;
