@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -5,7 +7,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
+import 'package:riilfit/src/presentation/resources/colors.res.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,8 +58,7 @@ class LoginController extends BaseController {
   Future<void> login() async {
     // login with node js backend
 
-    isLoading.value = true;
-    var signupBody = {
+    final signupBody = {
       'email': emailOrPhoneController.text,
       'password': passwordController.text,
     };
@@ -65,23 +68,28 @@ class LoginController extends BaseController {
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(signupBody));
 
-    var jsonResponse = jsonDecode(response.body);
+    final jsonResponse = jsonDecode(response.body);
 
-    print(jsonResponse['access_token']);
+    // print(jsonResponse['access_token']);
+    isLoading.value = true;
 
-    if (jsonResponse == ['null']) {
-      Get.snackbar('Error', "sommething went wrong");
-    } else {
-      var token = jsonResponse;
+    await Future.delayed(Duration(seconds: 3));
+
+    if (jsonResponse['access_token'] != null) {
+      Get.snackbar('success', 'Logged in successfully');
+      final token = jsonResponse;
       if (token != null) {
         await pref?.setString('token', token.toString());
       }
+
       await Get.offAllNamed<void>(
         Routes.app,
       );
+    } else if (jsonResponse['statusCode'] != null) {
+      Get.snackbar('Error', 'incorrect email or password');
+      // print(jsonResponse.toString());
     }
     isLoading.value = false;
-
 //login with firebase
     // try {
     //   await FirebaseAuth.instance.signInWithEmailAndPassword(
