@@ -1,28 +1,23 @@
 import 'dart:developer';
+import 'package:get/get.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 
 class ProfileController extends BaseController {
   String get firstName => currentUser.firstName;
 
+  var isLoading = false.obs;
   Future<void> createVendorAccount() async {}
 
   Future<void> logout() async {
-    try {
-      // await AuthApi().logout();
+    isLoading.value = true;
 
-      await storageService.deleteAllItems();
+    await Future.delayed(Duration(seconds: 20));
 
-      navigationService.logout();
+    // await AuthApi().logout();
 
-      log('logged out user successfully');
-      return;
-    } catch (e, s) {
-      log(
-        e.toString(),
-        stackTrace: s,
-      );
-      log('something went wrong with logout, but still navigated user anyways');
-      navigationService.logout();
-    }
+    // await storageService.deleteAllItems();
+
+    Get.snackbar('', 'logged out successfully ');
+    isLoading.value = false;
   }
 }
