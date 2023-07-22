@@ -78,9 +78,10 @@ class NavigationService extends GetxService {
     navigateToAndRemoveUntil(
       Routes.onboarding,
     );
-    navigateTo(
-      Routes.login,
-      argument: false,
-    );
+
+    // navigateTo(
+    //   Routes.login,
+    //   argument: false,
+    // );
   }
 }
