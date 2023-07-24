@@ -14,6 +14,8 @@ import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../register/controller/Gym_Owner_Register_controller.dart';
+
 class LoginController extends BaseController {
   late GlobalKey<FormState> loginFormKey;
   SharedPreferences? pref;
@@ -50,14 +52,18 @@ class LoginController extends BaseController {
   }
 
   void navigateToRegisterPage() {
+    routeFromUserSignin = true;
     Get.offAndToNamed<void>(
       Routes.register,
     );
   }
 
+  ///  login with node js backend
+  ///
+  ///
+  ///
+  ///
   Future<void> login() async {
-    // login with node js backend
-
     final signupBody = {
       'email': emailOrPhoneController.text,
       'password': passwordController.text,
