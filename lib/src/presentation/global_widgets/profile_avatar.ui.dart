@@ -25,20 +25,17 @@ class ProfileAvatar extends StatelessWidget {
         onTap: onTap,
         child: Obx(
           () => Container(
-            width: size - padding - borderSize,
-            height: size - padding - borderSize,
-            padding: EdgeInsets.all(padding * 0.5),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Get.find<ThemeService>().isDarkMode
-                  ? grayScale700
-                  : grayScale50,
-            ),
-            child: Image.asset(
-              'assets/png/dash_profile.png',
-            ),
-          ),
+              width: size - padding - borderSize,
+              height: size - padding - borderSize,
+              padding: EdgeInsets.all(padding * 0.5),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Get.find<ThemeService>().isDarkMode
+                    ? grayScale700
+                    : grayScale50,
+              ),
+              child: SvgPicture.asset(userActiveIcon)),
         ),
       ),
     );
