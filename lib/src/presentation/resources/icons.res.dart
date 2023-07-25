@@ -32,3 +32,7 @@ const directionsIcon = 'assets/svg/directions.svg';
 const roleTickIcon = 'assets/icons/roleTick.png';
 const locationIcon2 = 'assets/icons/location.png';
 const arrowRight = 'assets/icons/arrow-right.png';
+const qrCodeSample = 'assets/png/qrCodeSample.png';
+const timeIcon = 'assets/png/clock.png';
+const weightIcon = 'assets/png/weight.png';
+const calendarIcon = 'assets/png/calendar.png';
