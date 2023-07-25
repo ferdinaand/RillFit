@@ -43,8 +43,8 @@ class RegisterFormUi extends GetView<RegisterController> {
             ),
             const Gap(12),
             TextFieldUi(
-              hintText: 'Email address',
-              controller: controller.emailController,
+              hintText: 'username',
+              controller: controller.usernameController,
               keyboardType: TextInputType.emailAddress,
               onChanged: (_) {
                 controller.enableButton();
@@ -52,7 +52,7 @@ class RegisterFormUi extends GetView<RegisterController> {
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.email(),
                 FormBuilderValidators.required(
-                  errorText: 'A valid email address is required to proceed',
+                  errorText: 'you must provide your username',
                 ),
               ]),
             ),
