@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
 import 'package:riilfit/src/modules/authentication/login/presentation/widgets/login_form.ui.dart';
+import 'package:riilfit/src/modules/authentication/register/controller/Gym_Owner_Register_controller.dart';
 import 'package:riilfit/src/presentation/global_widgets/network_loader.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
