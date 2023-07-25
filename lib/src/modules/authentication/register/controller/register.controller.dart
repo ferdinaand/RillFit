@@ -1,4 +1,4 @@
-// ignore_for_file: type_annotate_public_apis
+// ignore_for_file: type_annotate_public_apis, prefer_is_not_empty, prefer_final_locals, prefer_single_quotes, prefer_const_constructors, inference_failure_on_instance_creation, avoid_dynamic_calls, avoid_print
 
 import 'dart:async';
 import 'dart:convert';
@@ -27,6 +27,7 @@ const lastname = "rill";
 
 class RegisterController extends BaseController {
   late GlobalKey<FormState> registerFormKey;
+  var isLoading = false.obs;
   SharedPreferences? pref;
 
   @override
@@ -46,9 +47,6 @@ class RegisterController extends BaseController {
     text: kDebugMode ? '' : null,
   );
 
-  final emailController = TextEditingController(
-    text: kDebugMode ? '' : null,
-  );
   final phoneController = TextEditingController(
     text: kDebugMode ? '' : null,
   );
@@ -57,13 +55,16 @@ class RegisterController extends BaseController {
     text: kDebugMode ? '' : null,
   );
 
+  final usernameController = TextEditingController(
+    text: kDebugMode ? '' : null,
+  );
+
   //Enable and disable button logic
   final isButtonDisabled = true.obs;
 
   void enableButton() {
-    isButtonDisabled.value = emailController.text.isEmpty ||
-        !emailController.text.isEmail ||
-        nameController.text.isEmpty ||
+    isButtonDisabled.value = nameController.text.isEmpty ||
+        usernameController.text.isEmpty ||
         phoneController.text.isEmpty ||
         passwordController.text.isEmpty;
 
@@ -75,81 +76,99 @@ class RegisterController extends BaseController {
       Routes.login,
     );
   }
+
 //signup with node js backend
+  Future<void> signUp() async {
+    var signupBody = {
+      'fullName': nameController.text,
+      'username': usernameController.text,
+      'phone': phoneController.text,
+      'password': passwordController.text,
+      'gym': Gender
+    };
+
+    var response = await http.post(
+      Uri.parse('https://riilfit-api.vercel.app/auth/users/signup'),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode(signupBody),
+    );
+
+    var jsonResponse = jsonDecode(response.body);
+
+    isLoading.value = true;
+
+    await Future.delayed(Duration(seconds: 3));
+
+    print(jsonResponse);
+    if (jsonResponse['access_token'] != null) {
+      Get.snackbar('success', 'Registered in successfully');
+      final token = jsonResponse;
+      if (token != null) {
+        await pref?.setString('token', token.toString());
+      }
+
+      await Get.offAllNamed<void>(
+        Routes.login,
+      );
+    } else if (jsonResponse['message'] == 'please provide strong password') {
+      Get.snackbar('please provide strong password',
+          'password must contain 8+ characters, an uppercase(A,B,C), and a special character(@,#,*,&)');
+      // print(jsonResponse.toString());
+    } else if (jsonResponse['message'] == 'gym not found') {
+      Get.snackbar('Error', 'gym does not exist');
+      // print(jsonResponse.toString());
+    }
+    isLoading.value = false;
+  }
+
+  //signup with firebase
   // Future<void> signUp() async {
-  //   var signupBody = {
-  //     'email': emailController.text,
-  //     'phoneNumber': phoneController.text,
-  //     'password': passwordController.text,
-  //     'firstName': nameController.text,
-  //     'lastname': lastname,
-  //     'gender': Gender
-  //   };
+  //   try {
+  //     await FirebaseAuth.instance
+  //         .createUserWithEmailAndPassword(
+  //           email: emailController.text.trim(),
+  //           password: passwordController.text.trim(),
+  //         )
 
-  //   var response = await http.post(
-  //       Uri.parse('https://riilfit-backend.vercel.app/auth/register'),
-  //       headers: {"Content-Type": "application/json"},
-  //       body: jsonEncode(signupBody));
-
-  //   var jsonResponse = jsonDecode(response.body);
-
-  //   print(jsonResponse['access_token']);
-
-  //   if (jsonResponse == ['null']) {
-  //     Get.snackbar('Error', "sommething went wrong");
-  //   } else {
-  //     navigateToLoginPage();
+  //         //add user details to firestore
+  //         .then(
+  //           (value) => {
+  //             postDetailsToFirestore(
+  //               phoneController.text,
+  //               emailController.text,
+  //               nameController.text,
+  //               passwordController.text,
+  //             )
+  //           },
+  //         );
+  //   } on FirebaseAuthException catch (e) {
+  //     Get.snackbar('Error: ', ' ${e.toString()}');
   //   }
   // }
 
-  //signup with firebase
-  Future<void> signUp() async {
-    try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-            email: emailController.text.trim(),
-            password: passwordController.text.trim(),
-          )
+  // // ignore: always_declare_return_types, inference_failure_on_function_return_type
+  // postDetailsToFirestore(
+  //   String phoneNo,
+  //   String email,
+  //   String firstname,
+  //   String lastname,
+  // ) async {
+  //   final user = FirebaseAuth.instance.currentUser;
+  //   final userRef = FirebaseDatabase.instance.ref().child('user');
+  //   final phoneNoReceiver = phoneController.text;
+  //   if (user != null) {
+  //     await pref!.setString('user id', user.toString());
+  //   }
+  //   await userRef.child(user!.uid).set({
+  //     'id': user.uid,
+  //     'Phone No': '+234$phoneNoReceiver',
+  //     'email': emailController.text,
+  //     'firstname': firstname,
+  //     'lastname': lastname
+  //   });
 
-          //add user details to firestore
-          .then(
-            (value) => {
-              postDetailsToFirestore(
-                phoneController.text,
-                emailController.text,
-                nameController.text,
-                passwordController.text,
-              )
-            },
-          );
-    } on FirebaseAuthException catch (e) {
-      Get.snackbar('Error: ', ' ${e.toString()}');
-    }
-  }
-
-  // ignore: always_declare_return_types, inference_failure_on_function_return_type
-  postDetailsToFirestore(
-    String phoneNo,
-    String email,
-    String firstname,
-    String lastname,
-  ) async {
-    final user = FirebaseAuth.instance.currentUser;
-    final userRef = FirebaseDatabase.instance.ref().child('user');
-    final phoneNoReceiver = phoneController.text;
-    if (user != null) {
-      await pref!.setString('user id', user.toString());
-    }
-    await userRef.child(user!.uid).set({
-      'id': user.uid,
-      'Phone No': '+234$phoneNoReceiver',
-      'email': emailController.text,
-      'firstname': firstname,
-      'lastname': lastname
-    });
-
-    navigateToLoginPage();
-  }
+  //   navigateToLoginPage();
+  // }
 
   // DriverPhoneNo = PhoneNoController;
   // currentFirebaseUser = driveruser;
