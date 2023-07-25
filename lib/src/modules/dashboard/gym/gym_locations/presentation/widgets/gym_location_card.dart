@@ -9,6 +9,7 @@ import 'package:riilfit/src/presentation/widgets.dart';
 
 import '../../../../../../domain/services/themes.services.dart';
 import '../../../../../../presentation/resources/icons.res.dart';
+import '../../../../../../routing/app_pages.dart';
 
 class LocationCard extends StatelessWidget {
   LocationCard({required this.location, super.key});
@@ -16,6 +17,11 @@ class LocationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        Get.offAndToNamed<void>(
+          Routes.gym,
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 20),
         child: SizedBox(
