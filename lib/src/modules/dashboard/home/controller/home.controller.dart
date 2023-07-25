@@ -5,9 +5,9 @@ import '../../profile/presentation/profile.ui.dart';
 
 class HomeController extends BaseController {
   String get firstName => currentUser.firstName;
-  void openProfilePage() {
+  void openGymProfilePage() {
     navigationService.navigateTo(
-      Routes.profile,
+      Routes.gymProfile,
     );
   }
 }
