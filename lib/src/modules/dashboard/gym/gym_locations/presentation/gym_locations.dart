@@ -7,56 +7,38 @@ import 'package:riilfit/src/presentation/resources/colors.res.dart';
 
 import '../../../../../presentation/resources/images.res.dart';
 import '../../../../../presentation/widgets.dart';
+import '../controller/gym_locations_controller.dart';
 
-class SelectLocation extends StatefulWidget {
+class SelectLocation extends GetView<GymLocationsController> {
   const SelectLocation({super.key});
 
   @override
-  State<SelectLocation> createState() => _SelectLocationState();
-}
-
-class _SelectLocationState extends State<SelectLocation> {
+  GymLocationsController get controller => Get.put(GymLocationsController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: MainAppbarUi(
+        title: 'Gym Locations',
+      ),
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 39),
-        child: Column(
-          children: [
-            Center(
-              child: Image.asset(
-                riilfitLogoPng,
-                height: 28.h,
-              ),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                LocationCard(location: 'Victoria Island'),
+                LocationCard(location: 'Lekki'),
+                LocationCard(location: 'Ikeja'),
+                LocationCard(location: 'Calabar'),
+                LocationCard(location: 'Port Harcourt'),
+                LocationCard(location: 'Port Harcourt'),
+                LocationCard(location: 'Port Harcourt'),
+                LocationCard(location: 'Port Harcourt'),
+                LocationCard(location: 'Port Harcourt'),
+              ],
             ),
-            const Gap(50),
-            Padding(
-              padding: const EdgeInsets.only(left: 37),
-              child: Row(
-                children: const [
-                  TextUi.heading3(
-                    'Gym Locations',
-                    fontSize: 24,
-                  )
-                ],
-              ),
-            ),
-            Gap(20),
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  LocationCard(location: 'Victoria Island'),
-                  LocationCard(location: 'Lekki'),
-                  LocationCard(location: 'Ikeja'),
-                  LocationCard(location: 'Calabar'),
-                  LocationCard(location: 'Port Harcourt'),
-                ],
-              ),
-            )
-          ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
