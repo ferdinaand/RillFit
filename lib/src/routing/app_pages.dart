@@ -11,6 +11,9 @@ import 'package:riilfit/src/routing/guards/app_guard.dart';
 
 import '../modules/authentication/register/presentation/Gym_owner_Registration_ui.dart';
 import '../modules/dashboard/gym/gym_locations/presentation/gym_locations.dart';
+import '../modules/dashboard/gym/gym_membership_plans/presentation/gym_membership_plan_ui.dart';
+import '../modules/dashboard/gym/gym_profile/presentation/gym_profile.dart';
+import '../modules/dashboard/gym/gym_tag/presentation/gym_tag_ui.dart';
 import '../modules/dashboard/role/choose_service/presentation/choose_role.dart';
 import '../modules/dashboard/train/presentation/widgets/training_content_card.ui.dart';
 
@@ -103,6 +106,18 @@ class AppPages {
     GetPage(
       name: Routes.gymOwnerRegister,
       page: () => const GymOwnerRegistrationUi(),
+    ),
+    GetPage(
+      name: Routes.gymProfile,
+      page: () => const GymProfile(),
+    ),
+    GetPage(
+      name: Routes.gymTag,
+      page: () => const GymTag(),
+    ),
+    GetPage(
+      name: Routes.gymPlan,
+      page: () => const GymMembershipPlans(),
     ),
   ];
 }

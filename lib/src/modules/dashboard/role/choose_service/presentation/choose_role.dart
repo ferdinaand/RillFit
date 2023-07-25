@@ -53,7 +53,7 @@ class ChooseRole extends GetView<RoleController> {
               onPressed: () {
                 if (userSelect == true && ChooseRoleRoute == true) {
                   Get.offAndToNamed<void>(
-                    Routes.login,
+                    Routes.app,
                   );
                 } else if (userSelect == false && ChooseRoleRoute == true) {
                   Get.offAndToNamed<void>(
