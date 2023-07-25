@@ -29,7 +29,8 @@ class HomeHeaderUi extends GetView<HomeController> {
               ],
             ),
             const TextUi.bodyMed(
-              'FERDINAND EKPO',
+              'user',
+              style: TextStyle(fontStyle: FontStyle.italic),
               fontSize: 18,
               fontWeight: FontWeight.w800,
             ),
@@ -37,7 +38,7 @@ class HomeHeaderUi extends GetView<HomeController> {
         ),
         const Spacer(),
         ProfileAvatar(
-          onTap: controller.openProfilePage,
+          onTap: controller.openGymProfilePage,
         ),
       ],
     );
