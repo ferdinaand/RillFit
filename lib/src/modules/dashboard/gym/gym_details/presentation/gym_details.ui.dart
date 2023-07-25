@@ -301,8 +301,8 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                                 padding:
                                     const EdgeInsets.only(left: 57, right: 57),
                                 child: PrimaryButtonUi(
-                                  text: 'View Location',
-                                  onPressed: () {},
+                                  text: 'View Gym Plans',
+                                  onPressed: controller.openGymPlans,
                                 ),
                               ),
                               Gap(15)
