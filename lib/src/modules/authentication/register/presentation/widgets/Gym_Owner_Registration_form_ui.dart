@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
 import 'package:riilfit/src/modules/authentication/register/presentation/widgets/Add_Image.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
@@ -82,7 +83,16 @@ class GymOwnerRegistrationFormUi extends GetView<GymOwnerRegisterController> {
             ),
             Gap(30),
             Center(child: const AddImage()),
-            Gap(30)
+            const Gap(40),
+            Obx(
+              () => PrimaryButtonUi(
+                text: 'Sign up',
+                loading: controller.viewState.isBusy,
+                onPressed: controller.isButtonDisabled.value
+                    ? null
+                    : controller.signup,
+              ),
+            ),
           ],
         ),
       ),

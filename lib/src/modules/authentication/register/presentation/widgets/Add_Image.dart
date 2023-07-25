@@ -1,13 +1,23 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:riilfit/src/presentation/global_widgets/gap.ui.dart';
 import 'package:riilfit/src/presentation/resources/colors.res.dart';
 
 import '../../../../../presentation/global_widgets/button.ui.dart';
 import '../../../../../presentation/global_widgets/text.ui.dart';
+import '../../controller/Gym_Owner_Register_controller.dart';
 
-class AddImage extends StatelessWidget {
+class AddImage extends GetView<GymOwnerRegisterController> {
   const AddImage({super.key});
+
+  @override
+  GymOwnerRegisterController get controller =>
+      Get.put(GymOwnerRegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +57,19 @@ class AddImage extends StatelessWidget {
                         bottom: -10,
                         right: -39,
                         child: RawMaterialButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            PlatformFile? pickedFile;
+
+                            final result =
+                                await FilePicker.platform.pickFiles();
+
+                            if (result == null) return;
+                            pickedFile = result.files.first;
+                            // ImagePicker imagePicker = ImagePicker();
+                            // XFile? file = await imagePicker.pickImage(
+                            //     source: ImageSource.gallery);
+                            // print('${file?.path}');
+                          },
                           elevation: 2.0,
                           fillColor: Colors.transparent,
                           child: Icon(Icons.edit),
