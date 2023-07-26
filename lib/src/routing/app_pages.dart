@@ -9,6 +9,7 @@ import 'package:riilfit/src/presentation/layouts/dashboard.layout.dart';
 import 'package:riilfit/src/presentation/views.dart';
 import 'package:riilfit/src/routing/guards/app_guard.dart';
 
+import '../modules/authentication/login/presentation/gymOwnerLogin.ui.dart';
 import '../modules/authentication/register/presentation/Gym_owner_Registration_ui.dart';
 import '../modules/dashboard/gym/gym_locations/presentation/gym_locations.dart';
 import '../modules/dashboard/gym/gym_membership_plans/presentation/gym_membership_plan_ui.dart';
@@ -118,6 +119,10 @@ class AppPages {
     GetPage(
       name: Routes.gymPlan,
       page: () => const GymMembershipPlans(),
+    ),
+    GetPage(
+      name: Routes.gymOwnerLogin,
+      page: () => const GymOwnerLoginUi(),
     ),
   ];
 }
