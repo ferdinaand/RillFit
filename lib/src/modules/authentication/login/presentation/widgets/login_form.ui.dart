@@ -24,8 +24,8 @@ class LoginFormUi extends GetView<LoginController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFieldUi(
-              hintText: 'Email Address',
-              controller: controller.emailOrPhoneController,
+              hintText: 'username',
+              controller: controller.usernameController,
               keyboardType: TextInputType.emailAddress,
               onChanged: (_) {
                 controller.enableButton();
