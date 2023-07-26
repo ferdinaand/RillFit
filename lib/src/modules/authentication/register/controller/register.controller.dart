@@ -58,6 +58,9 @@ class RegisterController extends BaseController {
   final usernameController = TextEditingController(
     text: kDebugMode ? '' : null,
   );
+  final gymNameController = TextEditingController(
+    text: kDebugMode ? '' : null,
+  );
 
   //Enable and disable button logic
   final isButtonDisabled = true.obs;
@@ -65,6 +68,7 @@ class RegisterController extends BaseController {
   void enableButton() {
     isButtonDisabled.value = nameController.text.isEmpty ||
         usernameController.text.isEmpty ||
+        gymNameController.text.isEmpty ||
         phoneController.text.isEmpty ||
         passwordController.text.isEmpty;
 
@@ -84,7 +88,7 @@ class RegisterController extends BaseController {
       'username': usernameController.text,
       'phone': phoneController.text,
       'password': passwordController.text,
-      'gym': Gender
+      'gym': gymNameController.text
     };
 
     var response = await http.post(
