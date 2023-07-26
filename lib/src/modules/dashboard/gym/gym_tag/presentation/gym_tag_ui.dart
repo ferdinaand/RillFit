@@ -6,6 +6,7 @@ import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/widgets
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/widgets/search_field.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class GymTag extends GetView<GymController> {
   const GymTag({super.key});
@@ -56,14 +57,25 @@ class GymTag extends GetView<GymController> {
                     ],
                   ),
                   const Gap(30),
-                  SizedBox(
-                    height: 311,
-                    width: 311,
-                    child: Image.asset(qrCodeSample),
+                  // SizedBox(
+                  //   height: 311,
+                  //   width: 311,
+                  //   child: Image.asset(qrCodeSample),
+                  // ),
+
+                  Container(
+                    height: 300,
+                    width: 300,
+                    decoration: BoxDecoration(color: primary),
+                    child: QrImageView(
+                      data: '1234567890',
+                      version: QrVersions.auto,
+                      size: 300,
+                    ),
                   ),
                   Gap(20),
                   TextUi.bodyLarge(
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.left,
                       ' for  quick and easy access to your gyms, the qr code will contain your gym membership plan info')
                 ],
               ),
