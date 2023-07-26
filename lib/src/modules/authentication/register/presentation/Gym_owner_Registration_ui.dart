@@ -41,27 +41,28 @@ class GymOwnerRegistrationUi extends GetView<GymOwnerRegisterController> {
             body: SafeArea(
               child: Padding(
                 padding: baseViewPadding,
-                child: CustomScrollView(
+                child: const CustomScrollView(
                   slivers: [
                     SliverFillRemaining(
                       hasScrollBody: false,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
-                          Gap(50),
+                          const Gap(50),
                           TextUi.bodyLarge(
                             'Gym Owner',
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
                           ),
-                          Gap(17),
+                          const Gap(17),
                           TextUi.bodyLarge(
                             'Enter Information about your gym below',
                             fontWeight: FontWeight.w300,
                             fontSize: 14,
                           ),
-                          Gap(48),
+                          const Gap(48),
                           GymOwnerRegistrationFormUi(),
+                          const Gap(20)
                         ],
                       ),
                     ),
