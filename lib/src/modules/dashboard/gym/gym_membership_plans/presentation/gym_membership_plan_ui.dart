@@ -19,6 +19,7 @@ class GymMembershipPlans extends GetView<GymPlansController> {
 
   @override
   Widget build(BuildContext context) {
+    final String planId = 'premuim plus';
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -50,6 +51,10 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                     ],
                   ),
                   gymPlanCard(
+                    OnTap: () {
+                      controller.enableButton();
+                    },
+                    Id: '',
                     planType: 'basic plan',
                     price: '\$49',
                     description:
@@ -61,6 +66,10 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                   ),
                   const Gap(20),
                   gymPlanCard(
+                    OnTap: () {
+                      controller.enableButton();
+                    },
+                    Id: '',
                     planType: 'premuim',
                     price: '\$90',
                     description:
@@ -72,6 +81,10 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                   ),
                   const Gap(20),
                   gymPlanCard(
+                    OnTap: () {
+                      controller.enableButton();
+                    },
+                    Id: planId,
                     planType: 'premuim plus',
                     price: '\$150',
                     description:
@@ -80,6 +93,11 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                     features: 'Gym access only two days a week',
                     subFeatures: '8 visits per month',
                     logo: riilfitLogoPng,
+                  ),
+                  const Gap(20),
+                  PrimaryButtonUi(
+                    text: 'subscribe',
+                    onPressed: () {},
                   ),
                   const Gap(20)
                 ],
