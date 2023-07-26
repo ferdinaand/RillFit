@@ -52,13 +52,20 @@ class RegisterUi extends GetView<RegisterController> {
                                 const RegisterFormUi(),
                                 const Gap(24),
                                 Obx(
-                                  () => PrimaryButtonUi(
-                                    text: 'Sign up',
-                                    loading: controller.viewState.isBusy,
-                                    onPressed: controller.isButtonDisabled.value
-                                        ? null
-                                        : controller.signUp,
-                                  ),
+                                  () => controller.isLoading.value
+                                      ? const Center(
+                                          child: CircularProgressIndicator(
+                                            color: primary,
+                                          ),
+                                        )
+                                      : PrimaryButtonUi(
+                                          text: 'Sign up',
+                                          loading: controller.viewState.isBusy,
+                                          onPressed:
+                                              controller.isButtonDisabled.value
+                                                  ? null
+                                                  : controller.signUp,
+                                        ),
                                 ),
                                 const Gap(24),
                               ],
