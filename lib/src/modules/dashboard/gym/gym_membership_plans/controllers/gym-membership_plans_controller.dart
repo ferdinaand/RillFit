@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:http/http.dart' as http;
@@ -6,16 +8,30 @@ import 'dart:async';
 import 'dart:convert';
 
 class GymPlansController extends BaseController {
+  final iD = ''.obs;
   final _currentIndex = 0.obs;
   int get currentIndex => _currentIndex.value;
   set currentIndex(int index) {
     _currentIndex.value = index;
   }
 
+  void getPlanId() {}
+
   void gymsInLocation() {
     navigationService.navigateTo(
       Routes.gym,
     );
+  }
+
+  final planController = TextEditingController(
+    text: kDebugMode ? '' : null,
+  );
+
+  final isButtonDisabled = true.obs;
+
+  void enableButton() {
+    isButtonDisabled.value == planController.text.isEmpty;
+    return;
   }
 
   Future<void> getGymPlans() async {
