@@ -64,8 +64,7 @@ class LoginUi extends GetView<LoginController> {
                                           )
                                         : PrimaryButtonUi(
                                             text: 'Sign In',
-                                            loading:
-                                                controller.viewState.isBusy,
+                                            loading: controller.isLoading.value,
                                             onPressed: controller
                                                     .isButtonDisabled.value
                                                 ? null
