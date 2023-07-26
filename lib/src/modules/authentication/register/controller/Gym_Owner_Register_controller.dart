@@ -2,8 +2,10 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +21,7 @@ class GymOwnerRegisterController extends BaseController {
   late GlobalKey<FormState> loginFormKey;
   SharedPreferences? pref;
   var isLoading = false.obs;
+  String imageUrl = '';
   XFile? file;
   @override
   void onInit() {
@@ -26,12 +29,6 @@ class GymOwnerRegisterController extends BaseController {
     loginFormKey = GlobalKey<FormState>(debugLabel: 'Login');
     initSharedPref();
     super.onInit();
-  }
-
-  void selectImage() async {
-    ImagePicker imagePicker = ImagePicker();
-    file = await imagePicker.pickImage(source: ImageSource.gallery);
-    print('${file?.path}');
   }
 
   void initSharedPref() async {
@@ -45,7 +42,13 @@ class GymOwnerRegisterController extends BaseController {
   final fullnameController = TextEditingController(
     text: kDebugMode ? '' : null,
   );
-  final gymLocatioController = TextEditingController(
+  final gymStateController = TextEditingController(
+    text: kDebugMode ? '' : null,
+  );
+  final gymCityController = TextEditingController(
+    text: kDebugMode ? '' : null,
+  );
+  final gymAddressController = TextEditingController(
     text: kDebugMode ? '' : null,
   );
   final gymNameController = TextEditingController(
@@ -59,6 +62,13 @@ class GymOwnerRegisterController extends BaseController {
     text: kDebugMode ? '' : null,
   );
 
+  void selectImage() async {
+    //select image using image picker package
+    ImagePicker imagePicker = ImagePicker();
+    file = await imagePicker.pickImage(source: ImageSource.gallery);
+    print('${file?.path}');
+  }
+
   //Enable and disable button logic
   final isButtonDisabled = true.obs;
 
@@ -67,7 +77,9 @@ class GymOwnerRegisterController extends BaseController {
         passwordController.text.isEmpty ||
         phoneController.text.isEmpty ||
         fullnameController.text.isEmpty ||
-        gymLocatioController.text.isEmpty ||
+        gymStateController.text.isEmpty ||
+        gymCityController.text.isEmpty ||
+        gymAddressController.text.isEmpty ||
         gymNameController.text.isEmpty;
 
     return;
@@ -82,13 +94,39 @@ class GymOwnerRegisterController extends BaseController {
 
   Future<void> signup() async {
     // login with node js backend
+    isLoading.value = true;
+
+    await Future.delayed(Duration(seconds: 3));
+    //save the image to firebase storage
+    if (file == null) {
+      Get.snackbar('logo error', 'no logo selected');
+
+      return;
+    }
+    Reference root = FirebaseStorage.instance.ref();
+    Reference DirGymLogo = root.child('gymLogo');
+
+    //parsing the gym logo to be uploaded to the reference
+
+    Reference gymLogoUpload = DirGymLogo.child(gymNameController.text);
+
+    try {
+      await gymLogoUpload.putFile(File(file!.path));
+
+      imageUrl = await gymLogoUpload.getDownloadURL();
+      print('${imageUrl}');
+    } catch (e) {}
 
     var signupBody = {
       "fullName": fullnameController.text,
       "gymName": gymNameController.text,
       "gymPhone": phoneController.text,
-      "logoUrl":
-          "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80",
+      "locations": {
+        "state": gymStateController.text,
+        "city": gymCityController.text,
+        "address": gymAddressController.text,
+      },
+      "logoUrl": imageUrl,
       "username": gymNameController.text,
       "password": passwordController.text
     };
@@ -99,9 +137,7 @@ class GymOwnerRegisterController extends BaseController {
         body: jsonEncode(signupBody));
 
     var jsonResponse = jsonDecode(response.body);
-    isLoading.value = true;
 
-    await Future.delayed(Duration(seconds: 3));
     print(jsonResponse);
     if (jsonResponse['access_token'] != null) {
       Get.snackbar('success', 'Registered in successfully');
@@ -111,13 +147,16 @@ class GymOwnerRegisterController extends BaseController {
       }
 
       await Get.offAllNamed<void>(
-        Routes.login,
+        Routes.gymOwnerLogin,
       );
     } else if (jsonResponse['message'] == 'please provide strong password') {
       Get.snackbar('please provide strong password',
           'password must contain 8+ characters, an uppercase(A,B,C), and a special character(@,#,*,&)');
       // print(jsonResponse.toString());
     } else if (jsonResponse['message'] == 'gym not found') {
+      Get.snackbar('Error', 'gym does not exist');
+      // print(jsonResponse.toString());
+    } else if (jsonResponse['message'] == 'invalid phone number provided') {
       Get.snackbar('Error', 'gym does not exist');
       // print(jsonResponse.toString());
     }
