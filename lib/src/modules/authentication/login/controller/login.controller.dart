@@ -33,7 +33,7 @@ class LoginController extends BaseController {
   }
 
   //text field controllers
-  final emailOrPhoneController = TextEditingController(
+  final usernameController = TextEditingController(
     text: kDebugMode ? '' : null,
   );
 
@@ -46,7 +46,7 @@ class LoginController extends BaseController {
 
   void enableButton() {
     isButtonDisabled.value =
-        emailOrPhoneController.text.isEmpty || passwordController.text.isEmpty;
+        usernameController.text.isEmpty || passwordController.text.isEmpty;
 
     return;
   }
@@ -65,7 +65,7 @@ class LoginController extends BaseController {
   ///
   Future<void> login() async {
     final signupBody = {
-      'email': emailOrPhoneController.text,
+      'email': usernameController.text,
       'password': passwordController.text,
     };
 
