@@ -56,6 +56,15 @@ class RegisterFormUi extends GetView<RegisterController> {
                 ),
               ]),
             ),
+            Gap(12),
+            TextFieldUi(
+              hintText: 'gym name',
+              controller: controller.gymNameController,
+              keyboardType: TextInputType.emailAddress,
+              onChanged: (_) {
+                controller.enableButton();
+              },
+            ),
             const Gap(12),
             PhoneInputField(
               controller: controller.phoneController,
