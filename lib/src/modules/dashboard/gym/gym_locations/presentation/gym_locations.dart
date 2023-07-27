@@ -25,15 +25,11 @@ class SelectLocation extends GetView<GymLocationsController> {
           child: Center(
             child: Column(
               children: [
+                // ListView.builder(itemBuilder: ())
                 LocationCard(location: 'Victoria Island'),
                 LocationCard(location: 'Lekki'),
                 LocationCard(location: 'Ikeja'),
                 LocationCard(location: 'Calabar'),
-                LocationCard(location: 'Port Harcourt'),
-                LocationCard(location: 'Port Harcourt'),
-                LocationCard(location: 'Port Harcourt'),
-                LocationCard(location: 'Port Harcourt'),
-                LocationCard(location: 'Port Harcourt'),
               ],
             ),
           ),
@@ -42,3 +38,9 @@ class SelectLocation extends GetView<GymLocationsController> {
     );
   }
 }
+
+// Widget buildUsers(List<User> users) => ListView.builder(itemBuilder: (context, index){
+
+//  final user = users[index];
+
+// }, itemCount: users.length,);
