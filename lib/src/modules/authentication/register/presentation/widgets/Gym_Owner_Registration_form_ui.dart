@@ -48,6 +48,15 @@ class GymOwnerRegistrationFormUi extends GetView<GymOwnerRegisterController> {
               // },
             ),
             Gap(gap),
+            TextFieldUi(
+              hintText: 'username',
+              controller: controller.usernameController,
+              keyboardType: TextInputType.emailAddress,
+              // onChanged: (_) {
+              //   controller.enableButton();
+              // },
+            ),
+            Gap(gap),
             TextUi.heading4(
               'gym location details',
               fontWeight: FontWeight.w300,
