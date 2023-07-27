@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/dummy/member_services.dummy.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/controller/gym.controller.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/widgets/gym_card.ui.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/widgets/search_field.ui.dart';
@@ -7,7 +8,9 @@ import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
 class GymUi extends GetView<GymController> {
-  const GymUi({super.key});
+  const GymUi({
+    super.key,
+  });
 
   @override
   GymController get controller => Get.put(GymController());
@@ -34,22 +37,12 @@ class GymUi extends GetView<GymController> {
                 child: const GymSearchFieldUi(),
               ),
               const Gap(16),
-              Expanded(
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  padding: baseViewPadding,
-                  separatorBuilder: (_, __) => const Gap(16),
-                  itemCount: 3,
-                  itemBuilder: (_, i) {
-                    final isFavorite = i.isEven;
-                    final isClosed = i.isOdd;
-                    return GymCardUi(
-                      isFavorite: isFavorite,
-                      isClosed: isClosed,
-                    );
-                  },
-                ),
-              ),
+              ...gServices.asMap().entries.map((entry) {
+                final service = entry.value;
+                return GymCardUi(
+                  service: service,
+                );
+              }),
             ],
           ),
         ),
