@@ -60,24 +60,24 @@ class GServices {
 
 final gServices = <GServices>[
   const GServices(
-    name: 'GYM',
+    name: 'Rillfit',
     image: gym,
-    image2: getFit1,
-    route: Routes.gym,
+    image2: 'assets/png/Rectangle1.png',
+    route: Routes.gymDetails,
     color: Color(0xff016989),
   ),
   const GServices(
-    name: 'WORKOUT',
+    name: 'feddy gym',
     image: workout,
-    image2: getFit2,
-    route: Routes.train,
+    image2: 'assets/png/Rectangle2.png',
+    route: Routes.gymDetails,
     color: Color(0xff8DAB4D),
   ),
   const GServices(
-    name: 'SHOP',
+    name: 'bennys place',
     image: store,
-    image2: getFit3,
-    route: Routes.stores,
+    image2: 'assets/png/Rectangle3.png',
+    route: Routes.gymDetails,
     color: Color(0xff904E55),
   ),
 ];
