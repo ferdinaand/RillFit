@@ -6,15 +6,19 @@ import 'package:riilfit/src/modules/dashboard/gym/gyms_list/controller/gym.contr
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
+import '../../../../../../data/dummy/member_services.dummy.dart';
+
 class GymCardUi extends GetView<GymController> {
   const GymCardUi({
     super.key,
+    required this.service,
     this.isFavorite = false,
     this.isClosed = false,
   });
 
   final bool isFavorite;
   final bool isClosed;
+  final GServices service;
 
   @override
   GymController get controller => Get.put(GymController());
@@ -22,7 +26,11 @@ class GymCardUi extends GetView<GymController> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: controller.openDetailsPage,
+      onTap: () {
+        Get.offAndToNamed<void>(
+          service.route,
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: SizedBox(
@@ -32,12 +40,10 @@ class GymCardUi extends GetView<GymController> {
             children: [
               Container(
                 padding: const EdgeInsets.all(16),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   image: DecorationImage(
-                    image: AssetImage(
-                      getFit1,
-                    ),
+                    image: AssetImage(service.image2),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -78,8 +84,8 @@ class GymCardUi extends GetView<GymController> {
                     const Spacer(),
                     Row(
                       children: [
-                        const TextUi.heading4(
-                          'GetFit Gym',
+                        TextUi.heading4(
+                          service.name,
                           color: grayScale50,
                         ),
                         SizedBox(
