@@ -8,11 +8,13 @@ import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-class GymTag extends GetView<GymController> {
+import '../controller/gym_tag_controller.dart';
+
+class GymTag extends GetView<GymTagController> {
   const GymTag({super.key});
 
   @override
-  GymController get controller => Get.put(GymController());
+  GymTagController get controller => Get.put(GymTagController());
 
   @override
   Widget build(BuildContext context) {
