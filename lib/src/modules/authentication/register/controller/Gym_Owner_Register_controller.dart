@@ -55,6 +55,9 @@ class GymOwnerRegisterController extends BaseController {
     text: kDebugMode ? '' : null,
   );
 
+  final usernameController = TextEditingController(
+    text: kDebugMode ? '' : null,
+  );
   final passwordController = TextEditingController(
     text: kDebugMode ? '' : null,
   );
@@ -80,6 +83,7 @@ class GymOwnerRegisterController extends BaseController {
         gymStateController.text.isEmpty ||
         gymCityController.text.isEmpty ||
         gymAddressController.text.isEmpty ||
+        usernameController.text.isEmpty ||
         gymNameController.text.isEmpty;
 
     return;
@@ -121,15 +125,18 @@ class GymOwnerRegisterController extends BaseController {
       "fullName": fullnameController.text,
       "gymName": gymNameController.text,
       "gymPhone": phoneController.text,
-      "locations": {
-        "state": gymStateController.text,
-        "city": gymCityController.text,
-        "address": gymAddressController.text,
-      },
+      "locations": [
+        {
+          "state": gymStateController.text,
+          "city": gymCityController.text,
+          "address": gymAddressController.text,
+        }
+      ],
       "logoUrl": imageUrl,
-      "username": gymNameController.text,
+      "username": usernameController.text,
       "password": passwordController.text
     };
+    print(signupBody);
 
     var response = await http.post(
         Uri.parse('https://riilfit-api.vercel.app/auth/gym-owners/signup'),
