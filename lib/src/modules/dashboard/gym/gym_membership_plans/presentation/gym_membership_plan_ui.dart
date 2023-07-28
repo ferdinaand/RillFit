@@ -105,40 +105,7 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                           logo: riilfitLogoPng,
                         ),
                         const Gap(20),
-                        PrimaryButtonUi(
-                            text: 'subscribe',
-                            onPressed: () {
-                              handlePaymentInitialization() async {
-                                final Customer customer = Customer(
-                                    email: "ekpo546@gmail.com",
-                                    phoneNumber: "08145677278",
-                                    name: "user");
-
-                                final Flutterwave flutterwave = Flutterwave(
-                                    context: context,
-                                    publicKey:
-                                        'FLWPUBK_TEST-dd5ad6338e5b0ba65dcf0ae9481d0792-X',
-                                    currency: 'NGN',
-                                    redirectUrl: 'https://facebook.com',
-                                    txRef: " payment reference",
-                                    amount: "50,000",
-                                    customer: customer,
-                                    paymentOptions:
-                                        "card, payattitude, barter, bank transfer, ussd",
-                                    customization:
-                                        Customization(title: "Test Payment"),
-                                    isTestMode: true);
-                                final ChargeResponse response =
-                                    await flutterwave.charge();
-                                print(response);
-                                if (response != null) {
-                                  Get.snackbar('', response.toString());
-                                  print("${response.toJson()}");
-                                } else {
-                                  Get.snackbar('', response.toString());
-                                }
-                              }
-                            }),
+                        PrimaryButtonUi(text: 'subscribe', onPressed: () {}),
                         const Gap(20)
                       ],
                     ),
