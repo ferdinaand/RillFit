@@ -2,9 +2,12 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
+import 'package:riilfit/src/utils/config.dart';
 
 class ProfileController extends BaseController {
-  String get firstName => currentUser.firstName;
+  // String get firstName => currentUser.firstName;
+  String firstname = firstName;
+  String phonenumber = phoneNumber;
 
   var isLoading = false.obs;
   Future<void> createVendorAccount() async {}
@@ -14,7 +17,9 @@ class ProfileController extends BaseController {
     isLoading.value = true;
 
     await Future.delayed(Duration(seconds: 1));
-
+    userName = "";
+    firstName = '';
+    phoneNumber = '';
     // await AuthApi().logout();
 
     await storageService.deleteAllItems();
