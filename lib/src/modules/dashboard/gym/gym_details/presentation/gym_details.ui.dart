@@ -90,7 +90,7 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                               Row(
                                 children: [
                                   const TextUi.heading4(
-                                    'GetFit Gym',
+                                    'bennys place',
                                     fontSize: 14,
                                     fontWeight: FontWeight.w800,
                                   ),
@@ -133,22 +133,22 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                                   Icon(
                                     Icons.star,
                                     size: size,
-                                    color: starColor,
+                                    color: grayScale400,
                                   ),
                                   Icon(
                                     Icons.star,
                                     size: size,
-                                    color: starColor,
+                                    color: grayScale400,
                                   ),
                                   Icon(
                                     Icons.star,
                                     size: size,
-                                    color: starColor,
+                                    color: grayScale400,
                                   ),
                                   Icon(
                                     Icons.star_half,
                                     size: size,
-                                    color: starColor,
+                                    color: grayScale400,
                                   ),
                                   Icon(
                                     Icons.star,
@@ -157,7 +157,7 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                                   ),
                                   Gap(4),
                                   TextUi.bodyMed(
-                                    '(129 ratings)',
+                                    '(0 ratings)',
                                     fontSize: 14,
                                     fontWeight: mediumText,
                                     height: 16 / 14,
@@ -177,7 +177,7 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                               ),
                               const Gap(8),
                               const TextUi.bodyMed(
-                                'Give feedback, ask questions, or start a discussion in the comments.',
+                                'we are open for you today',
                                 height: 14 / 12,
                                 fontWeight: FontWeight.w400,
                               ),
