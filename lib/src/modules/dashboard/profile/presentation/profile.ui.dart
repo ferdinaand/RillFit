@@ -89,12 +89,12 @@ class ProfileUi extends GetView<ProfileController> {
                     ),
                     const Gap(8),
                     TextUi.bodyMed(
-                      controller.currentUser.fullName ?? '',
+                      controller.firstname ?? '',
                       fontWeight: mediumText,
                     ),
                     const Gap(4),
                     TextUi.bodySmall(
-                      controller.currentUser.phoneNumber ?? '',
+                      controller.phonenumber ?? '',
                     ),
                     const Gap(24),
                     Container(
