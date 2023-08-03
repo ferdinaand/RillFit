@@ -26,10 +26,8 @@ class SelectLocation extends GetView<GymLocationsController> {
             child: Column(
               children: [
                 // ListView.builder(itemBuilder: ())
-                LocationCard(location: 'Victoria Island'),
+
                 LocationCard(location: 'Lekki'),
-                LocationCard(location: 'Ikeja'),
-                LocationCard(location: 'Calabar'),
               ],
             ),
           ),
