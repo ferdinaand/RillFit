@@ -1,3 +1,5 @@
+// ignore_for_file: omit_local_variable_types, unused_element, avoid_void_async
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterwave_standard/core/flutterwave.dart';
@@ -24,7 +26,7 @@ class GymMembershipPlans extends GetView<GymPlansController> {
   @override
   Widget build(BuildContext context) {
     final String planId = 'premuim plus';
-    final String price = '20';
+    final String price = 'N35,000';
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -67,7 +69,7 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                           },
                           Id: '',
                           planType: 'basic plan',
-                          price: '\$49',
+                          price: '\N15,000',
                           description:
                               'For those who just want use our  strenght, cardio and free weight equipment.',
                           time: '8:00am to 9:00pm',
@@ -82,7 +84,7 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                           },
                           Id: '',
                           planType: 'premuim',
-                          price: '\$90',
+                          price: '\N20,000',
                           description: '',
                           time: '7:00am to 9:00pm',
                           features: 'Gym access only all days a week',
@@ -99,13 +101,21 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                           price: price,
                           description: '',
                           time: '10:00am to 9:00pm',
-                          features:
-                              'Gym access only all days of the week, plus pool access',
+                          features: 'Gym access 24/7 + plus pool access',
                           subFeatures: 'unlimited visits per month',
                           logo: riilfitLogoPng,
                         ),
                         const Gap(20),
-                        PrimaryButtonUi(text: 'subscribe', onPressed: () {}),
+                        PrimaryButtonUi(
+                            text: 'subscribe',
+                            onPressed: () {
+                              //payment function
+                              /////////////////////////////////////////
+                              ////////////////////////////////////////
+
+                              handlePaymentInitialization(context);
+                              controller.getGymQr();
+                            }),
                         const Gap(20)
                       ],
                     ),
@@ -114,5 +124,31 @@ class GymMembershipPlans extends GetView<GymPlansController> {
               ),
             ),
     );
+  }
+}
+
+void handlePaymentInitialization(BuildContext context) async {
+  final Customer customer = Customer(
+      email: 'ekpo546@gmail.com', phoneNumber: '08145677278', name: 'user');
+
+  final Flutterwave flutterwave = Flutterwave(
+    context: context,
+    publicKey: 'FLWPUBK_TEST-dd5ad6338e5b0ba65dcf0ae9481d0792-X',
+    currency: 'NGN',
+    redirectUrl: 'https://facebook.com',
+    txRef: DateTime.now().toString(),
+    amount: '20,000',
+    customer: customer,
+    paymentOptions: 'card',
+    customization: Customization(title: 'Test Payment', logo: riilfitLogoPng),
+    isTestMode: true,
+  );
+  final ChargeResponse response = await flutterwave.charge();
+  print(response);
+  if (response != null) {
+    Get.snackbar('', response.toString());
+    print('${response.toJson()}');
+  } else {
+    Get.snackbar('', response.toString());
   }
 }
