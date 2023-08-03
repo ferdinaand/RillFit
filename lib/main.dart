@@ -8,6 +8,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:riilfit/src/domain/services/navigation.service.dart';
@@ -33,6 +34,7 @@ Future<void> main() async {
 
   await Firebase.initializeApp();
   await GetStorage.init();
+  await Hive.initFlutter();
 
   await initializeHive();
 
