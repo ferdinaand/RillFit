@@ -12,19 +12,24 @@ import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/presentation/resources/colors.res.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:http/http.dart' as http;
+import 'package:riilfit/src/utils/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../register/controller/Gym_Owner_Register_controller.dart';
 
 class LoginController extends BaseController {
   late GlobalKey<FormState> loginFormKey;
+
   SharedPreferences? pref;
+
   var isLoading = false.obs;
   @override
   void onInit() {
     enableButton();
     loginFormKey = GlobalKey<FormState>(debugLabel: 'Login');
     initSharedPref();
+
     super.onInit();
   }
 
@@ -58,17 +63,23 @@ class LoginController extends BaseController {
     );
   }
 
-  ///  login with node js backend
   ///
   ///
   ///
   ///
+  ///
+  /////persiting user login in data with hive
+  void persistData() {
+    box1.put('UserName', usernameController.text);
+  }
+
   Future<void> login() async {
     final signupBody = {
       'email': usernameController.text,
       'password': passwordController.text,
     };
 
+    isLoggedIn = true;
     var response = await http.post(
         Uri.parse('https://riilfit-backend.vercel.app/auth/login'),
         headers: {"Content-Type": "application/json"},
@@ -78,6 +89,7 @@ class LoginController extends BaseController {
 
     // print(jsonResponse['access_token']);
     isLoading.value = true;
+    persistData();
 
     await Future.delayed(Duration(seconds: 3));
 
