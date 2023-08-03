@@ -47,57 +47,30 @@ class GymPlansController extends BaseController {
     return;
   }
 
-  void handlePaymentInitialization(BuildContext context) async {
-    final Customer customer = Customer(
-        email: 'ekpo546@gmail.com', phoneNumber: '08145677278', name: 'user');
-    try {
-      final Flutterwave flutterwave = Flutterwave(
-        context: context,
-        publicKey: 'FLWPUBK_TEST-dd5ad6338e5b0ba65dcf0ae9481d0792-X',
-        currency: 'NGN',
-        redirectUrl: 'https://facebook.com',
-        txRef: ' payment reference',
-        amount: '50,000',
-        customer: customer,
-        paymentOptions: 'card, payattitude, barter, bank transfer, ussd',
-        customization: Customization(title: 'Test Payment'),
-        isTestMode: true,
-      );
-      final ChargeResponse response = await flutterwave.charge();
-      print(response);
-      if (response != null) {
-        Get.snackbar('', response.toString());
-        print('${response.toJson()}');
-      } else {
-        Get.snackbar('', response.toString());
-      }
-    } catch (e) {}
+  Future<void> getGymQr() async {
+    isLoading.value = true;
+    await Future.delayed(Duration(seconds: 5));
 
-    Future<void> getGymQr() async {
-      isLoading.value = true;
-      await Future.delayed(Duration(seconds: 5));
-      handlePaymentInitialization(context);
-      navigationService.navigateTo(
-        Routes.gymTag,
-      );
-      isLoading.value = false;
-      // var signupBody = {
-      //   "fullName": '',
-      //   "gymName": '',
-      //   "gymPhone": '',
-      //   "logoUrl":
-      //       "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80",
-      //   "username": '',
-      //   "password": ''
-      // };
+    navigationService.navigateTo(
+      Routes.gymTag,
+    );
+    isLoading.value = false;
+    // var signupBody = {
+    //   "fullName": '',
+    //   "gymName": '',
+    //   "gymPhone": '',
+    //   "logoUrl":
+    //       "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80",
+    //   "username": '',
+    //   "password": ''
+    // };
 
-      // var response = await http.post(
-      //     Uri.parse('https://riilfit-backend.vercel.app/auth/login'),
-      //     headers: {"Content-Type": "application/json"},
-      //     body: jsonEncode(signupBody));
+    // var response = await http.post(
+    //     Uri.parse('https://riilfit-backend.vercel.app/auth/login'),
+    //     headers: {"Content-Type": "application/json"},
+    //     body: jsonEncode(signupBody));
 
-      // final jsonResponse = jsonDecode(response.body);
-      // return jsonResponse;
-    }
+    // final jsonResponse = jsonDecode(response.body);
+    // return jsonResponse;
   }
 }
