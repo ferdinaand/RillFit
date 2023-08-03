@@ -20,6 +20,9 @@ import 'package:riilfit/src/presentation/utility/flushbar/show-flushbar.helper.d
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../../../utils/config.dart';
 
 dynamic url = 'https://riilfit-backend.vercel.app/auth/register';
 const Gender = 'MF';
@@ -34,8 +37,14 @@ class RegisterController extends BaseController {
   void onInit() {
     enableButton();
     registerFormKey = GlobalKey<FormState>(debugLabel: 'Register');
+    createBox();
     initSharedPref();
+
     super.onInit();
+  }
+
+  void createBox() async {
+    box1 = await Hive.openBox('userData');
   }
 
   void initSharedPref() async {
@@ -81,6 +90,13 @@ class RegisterController extends BaseController {
     );
   }
 
+/////persiting user login in data with hive
+  void persistData() {
+    box1
+      ..put('phone', phoneController.text)
+      ..put('fullname', nameController.text);
+  }
+
 //signup with node js backend
   Future<void> signUp() async {
     var signupBody = {
@@ -90,6 +106,9 @@ class RegisterController extends BaseController {
       'password': passwordController.text,
       'gym': gymNameController.text
     };
+    firstName = nameController.text;
+    userName = usernameController.text;
+    phoneNumber = phoneController.text;
 
     var response = await http.post(
       Uri.parse('https://riilfit-api.vercel.app/auth/users/signup'),
@@ -100,7 +119,7 @@ class RegisterController extends BaseController {
     var jsonResponse = jsonDecode(response.body);
 
     isLoading.value = true;
-
+    persistData();
     await Future.delayed(Duration(seconds: 3));
 
     print(jsonResponse);
