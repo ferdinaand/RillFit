@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
+import 'package:riilfit/src/utils/config.dart';
 
 class MemberServices {
   const MemberServices({
@@ -19,11 +20,11 @@ class MemberServices {
 }
 
 final memberServices = <MemberServices>[
-  const MemberServices(
+  MemberServices(
     name: 'GYM',
     image: gym,
     image2: getFit1,
-    route: Routes.selectLocation,
+    route: isLoggedIn ? Routes.selectLocation : Routes.register,
     color: Color(0xff016989),
   ),
   const MemberServices(
