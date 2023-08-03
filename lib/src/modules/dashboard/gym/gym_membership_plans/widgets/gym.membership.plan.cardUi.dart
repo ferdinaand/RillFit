@@ -98,7 +98,10 @@ class gymPlanCard extends StatelessWidget {
                       color: primary,
                     ),
                     const Gap(5),
-                    TextUi.bodyMed(time),
+                    TextUi.bodyMed(
+                      time,
+                      style: TextStyle(overflow: TextOverflow.ellipsis),
+                    ),
                   ],
                 ),
                 const Gap(14),
@@ -109,7 +112,10 @@ class gymPlanCard extends StatelessWidget {
                       color: primary,
                     ),
                     const Gap(5),
-                    TextUi.bodyMed(features)
+                    TextUi.bodyMed(
+                      features,
+                      style: TextStyle(overflow: TextOverflow.fade),
+                    )
                   ],
                 ),
                 const Gap(14),
@@ -123,7 +129,10 @@ class gymPlanCard extends StatelessWidget {
                           color: primary,
                         ),
                         const Gap(5),
-                        TextUi.bodyMed(subFeatures),
+                        TextUi.bodyMed(
+                          subFeatures,
+                          style: TextStyle(overflow: TextOverflow.ellipsis),
+                        ),
                       ],
                     ),
                     Image.asset(
