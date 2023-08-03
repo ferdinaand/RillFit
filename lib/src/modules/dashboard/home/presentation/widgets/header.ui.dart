@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/data/extensions/extensions.dart';
 import 'package:riilfit/src/modules/dashboard/home/controller/home.controller.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
+import 'package:riilfit/src/utils/config.dart';
 
 class HomeHeaderUi extends GetView<HomeController> {
   const HomeHeaderUi({
@@ -28,8 +29,8 @@ class HomeHeaderUi extends GetView<HomeController> {
                 ),
               ],
             ),
-            const TextUi.bodyMed(
-              'user',
+            TextUi.bodyMed(
+              userName != null ? userName.toUpperCase() : 'user',
               style: TextStyle(fontStyle: FontStyle.italic),
               fontSize: 18,
               fontWeight: FontWeight.w800,
