@@ -41,4 +41,10 @@ Future<void> initializeServices() async {
 bool ChooseRoleRoute = false;
 bool GymOwnerSelect = false;
 bool userSelect = false;
+String userName = '';
+String firstName = '';
+String phoneNumber = '';
 late bool isLoading;
+bool isLoggedIn = false;
+
+late Box box1;
