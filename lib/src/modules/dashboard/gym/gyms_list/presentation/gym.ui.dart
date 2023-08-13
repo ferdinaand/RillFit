@@ -26,24 +26,37 @@ class GymUi extends GetView<GymController> {
       },
       child: Scaffold(
         appBar: const MainAppbarUi(
-          title: 'Nearby Gyms',
+          title: 'Gyms',
         ),
         body: SafeArea(
-          child: Column(
-            children: [
-              const Gap(16),
-              Padding(
-                padding: baseViewPadding,
-                child: const GymSearchFieldUi(),
-              ),
-              const Gap(16),
-              ...gServices.asMap().entries.map((entry) {
-                final service = entry.value;
-                return GymCardUi(
-                  service: service,
-                );
-              }),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const Gap(16),
+                Padding(
+                  padding: baseViewPadding,
+                  child: const GymSearchFieldUi(),
+                ),
+                const Gap(16),
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Column(
+                      children: [
+                        ...gServices.asMap().entries.map(
+                          (entry) {
+                            final service = entry.value;
+                            return GymCardUi(
+                              service: service,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
