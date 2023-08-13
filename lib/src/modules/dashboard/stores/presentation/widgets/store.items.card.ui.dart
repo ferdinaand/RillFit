@@ -108,9 +108,15 @@ class StoresCardSupplementsUi extends GetView<StoresController> {
               decoration: BoxDecoration(color: Colors.transparent),
               child: Column(
                 children: [
-                  ClipRect(
-                    child: Image.asset(
-                        "${storeSupplementsMap.elementAt(index)['image']}"),
+                  GestureDetector(
+                    onTap: (){
+                      
+                      
+                    },
+                    child: ClipRect(
+                      child: Image.asset(
+                          "${storeSupplementsMap.elementAt(index)['image']}"),
+                    ),
                   ),
                   Row(
                     children: [
