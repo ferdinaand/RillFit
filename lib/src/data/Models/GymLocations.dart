@@ -1,11 +1,14 @@
 class GymLocations {
   GymLocations({
-    this.state,
-    this.city,
-    this.address,
+    required this.state,
+    required this.city,
   });
 
   String? state;
   String? city;
-  String? address;
+
+  factory GymLocations.fromJson(Map<String, dynamic> JsonData) => GymLocations(
+        state: JsonData['data']['items']['state'] as String?,
+        city: JsonData['data']['items']['city'] as String?,
+      );
 }
