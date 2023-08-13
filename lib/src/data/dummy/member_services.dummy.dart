@@ -24,7 +24,7 @@ final memberServices = <MemberServices>[
     name: 'GYM',
     image: gym,
     image2: getFit1,
-    route: isLoggedIn ? Routes.selectLocation : Routes.register,
+    route: Routes.selectLocation,
     color: Color(0xff016989),
   ),
   const MemberServices(
@@ -73,6 +73,27 @@ final gServices = <GServices>[
     image2: 'assets/png/Rectangle2.png',
     route: Routes.gymDetails,
     color: Color(0xff8DAB4D),
+  ),
+  const GServices(
+    name: 'bennys place',
+    image: store,
+    image2: 'assets/png/Rectangle3.png',
+    route: Routes.gymDetails,
+    color: Color(0xff904E55),
+  ),
+  const GServices(
+    name: 'bennys place',
+    image: store,
+    image2: 'assets/png/Rectangle3.png',
+    route: Routes.gymDetails,
+    color: Color(0xff904E55),
+  ),
+  const GServices(
+    name: 'bennys place',
+    image: store,
+    image2: 'assets/png/Rectangle3.png',
+    route: Routes.gymDetails,
+    color: Color(0xff904E55),
   ),
   const GServices(
     name: 'bennys place',
