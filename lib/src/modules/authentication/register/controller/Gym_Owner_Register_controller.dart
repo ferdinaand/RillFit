@@ -161,10 +161,10 @@ class GymOwnerRegisterController extends BaseController {
           'password must contain 8+ characters, an uppercase(A,B,C), and a special character(@,#,*,&)');
       // print(jsonResponse.toString());
     } else if (jsonResponse['message'] == 'gym not found') {
-      Get.snackbar('Error', 'gym does not exist');
+      Get.snackbar('Error', 'gym not found');
       // print(jsonResponse.toString());
     } else if (jsonResponse['message'] == 'invalid phone number provided') {
-      Get.snackbar('Error', 'gym does not exist');
+      Get.snackbar('Error', 'invalid phone number');
       // print(jsonResponse.toString());
     }
     isLoading.value = false;
