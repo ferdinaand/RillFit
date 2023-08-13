@@ -14,9 +14,17 @@ class SelectLocation extends GetView<GymLocationsController> {
 
   @override
   GymLocationsController get controller => Get.put(GymLocationsController());
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    controller.onInit;
+
+    return
+        //  controller.isLoading.value
+        //     ? Center(child: CircularProgressIndicator())
+        //     :
+
+        Scaffold(
       appBar: MainAppbarUi(
         title: 'Gym Locations',
       ),
