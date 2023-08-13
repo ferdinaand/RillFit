@@ -1,4 +1,4 @@
-// ignore_for_file: omit_local_variable_types, unused_element, avoid_void_async
+// ignore_for_file: omit_local_variable_types, unused_element, avoid_void_async, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
