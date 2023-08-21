@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/Models/GymLocations.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gym_locations/presentation/widgets/gym_location_card.dart';
 import 'package:riilfit/src/presentation/global_widgets/text.ui.dart';
 import 'package:riilfit/src/presentation/resources/colors.res.dart';
@@ -17,27 +18,37 @@ class SelectLocation extends GetView<GymLocationsController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.onInit;
+    final List<GymLocations> locationList = controller.locationList;
 
-    return
-        //  controller.isLoading.value
-        //     ? Center(child: CircularProgressIndicator())
-        //     :
-
-        Scaffold(
-      appBar: MainAppbarUi(
-        title: 'Gym Locations',
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: [
-                // ListView.builder(itemBuilder: ())
-
-                LocationCard(location: 'Lekki'),
-              ],
-            ),
+    return GestureDetector(
+      onTap: () {
+        print('im working here');
+      },
+      child: Scaffold(
+        appBar: MainAppbarUi(
+          title: 'Gym Locations',
+        ),
+        body: Obx(
+          () => ListView.builder(
+            itemCount: locationList.length,
+            itemBuilder: (_, index) {
+              // print(locationList[index].state);
+              String? state = locationList[index].state;
+              String? city = locationList[index].city;
+              return GestureDetector(
+                onTap: () {
+                  print("i'm working");
+                },
+                //controller.fetchGymList,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: LocationCard(
+                    location: state!,
+                    city: city!,
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),
