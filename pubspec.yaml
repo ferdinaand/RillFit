@@ -65,3 +65,8 @@ flutter:
     - assets/icons/
     - assets/animations/
     - assets/rive_assets/
+
+  fonts:
+    - family: Gilroy
+      fonts:
+        - asset: fonts/Gilroy-Regular.ttf  
