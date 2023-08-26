@@ -20,37 +20,38 @@ class SelectLocation extends GetView<GymLocationsController> {
   Widget build(BuildContext context) {
     final List<GymLocations> locationList = controller.locationList;
 
-    return GestureDetector(
-      onTap: () {
-        print('im working here');
-      },
-      child: Scaffold(
-        appBar: MainAppbarUi(
-          title: 'Gym Locations',
-        ),
-        body: Obx(
-          () => ListView.builder(
-            itemCount: locationList.length,
-            itemBuilder: (_, index) {
-              // print(locationList[index].state);
-              String? state = locationList[index].state;
-              String? city = locationList[index].city;
-              return GestureDetector(
-                onTap: () {
-                  print("i'm working");
+    return Scaffold(
+      appBar: MainAppbarUi(
+        title: 'Gym Locations',
+      ),
+      body: Obx(
+        () => controller.isLocationLoading.value
+            ? Center(
+                child: CircularProgressIndicator(
+                color: primary,
+              ))
+            : ListView.builder(
+                itemCount: locationList.length,
+                itemBuilder: (_, index) {
+                  // print(locationList[index].state);
+                  String? state = locationList[index].state;
+                  String? city = locationList[index].city;
+                  return GestureDetector(
+                    onTap: () async {
+                      controller.setSelectedCity(city);
+                      controller.fetchGymList();
+                      controller.gymsInLocation();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      child: LocationCard(
+                        location: state!,
+                        city: city!,
+                      ),
+                    ),
+                  );
                 },
-                //controller.fetchGymList,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: LocationCard(
-                    location: state!,
-                    city: city!,
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
+              ),
       ),
     );
   }
