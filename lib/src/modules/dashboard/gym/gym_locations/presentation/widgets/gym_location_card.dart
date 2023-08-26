@@ -12,54 +12,66 @@ import '../../../../../../presentation/resources/icons.res.dart';
 import '../../../../../../routing/app_pages.dart';
 
 class LocationCard extends StatelessWidget {
-  LocationCard({required this.location, super.key});
+  LocationCard({required this.location, super.key, required this.city});
   String location;
+  String city;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Get.offAndToNamed<void>(
-          Routes.gym,
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.only(top: 20, bottom: 20),
-        child: SizedBox(
-          height: 75.h,
-          width: 360.h,
-          child: Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            elevation: 2,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 22),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset(locationIcon2),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 29),
-                        child: TextUi.bodyLarge(
-                          location.toUpperCase(),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
+    return Padding(
+      padding: const EdgeInsets.only(top: 20, bottom: 20),
+      child: SizedBox(
+        height: 75.h,
+        width: 360.h,
+        child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          elevation: 2,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 22),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset(locationIcon2),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 29, right: 2),
+                          child: TextUi.bodyLarge(
+                            location.toUpperCase(),
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 22),
-                    child: Image.asset(
-                      arrowRight,
-                      color: Get.find<ThemeService>().isDarkMode
-                          ? grayScale100
-                          : grayScale900,
+                        Row(
+                          children: [
+                            Text('-'),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: TextUi.bodyLarge(
+                                city.toUpperCase(),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  )
-                ],
-              ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 22),
+                  child: Image.asset(
+                    arrowRight,
+                    color: Get.find<ThemeService>().isDarkMode
+                        ? grayScale100
+                        : grayScale900,
+                  ),
+                )
+              ],
             ),
           ),
         ),
