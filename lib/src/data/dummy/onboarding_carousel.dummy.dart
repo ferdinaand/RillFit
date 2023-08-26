@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
-
+import 'package:get/get.dart';
 import '../../domain/services/themes.services.dart';
 
 class OnboardingCarouselSkeleton {
@@ -22,7 +22,7 @@ final onboardingCarouselContent = <OnboardingCarouselSkeleton>[
     image: Padding(
       padding: const EdgeInsets.only(right: 69),
       child: Expanded(
-        child: Image.asset(themeService.isDarkMode
+        child: Image.asset(Get.find<ThemeService>().isDarkMode
             ? darkOnboardingImage1
             : lightOnboardingImage1),
       ),
@@ -35,7 +35,7 @@ final onboardingCarouselContent = <OnboardingCarouselSkeleton>[
     image: Padding(
       padding: const EdgeInsets.only(right: 69),
       child: Expanded(
-        child: Image.asset(themeService.isDarkMode
+        child: Image.asset(Get.find<ThemeService>().isDarkMode
             ? darkOnboardingImage2
             : lightOnboardingImage2),
       ),
@@ -48,7 +48,7 @@ final onboardingCarouselContent = <OnboardingCarouselSkeleton>[
     image: Padding(
         padding: const EdgeInsets.only(right: 69),
         child: Expanded(
-          child: Image.asset(themeService.isDarkMode
+          child: Image.asset(Get.find<ThemeService>().isDarkMode
               ? darkOnboardingImage3
               : lightOnboardingImage3),
         )),
