@@ -26,4 +26,8 @@ class gymDetails {
   String? facebook;
   String? snapchat;
   String? whatsapp;
+
+  factory gymDetails.fromJson(dynamic JsonData) => gymDetails(
+        id: JsonData['data']['items']['state'] as String?,
+      );
 }
