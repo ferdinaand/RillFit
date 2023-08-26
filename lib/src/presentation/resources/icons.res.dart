@@ -36,3 +36,5 @@ const qrCodeSample = 'assets/png/qrCodeSample.png';
 const timeIcon = 'assets/png/clock.png';
 const weightIcon = 'assets/png/weight.png';
 const calendarIcon = 'assets/png/calendar.png';
+const emojiHappyIcon = 'assets/png/emoji-happy.png';
+const editIcon = 'assets/png/edit.png';
