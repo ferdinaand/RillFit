@@ -5,20 +5,27 @@ import 'package:get/get.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/controller/gym.controller.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
+import 'package:riilfit/src/routing/app_pages.dart';
 
 import '../../../../../../data/dummy/member_services.dummy.dart';
 
 class GymCardUi extends GetView<GymController> {
   const GymCardUi({
     super.key,
-    required this.service,
+    required this.logo,
+    required this.name,
+    required this.address,
+    required this.city,
     this.isFavorite = false,
     this.isClosed = false,
   });
 
   final bool isFavorite;
   final bool isClosed;
-  final GServices service;
+  final String logo;
+  final String name;
+  final String address;
+  final String city;
 
   @override
   GymController get controller => Get.put(GymController());
@@ -27,9 +34,7 @@ class GymCardUi extends GetView<GymController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.offAndToNamed<void>(
-          service.route,
-        );
+        Get.offAndToNamed<void>(Routes.gymDetails);
       },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 20),
@@ -43,7 +48,7 @@ class GymCardUi extends GetView<GymController> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   image: DecorationImage(
-                    image: AssetImage(service.image2),
+                    image: NetworkImage(logo),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -85,7 +90,7 @@ class GymCardUi extends GetView<GymController> {
                     Row(
                       children: [
                         TextUi.heading4(
-                          service.name,
+                          name,
                           color: grayScale50,
                         ),
                         SizedBox(
@@ -114,8 +119,8 @@ class GymCardUi extends GetView<GymController> {
                         ),
                       ],
                     ),
-                    const TextUi.bodySmall(
-                      'Lekki phase 1, Lagos',
+                    TextUi.bodySmall(
+                      '$address,$city ',
                       fontSize: 14,
                       color: grayScale50,
                     ),
