@@ -75,13 +75,9 @@ class NavigationService extends GetxService {
   }
 
   void logout() {
-    navigateToAndRemoveUntil(
-      Routes.onboarding,
+    navigateTo(
+      Routes.login,
+      argument: false,
     );
-
-    // navigateTo(
-    //   Routes.login,
-    //   argument: false,
-    // );
   }
 }
