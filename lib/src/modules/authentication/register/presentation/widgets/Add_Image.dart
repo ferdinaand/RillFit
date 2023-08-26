@@ -29,32 +29,45 @@ class AddImage extends GetView<GymOwnerRegisterController> {
           fontWeight: FontWeight.w600,
         ),
         Gap(20),
-        Container(
-          height: 278.h,
-          width: 330.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            shape: BoxShape.rectangle,
-            border: Border.all(
-              color: primary,
-              style: BorderStyle.solid,
+        Obx(() {
+          final imageFile = controller.imageFile.value;
+          return Container(
+            height: 278.h,
+            width: 330.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              shape: BoxShape.rectangle,
+              border: Border.all(
+                color: primary,
+                style: BorderStyle.solid,
+              ),
             ),
-          ),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 30, bottom: 30),
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Icon(
-                        Icons.image,
-                        size: 100,
-                      ),
-                    ),
-                    Positioned(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 30, bottom: 30),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      if (imageFile != null)
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.file(
+                            imageFile,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      else
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Icon(
+                            Icons.image,
+                            size: 100,
+                          ),
+                        ),
+                      Positioned(
                         bottom: -10,
                         right: -39,
                         child: RawMaterialButton(
@@ -64,20 +77,26 @@ class AddImage extends GetView<GymOwnerRegisterController> {
                           child: Icon(Icons.edit),
                           padding: EdgeInsets.all(2.0),
                           shape: CircleBorder(),
-                        )),
-                  ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              // SizedBox(
-              //   width: 289,
-              //   height: 47,
-              //   child: PrimaryButtonUi(
-              //     text: 'Upload',
-              //   ),
-              // ),
-            ],
-          ),
-        ),
+                // if (imageFile != null)
+                //   SizedBox(
+                //     width: 289,
+                //     height: 47,
+                //     child: PrimaryButtonUi(
+                //       text: 'Upload',
+                //       onPressed: () {
+                //         // Implement your image upload logic here
+                //       },
+                //     ),
+                //   ),
+              ],
+            ),
+          );
+        })
       ],
     );
   }
