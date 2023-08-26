@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:riilfit/src/data/Models/gymsList.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 
 class GymController extends BaseController {
   var isLoading = false.obs;
+
+  final RxList<GymList> thisGymList = <GymList>[].obs;
   @override
   void onInit() {
     searchController = TextEditingController();
