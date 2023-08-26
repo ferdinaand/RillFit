@@ -27,3 +27,6 @@ const userRole = 'assets/png/user.png';
 const gymOwnerRole = 'assets/png/GymOwner.png';
 const trainerRole = 'assets/png/Trainers.png';
 const storeOwnerRole = 'assets/png/StoreOwner.png';
+const newMember1 = 'assets/png/newMember1.png';
+const newMember2 = 'assets/png/newMember2.png';
+const newMember3 = 'assets/png/newMember3.png';
