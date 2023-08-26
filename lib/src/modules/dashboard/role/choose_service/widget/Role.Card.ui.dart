@@ -22,7 +22,7 @@ class RoleCardUi extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: use_decorated_box
     return Padding(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.all(12),
       child: Container(
         height: 140.h,
         width: 142.h,
