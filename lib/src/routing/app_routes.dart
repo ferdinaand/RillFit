@@ -31,4 +31,5 @@ abstract class Routes {
   static const gymTag = '/app/gymTag';
   static const gymPlan = '/app/gymPlan';
   static const gymOwnerLogin = '/app/gymOwnerLogin';
+  static const gymOwnerHome = '/app/gymOwnerHome';
 }
