@@ -21,6 +21,7 @@ class GymOwnerRegisterController extends BaseController {
   late GlobalKey<FormState> loginFormKey;
   SharedPreferences? pref;
   var isLoading = false.obs;
+  Rx<File?> imageFile = Rx<File?>(null);
   String imageUrl = '';
   XFile? file;
   @override
@@ -68,8 +69,12 @@ class GymOwnerRegisterController extends BaseController {
   void selectImage() async {
     //select image using image picker package
     ImagePicker imagePicker = ImagePicker();
-    file = await imagePicker.pickImage(source: ImageSource.gallery);
+    final file = await imagePicker.pickImage(source: ImageSource.gallery);
     print('${file?.path}');
+
+    if (file != null) {
+      imageFile.value = File(file.path);
+    }
   }
 
   //Enable and disable button logic
@@ -93,6 +98,12 @@ class GymOwnerRegisterController extends BaseController {
     routeFromUserSignin = true;
     Get.offAndToNamed<void>(
       Routes.register,
+    );
+  }
+
+  void navigateToGymOwnerPage() {
+    Get.offAndToNamed<void>(
+      Routes.gymOwnerHome,
     );
   }
 
