@@ -14,19 +14,16 @@ class ProfileController extends BaseController {
 
   //logout
   Future<void> logout() async {
-    isLoading.value = true;
-
-    await Future.delayed(Duration(seconds: 1));
     userName = "";
     firstName = '';
     phoneNumber = '';
     // await AuthApi().logout();
 
     await storageService.deleteAllItems();
+    Get.snackbar('', 'logged out successfully ');
     await Get.offAllNamed<void>(
-      Routes.onboarding,
+      Routes.chooseRole,
     );
     Get.snackbar('', 'logged out successfully ');
-    isLoading.value = false;
   }
 }
