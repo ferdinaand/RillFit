@@ -48,7 +48,7 @@ class _SelectRoleUiState extends State<SelectRoleUi> {
                 role: 'User',
               ),
             ),
-            const Gap(5),
+            const Gap(2),
             GestureDetector(
               onTap: () {
                 setState(() {
