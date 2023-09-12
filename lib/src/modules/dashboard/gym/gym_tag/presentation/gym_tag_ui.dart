@@ -8,16 +8,21 @@ import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../../gym_membership_plans/controllers/gym-membership_plans_controller.dart';
 import '../controller/gym_tag_controller.dart';
 
-class GymTag extends GetView<GymTagController> {
+class GymTag extends GetView<GymPlansController> {
   const GymTag({super.key});
 
   @override
-  GymTagController get controller => Get.put(GymTagController());
+  GymPlansController get controller => Get.put(GymPlansController());
 
   @override
   Widget build(BuildContext context) {
+    final selectedPlanId = controller.selectedPlanId.value;
+    final selectedPlanType = controller.selectedPlanType.value;
+    final selectedPlanPrice = controller.selectedPlanPrice.value;
+    final subscriberName = controller.subscribersName.value;
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -43,6 +48,7 @@ class GymTag extends GetView<GymTagController> {
                   ),
                   const Gap(43),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextUi.heading2(
                         'Scan QR Code'.toUpperCase(),
@@ -50,7 +56,9 @@ class GymTag extends GetView<GymTagController> {
                       ),
                     ],
                   ),
-                  Row(
+                  const Gap(20),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextUi.bodyLarge(
                         'Scan the QR to check your subscription\ninfo on time!!',
@@ -66,19 +74,48 @@ class GymTag extends GetView<GymTagController> {
                   // ),
 
                   Container(
-                    height: 300,
-                    width: 300,
-                    decoration: BoxDecoration(color: primary),
-                    child: QrImageView(
-                      data: '1234567890',
-                      version: QrVersions.auto,
-                      size: 300,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: primary, width: 4),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(35),
+                      child: Container(
+                        height: 250,
+                        width: 250,
+                        decoration: const BoxDecoration(color: primary),
+                        child: QrImageView(
+                          data:
+                              '$selectedPlanId, $selectedPlanPrice, $selectedPlanType, $subscriberName',
+                          version: QrVersions.auto,
+                          size: 300,
+                        ),
+                      ),
                     ),
                   ),
-                  Gap(20),
-                  TextUi.bodyLarge(
-                      textAlign: TextAlign.left,
-                      ' for  quick and easy access to your gyms, the qr code will contain your gym membership plan info')
+                  const Gap(40),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextUi.bodyLarge(
+                          textAlign: TextAlign.center,
+                          ' for  quick and easy access to your gyms,\n the qr code will contain your gym \n membership plan info'),
+                    ],
+                  ),
+                  const Gap(30),
+                  SizedBox(
+                    height: 50.h,
+                    width: 350,
+                    child: ElevatedButton(
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.resolveWith((states) =>
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10))),
+                            backgroundColor: MaterialStateColor.resolveWith(
+                                (states) => primary)),
+                        onPressed: () {},
+                        child: const TextUi.bodyLarge('Proceed')),
+                  ),
+                  const Gap(30),
                 ],
               ),
             ),
