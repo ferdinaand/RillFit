@@ -18,6 +18,7 @@ class GymCardUi extends GetView<GymController> {
     required this.city,
     this.isFavorite = false,
     this.isClosed = false,
+    required this.ontap,
   });
 
   final bool isFavorite;
@@ -26,6 +27,7 @@ class GymCardUi extends GetView<GymController> {
   final String name;
   final String address;
   final String city;
+  final VoidCallback ontap;
 
   @override
   GymController get controller => Get.put(GymController());
@@ -33,9 +35,7 @@ class GymCardUi extends GetView<GymController> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.offAndToNamed<void>(Routes.gymDetails);
-      },
+      onTap: ontap,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: SizedBox(
@@ -55,8 +55,9 @@ class GymCardUi extends GetView<GymController> {
               ),
               Container(
                 padding: const EdgeInsets.all(16),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(20),
                   ),
                 ),
@@ -91,7 +92,7 @@ class GymCardUi extends GetView<GymController> {
                       children: [
                         TextUi.heading4(
                           name,
-                          color: grayScale50,
+                          color: grayScale500,
                         ),
                         SizedBox(
                           width: 11,
@@ -122,7 +123,7 @@ class GymCardUi extends GetView<GymController> {
                     TextUi.bodySmall(
                       '$address,$city ',
                       fontSize: 14,
-                      color: grayScale50,
+                      color: grayScale500,
                     ),
                     const Gap(4),
                     const Gap(4),
