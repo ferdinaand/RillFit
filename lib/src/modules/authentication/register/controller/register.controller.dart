@@ -125,10 +125,10 @@ class RegisterController extends BaseController {
     print(jsonResponse);
     if (jsonResponse['access_token'] != null) {
       Get.snackbar('success', 'Registered in successfully');
-      final token = jsonResponse;
-      if (token != null) {
-        await pref?.setString('token', token.toString());
-      }
+      // final token = jsonResponse;
+      // if (token != null) {
+      //   await pref?.setString('token', token.toString());
+      // }
 
       await Get.offAllNamed<void>(
         Routes.login,
