@@ -69,37 +69,37 @@ class LoginController extends BaseController {
   ///
   ///
   /////persiting user login in data with hive
-  void persistData() {
-    box1.put('UserName', usernameController.text);
+  void persistData(String token) async {
+    box1 = await Hive.openBox('userData');
+    box1
+      ..put('token', token)
+      ..put('UserName', usernameController.text);
   }
 
   Future<void> login() async {
-    final signupBody = {
-      'email': usernameController.text,
+    final loginBody = {
+      'username': usernameController.text,
       'password': passwordController.text,
     };
 
     isLoggedIn = true;
     var response = await http.post(
-        Uri.parse('https://riilfit-backend.vercel.app/auth/login'),
+        Uri.parse('https://riilfit-api.vercel.app/auth/login'),
         headers: {"Content-Type": "application/json"},
-        body: jsonEncode(signupBody));
+        body: jsonEncode(loginBody));
 
     final jsonResponse = jsonDecode(response.body);
 
     // print(jsonResponse['access_token']);
     isLoading.value = true;
-    persistData();
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
 
     if (jsonResponse['access_token'] != null) {
       Get.snackbar('success', 'Logged in successfully');
-      final token = jsonResponse;
-      if (token != null) {
-        await pref?.setString('token', token.toString());
-      }
-
+      final token =
+          jsonResponse['access_token'] as String; // Retrieve the access_token
+      persistData(token);
       await Get.offAllNamed<void>(
         Routes.app,
       );
