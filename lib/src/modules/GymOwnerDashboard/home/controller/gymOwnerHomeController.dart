@@ -17,7 +17,25 @@ class GymHomeController extends BaseController {
 
   @override
   void onInit() {
-    ChooseRoleRoute = false;
+    // ChooseRoleRoute = false;
     super.onInit();
+  }
+
+  void navigateToViewPlans() {
+    navigationService.navigateTo(
+      Routes.viewGymPlans,
+    );
+  }
+
+  void navigateToEditProfile() {
+    navigationService.navigateTo(
+      Routes.gymOwnerProfile,
+    );
+  }
+
+  void navigateToCreatePlans() {
+    navigationService.navigateTo(
+      Routes.createGymPlans,
+    );
   }
 }
