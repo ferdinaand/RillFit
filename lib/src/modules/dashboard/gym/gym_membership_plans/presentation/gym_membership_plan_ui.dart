@@ -1,5 +1,6 @@
 // ignore_for_file: omit_local_variable_types, unused_element, avoid_void_async, avoid_print
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterwave_standard/core/flutterwave.dart';
@@ -12,10 +13,10 @@ import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/widgets
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/widgets/search_field.ui.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
-
+import 'package:mono_flutter/mono_flutter.dart';
 import '../../../../../routing/app_pages.dart';
 import '../controllers/gym-membership_plans_controller.dart';
-import '../widgets/gym.membership.plan.cardUi.dart';
+import 'widgets/gym.membership.plan.cardUi.dart';
 
 class GymMembershipPlans extends GetView<GymPlansController> {
   const GymMembershipPlans({super.key});
@@ -27,6 +28,7 @@ class GymMembershipPlans extends GetView<GymPlansController> {
   Widget build(BuildContext context) {
     final String planId = 'premuim plus';
     final String price = 'N35,000';
+    final String plantype = 'N35,000';
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -67,9 +69,9 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                           OnTap: () {
                             controller.enableButton();
                           },
-                          Id: '',
-                          planType: 'basic plan',
-                          price: '\N15,000',
+                          Id: planId,
+                          planType: plantype,
+                          price: price,
                           description:
                               'For those who just want use our  strenght, cardio and free weight equipment.',
                           time: '8:00am to 9:00pm',
@@ -95,9 +97,11 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                         gymPlanCard(
                           OnTap: () {
                             controller.enableButton();
+                            controller.setSelectedPlan(
+                                planId, price, plantype, 'Ferdinand');
                           },
                           Id: planId,
-                          planType: 'premuim plus',
+                          planType: plantype,
                           price: price,
                           description: '',
                           time: '10:00am to 9:00pm',
@@ -105,17 +109,19 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                           subFeatures: 'unlimited visits per month',
                           logo: riilfitLogoPng,
                         ),
-                        const Gap(20),
-                        PrimaryButtonUi(
-                            text: 'subscribe',
-                            onPressed: () {
-                              //payment function
-                              /////////////////////////////////////////
-                              ////////////////////////////////////////
-
-                              handlePaymentInitialization(context);
-                              controller.getGymQr();
-                            }),
+                        const Gap(30),
+                        Obx(
+                          () => controller.isLoading.value
+                              ? Center(
+                                  child: CircularProgressIndicator(
+                                  color: primary,
+                                ))
+                              : PrimaryButtonUi(
+                                  text: 'subscribe',
+                                  onPressed: () {
+                                    controller.handlePayment(context);
+                                  }),
+                        ),
                         const Gap(20)
                       ],
                     ),
@@ -124,31 +130,5 @@ class GymMembershipPlans extends GetView<GymPlansController> {
               ),
             ),
     );
-  }
-}
-
-void handlePaymentInitialization(BuildContext context) async {
-  final Customer customer = Customer(
-      email: 'ekpo546@gmail.com', phoneNumber: '08145677278', name: 'user');
-
-  final Flutterwave flutterwave = Flutterwave(
-    context: context,
-    publicKey: 'FLWPUBK_TEST-dd5ad6338e5b0ba65dcf0ae9481d0792-X',
-    currency: 'NGN',
-    redirectUrl: 'https://facebook.com',
-    txRef: DateTime.now().toString(),
-    amount: '20,000',
-    customer: customer,
-    paymentOptions: 'card',
-    customization: Customization(title: 'Test Payment', logo: riilfitLogoPng),
-    isTestMode: true,
-  );
-  final ChargeResponse response = await flutterwave.charge();
-  print(response);
-  if (response != null) {
-    Get.snackbar('', response.toString());
-    print('${response.toJson()}');
-  } else {
-    Get.snackbar('', response.toString());
   }
 }
