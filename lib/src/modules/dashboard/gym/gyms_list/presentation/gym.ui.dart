@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:riilfit/src/data/dummy/member_services.dummy.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/controller/gym.controller.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/widgets/gym_card.ui.dart';
@@ -8,6 +9,7 @@ import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/widgets
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
+import '../../../../../routing/app_pages.dart';
 import '../../gym_locations/controller/gym_locations_controller.dart';
 
 class GymUi extends GetView<GymLocationsController> {
@@ -75,6 +77,29 @@ class GymUi extends GetView<GymLocationsController> {
                           return Padding(
                             padding: baseViewPadding,
                             child: GymCardUi(
+                              ontap: () async {
+                                final box = await Hive.openBox('userData');
+                                String token = box.get('token').toString();
+
+                                if (token != null) {
+                                  // Check if the token is expired
+                                  final tokenExpired =
+                                      controller.isTokenExpired(token);
+
+                                  if (tokenExpired) {
+                                    // Token is expired, prompt the user to log in
+                                    Get.offAndToNamed<void>(Routes.login);
+                                  } else {
+                                    // Token is not expired, navigate to the dashboard
+                                    final gymId = gym.id;
+                                    await controller.fetchGymDetails(gymId);
+                                    // Get.offAndToNamed<void>(Routes.gymDetails);
+                                  }
+                                } else {
+                                  // User is not logged in, navigate to login screen
+                                  Get.offAndToNamed<void>(Routes.login);
+                                }
+                              },
                               city: gym.city,
                               address: gym.address,
                               logo: gym.logo,
