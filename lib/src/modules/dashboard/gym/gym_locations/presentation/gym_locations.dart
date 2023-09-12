@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_locals, omit_local_variable_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -37,10 +39,10 @@ class SelectLocation extends GetView<GymLocationsController> {
                   String? state = locationList[index].state;
                   String? city = locationList[index].city;
                   return GestureDetector(
-                    onTap: () async {
-                      controller.setSelectedCity(city);
-                      controller.fetchGymList();
-                      controller.gymsInLocation();
+                    onTap: () {
+                      controller..setSelectedCity(city)
+                       ..fetchGymList()
+                      ..gymsInLocation();
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15, right: 15),
