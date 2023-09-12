@@ -32,4 +32,8 @@ abstract class Routes {
   static const gymPlan = '/app/gymPlan';
   static const gymOwnerLogin = '/app/gymOwnerLogin';
   static const gymOwnerHome = '/app/gymOwnerHome';
+  static const editGymPlans = '/app/editGymPlans';
+  static const viewGymPlans = '/app/viewGymPlans';
+  static const createGymPlans = '/app/createGymPlans';
+  static const gymOwnerProfile = '/app/gymOwnerProfile';
 }
