@@ -42,21 +42,20 @@ class gymDetails {
   String? thumbnail;
 
   factory gymDetails.fromJson(dynamic JsonData) => gymDetails(
-        // openingTime:
-        //     JsonData['data']['accessPeriod']['time']['start'] as String?,
-        // closingTime: JsonData['data']['accessPeriod']['time']['end'] as String?,
-        // id: JsonData['data']['_id'] as String?,
-        // website: JsonData['data']['website'] as String?,
-        // description: JsonData['data']['about'] as String?,
-        // facebook: JsonData['data']['socialLinks']['facebook'] as String?,
-        // snapchat: JsonData['data']['socialLinks']['snapchat'] as String?,
-        // instagram: JsonData['data']['socialLinks']['instagram'] as String?,
+        openingTime: JsonData['accessPeriod']['time']['start'] as String?,
+        closingTime: JsonData['accessPeriod']['time']['end'] as String?,
+        id: JsonData['_id'] as String?,
+        website: JsonData['website'] as String?,
+        description: JsonData['about'] as String?,
+        // facebook: JsonData['socialLinks'][0]['facebook'] as String?,
+        // snapchat: JsonData['socialLinks'][0]['snapchat'] as String?,
+        // instagram: JsonData['socialLinks'][0]['instagram'] as String?,
         name: JsonData['name'] as String?,
         country: JsonData['locations'][0]['country'] as String,
         address: JsonData['locations'][0]['address'] as String?,
-        // state: JsonData['data']['locations']['state'] as String?,
-        // city: JsonData['data']['locations']['city'] as String?,
-        // phoneNumber: JsonData['data']['phone'] as String?,
-        // thumbnail: JsonData['data']['thumbnail'] as String?,
+        state: JsonData['locations'][0]['state'] as String?,
+        city: JsonData['locations'][0]['city'] as String?,
+        phoneNumber: JsonData['phone'] as String?,
+        thumbnail: JsonData['thumbnail'] as String?,
       );
 }

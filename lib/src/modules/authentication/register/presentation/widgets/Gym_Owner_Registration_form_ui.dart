@@ -135,7 +135,7 @@ class GymOwnerRegistrationFormUi extends GetView<GymOwnerRegisterController> {
                           //  controller.isButtonDisabled.value
                           //     ? null
                           //     :
-                          controller.navigateToGymOwnerPage,
+                          controller.signup,
                     ),
             ),
           ],

@@ -12,6 +12,7 @@ import 'package:riilfit/src/data/Models/GymLocations.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:riilfit/src/presentation/resources/colors.res.dart';
+import 'package:riilfit/src/utils/config.dart';
 
 import '../../../../../data/Models/gymsList.dart';
 import '../../../../../routing/app_pages.dart';
@@ -197,9 +198,14 @@ class GymLocationsController extends BaseController {
           // thisGymDetails.value = '' as gymDetails;
           thisGymDetails.value = gymDetails.fromJson(data);
           print(thisGymDetails.value.name);
+          print(thisGymDetails.value.phoneNumber);
+          print(thisGymDetails.value.city);
+          print(thisGymDetails.value.thumbnail);
+          print(thisGymDetails.value.openingTime);
+          print(thisGymDetails.value.closingTime);
           // print(data);
           // isGymListLoading(false);
-          print(data);
+          // print(data);
 
           update();
         } else {
@@ -257,8 +263,14 @@ class GymLocationsController extends BaseController {
     } catch (e) {
       // Handle any decoding errors here
       print('Error decoding token: $e');
+      return false;
     }
 
     return false; // Token is not expired or couldn't be decoded
+  }
+
+  void viewPlan(String id) async {
+    box1 = await Hive.openBox('userData');
+    box1..put('selectedGymId', id);
   }
 }

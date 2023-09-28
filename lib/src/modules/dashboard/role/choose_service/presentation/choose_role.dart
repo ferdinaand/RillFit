@@ -56,8 +56,8 @@ class ChooseRole extends GetView<RoleController> {
                     Routes.app,
                   );
                 } else if (userSelect == false && ChooseRoleRoute == true) {
-                  Get.offAndToNamed<void>(
-                    Routes.gymOwnerRegister,
+                  Get.toNamed<void>(
+                    Routes.gymOwnerLogin,
                   );
                 }
               },

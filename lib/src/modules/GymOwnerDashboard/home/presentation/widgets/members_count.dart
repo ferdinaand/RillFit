@@ -12,7 +12,7 @@ class newMemberContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 89.h,
-      width: 298.w,
+      width: 350.w,
       decoration: BoxDecoration(
           color: primary, borderRadius: BorderRadius.circular(15)),
       child: Padding(

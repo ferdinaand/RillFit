@@ -24,7 +24,7 @@ class RoleCardUi extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12),
       child: Container(
-        height: 140.h,
+        height: 150.h,
         width: 142.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

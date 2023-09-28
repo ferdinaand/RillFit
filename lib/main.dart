@@ -39,20 +39,23 @@ Future<void> main() async {
   await initializeHive();
 
   await initializeServices();
+  final routes = await calculateInitialRoute();
   SharedPreferences pref = await SharedPreferences.getInstance();
 
   setupLogging();
 
   runApp(
-    RiilfitApp(),
+    RiilfitApp(
+      routes: routes,
+    ),
   );
 }
 
 //token: pref.getString('token')
 class RiilfitApp extends StatelessWidget {
   // final token;
-  RiilfitApp({super.key});
-
+  RiilfitApp({required this.routes, super.key});
+  String routes;
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
@@ -64,7 +67,7 @@ class RiilfitApp extends StatelessWidget {
         return OverlaySupport.global(
           child: GetMaterialApp(
             navigatorKey: Get.find<NavigationService>().navigatorKey,
-            initialRoute: Routes.onboarding,
+            initialRoute: routes,
 
             //  (JwtDecoder.isExpired(token.toString()) == false)
             //     ? Routes.app

@@ -31,12 +31,10 @@ class _SelectRoleUiState extends State<SelectRoleUi> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  if (userSelect == false) {
+                  if (userSelect == false && GymOwnerSelect == false) {
                     userSelect = true;
                     ChooseRoleRoute = true;
                     GymOwnerSelect = false;
-                    trainerSelect = false;
-                    storeSelect = false;
                   } else {
                     userSelect = false;
                   }
@@ -52,12 +50,10 @@ class _SelectRoleUiState extends State<SelectRoleUi> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  if (GymOwnerSelect == false) {
+                  if (GymOwnerSelect == false && userSelect == false) {
                     GymOwnerSelect = true;
                     trainerSelect = false;
                     ChooseRoleRoute = true;
-                    userSelect = false;
-                    storeSelect = false;
                   } else {
                     GymOwnerSelect = false;
                   }

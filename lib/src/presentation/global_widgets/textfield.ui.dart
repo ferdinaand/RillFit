@@ -29,6 +29,7 @@ class TextFieldUi extends StatefulWidget {
     this.textInputAction,
     this.focusNode,
     this.onTap,
+    this.enable = true,
     this.autofocus = false,
   });
 
@@ -54,6 +55,7 @@ class TextFieldUi extends StatefulWidget {
   final VoidCallback? onTap;
   final String? helperText;
   final bool alwaysShowHelperText;
+  final bool enable;
 
   @override
   State<TextFieldUi> createState() => _TextFieldUiState();
@@ -97,6 +99,7 @@ class _TextFieldUiState extends State<TextFieldUi> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           TextFormField(
+            enabled: widget.enable,
             key: _formFieldKey,
             maxLines: widget.maxLines,
             maxLength: widget.maxLength,

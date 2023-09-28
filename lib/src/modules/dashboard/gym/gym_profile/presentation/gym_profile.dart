@@ -82,16 +82,6 @@ class GymProfile extends GetView<GymProfileController> {
                     );
                   },
                 ),
-                GymOptionCard(
-                  title: 'PROFILE',
-                  description: 'All information are on the profile ',
-                  iconPath: 'assets/png/tag-user.png',
-                  onTap: () {
-                    Get.offAndToNamed<void>(
-                      Routes.profile,
-                    );
-                  },
-                ),
                 const Gap(20)
               ],
             ),

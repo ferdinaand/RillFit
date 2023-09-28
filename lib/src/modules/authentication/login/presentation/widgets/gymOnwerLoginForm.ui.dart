@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
+
 import 'package:riilfit/src/presentation/widgets.dart';
 
 import '../../controller/gymOwnerLogin.controller.dart';
@@ -28,9 +28,10 @@ class GymOwnerLoginFormUi extends GetView<GymOwnerLoginController> {
             TextFieldUi(
               hintText: 'username',
               controller: controller.usernameController,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.text,
               onChanged: (_) {
                 controller.enableButton();
+                print('Inside onChanged callback: $_');
               },
             ),
             const Gap(12),

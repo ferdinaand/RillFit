@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:http/http.dart' as http;

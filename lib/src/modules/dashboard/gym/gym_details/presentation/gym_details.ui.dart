@@ -6,12 +6,14 @@ import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gym_details/controller/gym_details.controller.dart';
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
+import 'package:riilfit/src/routing/app_pages.dart';
+import '../../gym_locations/controller/gym_locations_controller.dart';
 
-class GymDetailsUi extends GetView<GymDetailsController> {
+class GymDetailsUi extends GetView<GymLocationsController> {
   const GymDetailsUi({super.key});
 
   @override
-  GymDetailsController get controller => Get.put(GymDetailsController());
+  GymLocationsController get controller => Get.put(GymLocationsController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,25 +41,26 @@ class GymDetailsUi extends GetView<GymDetailsController> {
           child: Stack(
             children: [
               Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                child: Container(
-                  height: context.height * 0.33,
-                  padding: const EdgeInsets.only(bottom: 12),
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        getFit1,
+                  top: 0,
+                  right: 0,
+                  left: 0,
+                  child: Obx(
+                    () => Container(
+                      height: context.height * 0.33,
+                      padding: const EdgeInsets.only(bottom: 12),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            '${controller.thisGymDetails.value.thumbnail}',
+                          ),
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      fit: BoxFit.cover,
+                      child: const Align(
+                        alignment: Alignment.bottomCenter,
+                      ),
                     ),
-                  ),
-                  child: const Align(
-                    alignment: Alignment.bottomCenter,
-                  ),
-                ),
-              ),
+                  )),
               Positioned(
                 bottom: 0,
                 right: 0,
@@ -89,10 +92,12 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                             children: [
                               Row(
                                 children: [
-                                  const TextUi.heading4(
-                                    'bennys place',
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w800,
+                                  Obx(
+                                    () => TextUi.heading4(
+                                      '${controller.thisGymDetails.value.name}',
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w800,
+                                    ),
                                   ),
                                   const SizedBox(
                                     width: 10,
@@ -120,11 +125,13 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                               const Gap(8),
                               Row(
                                 children: [
-                                  TextUi.bodyMed(
-                                    'Lekki phase 1, Lagos state',
-                                    fontWeight: mediumText,
-                                    height: (16 / 14).w,
-                                  ),
+                                  Obx(
+                                    () => TextUi.bodyMed(
+                                      '${controller.thisGymDetails.value.address}',
+                                      fontWeight: mediumText,
+                                      height: (16 / 14).w,
+                                    ),
+                                  )
                                 ],
                               ),
                               const Gap(4.92),
@@ -176,10 +183,15 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                                 fontSize: 14,
                               ),
                               const Gap(8),
-                              const TextUi.bodyMed(
-                                'we are open for you today',
-                                height: 14 / 12,
-                                fontWeight: FontWeight.w400,
+                              Obx(
+                                () => TextUi.bodyMed(
+                                  controller.thisGymDetails.value.description !=
+                                          null
+                                      ? '${controller.thisGymDetails.value.description}'
+                                      : '...',
+                                  height: 14 / 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
                               const Gap(42),
                               Row(
@@ -191,10 +203,15 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                                         : grayScale900,
                                   ),
                                   const Gap(15),
-                                  const TextUi.bodyMed(
-                                    'www.thegym.com',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
+                                  Obx(
+                                    () => TextUi.bodyMed(
+                                      controller.thisGymDetails.value.website !=
+                                              null
+                                          ? '${controller.thisGymDetails.value.website}'
+                                          : '...',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   )
                                 ],
                               ),
@@ -208,10 +225,12 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                                         : grayScale900,
                                   ),
                                   const Gap(15),
-                                  const TextUi.bodyMed(
-                                    'Lekki phase 1, Lagos state',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
+                                  Obx(
+                                    () => TextUi.bodyMed(
+                                      '${controller.thisGymDetails.value.address}',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   )
                                 ],
                               ),
@@ -225,11 +244,13 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                                         : grayScale900,
                                   ),
                                   const Gap(15),
-                                  const TextUi.bodyMed(
-                                    '09052027107',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                  )
+                                  Obx(
+                                    () => TextUi.bodyMed(
+                                      '${controller.thisGymDetails.value.phoneNumber}',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
                                 ],
                               ),
                               Gap(30),
@@ -248,11 +269,12 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                                     color: successDark,
                                     fontSize: 15,
                                   ),
-                                  const TextUi.bodyMed(
-                                    ' :8:00 AM - 10:00PM',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 15,
-                                  )
+                                  Gap(5),
+                                  Obx(() => TextUi.bodyMed(
+                                        '${controller.thisGymDetails.value.openingTime}am - ${controller.thisGymDetails.value.closingTime}pm',
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 15,
+                                      ))
                                 ],
                               ),
                               Gap(41),
@@ -302,7 +324,13 @@ class GymDetailsUi extends GetView<GymDetailsController> {
                                     const EdgeInsets.only(left: 57, right: 57),
                                 child: PrimaryButtonUi(
                                   text: 'View Gym Plans',
-                                  onPressed: controller.openGymPlans,
+                                  onPressed: () {
+                                    final id =
+                                        controller.thisGymDetails.value.id;
+                                    controller.viewPlan(id.toString());
+
+                                    Get.toNamed(Routes.gymPlan);
+                                  },
                                 ),
                               ),
                               Gap(15)

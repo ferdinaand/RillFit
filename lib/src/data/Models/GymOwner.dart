@@ -34,21 +34,30 @@ import 'package:firebase_database/firebase_database.dart';
 // }
 
 class gymOwnerDetails {
-  gymOwnerDetails({
-    this.gymName,
-    this.phoneNumber,
-    this.logoImage,
-    this.state,
-    this.city,
-    this.address,
-    this.gymOwnerId,
-  });
-
+  gymOwnerDetails(
+      {this.gymName,
+      this.phoneNumber,
+      this.fullname,
+      this.state,
+      this.city,
+      this.address,
+      this.gymOwnerId,
+      this.userType});
+  String? userType;
   String? gymName;
   String? phoneNumber;
-  String? logoImage;
+  String? fullname;
   String? state;
   String? city;
   String? address;
   String? gymOwnerId;
+  factory gymOwnerDetails.fromJson(dynamic jsonData) => gymOwnerDetails(
+        gymName: jsonData['username'] as String?,
+        phoneNumber: jsonData['phone'] as String?,
+        // address: jsonData['address'] as String?,
+        // : jsonData['_id'] as String?,
+        fullname: jsonData['fullName'] as String?,
+        userType: jsonData['type'] as String?,
+        gymOwnerId: jsonData['_id'] as String,
+      );
 }

@@ -34,7 +34,7 @@ class HomeUi extends GetView<HomeController> {
                   child: Column(
                     children: [
                       const Gap(16),
-                      const HomeHeaderUi(),
+                      HomeHeaderUi(),
                       const Gap(48),
                       SingleChildScrollView(
                         child: Column(

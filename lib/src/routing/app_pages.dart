@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:riilfit/src/modules/authentication/register/presentation/register.ui.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gym_details/presentation/gym_details.ui.dart';
+import 'package:riilfit/src/modules/dashboard/gym/gym_membership_plans/presentation/addcard.dart';
+import 'package:riilfit/src/modules/dashboard/gym/gym_membership_plans/presentation/widgets/openWebView.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/gym.ui.dart';
 import 'package:riilfit/src/modules/dashboard/stores/presentation/stores.ui.dart';
 import 'package:riilfit/src/modules/dashboard/train/presentation/train.ui.dart';
@@ -52,21 +54,25 @@ class AppPages {
       page: () => const RegisterUi(),
     ),
     GetPage(
-      name: Routes.forgotPasswordInit,
-      page: () => const ForgotPasswordEnterEmailUi(),
+      name: Routes.addCard,
+      page: () => const AddCardScreen(),
     ),
-    GetPage(
-      name: Routes.forgotPasswordEnterOtp,
-      page: () => const ForgotPasswordEnterResetOtpUi(),
-    ),
-    GetPage(
-      name: Routes.forgotPasswordSetNewPassword,
-      page: () => const ForgotPasswordSetNewPasswordUi(),
-    ),
-    GetPage(
-      name: Routes.verifyPhone,
-      page: () => const VerifyPhoneUi(),
-    ),
+    // GetPage(
+    //   name: Routes.forgotPasswordInit,
+    //   page: () => const ForgotPasswordEnterEmailUi(),
+    // ),
+    // GetPage(
+    //   name: Routes.forgotPasswordEnterOtp,
+    //   page: () => const ForgotPasswordEnterResetOtpUi(),
+    // ),
+    // GetPage(
+    //   name: Routes.forgotPasswordSetNewPassword,
+    //   page: () => const ForgotPasswordSetNewPasswordUi(),
+    // ),
+    // GetPage(
+    //   name: Routes.verifyPhone,
+    //   page: () => const VerifyPhoneUi(),
+    // ),
     GetPage(
       name: Routes.app,
       page: () => DashboardManager(),
@@ -139,7 +145,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.viewGymPlans,
-      page: () => const ViewGymPlans(),
+      page: () => ViewGymPlans(),
     ),
     GetPage(
       name: Routes.createGymPlans,
@@ -148,6 +154,10 @@ class AppPages {
     GetPage(
       name: Routes.gymOwnerProfile,
       page: () => const GymOwnerProfile(),
+    ),
+    GetPage(
+      name: Routes.openWebView,
+      page: () => OpenWebview(),
     ),
   ];
 }

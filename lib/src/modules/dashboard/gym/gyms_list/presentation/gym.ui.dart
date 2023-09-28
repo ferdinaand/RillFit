@@ -79,25 +79,26 @@ class GymUi extends GetView<GymLocationsController> {
                             child: GymCardUi(
                               ontap: () async {
                                 final box = await Hive.openBox('userData');
-                                String token = box.get('token').toString();
+                                final token = box.get('token');
 
-                                if (token != null) {
+                                if (token == null || token == 'null') {
+                                  // User is not logged in or token is null, navigate to login screen
+                                  Get.toNamed<void>(Routes.login);
+                                } else {
                                   // Check if the token is expired
-                                  final tokenExpired =
-                                      controller.isTokenExpired(token);
+                                  final tokenExpired = controller
+                                      .isTokenExpired(token.toString());
 
                                   if (tokenExpired) {
+                                    print('trying to decode token');
                                     // Token is expired, prompt the user to log in
-                                    Get.offAndToNamed<void>(Routes.login);
+                                    Get.toNamed<void>(Routes.login);
                                   } else {
                                     // Token is not expired, navigate to the dashboard
                                     final gymId = gym.id;
                                     await controller.fetchGymDetails(gymId);
-                                    // Get.offAndToNamed<void>(Routes.gymDetails);
+                                    Get.toNamed<void>(Routes.gymDetails);
                                   }
-                                } else {
-                                  // User is not logged in, navigate to login screen
-                                  Get.offAndToNamed<void>(Routes.login);
                                 }
                               },
                               city: gym.city,
@@ -117,7 +118,6 @@ class GymUi extends GetView<GymLocationsController> {
     );
   }
 }
-
 
 //  SingleChildScrollView(
 //                   child: Padding(

@@ -80,14 +80,14 @@ class gymPlanCard extends StatelessWidget {
             ),
             Gap(5),
             Container(
-              height: 240,
-              width: 352,
+              height: 250.h,
+              width: 352.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(width: 2, color: primary),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(left: 8, right: 8),
+                padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
                 child: Column(
                   children: [
                     Row(
@@ -96,7 +96,7 @@ class gymPlanCard extends StatelessWidget {
                         Row(
                           children: [
                             TextUi.heading1(
-                              price,
+                              'N$price',
                               fontSize: 32,
                             ),
                             Gap(7),
@@ -111,28 +111,37 @@ class gymPlanCard extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          height: 19,
-                          width: 73,
                           decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(16),
                               color: Color(0xFFCD7F32)),
-                          child: Center(
-                            child: TextUi.bodyLarge(
-                              planType,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 2, bottom: 2, left: 4, right: 4),
+                            child: Center(
+                              child: TextUi.bodyLarge(
+                                planType,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                           ),
                         )
                       ],
                     ),
-                    const Gap(23),
-                    TextUi.bodyLarge(
-                      description,
-                      fontSize: 12,
+                    const Gap(13),
+                    Row(
+                      children: [
+                        Container(
+                          width: 300.w,
+                          child: TextUi.bodyLarge(
+                            description,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
                     ),
-                    const Gap(23),
+                    const Gap(15),
                     Row(
                       children: [
                         Image.asset(
@@ -172,7 +181,7 @@ class gymPlanCard extends StatelessWidget {
                             ),
                             const Gap(5),
                             TextUi.bodyMed(
-                              subFeatures,
+                              '$subFeatures visits per month',
                               style: TextStyle(overflow: TextOverflow.ellipsis),
                             ),
                           ],

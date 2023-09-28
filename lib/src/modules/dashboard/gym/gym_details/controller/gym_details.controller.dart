@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import '../../../../../data/Models/GymDetails.dart';
 import '../../../../../routing/app_pages.dart';
 
 class GymDetailsController extends BaseController {
@@ -11,11 +12,15 @@ class GymDetailsController extends BaseController {
     _currentIndex.value = index;
   }
 
+  Rx<gymDetails> thisGymDetails = gymDetails().obs;
+
   void openGymPlans() {
     navigationService.navigateTo(
       Routes.gymPlan,
     );
   }
+
+  void UpdateGymDetails() {}
 
   Future<void> makePayment() async {
     isLoading.value = true;

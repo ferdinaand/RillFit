@@ -213,28 +213,28 @@ class EditGymPlans extends GetView<GymPlanController> {
   }
 }
 
-void handlePaymentInitialization(BuildContext context) async {
-  final Customer customer = Customer(
-      email: 'ekpo546@gmail.com', phoneNumber: '08145677278', name: 'user');
+// void handlePaymentInitialization(BuildContext context) async {
+//   final Customer customer = Customer(
+//       email: 'ekpo546@gmail.com', phoneNumber: '08145677278', name: 'user');
 
-  final Flutterwave flutterwave = Flutterwave(
-    context: context,
-    publicKey: 'FLWPUBK_TEST-dd5ad6338e5b0ba65dcf0ae9481d0792-X',
-    currency: 'NGN',
-    redirectUrl: 'https://facebook.com',
-    txRef: DateTime.now().toString(),
-    amount: '20,000',
-    customer: customer,
-    paymentOptions: 'card',
-    customization: Customization(title: 'Test Payment', logo: riilfitLogoPng),
-    isTestMode: true,
-  );
-  final ChargeResponse response = await flutterwave.charge();
-  print(response);
-  if (response != null) {
-    Get.snackbar('', response.toString());
-    print('${response.toJson()}');
-  } else {
-    Get.snackbar('', response.toString());
-  }
-}
+//   final Flutterwave flutterwave = Flutterwave(
+//     context: context,
+//     publicKey: 'FLWPUBK_TEST-dd5ad6338e5b0ba65dcf0ae9481d0792-X',
+//     currency: 'NGN',
+//     redirectUrl: 'https://facebook.com',
+//     txRef: DateTime.now().toString(),
+//     amount: '20,000',
+//     customer: customer,
+//     paymentOptions: 'card',
+//     customization: Customization(title: 'Test Payment', logo: riilfitLogoPng),
+//     isTestMode: true,
+//   );
+//   final ChargeResponse response = await flutterwave.charge();
+//   print(response);
+//   if (response != null) {
+//     Get.snackbar('', response.toString());
+//     print('${response.toJson()}');
+//   } else {
+//     Get.snackbar('', response.toString());
+//   }
+// }

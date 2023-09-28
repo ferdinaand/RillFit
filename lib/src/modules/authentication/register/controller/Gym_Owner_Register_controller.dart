@@ -110,12 +110,13 @@ class GymOwnerRegisterController extends BaseController {
   Future<void> signup() async {
     // login with node js backend
     isLoading.value = true;
-
+    // print('here');
+    // print(imageFile.value!.path);
     await Future.delayed(Duration(seconds: 3));
     //save the image to firebase storage
-    if (file == null) {
+    if (imageFile.value == null) {
       Get.snackbar('logo error', 'no logo selected');
-
+      isLoading.value = false;
       return;
     }
     Reference root = FirebaseStorage.instance.ref();
@@ -126,11 +127,14 @@ class GymOwnerRegisterController extends BaseController {
     Reference gymLogoUpload = DirGymLogo.child(gymNameController.text);
 
     try {
-      await gymLogoUpload.putFile(File(file!.path));
+      await gymLogoUpload.putFile(File(imageFile.value!.path));
 
       imageUrl = await gymLogoUpload.getDownloadURL();
+      // print('help me ohhh');
       print('${imageUrl}');
-    } catch (e) {}
+    } catch (e) {
+      Get.snackbar('', 'image error');
+    }
 
     var signupBody = {
       "fullName": fullnameController.text,
@@ -138,8 +142,8 @@ class GymOwnerRegisterController extends BaseController {
       "gymPhone": phoneController.text,
       "locations": [
         {
-          "state": gymStateController.text,
-          "city": gymCityController.text,
+          "state": gymStateController.text.toUpperCase(),
+          "city": gymCityController.text.toUpperCase(),
           "address": gymAddressController.text,
         }
       ],
@@ -159,10 +163,10 @@ class GymOwnerRegisterController extends BaseController {
     print(jsonResponse);
     if (jsonResponse['access_token'] != null) {
       Get.snackbar('success', 'Registered in successfully');
-      final token = jsonResponse;
-      if (token != null) {
-        await pref?.setString('token', token.toString());
-      }
+      // final token = jsonResponse;
+      // if (token != null) {
+      //   await pref?.setString('token', token.toString());
+      // }
 
       await Get.offAllNamed<void>(
         Routes.gymOwnerLogin,
@@ -179,101 +183,101 @@ class GymOwnerRegisterController extends BaseController {
       // print(jsonResponse.toString());
     }
     isLoading.value = false;
+  }
 
 //login with firebase
-    //   try {
-    //     await FirebaseAuth.instance.signInWithEmailAndPassword(
-    //         email: emailOrPhoneController.text,
-    //         password: passwordController.text);
+  //   try {
+  //     await FirebaseAuth.instance.signInWithEmailAndPassword(
+  //         email: emailOrPhoneController.text,
+  //         password: passwordController.text);
 
-    //     await Get.offAllNamed<void>(
-    //       Routes.app,
-    //     );
-    //   } on FirebaseAuthException catch (e) {
-    //     if (e.code == 'user-not-found') {
-    //       Get.snackbar('no user', 'No user found for that email');
-    //     } else if (e.code == 'wrong-password') {
-    //       Get.snackbar('wrong password', 'wrong password provided for that user');
-    //     } else if (e.code == 'network-request-failed') {
-    //       Get.snackbar(
-    //           'Network error', 'please check your connection and try again');
-    //     }
-    //   }
-    // }
+  //     await Get.offAllNamed<void>(
+  //       Routes.app,
+  //     );
+  //   } on FirebaseAuthException catch (e) {
+  //     if (e.code == 'user-not-found') {
+  //       Get.snackbar('no user', 'No user found for that email');
+  //     } else if (e.code == 'wrong-password') {
+  //       Get.snackbar('wrong password', 'wrong password provided for that user');
+  //     } else if (e.code == 'network-request-failed') {
+  //       Get.snackbar(
+  //           'Network error', 'please check your connection and try again');
+  //     }
+  //   }
+  // }
 
-    // try {
-    //   //Validate form
-    //   loginFormKey.currentState!.save();
-    //   if (!loginFormKey.currentState!.validate()) {
-    //     showFlushBar(
-    //       message: 'Kindly fix validation issues',
-    //     );
-    //     return;
-    //   }
-    //   viewState = ViewState.busy;
+  // try {
+  //   //Validate form
+  //   loginFormKey.currentState!.save();
+  //   if (!loginFormKey.currentState!.validate()) {
+  //     showFlushBar(
+  //       message: 'Kindly fix validation issues',
+  //     );
+  //     return;
+  //   }
+  //   viewState = ViewState.busy;
 
-    //   final loginDto = LoginDto(
-    //     emailPhone: emailOrPhoneController.text,
-    //     password: passwordController.text,
-    //   );
+  //   final loginDto = LoginDto(
+  //     emailPhone: emailOrPhoneController.text,
+  //     password: passwordController.text,
+  //   );
 
-    //   final res = await AuthApi().login(
-    //     loginDto: loginDto,
-    //   );
+  //   final res = await AuthApi().login(
+  //     loginDto: loginDto,
+  //   );
 
-    //   if (res.success) {
-    //     //store token
-    //     await storageService.cacheAuthToken(
-    //       res.payload['token'] as String,
-    //     );
+  //   if (res.success) {
+  //     //store token
+  //     await storageService.cacheAuthToken(
+  //       res.payload['token'] as String,
+  //     );
 
-    //     //store user
-    //     await storageService.cacheCustomer(
-    //       jsonEncode(res.payload['user']),
-    //     );
+  //     //store user
+  //     await storageService.cacheCustomer(
+  //       jsonEncode(res.payload['user']),
+  //     );
 
-    //     unawaited(
-    //       Get.offAllNamed<void>(
-    //         Routes.app,
-    //       ),
-    //     );
-    //     viewState = ViewState.idle;
-    //   } else {
-    //     showFlushBar(
-    //       message: res.message ?? errorMessage,
-    //     );
-    //     viewState = ViewState.idle;
-    //   }
-    // } on SocketException catch (e, s) {
-    //   print('SOCKETEXECPTION');
-    //   log(
-    //     e.toString(),
-    //     stackTrace: s,
-    //   );
-    //   showFlushBar(
-    //     message: errorMessage,
-    //   );
-    //   viewState = ViewState.idle;
-    // } catch (e, s) {
-    //   log(
-    //     e.toString(),
-    //     stackTrace: s,
-    //   );
-    //   showFlushBar(
-    //     message: errorMessage,
-    //   );
-    //   viewState = ViewState.idle;
-    // } finally {
-    //   viewState = ViewState.idle;
-    // }
+  //     unawaited(
+  //       Get.offAllNamed<void>(
+  //         Routes.app,
+  //       ),
+  //     );
+  //     viewState = ViewState.idle;
+  //   } else {
+  //     showFlushBar(
+  //       message: res.message ?? errorMessage,
+  //     );
+  //     viewState = ViewState.idle;
+  //   }
+  // } on SocketException catch (e, s) {
+  //   print('SOCKETEXECPTION');
+  //   log(
+  //     e.toString(),
+  //     stackTrace: s,
+  //   );
+  //   showFlushBar(
+  //     message: errorMessage,
+  //   );
+  //   viewState = ViewState.idle;
+  // } catch (e, s) {
+  //   log(
+  //     e.toString(),
+  //     stackTrace: s,
+  //   );
+  //   showFlushBar(
+  //     message: errorMessage,
+  //   );
+  //   viewState = ViewState.idle;
+  // } finally {
+  //   viewState = ViewState.idle;
+  // }
 
-    Future<void> loginViaFacebook() async {}
-    Future<void> loginViaGoogle() async {}
+  Future<void> loginViaFacebook() async {}
+  Future<void> loginViaGoogle() async {}
 
-    void navigateToForgotPassword() {
-      Get.toNamed<void>(
-        Routes.forgotPasswordInit,
-      );
-    }
+  void navigateToForgotPassword() {
+    Get.toNamed<void>(
+      Routes.forgotPasswordInit,
+    );
   }
 }

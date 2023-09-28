@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/modules/authentication/login/controller/login.controller.dart';
+import 'package:riilfit/src/modules/authentication/login/presentation/widgets/gymOnwerLoginForm.ui.dart';
 import 'package:riilfit/src/modules/authentication/login/presentation/widgets/login_form.ui.dart';
 import 'package:riilfit/src/modules/authentication/register/controller/Gym_Owner_Register_controller.dart';
 import 'package:riilfit/src/presentation/global_widgets/network_loader.ui.dart';
@@ -54,7 +55,7 @@ class GymOwnerLoginUi extends GetView<GymOwnerLoginController> {
                                   'Sign In',
                                 ),
                                 const Gap(24),
-                                const LoginFormUi(),
+                                const GymOwnerLoginFormUi(),
                                 const Gap(24),
                                 Obx(
                                   () {

@@ -1,123 +1,123 @@
-import 'dart:async';
-import 'dart:developer';
+// import 'dart:async';
+// import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:riilfit/src/data/dtos/register/register.dto.dart';
-import 'package:riilfit/src/data/enum/view_state.enum.dart';
-import 'package:riilfit/src/domain/api/auth/auth.api.dart';
-import 'package:riilfit/src/domain/base/controller/base.controller.dart';
-import 'package:riilfit/src/presentation/resources/strings.res.dart';
-import 'package:riilfit/src/presentation/utility/flushbar/show-flushbar.helper.dart';
-import 'package:riilfit/src/routing/app_pages.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:riilfit/src/data/dtos/register/register.dto.dart';
+// import 'package:riilfit/src/data/enum/view_state.enum.dart';
+// import 'package:riilfit/src/domain/api/auth/auth.api.dart';
+// import 'package:riilfit/src/domain/base/controller/base.controller.dart';
+// import 'package:riilfit/src/presentation/resources/strings.res.dart';
+// import 'package:riilfit/src/presentation/utility/flushbar/show-flushbar.helper.dart';
+// import 'package:riilfit/src/routing/app_pages.dart';
 
-class VerifyPhoneController extends BaseController {
-  @override
-  void onInit() {
-    enableButton();
-    final registerDto = Get.arguments as RegisterDto? ?? RegisterDto.empty();
-    phoneNumber = registerDto.phoneNumber;
-    super.onInit();
-  }
+// class VerifyPhoneController extends BaseController {
+//   @override
+//   void onInit() {
+//     enableButton();
+//     final registerDto = Get.arguments as RegisterDto? ?? RegisterDto.empty();
+//     phoneNumber = registerDto.phoneNumber;
+//     super.onInit();
+//   }
 
-  late String phoneNumber;
+//   late String phoneNumber;
 
-  //text field controllers
-  final pinController = TextEditingController(
-    text: kDebugMode ? '123456' : null,
-  );
+//   //text field controllers
+//   final pinController = TextEditingController(
+//     text: kDebugMode ? '123456' : null,
+//   );
 
-  //Enable and disable button logic
-  final isButtonDisabled = true.obs;
+//   //Enable and disable button logic
+//   final isButtonDisabled = true.obs;
 
-  void enableButton() {
-    isButtonDisabled.value =
-        pinController.text.isEmpty || pinController.text.length != pinLength;
+//   void enableButton() {
+//     isButtonDisabled.value =
+//         pinController.text.isEmpty || pinController.text.length != pinLength;
 
-    return;
-  }
+//     return;
+//   }
 
-  Future<void> resendCode() async {
-    try {
-      viewState = ViewState.busy;
+//   Future<void> resendCode() async {
+//     try {
+//       viewState = ViewState.busy;
 
-      final user = await storageService.fetchCustomer();
+//       final user = await storageService.fetchCustomer();
 
-      final res = await AuthApi().initPhoneVerification(
-        email: user?.email ?? '',
-      );
-      if (res.success) {
-        showFlushBar(
-          message: 'Recovery code has been resent to $phoneNumber',
-        );
-      } else {
-        showFlushBar(
-          message: res.message ?? errorMessage,
-        );
-      }
-      viewState = ViewState.idle;
+//       final res = await AuthApi().initPhoneVerification(
+//         email: user?.email ?? '',
+//       );
+//       if (res.success) {
+//         showFlushBar(
+//           message: 'Recovery code has been resent to $phoneNumber',
+//         );
+//       } else {
+//         showFlushBar(
+//           message: res.message ?? errorMessage,
+//         );
+//       }
+//       viewState = ViewState.idle;
 
-      return;
-    } catch (e, s) {
-      log(
-        e.toString(),
-        stackTrace: s,
-      );
-      showFlushBar(
-        message: errorMessage,
-      );
-      viewState = ViewState.idle;
-    } finally {
-      viewState = ViewState.idle;
-    }
-  }
+//       return;
+//     } catch (e, s) {
+//       log(
+//         e.toString(),
+//         stackTrace: s,
+//       );
+//       showFlushBar(
+//         message: errorMessage,
+//       );
+//       viewState = ViewState.idle;
+//     } finally {
+//       viewState = ViewState.idle;
+//     }
+//   }
 
-  void changePhoneNumber() {
-    Get.back<void>();
-  }
+//   void changePhoneNumber() {
+//     Get.back<void>();
+//   }
 
-  Future<void> verifyPhoneNumber() async {
-    try {
-      if (pinController.text.length != pinLength) {
-        showFlushBar(
-          message: 'Pin must be 6 digits',
-        );
-        return;
-      }
+//   Future<void> verifyPhoneNumber() async {
+//     try {
+//       if (pinController.text.length != pinLength) {
+//         showFlushBar(
+//           message: 'Pin must be 6 digits',
+//         );
+//         return;
+//       }
 
-      viewState = ViewState.busy;
+//       viewState = ViewState.busy;
 
-      final res = await AuthApi().verifyPhone(
-        code: pinController.text,
-      );
+//       final res = await AuthApi().verifyPhone(
+//         code: pinController.text,
+//       );
 
-      if (res.success) {
-        unawaited(
-          Get.offAllNamed<void>(
-            Routes.home,
-          ),
-        );
+//       if (res.success) {
+//         unawaited(
+//           Get.offAllNamed<void>(
+//             Routes.home,
+//           ),
+//         );
 
-        viewState = ViewState.idle;
-      } else {
-        showFlushBar(
-          message: res.message ?? '',
-        );
-        viewState = ViewState.idle;
-      }
-      return;
-    } catch (e, s) {
-      log(
-        e.toString(),
-        stackTrace: s,
-      );
-      showFlushBar(
-        message: errorMessage,
-      );
-      viewState = ViewState.idle;
-    } finally {
-      viewState = ViewState.idle;
-    }
-  }
-}
+//         viewState = ViewState.idle;
+//       } else {
+//         showFlushBar(
+//           message: res.message ?? '',
+//         );
+//         viewState = ViewState.idle;
+//       }
+//       return;
+//     } catch (e, s) {
+//       log(
+//         e.toString(),
+//         stackTrace: s,
+//       );
+//       showFlushBar(
+//         message: errorMessage,
+//       );
+//       viewState = ViewState.idle;
+//     } finally {
+//       viewState = ViewState.idle;
+//     }
+//   }
+// }

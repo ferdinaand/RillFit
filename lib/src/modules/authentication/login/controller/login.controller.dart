@@ -8,7 +8,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:riilfit/src/data/Models/Users.dart';
 import 'package:riilfit/src/domain/base/controller/base.controller.dart';
+import 'package:riilfit/src/modules/dashboard/home/controller/home.controller.dart';
 import 'package:riilfit/src/presentation/resources/colors.res.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:http/http.dart' as http;
@@ -20,7 +22,7 @@ import '../../register/controller/Gym_Owner_Register_controller.dart';
 
 class LoginController extends BaseController {
   late GlobalKey<FormState> loginFormKey;
-
+  Rx<usersDetails> thisUserDetails = usersDetails().obs;
   SharedPreferences? pref;
 
   var isLoading = false.obs;
@@ -81,53 +83,81 @@ class LoginController extends BaseController {
       'username': usernameController.text,
       'password': passwordController.text,
     };
-
-    isLoggedIn = true;
-    var response = await http.post(
-        Uri.parse('https://riilfit-api.vercel.app/auth/login'),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode(loginBody));
-
-    final jsonResponse = jsonDecode(response.body);
-
-    // print(jsonResponse['access_token']);
     isLoading.value = true;
+    isLoggedIn = true;
+    try {
+      var response = await http.post(
+          Uri.parse('https://riilfit-api.vercel.app/auth/login'),
+          headers: {"Content-Type": "application/json"},
+          body: jsonEncode(loginBody));
 
-    await Future.delayed(const Duration(seconds: 3));
+      final jsonResponse = jsonDecode(response.body);
 
-    if (jsonResponse['access_token'] != null) {
-      Get.snackbar('success', 'Logged in successfully');
-      final token =
-          jsonResponse['access_token'] as String; // Retrieve the access_token
-      persistData(token);
-      await Get.offAllNamed<void>(
-        Routes.app,
-      );
-    } else if (jsonResponse['statusCode'] != null) {
-      Get.snackbar('Error', 'incorrect email or password');
-      // print(jsonResponse.toString());
+      // print(jsonResponse['access_token']);
+
+      await Future.delayed(const Duration(seconds: 3));
+
+      if (jsonResponse['access_token'] != null) {
+        Get.snackbar('success', 'Logged in successfully');
+        final token =
+            jsonResponse['access_token'] as String; // Retrieve the access_token
+        await fetchUserProfile(token);
+        persistData(token);
+        await Get.offAllNamed<void>(
+          arguments: thisUserDetails.value.userName,
+          Routes.app,
+        );
+      } else if (jsonResponse['statusCode'] != null) {
+        Get.snackbar('Error', 'incorrect email or password');
+        // print(jsonResponse.toString());
+      }
+      isLoading.value = false;
+    } catch (e) {
+      isLoading.value = false;
+      print('Error fetching user profile: $e');
     }
-    isLoading.value = false;
-//login with firebase
-    // try {
-    //   await FirebaseAuth.instance.signInWithEmailAndPassword(
-    //       email: emailOrPhoneController.text,
-    //       password: passwordController.text);
-
-    //   await Get.offAllNamed<void>(
-    //     Routes.app,
-    //   );
-    // } on FirebaseAuthException catch (e) {
-    //   if (e.code == 'user-not-found') {
-    //     Get.snackbar('no user', 'No user found for that email');
-    //   } else if (e.code == 'wrong-password') {
-    //     Get.snackbar('wrong password', 'wrong password provided for that user');
-    //   } else if (e.code == 'network-request-failed') {
-    //     Get.snackbar(
-    //         'Network error', 'please check your connection and try again');
-    //   }
-    // }
   }
+
+  Future<void> fetchUserProfile(String accessToken) async {
+    try {
+      final response = await http.get(
+        Uri.parse('https://riilfit-api.vercel.app/users/profile'),
+        headers: {
+          'Authorization': 'Bearer $accessToken',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final userProfile = jsonDecode(response.body);
+        final data = userProfile['data'];
+        // print(data);
+        thisUserDetails.value = usersDetails.fromJson(data);
+        // final homeController = Get.find<HomeController>();
+        // final user = thisUserDetails.value.userName.toString();
+        // final phone = thisUserDetails.value.phoneNumber.toString();
+        // final name = thisUserDetails.value.fullName.toString();
+        // // print(name);
+        // homeController.updateUserInfo(name, user, phone);
+        // print(thisUserDetails.value.gymId![0]);
+        // Store the user profile details and access token in Hive
+        final box = await Hive.openBox('userData');
+        await box.put('fullname', thisUserDetails.value.fullName.toString());
+        await box.put('username', thisUserDetails.value.userName.toString());
+        await box.put('phone', thisUserDetails.value.phoneNumber.toString());
+        await box.put('userId', thisUserDetails.value.userId.toString());
+        await box.put('user_type', thisUserDetails.value.userType.toString());
+        await box.put('gym', thisUserDetails.value.gymId.toString());
+      } else {
+        // Handle the error when fetching user profile fails
+        print('Failed to fetch user profile: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Handle any network or other errors
+      print('Error fetching user profile: $e');
+    }
+  }
+
+  //_______________________________________________________________________________
 
   // try {
   //   //Validate form

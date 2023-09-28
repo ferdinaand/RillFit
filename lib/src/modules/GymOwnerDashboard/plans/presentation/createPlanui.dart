@@ -3,6 +3,7 @@ import 'package:flutter/material.dart'; // ignore_for_file: omit_local_variable_
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterwave_standard/flutterwave.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/enum/view_state.enum.dart';
 import 'package:riilfit/src/domain/services/navigation.service.dart';
 import 'package:riilfit/src/modules/GymOwnerDashboard/plans/presentation/widget/gym.membership.plan.cardUi.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/controller/gym.controller.dart';
@@ -67,6 +68,8 @@ class CreateGymPlans extends GetView<GymPlanController> {
                           controller.enableButton();
                         },
                         keyboardType: TextInputType.number,
+                        helperText:
+                            'input price without (,) or any other symbol)',
                         hintText: 'enter your plan price',
                         controller: controller.planPriceController),
                   ),
@@ -98,14 +101,28 @@ class CreateGymPlans extends GetView<GymPlanController> {
                     ],
                   ),
                   Gap(7),
-                  SizedBox(
-                    child: TextFieldUi(
-                        onChanged: (_) {
-                          controller.enableButton();
-                        },
-                        hintText: 'indicate your plan type',
-                        controller: controller.planTypeController),
-                  ),
+                  Obx(() => SizedBox(
+                        height: 70.h,
+                        child: DropdownButtonFormField<String>(
+                          value: controller.selectedPlanType.value,
+                          onChanged: (value) {
+                            print(value);
+                            controller.selectedPlanType.value = value as String;
+                            controller.enableButton();
+                          },
+                          items: <String>['GOLD', 'PLATINUM', 'EXCLUSIVE']
+                              .map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          decoration: InputDecoration(
+                            hintText: 'Select your plan type',
+                            helperText: '(GOLD, PLATINUM, EXCLUSIVE)',
+                          ),
+                        ),
+                      )),
                   Gap(20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -121,10 +138,11 @@ class CreateGymPlans extends GetView<GymPlanController> {
                           SizedBox(
                             width: 100,
                             child: TextFieldUi(
+                                maxLength: 5,
                                 onChanged: (_) {
                                   controller.enableButton();
                                 },
-                                keyboardType: TextInputType.datetime,
+                                keyboardType: TextInputType.number,
                                 hintText: '00:00',
                                 controller: controller.planOpenTimeController),
                           ),
@@ -141,10 +159,11 @@ class CreateGymPlans extends GetView<GymPlanController> {
                           SizedBox(
                             width: 100,
                             child: TextFieldUi(
+                                maxLength: 5,
                                 onChanged: (_) {
                                   controller.enableButton();
                                 },
-                                keyboardType: TextInputType.datetime,
+                                keyboardType: TextInputType.number,
                                 hintText: '00:00',
                                 controller: controller.planCloseTimeController),
                           ),
@@ -182,25 +201,29 @@ class CreateGymPlans extends GetView<GymPlanController> {
                   Gap(7),
                   SizedBox(
                     child: TextFieldUi(
+                        keyboardType: TextInputType.number,
                         onChanged: (_) {
                           controller.enableButton();
                         },
+                        maxLength: 1,
                         hintText: 'Gym access days for this plan',
                         controller: controller.planAccessDaysController),
                   ),
                   Gap(40),
-                  SizedBox(
-                    height: 50.h,
-                    width: 350,
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                            shape: MaterialStateProperty.resolveWith((states) =>
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                            backgroundColor: MaterialStateColor.resolveWith(
-                                (states) => primary)),
-                        onPressed: () {},
-                        child: TextUi.bodyLarge('Create')),
+                  Obx(
+                    () => controller.isLoading.value
+                        ? const Center(
+                            child: CircularProgressIndicator(
+                              color: primary,
+                            ),
+                          )
+                        : PrimaryButtonUi(
+                            text: 'Create',
+                            loading: controller.viewState.isBusy,
+                            onPressed: controller.isButtonDisabled.value
+                                ? null
+                                : controller.createPlan,
+                          ),
                   ),
                   Gap(32)
                 ],

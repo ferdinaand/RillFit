@@ -1,8 +1,11 @@
+// ignore_for_file: inference_failure_on_function_invocation
+
 import 'package:flutter/material.dart'; // ignore_for_file: omit_local_variable_types, unused_element, avoid_void_async, avoid_print
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterwave_standard/flutterwave.dart';
 import 'package:get/get.dart';
+import 'package:riilfit/src/data/Models/gym.plans.models.dart';
 import 'package:riilfit/src/domain/services/navigation.service.dart';
 import 'package:riilfit/src/modules/GymOwnerDashboard/plans/presentation/widget/gym.membership.plan.cardUi.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/controller/gym.controller.dart';
@@ -11,19 +14,22 @@ import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/widgets
 import 'package:riilfit/src/presentation/resources/res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
 
+import '../../../../domain/services/themes.services.dart';
 import '../../../dashboard/gym/gym_membership_plans/controllers/gym-membership_plans_controller.dart';
 import '../controller/gymPlanController.dart';
 
 class ViewGymPlans extends GetView<GymPlanController> {
-  const ViewGymPlans({super.key});
+  ViewGymPlans({super.key});
 
   @override
   GymPlanController get controller => Get.put(GymPlanController());
 
   @override
   Widget build(BuildContext context) {
-    final String planId = 'premuim plus';
-    final String price = 'N35,000';
+    final List<gymPlans> gymPlanList = controller.thisGymPlans;
+
+    // const String planId = 'premuim plus' ;
+    // const String price = 'N35,000' ;
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
@@ -31,80 +37,126 @@ class ViewGymPlans extends GetView<GymPlanController> {
           currentFocus.unfocus();
         }
       },
-      child:
-          // controller.isLoading.value
-          //     ? Center(
-          //         child: CircularProgressIndicator(
-          //           color: primary,
-          //         ),
-          //       )
-          //     :
-          Scaffold(
-        appBar: const MainAppbarUi(title: ''),
+      child: Scaffold(
+        appBar: const MainAppbarUi(title: 'Plans'),
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                right: 20,
-                left: 20,
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Image.asset(
-                        riilfitLogoPng,
-                        height: 80,
-                        width: 80,
-                      )
-                    ],
+          child: Obx(
+            () => controller.isGymPlanLoading.value
+                ? const Center(
+                    child: CircularProgressIndicator(
+                    strokeWidth: 6,
+                    color: primary,
+                  ))
+                : ListView.builder(
+                    itemCount: gymPlanList.length,
+                    itemBuilder: (_, index) {
+                      // print(locationList[index].state);
+                      final String amount =
+                          gymPlanList[index].amount.toString();
+                      final String description =
+                          gymPlanList[index].description.toString();
+                      final String openingTime =
+                          gymPlanList[index].openingTime.toString();
+                      final String closingTime =
+                          gymPlanList[index].closingTime.toString();
+                      final String features =
+                          gymPlanList[index].priviledges.toString();
+                      final String planType =
+                          gymPlanList[index].category.toString();
+                      final String subFeatures =
+                          gymPlanList[index].visitsPerMonth.toString();
+                      final String id = gymPlanList[index].id.toString();
+                      // String amount = gymPlanList[index].amount.toString();
+                      // String amount = gymPlanList[index].amount.toString();
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 10),
+                        child: gymPlanCard(
+                          description: description,
+                          time: '$openingTime-$closingTime',
+                          features: features,
+                          subFeatures: subFeatures,
+                          logo: '',
+                          price: amount,
+                          planType: planType,
+                          editAction: () {},
+                          deleteAction: () {
+                            showAdaptiveDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  backgroundColor:
+                                      Get.find<ThemeService>().isDarkMode
+                                          ? Colors.black54
+                                          : Colors.black54,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                      side:
+                                          BorderSide(color: primary, width: 2)),
+                                  title: const TextUi.heading4(
+                                    'Warning!',
+                                    color: white,
+                                  ),
+                                  content: SizedBox(
+                                    width: 250.w, // Adjust the width as needed
+                                    height: 70.h, // Adjust the height as needed
+                                    child: const Center(
+                                      child: TextUi.heading3(
+                                        'are you sure you want to delete this plan?',
+                                        color: white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  actions: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 50, right: 50, bottom: 40),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          SizedBox(
+                                            width: 50.w,
+                                            child: TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const TextUi.bodyXL('No'),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 50.w,
+                                            child: TextButton(
+                                              onPressed: () async {
+                                                Navigator.of(context).pop();
+
+                                                await controller
+                                                    .deletGymPlan(id);
+
+                                                if (controller.deleted.value ==
+                                                    true) {
+                                                  await controller
+                                                      .fetchGymPlans();
+                                                } // Replace with your fetch function
+                                              },
+                                              child: const TextUi.bodyXL('YES'),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          OnTap: () {},
+                          Id: '',
+                        ),
+                      );
+                    },
                   ),
-                  gymPlanCard(
-                    OnTap: () {},
-                    Id: '',
-                    editAction: controller.navigateToEditpPlanScreen,
-                    deleteAction: controller.deletGymPlan,
-                    planType: 'basic plan',
-                    price: '\N15,000',
-                    description:
-                        'For those who just want use our  strenght, cardio and free weight equipment.',
-                    time: '8:00am to 9:00pm',
-                    features: 'Gym access only two days a week',
-                    subFeatures: '8 visits per month',
-                    logo: riilfitLogoPng,
-                  ),
-                  const Gap(20),
-                  gymPlanCard(
-                    OnTap: () {},
-                    Id: '',
-                    planType: 'premuim',
-                    price: '\N20,000',
-                    description: '',
-                    editAction: controller.navigateToEditpPlanScreen,
-                    deleteAction: controller.deletGymPlan,
-                    time: '7:00am to 9:00pm',
-                    features: 'Gym access only all days a week',
-                    subFeatures: '8 visits per month',
-                    logo: riilfitLogoPng,
-                  ),
-                  const Gap(20),
-                  gymPlanCard(
-                    OnTap: () {},
-                    Id: planId,
-                    planType: 'premuim plus',
-                    price: price,
-                    description: '',
-                    editAction: controller.navigateToEditpPlanScreen,
-                    deleteAction: controller.deletGymPlan,
-                    time: '10:00am to 9:00pm',
-                    features: 'Gym access 24/7 + plus pool access',
-                    subFeatures: 'unlimited visits per month',
-                    logo: riilfitLogoPng,
-                  ),
-                  const Gap(20),
-                ],
-              ),
-            ),
           ),
         ),
       ),

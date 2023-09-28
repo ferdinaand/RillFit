@@ -10,13 +10,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class RoleController extends BaseController {
   void navigateToLoginScreen() {
-    Get.offAndToNamed<void>(
-      Routes.register,
+    Get.toNamed<void>(
+      Routes.login,
     );
   }
 
   @override
   void onInit() {
+    userSelect = false;
+    GymOwnerSelect = false;
     ChooseRoleRoute = false;
     super.onInit();
   }

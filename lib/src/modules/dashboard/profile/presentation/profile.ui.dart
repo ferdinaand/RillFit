@@ -72,8 +72,8 @@ class ProfileUi extends GetView<ProfileController> {
                     const Gap(16),
                     Obx(
                       () => Container(
-                        height: 102,
-                        width: 102,
+                        height: 70,
+                        width: 70,
                         decoration: BoxDecoration(
                           color: controller.themeService.isDarkMode
                               ? grayScale700
@@ -82,19 +82,23 @@ class ProfileUi extends GetView<ProfileController> {
                         ),
                         padding: const EdgeInsets.all(16),
                         child: SvgPicture.asset(
-                          imagePlaceholder,
+                          userIcon,
                           color: primary20,
                         ),
                       ),
                     ),
                     const Gap(8),
-                    TextUi.bodyMed(
-                      controller.firstname ?? '',
-                      fontWeight: mediumText,
+                    Obx(
+                      () => TextUi.bodyMed(
+                        controller.fullname.value,
+                        fontWeight: mediumText,
+                      ),
                     ),
                     const Gap(4),
-                    TextUi.bodySmall(
-                      controller.phonenumber ?? '',
+                    Obx(
+                      () => TextUi.bodySmall(
+                        controller.phoneNumber.value,
+                      ),
                     ),
                     const Gap(24),
                     Container(

@@ -22,171 +22,190 @@ class GymOwnerHome extends GetView<GymHomeController> {
     controller.onInit();
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25, top: 39),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    child: Column(children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            riilfitLogoPng,
-                            height: 32.h,
+        child: Container(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 39),
+              child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(
+                      riilfitLogoPng,
+                      height: 32.h,
+                    ),
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            controller.logout();
+                          },
+                          child: Icon(
+                            Icons.logout,
+                            color: controller.themeService.isDarkMode
+                                ? grayScale500
+                                : Colors.black,
+                            size: 30,
                           ),
-                        ],
-                      ),
-                      const Gap(50),
-                      Row(
-                        children: [
-                          SizedBox(
-                            height: 70.h,
-                            width: 70.w,
-                            child: CircleAvatar(
-                              backgroundColor:
-                                  controller.themeService.isDarkMode
-                                      ? grayScale700
-                                      : Colors.black,
-                              child: SvgPicture.asset(userActiveIcon),
-                            ),
-                          ),
-                          const Gap(9),
-                          const Column(
-                            children: [
-                              TextUi.bodyLarge(
-                                'Ferdinand',
-                                fontWeight: FontWeight.w400,
-                              ),
-                              TextUi.bodyLarge(
-                                'ferds gym',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                      const Gap(17),
-                      const Row(
-                        children: [
-                          TextUi.heading1(
-                            'Dashboard',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ],
-                      ),
-                      const Gap(7),
-                      const Row(
-                        children: [
-                          TextUi.bodyLarge(
-                            'Your daily updates',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ],
-                      ),
-                      const Gap(20),
-                      Row(
-                        children: [
-                          const dashContainer(
-                            iconPath: backIcon,
-                            height: 233,
-                            width: 171,
-                            Amount: '178,5k',
-                            percent: '%7.6',
-                          ),
-                          const Gap(45),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height: 70.h,
-                                    width: 70.w,
-                                    child: GestureDetector(
-                                      onTap: controller.navigateToViewPlans,
-                                      child: CircleAvatar(
-                                        backgroundColor:
-                                            controller.themeService.isDarkMode
-                                                ? grayScale700
-                                                : Colors.black,
-                                        child: Image.asset(
-                                          emojiHappyIcon,
-                                          color:
-                                              controller.themeService.isDarkMode
-                                                  ? Colors.black
-                                                  : white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const TextUi.bodyMed('View Plans'),
-                                ],
-                              ),
-                              const Gap(15),
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height: 70.h,
-                                    width: 70.w,
-                                    child: GestureDetector(
-                                      onTap: controller.navigateToCreatePlans,
-                                      child: CircleAvatar(
-                                        backgroundColor:
-                                            controller.themeService.isDarkMode
-                                                ? grayScale700
-                                                : Colors.black,
-                                        child: Image.asset(
-                                          editIcon,
-                                          color:
-                                              controller.themeService.isDarkMode
-                                                  ? Colors.black
-                                                  : white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const TextUi.bodyMed('Create Plans')
-                                ],
-                              ),
-                              const Gap(15),
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height: 70.h,
-                                    width: 70.w,
-                                    child: GestureDetector(
-                                      onTap: controller.navigateToEditProfile,
-                                      // controller.navigateToProfileEdit,
-                                      child: CircleAvatar(
-                                        backgroundColor:
-                                            controller.themeService.isDarkMode
-                                                ? grayScale700
-                                                : Colors.black,
-                                        child: Image.asset(
-                                          editIcon,
-                                          color:
-                                              controller.themeService.isDarkMode
-                                                  ? Colors.black
-                                                  : white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const TextUi.bodyMed('Edit Profile')
-                                ],
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ]),
-                  ),
+                        ),
+                        const Gap(3),
+                        TextUi.bodyMed('sign out'),
+                      ],
+                    )
+                  ],
                 ),
+                const Gap(50),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 70.h,
+                      width: 70.w,
+                      child: CircleAvatar(
+                        backgroundColor: controller.themeService.isDarkMode
+                            ? grayScale700
+                            : Colors.black,
+                        child: SvgPicture.asset(userActiveIcon),
+                      ),
+                    ),
+                    const Gap(10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Obx(
+                          () => TextUi.bodyLarge(
+                            '${controller.fullName}',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Obx(
+                          () => TextUi.bodyLarge(
+                            '${controller.gymName}',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+                const Gap(17),
+                const Row(
+                  children: [
+                    TextUi.heading1(
+                      'Dashboard',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
+                ),
+                const Gap(7),
+                const Row(
+                  children: [
+                    TextUi.bodyLarge(
+                      'Your daily updates',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
+                ),
+                const Gap(20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const dashContainer(
+                      iconPath: backIcon,
+                      height: 233,
+                      width: 171,
+                      Amount: '178,5k',
+                      percent: '%7.6',
+                    ),
+                    // const Gap(70),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 70.h,
+                              width: 70.w,
+                              child: GestureDetector(
+                                onTap: controller.navigateToViewPlans,
+                                child: CircleAvatar(
+                                  backgroundColor:
+                                      controller.themeService.isDarkMode
+                                          ? grayScale700
+                                          : Colors.black,
+                                  child: Image.asset(
+                                    emojiHappyIcon,
+                                    color: controller.themeService.isDarkMode
+                                        ? Colors.black
+                                        : white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const TextUi.bodyMed('View Plans'),
+                          ],
+                        ),
+                        const Gap(15),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 70.h,
+                              width: 70.w,
+                              child: GestureDetector(
+                                onTap: controller.navigateToCreatePlans,
+                                child: CircleAvatar(
+                                  backgroundColor:
+                                      controller.themeService.isDarkMode
+                                          ? grayScale700
+                                          : Colors.black,
+                                  child: Image.asset(
+                                    editIcon,
+                                    color: controller.themeService.isDarkMode
+                                        ? Colors.black
+                                        : white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const TextUi.bodyMed('Create Plans')
+                          ],
+                        ),
+                        const Gap(15),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 70.h,
+                              width: 70.w,
+                              child: GestureDetector(
+                                onTap: controller.navigateToEditProfile,
+                                // controller.navigateToProfileEdit,
+                                child: CircleAvatar(
+                                  backgroundColor:
+                                      controller.themeService.isDarkMode
+                                          ? grayScale700
+                                          : Colors.black,
+                                  child: Image.asset(
+                                    editIcon,
+                                    color: controller.themeService.isDarkMode
+                                        ? Colors.black
+                                        : white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const TextUi.bodyMed('Edit Profile')
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
+                const Gap(20),
                 const newMemberContainer(),
                 const Gap(40)
-              ],
-            )),
+              ]),
+            ),
+          ),
+        ),
       ),
     );
   }
