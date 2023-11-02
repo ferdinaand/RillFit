@@ -38,4 +38,5 @@ abstract class Routes {
   static const gymOwnerProfile = '/app/gymOwnerProfile';
   static const openWebView = '/app/openWebView';
   static const addCard = '/app/addCard';
+  static const storeCart = '/app/storeCart';
 }
