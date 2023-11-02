@@ -58,7 +58,7 @@ class GymOwnerLoginController extends BaseController {
   void navigateToRegisterPage() {
     routeFromUserSignin = true;
     Get.offAndToNamed<void>(
-      Routes.register,
+      Routes.gymOwnerRegister,
     );
   }
 
@@ -76,64 +76,64 @@ class GymOwnerLoginController extends BaseController {
   ///
   ///
   Future<void> login() async {
-    // try {
-    final signupBody = {
-      'username': usernameController.text,
-      'password': passwordController.text,
-    };
-    isLoading.value = true;
-    var response = await http.post(
-      Uri.parse('https://riilfit-api.vercel.app/auth/login'),
-      headers: {"Content-Type": "application/json"},
-      body: jsonEncode(signupBody),
-    );
+    try {
+      final signupBody = {
+        'username': usernameController.text,
+        'password': passwordController.text,
+      };
+      isLoading.value = true;
+      var response = await http.post(
+        Uri.parse('https://riilfit-api.vercel.app/auth/login'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(signupBody),
+      );
 
-    final jsonResponse = jsonDecode(response.body);
+      final jsonResponse = jsonDecode(response.body);
 
-    await Future.delayed(Duration(seconds: 3));
+      await Future.delayed(Duration(seconds: 3));
 
-    if (jsonResponse['access_token'] != null) {
-      final token = jsonResponse['access_token'].toString();
-      print('something here');
-      print(token);
+      if (jsonResponse['access_token'] != null) {
+        final token = jsonResponse['access_token'].toString();
+        print('something here');
+        print(token);
 
-      persistData(token);
+        persistData(token);
 
-      // Decode the JWT token
-      final Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
+        // Decode the JWT token
+        final Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
 
-      if (decodedToken.containsKey('userType')) {
-        final userType = decodedToken['userType'];
+        if (decodedToken.containsKey('userType')) {
+          final userType = decodedToken['userType'];
 
-        if (userType == "GYM_OWNER") {
-          // Navigate to gym owner dashboard
-          Get.snackbar('success', 'signed in successfully');
-          await fetchUserProfile(token);
-          await Get.offAllNamed<void>(Routes.gymOwnerHome);
-          isLoading.value = false;
-        } else if (userType == "REGULAR") {
-          // Navigate to regular user dashboard
-          Get.snackbar('', 'wrong credentials');
-          isLoading.value = false;
+          if (userType == 'GYM_OWNER') {
+            // Navigate to gym owner dashboard
+            Get.snackbar('success', 'signed in successfully');
+            await fetchUserProfile(token);
+            await Get.offAllNamed<void>(Routes.gymOwnerHome);
+            isLoading.value = false;
+          } else if (userType == 'REGULAR') {
+            // Navigate to regular user dashboard
+            Get.snackbar('', 'wrong credentials');
+            isLoading.value = false;
+          } else {
+            // Handle other user types or scenarios
+            // ...
+            Get.snackbar('', 'wrong credentials');
+            isLoading.value = false;
+          }
         } else {
-          // Handle other user types or scenarios
+          // Handle the case when 'userType' is not present in the token
           // ...
           Get.snackbar('', 'wrong credentials');
           isLoading.value = false;
         }
-      } else {
-        // Handle the case when 'userType' is not present in the token
-        // ...
-        Get.snackbar('', 'wrong credentials');
+      } else if (jsonResponse['statusCode'] != null) {
+        Get.snackbar('Error', 'incorrect username or password');
         isLoading.value = false;
       }
-    } else if (jsonResponse['statusCode'] != null) {
-      Get.snackbar('Error', 'incorrect username or password');
-      isLoading.value = false;
+    } catch (e) {
+      Get.snackbar('', '$e');
     }
-    // } catch (e) {
-    //   Get.snackbar('', '$e');
-    // }
     isLoading.value = false;
   }
 
