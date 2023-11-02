@@ -89,59 +89,66 @@ class _StoreTabBarState extends State<StoreTabBar>
         ),
         const Gap(40),
         SizedBox(
-          height: 500,
-          child: _isLoading
-              ? Expanded(
-                  child: GridView.builder(
-                    physics: const ScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 50,
-                      mainAxisSpacing: 5,
-                      mainAxisExtent: 250,
+            height: 500,
+            child: Column(
+              children: [
+                if (_isLoading)
+                  Expanded(
+                    child: GridView.builder(
+                      physics: const ScrollPhysics(),
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 50,
+                        mainAxisSpacing: 5,
+                        mainAxisExtent: 250,
+                      ),
+                      itemBuilder: (context, index) =>
+                          const ItemShimerSkeleton(),
+                      itemCount: 4,
                     ),
-                    itemBuilder: (context, index) => const ItemShimerSkeleton(),
-                    itemCount: 4,
+                  )
+                else
+                  Expanded(
+                    child: TabBarView(
+                      controller: _TrainTabController,
+                      children: [
+                        SingleChildScrollView(
+                          child: Column(
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                child: StoresCardEquipmentsUi(),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SingleChildScrollView(
+                          child: Column(
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                child: StoresCardSupplementsUi(),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SingleChildScrollView(
+                          child: Column(
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                child: StoresCardAccessoriesUi(),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                )
-              : TabBarView(
-                  controller: _TrainTabController,
-                  children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(left: 10, right: 10),
-                            child: StoresCardEquipmentsUi(),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      child: Column(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(left: 10, right: 10),
-                            child: StoresCardSupplementsUi(),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      child: Column(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(left: 10, right: 10),
-                            child: StoresCardAccessoriesUi(),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-        ),
+              ],
+            )),
       ],
     );
   }
