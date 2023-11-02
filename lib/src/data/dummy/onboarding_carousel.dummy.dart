@@ -21,11 +21,9 @@ final onboardingCarouselContent = <OnboardingCarouselSkeleton>[
     title: 'Find gyms near you',
     image: Padding(
       padding: const EdgeInsets.only(right: 69),
-      child: Expanded(
-        child: Image.asset(Get.find<ThemeService>().isDarkMode
-            ? darkOnboardingImage1
-            : lightOnboardingImage1),
-      ),
+      child: Image.asset(Get.find<ThemeService>().isDarkMode
+          ? darkOnboardingImage1
+          : lightOnboardingImage1),
     ),
     description:
         'Riilfit has workouts on demand that you can find based on how much time you have',
@@ -34,11 +32,9 @@ final onboardingCarouselContent = <OnboardingCarouselSkeleton>[
     title: 'Access workout Routines',
     image: Padding(
       padding: const EdgeInsets.only(right: 69),
-      child: Expanded(
-        child: Image.asset(Get.find<ThemeService>().isDarkMode
-            ? darkOnboardingImage2
-            : lightOnboardingImage2),
-      ),
+      child: Image.asset(Get.find<ThemeService>().isDarkMode
+          ? darkOnboardingImage2
+          : lightOnboardingImage2),
     ),
     description:
         'Workout categories will help you gain strength, get in better shape and embrace a healthy lifestyle',
@@ -46,12 +42,11 @@ final onboardingCarouselContent = <OnboardingCarouselSkeleton>[
   OnboardingCarouselSkeleton(
     title: 'Shop For Suppliments',
     image: Padding(
-        padding: const EdgeInsets.only(right: 69),
-        child: Expanded(
-          child: Image.asset(Get.find<ThemeService>().isDarkMode
-              ? darkOnboardingImage3
-              : lightOnboardingImage3),
-        )),
+      padding: const EdgeInsets.only(right: 69),
+      child: Image.asset(Get.find<ThemeService>().isDarkMode
+          ? darkOnboardingImage3
+          : lightOnboardingImage3),
+    ),
     description:
         'Find exclusive deals on popular products and get the items you love delivered or ready for pickup.',
   ),
