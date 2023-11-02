@@ -36,18 +36,16 @@ class HomeUi extends GetView<HomeController> {
                       const Gap(16),
                       HomeHeaderUi(),
                       const Gap(48),
-                      SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            ...memberServices.asMap().entries.map((entry) {
-                              final service = entry.value;
-                              return ServicesTileUi(
-                                service,
-                              );
-                            }),
-                          ],
-                        ),
-                      )
+                      Column(
+                        children: [
+                          ...memberServices.asMap().entries.map((entry) {
+                            final service = entry.value;
+                            return ServicesTileUi(
+                              service,
+                            );
+                          }),
+                        ],
+                      ),
                     ],
                   ),
                 ),
