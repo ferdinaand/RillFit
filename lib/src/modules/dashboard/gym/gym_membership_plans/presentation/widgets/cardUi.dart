@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../presentation/resources/colors.res.dart';
 import '../../../../../../presentation/widgets.dart';
 
 class cardUi extends StatelessWidget {
@@ -37,14 +38,19 @@ class cardUi extends StatelessWidget {
             ),
             Gap(30),
             Row(
-              children: [TextUi.heading4('**** **** **** **89')],
+              children: [
+                TextUi.heading4(
+                  '**** **** **** **89',
+                  color: white,
+                )
+              ],
             ),
             Gap(30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextUi.bodyMed('Ferdinand Ekpo'),
-                TextUi.bodyLarge('08/23')
+                TextUi.bodyMed('Ferdinand Ekpo', color: white),
+                TextUi.bodyLarge('08/23', color: white)
               ],
             ),
           ],
