@@ -63,11 +63,15 @@ class GymUi extends GetView<GymLocationsController> {
             // SliverList for the gym list
             Obx(
               () => controller.isGymListLoading.value
-                  ? SliverToBoxAdapter(
-                      child: Center(
+                  ? const SliverToBoxAdapter(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 210),
+                        child: Center(
                           child: CircularProgressIndicator(
-                        color: primary,
-                      )),
+                            color: primary,
+                          ),
+                        ),
+                      ),
                     )
                   : SliverList(
                       delegate: SliverChildBuilderDelegate(
@@ -75,15 +79,25 @@ class GymUi extends GetView<GymLocationsController> {
                           final gym = controller.thisGymList[index];
 
                           return Padding(
-                            padding: baseViewPadding,
+                            padding: EdgeInsets.only(
+                              top: 20,
+                              left: 10,
+                              right: 10,
+                            ),
                             child: GymCardUi(
                               ontap: () async {
                                 final box = await Hive.openBox('userData');
                                 final token = box.get('token');
 
                                 if (token == null || token == 'null') {
+                                  final gymName = gym.name;
+                                  final gymId = gym.id;
+                                  print('from token does not exist:$gymName');
+
+                                  await box.put('gym_name', gymName);
+                                  await box.put('gym_id', gymId);
                                   // User is not logged in or token is null, navigate to login screen
-                                  Get.toNamed<void>(Routes.login);
+                                  Get.toNamed<void>(Routes.register);
                                 } else {
                                   // Check if the token is expired
                                   final tokenExpired = controller
@@ -91,6 +105,10 @@ class GymUi extends GetView<GymLocationsController> {
 
                                   if (tokenExpired) {
                                     print('trying to decode token');
+                                    final gymName = gym.name;
+                                    print('from token is expired:$gymName');
+
+                                    await box.put('gym_name', gymName);
                                     // Token is expired, prompt the user to log in
                                     Get.toNamed<void>(Routes.login);
                                   } else {
