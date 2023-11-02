@@ -32,11 +32,14 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
 
+  // final socketService = SocketService();
+  // socketService.connect();
+
   await Firebase.initializeApp();
   await GetStorage.init();
   await Hive.initFlutter();
 
-  await initializeHive();
+  // await initializeHive();
 
   await initializeServices();
   final routes = await calculateInitialRoute();
@@ -46,6 +49,7 @@ Future<void> main() async {
 
   runApp(
     RiilfitApp(
+      // socketService: socketService,
       routes: routes,
     ),
   );
@@ -54,8 +58,16 @@ Future<void> main() async {
 //token: pref.getString('token')
 class RiilfitApp extends StatelessWidget {
   // final token;
-  RiilfitApp({required this.routes, super.key});
+  RiilfitApp(
+      {required this.routes,
+
+      // required this.socketService,
+
+      super.key});
   String routes;
+
+  // SocketService socketService;
+
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
@@ -68,6 +80,9 @@ class RiilfitApp extends StatelessWidget {
           child: GetMaterialApp(
             navigatorKey: Get.find<NavigationService>().navigatorKey,
             initialRoute: routes,
+            // initialBinding: BindingsBuilder(() {
+            //   Get.put(socketService); // Provide the socket service globally
+            // }),
 
             //  (JwtDecoder.isExpired(token.toString()) == false)
             //     ? Routes.app
