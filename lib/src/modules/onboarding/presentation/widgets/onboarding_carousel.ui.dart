@@ -9,11 +9,12 @@ import 'package:riilfit/src/presentation/widgets.dart';
 
 class OnBoardingCarouselUi extends StatelessWidget {
   const OnBoardingCarouselUi({
-    super.key,
+    Key? key,
     required this.content,
-  });
+  }) : super(key: key);
 
   final OnboardingCarouselSkeleton content;
+
   @override
   Widget build(BuildContext context) {
     return Column(
