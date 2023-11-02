@@ -24,6 +24,7 @@ class SelectLocation extends GetView<GymLocationsController> {
 
     return Scaffold(
       appBar: MainAppbarUi(
+        iconColor: primary,
         title: 'Gym Locations',
       ),
       body: Obx(
@@ -38,18 +39,18 @@ class SelectLocation extends GetView<GymLocationsController> {
                   // print(locationList[index].state);
                   String? state = locationList[index].state;
                   String? city = locationList[index].city;
-                  return GestureDetector(
-                    onTap: () {
-                      controller..setSelectedCity(city)
-                       ..fetchGymList()
-                      ..gymsInLocation();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: LocationCard(
-                        location: state!,
-                        city: city!,
-                      ),
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    child: LocationCard(
+                      ontap: () {
+                        print(city);
+                        controller
+                          ..setSelectedCity(city)
+                          ..fetchGymList()
+                          ..gymsInLocation();
+                      },
+                      location: state!,
+                      city: city!,
                     ),
                   );
                 },
