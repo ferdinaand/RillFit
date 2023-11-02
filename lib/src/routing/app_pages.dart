@@ -4,6 +4,7 @@ import 'package:riilfit/src/modules/dashboard/gym/gym_details/presentation/gym_d
 import 'package:riilfit/src/modules/dashboard/gym/gym_membership_plans/presentation/addcard.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gym_membership_plans/presentation/widgets/openWebView.dart';
 import 'package:riilfit/src/modules/dashboard/gym/gyms_list/presentation/gym.ui.dart';
+import 'package:riilfit/src/modules/dashboard/stores/presentation/stores.cart.dart';
 import 'package:riilfit/src/modules/dashboard/stores/presentation/stores.ui.dart';
 import 'package:riilfit/src/modules/dashboard/train/presentation/train.ui.dart';
 import 'package:riilfit/src/modules/dashboard/train/trainer_details/presentation/trainer.details.dart';
@@ -158,6 +159,10 @@ class AppPages {
     GetPage(
       name: Routes.openWebView,
       page: () => OpenWebview(),
+    ),
+    GetPage(
+      name: Routes.storeCart,
+      page: () => StoreCart(),
     ),
   ];
 }
