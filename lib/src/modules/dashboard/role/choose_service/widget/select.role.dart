@@ -18,8 +18,27 @@ class SelectRoleUi extends StatefulWidget {
 }
 
 class _SelectRoleUiState extends State<SelectRoleUi> {
-  bool storeSelect = false;
-  bool trainerSelect = false;
+  bool button1Selected = false;
+  bool button2Selected = false;
+
+  void toggleButton1() {
+    setState(
+      () {
+        button1Selected = !button1Selected;
+        button2Selected = false; // Ensure only one button is selected
+      },
+    );
+  }
+
+  void toggleButton2() {
+    setState(
+      () {
+        button2Selected = !button2Selected;
+        button1Selected = false; // Ensure only one button is selected
+      },
+    );
+  }
+
   RoleController get controller => Get.put(RoleController());
   @override
   Widget build(BuildContext context) {
@@ -30,18 +49,12 @@ class _SelectRoleUiState extends State<SelectRoleUi> {
           children: [
             GestureDetector(
               onTap: () {
-                setState(() {
-                  if (userSelect == false && GymOwnerSelect == false) {
-                    userSelect = true;
-                    ChooseRoleRoute = true;
-                    GymOwnerSelect = false;
-                  } else {
-                    userSelect = false;
-                  }
-                });
+                String user = 'user';
+                controller.selectuser(user);
+                toggleButton1();
               },
               child: RoleCardUi(
-                isSelected: userSelect,
+                isSelected: button1Selected,
                 image: userRole,
                 role: 'User',
               ),
@@ -49,18 +62,12 @@ class _SelectRoleUiState extends State<SelectRoleUi> {
             const Gap(2),
             GestureDetector(
               onTap: () {
-                setState(() {
-                  if (GymOwnerSelect == false && userSelect == false) {
-                    GymOwnerSelect = true;
-                    trainerSelect = false;
-                    ChooseRoleRoute = true;
-                  } else {
-                    GymOwnerSelect = false;
-                  }
-                });
+                String user = 'gym_owner';
+                controller.selectuser(user);
+                toggleButton2();
               },
               child: RoleCardUi(
-                isSelected: GymOwnerSelect,
+                isSelected: button2Selected,
                 image: gymOwnerRole,
                 role: 'Gym Owner',
               ),
