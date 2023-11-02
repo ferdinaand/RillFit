@@ -89,100 +89,84 @@ class ProfileUi extends GetView<ProfileController> {
                     ),
                     const Gap(8),
                     Obx(
-                      () => TextUi.bodyMed(
+                      () => TextUi.bodyLarge(
                         controller.fullname.value,
-                        fontWeight: mediumText,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     const Gap(4),
                     Obx(
-                      () => TextUi.bodySmall(
+                      () => TextUi.bodyMed(
+                        fontWeight: FontWeight.w400,
                         controller.phoneNumber.value,
                       ),
                     ),
                     const Gap(24),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 12,
-                      ),
-                      margin: baseViewPadding,
-                      decoration: const BoxDecoration(
-                        color: primary,
-                        borderRadius: BorderRadius.all(
-                          regularRadius,
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            favoriteIcon,
-                            color: grayScale50,
-                          ),
-                          const Gap(16),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text.rich(
-                                  TextSpan(
-                                    text:
-                                        'Do you own a gym or sell gym equipments, or are you a gym trainer? ',
-                                    style: bodySmall.copyWith(
-                                      height: 1.5,
-                                      color: grayScale50,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                        text: 'Create a vendor account',
-                                        style: bodySmall.copyWith(
-                                          fontWeight: semiBoldText,
-                                          color: white,
-                                          decoration: TextDecoration.underline,
-                                        ),
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap =
-                                              controller.createVendorAccount,
-                                      ),
-                                      const TextSpan(
-                                        text:
-                                            ' now to put yourself on Riilfit and earn!',
-                                        style: bodySmall,
-                                      ),
-                                    ],
+                    const Gap(16),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Obx(
+                          () => Container(
+                            decoration: BoxDecoration(
+                                color: controller.themeService.isDarkMode
+                                    ? grayScale700
+                                    : grayScale100,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  const ProfileTileUi(
+                                    menuIconColor: primary,
+                                    icon: userIcon,
+                                    title: 'Edit profile info',
                                   ),
-                                ),
-                              ],
+                                  const ProfileTileUi(
+                                    menuIconColor: grayScale900,
+                                    icon: gearIcon,
+                                    title: 'Settings',
+                                  ),
+                                  const ProfileTileUi(
+                                    menuIconColor: Colors.blue,
+                                    icon: helpIcon,
+                                    title: 'Support',
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    const Gap(16),
-                    const ProfileTileUi(
-                      icon: userIcon,
-                      title: 'Edit profile info',
-                    ),
-                    const ProfileTileUi(
-                      icon: gearIcon,
-                      title: 'Settings',
-                    ),
-                    const ProfileTileUi(
-                      icon: helpIcon,
-                      title: 'Support',
-                    ),
-                    const ProfileTileUi(
-                      icon: aboutIcon,
-                      title: 'About Riilfit',
-                      tag: VersionNumberCardUi(),
-                    ),
-                    ProfileTileUi(
-                      icon: exitIcon,
-                      title: 'Logout',
-                      onTap: controller.logout,
-                    ),
+                        )),
+                    Gap(20),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Obx(
+                          () => Container(
+                            decoration: BoxDecoration(
+                                color: controller.themeService.isDarkMode
+                                    ? grayScale700
+                                    : grayScale100,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  const ProfileTileUi(
+                                    menuIconColor: primary,
+                                    icon: aboutIcon,
+                                    title: 'About Riilfit',
+                                    tag: VersionNumberCardUi(),
+                                  ),
+                                  ProfileTileUi(
+                                    menuIconColor: primary,
+                                    icon: exitIcon,
+                                    title: 'Logout',
+                                    onTap: controller.logout,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )),
                     const Gap(48),
                   ],
                 ),
