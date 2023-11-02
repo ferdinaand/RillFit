@@ -76,83 +76,89 @@ class _TrainingTabBarState extends State<TrainingTabBar>
           child: TabBarView(
             controller: _TrainTabController,
             children: [
-              Expanded(
-                child: Container(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20, bottom: 20),
-                          child: Row(
-                            children: [
-                              TextUi.heading4(
-                                'Top Workouts',
-                                color: themeService.isDarkMode
-                                    ? Colors.white
-                                    : grayScale900.withOpacity(.5),
+              Column(
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 20, bottom: 20),
+                              child: Row(
+                                children: [
+                                  TextUi.heading4(
+                                    'Top Workouts',
+                                    color: themeService.isDarkMode
+                                        ? Colors.white
+                                        : grayScale900.withOpacity(.5),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            children: [
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: const [
-                                    TrainingCardUi(),
-                                    Gap(30),
-                                    TrainingCardUi(),
-                                    Gap(30),
-                                    TrainingCardUi(),
-                                    Gap(30),
-                                    TrainingCardUi(),
-                                    Gap(30),
-                                    TrainingCardUi(),
-                                    Gap(30),
-                                    TrainingCardUi(),
-                                  ],
-                                ),
-                              ),
-                              const Gap(0),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 0, bottom: 0),
-                                child: Row(
-                                  children: [
-                                    TextUi.heading4(
-                                      'Category',
-                                      color: themeService.isDarkMode
-                                          ? Colors.white
-                                          : grayScale900.withOpacity(.5),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 20),
+                              child: Column(
+                                children: [
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: const [
+                                        TrainingCardUi(),
+                                        Gap(30),
+                                        TrainingCardUi(),
+                                        Gap(30),
+                                        TrainingCardUi(),
+                                        Gap(30),
+                                        TrainingCardUi(),
+                                        Gap(30),
+                                        TrainingCardUi(),
+                                        Gap(30),
+                                        TrainingCardUi(),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  const Gap(0),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 0, bottom: 0),
+                                    child: Row(
+                                      children: [
+                                        TextUi.heading4(
+                                          'Category',
+                                          color: themeService.isDarkMode
+                                              ? Colors.white
+                                              : grayScale900.withOpacity(.5),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const Gap(16),
+                                  const WorkoutCategoryCardUi(
+                                    Image: 'assets/png/Rectangle169.png',
+                                    Text: 'Muscle Group',
+                                  ),
+                                  const Gap(20),
+                                  const WorkoutCategoryCardUi(
+                                    Image: 'assets/png/Rectangle173.png',
+                                    Text: 'Workout Force',
+                                  ),
+                                  const Gap(20),
+                                  const WorkoutCategoryCardUi(
+                                    Image: 'assets/png/Rectangle174.png',
+                                    Text: 'Equipment',
+                                  ),
+                                ],
                               ),
-                              const Gap(16),
-                              const WorkoutCategoryCardUi(
-                                Image: 'assets/png/Rectangle169.png',
-                                Text: 'Muscle Group',
-                              ),
-                              const Gap(20),
-                              const WorkoutCategoryCardUi(
-                                Image: 'assets/png/Rectangle173.png',
-                                Text: 'Workout Force',
-                              ),
-                              const Gap(20),
-                              const WorkoutCategoryCardUi(
-                                Image: 'assets/png/Rectangle174.png',
-                                Text: 'Equipment',
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
               Container(
                 child: SingleChildScrollView(
