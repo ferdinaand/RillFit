@@ -68,22 +68,24 @@ class _FavoriteTabBarState extends State<FavoriteTabBar>
               controller: _controller,
               children: [
                 SingleChildScrollView(
-                  child: Expanded(
-                    child: ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      padding: baseViewPadding,
-                      separatorBuilder: (_, __) => const Gap(16),
-                      itemCount: 5,
-                      itemBuilder: (_, i) {
-                        const isFavorite = true;
-                        final isClosed = i.isOdd;
-                        return FavoriteCardUi(
-                          isFavorite: isFavorite,
-                          isClosed: isClosed,
-                        );
-                      },
-                    ),
+                  child: Column(
+                    children: [
+                      ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        padding: baseViewPadding,
+                        separatorBuilder: (_, __) => const Gap(16),
+                        itemCount: 5,
+                        itemBuilder: (_, i) {
+                          const isFavorite = true;
+                          final isClosed = i.isOdd;
+                          return FavoriteCardUi(
+                            isFavorite: isFavorite,
+                            isClosed: isClosed,
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ),
                 Container(),
