@@ -102,10 +102,17 @@ class GymLocationsController extends BaseController {
 
         update();
       } else {
+        isLocationLoading(false);
         Get.snackbar('Error', 'Network error');
       }
     } catch (e) {
-      Get.snackbar('error', '$e', backgroundColor: errorDark);
+      isLocationLoading(false);
+      Get.snackbar(
+        'error',
+        '$e',
+        duration: Duration(seconds: 60),
+        backgroundColor: wineColor,
+      );
     }
   }
 
