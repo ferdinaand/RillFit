@@ -75,26 +75,23 @@ class GymOwnerLoginUi extends GetView<GymOwnerLoginController> {
                                           );
                                   },
                                 ),
-                                const Gap(12),
-                                InkWell(
-                                  onTap: controller.navigateToForgotPassword,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 4,
+                                const Gap(24),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const TextUi.bodyMed(
+                                      "Don't have an account? ",
                                     ),
-                                    child: Obx(
-                                      () => TextUi.bodyMed(
-                                        'Forgot password?',
-                                        color:
-                                            controller.themeService.isDarkMode
-                                                ? grayScale100
-                                                : grayScale700,
-                                        fontWeight: mediumText,
+                                    GestureDetector(
+                                      onTap: controller.navigateToRegisterPage,
+                                      child: const TextUi.bodyMed(
+                                        'Sign up',
+                                        color: primary,
+                                        fontWeight: semiBoldText,
                                       ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                                const Gap(24),
                               ],
                             ),
                           ),
