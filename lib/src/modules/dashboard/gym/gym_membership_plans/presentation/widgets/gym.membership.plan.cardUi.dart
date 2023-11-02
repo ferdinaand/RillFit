@@ -86,9 +86,13 @@ class gymPlanCard extends StatelessWidget {
                   ],
                 ),
                 const Gap(23),
-                TextUi.bodyLarge(
-                  description,
-                  fontSize: 12,
+                Row(
+                  children: [
+                    TextUi.bodyLarge(
+                      description,
+                      fontSize: 12,
+                    ),
+                  ],
                 ),
                 const Gap(23),
                 Row(
