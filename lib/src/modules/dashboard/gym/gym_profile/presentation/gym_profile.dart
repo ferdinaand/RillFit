@@ -57,7 +57,7 @@ class GymProfile extends GetView<GymProfileController> {
                   description: 'Scan the QR and update your info on time!!',
                   iconPath: 'assets/png/scan.png',
                   onTap: () {
-                    Get.offAndToNamed<void>(
+                    Get.toNamed<void>(
                       Routes.gymTag,
                     );
                   },
@@ -67,7 +67,7 @@ class GymProfile extends GetView<GymProfileController> {
                   description: 'Checkout Price plans that works for you',
                   iconPath: 'assets/png/emoji-happy.png',
                   onTap: () {
-                    Get.offAndToNamed<void>(
+                    Get.toNamed<void>(
                       Routes.gymPlan,
                     );
                   },
@@ -77,7 +77,7 @@ class GymProfile extends GetView<GymProfileController> {
                   description: 'Select Classes that workswith your schedule',
                   iconPath: 'assets/png/weight.png',
                   onTap: () {
-                    Get.offAndToNamed<void>(
+                    Get.toNamed<void>(
                       Routes.gymTag,
                     );
                   },
