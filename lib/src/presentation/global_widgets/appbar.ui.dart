@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:riilfit/src/presentation/resources/colors.res.dart';
 import 'package:riilfit/src/presentation/resources/images.res.dart';
 import 'package:riilfit/src/presentation/resources/weights.res.dart';
 import 'package:riilfit/src/presentation/widgets.dart';
@@ -15,7 +16,9 @@ class AuthAppbarUi extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leadingWidth: 64,
-      leading: const AuthBackButtonUi(),
+      leading: const AuthBackButtonUi(
+        iconColor: primary,
+      ),
       actions: actions,
       centerTitle: true,
       title: Image.asset(
