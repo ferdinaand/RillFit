@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -9,6 +11,7 @@ import 'package:riilfit/src/domain/services/navigation.service.dart';
 import 'package:riilfit/src/domain/services/storage.service.dart';
 import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 Future<void> initializeHive() async {
   //Get application directory (storage directory on device)
@@ -38,6 +41,24 @@ Future<void> initializeServices() async {
     ..lazyPut(ThemeService.new)
     ..lazyPut(NavigationService.new)
     ..lazyPut(BaseController.new, fenix: true);
+}
+
+class SocketService {
+  IO.Socket? socket;
+
+  void connect() {
+    socket = IO.io('https://riilfit-api.vercel.app/');
+    socket!.connect();
+  }
+
+  void disconnect() {
+    socket?.disconnect();
+  }
+}
+
+Future<void> initializeSocketService() async {
+  final socketService = SocketService();
+  socketService.connect();
 }
 
 Future<String> calculateInitialRoute() async {
