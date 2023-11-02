@@ -45,8 +45,25 @@ class RegisterUi extends GetView<RegisterController> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Gap(12),
-                                const TextUi.heading3(
-                                  'Sign Up',
+                                Obx(
+                                  () => Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      TextUi.heading3(
+                                        "${controller.gym_name.value}'s ",
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      Gap(2),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
+                                        child: TextUi.bodyLarge(
+                                          "Sign Up",
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                                 const Gap(24),
                                 const RegisterFormUi(),
