@@ -87,22 +87,24 @@ class LoginController extends BaseController {
     isLoggedIn = true;
     try {
       var response = await http.post(
-          Uri.parse('https://riilfit-api.vercel.app/auth/login'),
-          headers: {"Content-Type": "application/json"},
-          body: jsonEncode(loginBody));
+        Uri.parse('https://riilfit-api.vercel.app/auth/login'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(loginBody),
+      );
 
       final jsonResponse = jsonDecode(response.body);
 
       // print(jsonResponse['access_token']);
 
-      await Future.delayed(const Duration(seconds: 3));
-
       if (jsonResponse['access_token'] != null) {
-        Get.snackbar('success', 'Logged in successfully');
+        print(jsonResponse['access_token']);
+
         final token =
             jsonResponse['access_token'] as String; // Retrieve the access_token
         await fetchUserProfile(token);
         persistData(token);
+        isLoading.value = false;
+        Get.snackbar('success', 'Logged in successfully');
         await Get.offAllNamed<void>(
           arguments: thisUserDetails.value.userName,
           Routes.app,
@@ -130,6 +132,7 @@ class LoginController extends BaseController {
       if (response.statusCode == 200) {
         final userProfile = jsonDecode(response.body);
         final data = userProfile['data'];
+        print(data);
         // print(data);
         thisUserDetails.value = usersDetails.fromJson(data);
         // final homeController = Get.find<HomeController>();
