@@ -67,41 +67,35 @@ class GymMembershipPlans extends GetView<GymPlansController> {
                       final String id = gymPlanList[index].id.toString();
                       // String amount = gymPlanList[index].amount.toString();
                       // String amount = gymPlanList[index].amount.toString();
-                      return Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, right: 15, bottom: 10),
-                            child: gymPlanCard(
-                              description: description,
-                              time: '$openingTime-$closingTime',
-                              features: features,
-                              subFeatures: subFeatures,
-                              logo: '',
-                              price: amount,
-                              planType: planType,
-                              OnTap: () {},
-                              Id: '',
-                            ),
-                          ),
-                          Obx(
-                            () => controller.isLoading.value
-                                ? Center(
-                                    child: CircularProgressIndicator(
-                                    color: primary,
-                                  ))
-                                : PrimaryButtonUi(
-                                    text: 'subscribe',
-                                    onPressed: () {
-                                      // ignore: inference_failure_on_function_invocation
-                                      Get.toNamed(Routes.addCard);
-                                    }),
-                          ),
-                          const Gap(20)
-                        ],
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 10),
+                        child: gymPlanCard(
+                          description: description,
+                          time: '$openingTime-$closingTime',
+                          features: features,
+                          subFeatures: subFeatures,
+                          logo: '',
+                          price: amount,
+                          planType: planType,
+                          OnTap: () {},
+                          Id: '',
+                        ),
                       );
                     },
                   ),
+          ),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 20),
+          child: SizedBox(
+            width: 250.w,
+            child: PrimaryButtonUi(
+                text: 'subscribe',
+                onPressed: () {
+                  // ignore: inference_failure_on_function_invocation
+                  Get.toNamed(Routes.addCard);
+                }),
           ),
         ),
       ),
