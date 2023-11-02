@@ -96,7 +96,7 @@ class AddCardScreen extends GetView<GymPlansController> {
                                   // controller.enableButton();
                                 },
                                 hintText: 'Card Holder Name',
-                                controller: controller.Controller,
+                                controller: controller.cardNameController,
                               ),
                             ),
                             const Gap(20),
@@ -108,41 +108,61 @@ class AddCardScreen extends GetView<GymPlansController> {
                                   // controller.enableButton();
                                 },
                                 hintText: 'Card Number',
-                                controller: controller.Controller,
+                                controller: controller.cardNumberController,
                               ),
                             ),
                             const Gap(15),
 
                             //Gym lodation details form
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Column(
                                   children: [
                                     const Gap(7),
                                     SizedBox(
-                                      width: 170.w,
+                                      width: 85.w,
                                       child: TextFieldUi(
                                         onChanged: (_) {
                                           // controller.enableButton();
                                         },
-                                        hintText: 'Expiry Date',
-                                        controller: controller.Controller,
+                                        hintText: 'year',
+                                        controller:
+                                            controller.cardYearController,
                                       ),
                                     ),
                                   ],
                                 ),
+                                Gap(35),
                                 Column(
                                   children: [
                                     const Gap(7),
                                     SizedBox(
-                                      width: 170.w,
+                                      width: 85.w,
                                       child: TextFieldUi(
                                         onChanged: (_) {
                                           // controller.enableButton();
                                         },
-                                        hintText: 'Security Code',
-                                        controller: controller.Controller,
+                                        hintText: 'month',
+                                        controller:
+                                            controller.cardMonthController,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Gap(35),
+                                Column(
+                                  children: [
+                                    const Gap(7),
+                                    SizedBox(
+                                      width: 85.w,
+                                      child: TextFieldUi(
+                                        onChanged: (_) {
+                                          // controller.enableButton();
+                                        },
+                                        hintText: 'cvv',
+                                        controller:
+                                            controller.cardCvvController,
                                       ),
                                     ),
                                   ],
@@ -151,17 +171,17 @@ class AddCardScreen extends GetView<GymPlansController> {
                             ),
                             const Gap(20),
 
-                            const Gap(7),
-                            SizedBox(
-                              child: TextFieldUi(
-                                onChanged: (_) {
-                                  // controller.enableButton();
-                                },
-                                hintText: 'cvv',
-                                controller: controller.Controller,
-                              ),
-                            ),
-                            const Gap(15),
+                            // const Gap(7),
+                            // SizedBox(
+                            //   child: TextFieldUi(
+                            //     onChanged: (_) {
+                            //       // controller.enableButton();
+                            //     },
+                            //     hintText: 'cvv',
+                            //     controller: controller.Controller,
+                            //   ),
+                            // ),
+                            // const Gap(15),
                           ],
                         ),
                         const Gap(30),
@@ -175,7 +195,7 @@ class AddCardScreen extends GetView<GymPlansController> {
                                   text: 'Add Card',
                                   onPressed: () {
                                     // ignore: inference_failure_on_function_invocation
-                                    Get.toNamed(Routes.openWebView);
+                                    controller.performDebitCardCharge();
                                   }),
                         ),
                         const Gap(20)
