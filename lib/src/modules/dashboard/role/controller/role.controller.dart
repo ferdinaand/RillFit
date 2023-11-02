@@ -22,4 +22,9 @@ class RoleController extends BaseController {
     ChooseRoleRoute = false;
     super.onInit();
   }
+
+  var selectedUser = ''.obs;
+  void selectuser(String user) {
+    selectedUser.value = user;
+  }
 }
