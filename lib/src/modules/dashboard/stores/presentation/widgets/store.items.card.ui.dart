@@ -10,8 +10,8 @@ import '../../../../../data/dummy/member_services.dummy.dart';
 import '../../../../../utils/config.dart';
 
 class StoresCardEquipmentsUi extends GetView<StoresController> {
-  const StoresCardEquipmentsUi({super.key});
-
+  const StoresCardEquipmentsUi({this.herotag, super.key});
+  final herotag;
   @override
   StoresController get controller => Get.put(StoresController());
 
@@ -60,7 +60,8 @@ class StoresCardEquipmentsUi extends GetView<StoresController> {
                         height: 34,
                         width: 34,
                         child: FloatingActionButton(
-                          heroTag: 'btn1',
+                          heroTag:
+                              "${storeEquipmentMap.elementAt(index)['name']}",
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -109,10 +110,7 @@ class StoresCardSupplementsUi extends GetView<StoresController> {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: (){
-                      
-                      
-                    },
+                    onTap: () {},
                     child: ClipRect(
                       child: Image.asset(
                           "${storeSupplementsMap.elementAt(index)['image']}"),
@@ -142,7 +140,8 @@ class StoresCardSupplementsUi extends GetView<StoresController> {
                         height: 34,
                         width: 34,
                         child: FloatingActionButton(
-                          heroTag: 'btn1',
+                          heroTag:
+                              "${storeEquipmentMap.elementAt(index)['name']}",
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -218,7 +217,8 @@ class StoresCardAccessoriesUi extends GetView<StoresController> {
                         height: 34,
                         width: 34,
                         child: FloatingActionButton(
-                          heroTag: 'btn1',
+                          heroTag:
+                              "${storeEquipmentMap.elementAt(index)['name']}",
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
