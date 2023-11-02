@@ -51,11 +51,11 @@ class ChooseRole extends GetView<RoleController> {
             PrimaryButtonUi(
               text: 'Continue',
               onPressed: () {
-                if (userSelect == true && ChooseRoleRoute == true) {
+                if (controller.selectedUser.value == 'user') {
                   Get.offAndToNamed<void>(
                     Routes.app,
                   );
-                } else if (userSelect == false && ChooseRoleRoute == true) {
+                } else if (controller.selectedUser.value == 'gym_owner') {
                   Get.toNamed<void>(
                     Routes.gymOwnerLogin,
                   );
