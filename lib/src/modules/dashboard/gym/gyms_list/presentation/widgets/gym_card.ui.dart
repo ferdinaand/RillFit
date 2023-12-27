@@ -139,7 +139,6 @@ class GymCardUi extends GetView<GymController> {
                     children: [
                       TextUi.heading4(
                         name.toUpperCase(),
-                        color: grayScale900,
                       ),
                       SizedBox(
                         width: 11,
@@ -172,14 +171,12 @@ class GymCardUi extends GetView<GymController> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white54,
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: TextUi.bodyMed(
                           '$address, $city',
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: grayScale900,
                         ),
                       ),
                     ],
