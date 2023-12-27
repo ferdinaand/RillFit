@@ -88,6 +88,7 @@ class RiilfitApp extends StatelessWidget {
             //     ? Routes.app
             //     : Routes.onboarding,
             unknownRoute: AppPages.unknownRoute,
+            
             theme: Get.find<ThemeService>().light,
             themeMode: Get.find<ThemeService>().getThemeMode(),
             darkTheme: Get.find<ThemeService>().dark,
