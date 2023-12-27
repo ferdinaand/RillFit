@@ -16,7 +16,7 @@ void main() {
     // Build our app and trigger a frame.
     await tester.pumpWidget(RiilfitApp(
       routes: '',
-      socketService: SocketService(),
+      // socketService: SocketService(),
     ));
 
     // Verify that our counter starts at 0.
