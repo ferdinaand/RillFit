@@ -80,7 +80,7 @@ class gymPlanCard extends StatelessWidget {
             ),
             Gap(5),
             Container(
-              height: 250.h,
+              height: 230.h,
               width: 352.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
