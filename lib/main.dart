@@ -14,6 +14,7 @@ import 'package:overlay_support/overlay_support.dart';
 import 'package:riilfit/src/domain/services/navigation.service.dart';
 import 'package:riilfit/src/domain/services/themes.services.dart';
 import 'package:riilfit/src/modules/dashboard/role/choose_service/presentation/choose_role.dart';
+import 'package:riilfit/src/presentation/resources/colors.res.dart';
 import 'package:riilfit/src/routing/app_pages.dart';
 import 'package:riilfit/src/utils/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -88,8 +89,9 @@ class RiilfitApp extends StatelessWidget {
             //     ? Routes.app
             //     : Routes.onboarding,
             unknownRoute: AppPages.unknownRoute,
-            
+
             theme: Get.find<ThemeService>().light,
+            color: primary,
             themeMode: Get.find<ThemeService>().getThemeMode(),
             darkTheme: Get.find<ThemeService>().dark,
 
