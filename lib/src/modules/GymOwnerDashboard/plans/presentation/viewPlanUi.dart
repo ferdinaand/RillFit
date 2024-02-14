@@ -99,7 +99,7 @@ class ViewGymPlans extends GetView<GymPlanController> {
                                   ),
                                   content: SizedBox(
                                     width: 250.w, // Adjust the width as needed
-                                    height: 70.h, // Adjust the height as needed
+                                    height: 50.h, // Adjust the height as needed
                                     child: const Center(
                                       child: TextUi.heading3(
                                         'are you sure you want to delete this plan?',
@@ -111,37 +111,51 @@ class ViewGymPlans extends GetView<GymPlanController> {
                                   actions: [
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                          left: 50, right: 50, bottom: 40),
+                                        left: 50,
+                                        right: 50,
+                                        bottom: 20,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           SizedBox(
                                             width: 50.w,
-                                            child: TextButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: const TextUi.bodyXL('No'),
-                                            ),
+                                            child: InkWell(
+                                                onTap: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Center(
+                                                  child: const TextUi.bodyLarge(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: primary,
+                                                      'No'),
+                                                )),
                                           ),
                                           SizedBox(
                                             width: 50.w,
-                                            child: TextButton(
-                                              onPressed: () async {
-                                                Navigator.of(context).pop();
+                                            child: InkWell(
+                                                onTap: () async {
+                                                  Navigator.of(context).pop();
 
-                                                await controller
-                                                    .deletGymPlan(id);
-
-                                                if (controller.deleted.value ==
-                                                    true) {
                                                   await controller
-                                                      .fetchGymPlans();
-                                                } // Replace with your fetch function
-                                              },
-                                              child: const TextUi.bodyXL('YES'),
-                                            ),
+                                                      .deletGymPlan(id);
+
+                                                  if (controller
+                                                          .deleted.value ==
+                                                      true) {
+                                                    await controller
+                                                        .fetchGymPlans();
+                                                  }
+                                                },
+                                                child: Center(
+                                                  child: const TextUi.bodyLarge(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: primary,
+                                                      'Yes'),
+                                                )),
                                           ),
                                         ],
                                       ),
