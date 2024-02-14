@@ -71,22 +71,27 @@ Future<String> calculateInitialRoute() async {
   // Check if userData or gymOwnerData token has expired
   final userDataToken = userDataBox.get('token');
   final gymOwnerDataToken = gymOwnerDataBox.get('token');
-
-  if (userDataBox.isNotEmpty) {
-    if (JwtDecoder.isExpired(userDataToken.toString())) {
-      // Token has expired, navigate to signin screen
-      routes = Routes.login;
+  try {
+    if (userDataToken != null) {
+      if (JwtDecoder.isExpired(userDataToken.toString())) {
+        // Token has expired, navigate to signin screen
+        routes = Routes.login;
+      } else {
+        routes = Routes.app;
+      }
+    } else if (gymOwnerDataToken != null) {
+      if (JwtDecoder.isExpired(gymOwnerDataToken.toString())) {
+        routes = Routes.gymOwnerLogin;
+      } else {
+        routes = Routes.gymOwnerHome;
+      }
     } else {
-      routes = Routes.app;
+      routes = Routes.onboarding;
     }
-  } else if (gymOwnerDataBox.isNotEmpty) {
-    if (JwtDecoder.isExpired(gymOwnerDataToken.toString())) {
-      routes = Routes.gymOwnerLogin;
-    } else {
-      routes = Routes.gymOwnerHome;
-    }
-  } else {
-    routes = Routes.onboarding;
+  } catch (e) {
+    print("this is calculate route result: $e");
+    // print(gymOwnerDataToken);
+    // print(userDataToken);
   }
 
   return routes;
