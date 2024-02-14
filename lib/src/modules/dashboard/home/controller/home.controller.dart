@@ -41,11 +41,16 @@ class HomeController extends BaseController {
     final fullName = userDataBox.get('fullname', defaultValue: '');
     final username = userDataBox.get('username', defaultValue: '');
     final phoneNumber = userDataBox.get('phone', defaultValue: '');
+    final token = userDataBox.get('token', defaultValue: '');
 
-    // Update the observable variables
-    fullname.value = fullName.toString();
-    this.username.value = username.toString();
-    this.phoneNumber.value = phoneNumber.toString();
+    if (token != null) {
+      // Update the observable variables
+      fullname.value = fullName.toString();
+      this.username.value = username.toString();
+      this.phoneNumber.value = phoneNumber.toString();
+    } else {
+      return;
+    }
 
     // await userDataBox.close();
   }
