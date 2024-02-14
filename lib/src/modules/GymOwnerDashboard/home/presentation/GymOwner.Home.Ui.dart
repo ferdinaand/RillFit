@@ -74,7 +74,7 @@ class GymOwnerHome extends GetView<GymHomeController> {
                         Obx(
                           () => TextUi.bodyLarge(
                             '${controller.fullName}',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                         Obx(
@@ -87,20 +87,20 @@ class GymOwnerHome extends GetView<GymHomeController> {
                     )
                   ],
                 ),
-                const Gap(17),
+                const Gap(40),
                 const Row(
                   children: [
                     TextUi.heading1(
                       'Dashboard',
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w700,
                     ),
                   ],
                 ),
-                const Gap(7),
+                const Gap(1),
                 const Row(
                   children: [
                     TextUi.bodyLarge(
-                      'Your daily updates',
+                      'Your daily updates...',
                       fontWeight: FontWeight.w400,
                     ),
                   ],
@@ -111,9 +111,9 @@ class GymOwnerHome extends GetView<GymHomeController> {
                   children: [
                     const dashContainer(
                       iconPath: backIcon,
-                      height: 233,
-                      width: 171,
-                      Amount: '178,5k',
+                      height: 300,
+                      width: 190,
+                      Amount: '178,500k',
                       percent: '%7.6',
                     ),
                     // const Gap(70),
@@ -199,9 +199,10 @@ class GymOwnerHome extends GetView<GymHomeController> {
                     )
                   ],
                 ),
-                const Gap(20),
-                const newMemberContainer(),
-                const Gap(40)
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 30),
+                  child: const newMemberContainer(),
+                ),
               ]),
             ),
           ),
