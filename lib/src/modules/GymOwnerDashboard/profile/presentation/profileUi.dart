@@ -83,7 +83,10 @@ class GymOwnerProfile extends GetView<GymOwnerProfileController> {
                             backgroundColor: MaterialStateColor.resolveWith(
                                 (states) => primary)),
                         onPressed: () {},
-                        child: TextUi.bodyLarge('Create')),
+                        child: TextUi.bodyLarge(
+                          'Submit',
+                          color: white,
+                        )),
                   ),
                   Gap(32)
                 ],
