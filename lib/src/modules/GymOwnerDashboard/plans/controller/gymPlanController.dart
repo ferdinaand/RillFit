@@ -125,6 +125,7 @@ class GymPlanController extends BaseController {
     final message = jsonResponse['message'];
     print(message);
     if (jsonResponse['message'] != null) {
+      Get.back();
       print('something here');
       Get.snackbar('', '$message');
     } else if (jsonResponse['statusCosde'] == 400) {
