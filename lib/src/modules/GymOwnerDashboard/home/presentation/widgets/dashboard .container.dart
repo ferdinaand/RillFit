@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:riilfit/src/presentation/global_widgets/gap.ui.dart';
 import 'package:riilfit/src/presentation/global_widgets/text.ui.dart';
 import 'package:riilfit/src/presentation/resources/colors.res.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //USER CONTAINER
 class dashContainer extends StatelessWidget {
@@ -22,8 +23,8 @@ class dashContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      width: width,
+      height: height.h,
+      width: width.w,
       decoration: BoxDecoration(
           gradient: const LinearGradient(
               colors: [primary, Colors.black],
